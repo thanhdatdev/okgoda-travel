@@ -1,0 +1,34 @@
+html.loading {
+	background: #333 url(images/ajax-load.gif) no-repeat 50% 50%;
+	-webkit-transition: background-color 0;
+	transition: background-color 0
+}
+
+html.loading body {
+	opacity: .5;
+	-webkit-transition: opacity 0;
+	transition: opacity 0
+}
+
+.loading {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	opacity: .5;
+	background: url(images/ajax-load.gif) 50% 50% no-repeat #f9f9f9
+}
+
+.is-hidden-button {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity .5s linear
+}
+
+.is-visible-button {
+	visibility: visible;
+	opacity: 1;
+	transition: visibility 0s, opacity .5s linear
+}
