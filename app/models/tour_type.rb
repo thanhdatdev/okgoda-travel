@@ -1,0 +1,2 @@
+class TourType < ApplicationRecord
+end
