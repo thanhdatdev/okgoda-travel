@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 2021_04_07_041318) do
     t.bigint "user_id"
     t.bigint "tour_id"
     t.string "content"
+    t.bigint "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["tour_id"], name: "index_comments_on_tour_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -37,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_041318) do
   end
 
   create_table "tour_programs", force: :cascade do |t|
-    t.date "date", null: false
+    t.date "tour_program_date", null: false
     t.string "title", null: false
     t.string "description", null: false
     t.integer "position", null: false
@@ -53,7 +55,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_041318) do
 
   create_table "tours", force: :cascade do |t|
     t.time "start_date", null: false
-    t.date "days", null: false
+    t.integer "days", null: false
     t.decimal "price", null: false
     t.integer "slot", null: false
     t.integer "remain_slot", null: false
@@ -61,7 +63,7 @@ ActiveRecord::Schema.define(version: 2021_04_07_041318) do
     t.bigint "tour_type_id", null: false
     t.string "notice", null: false
     t.bigint "photos_id", null: false
-    t.bigint "tour_program_id", null: false
+    t.bigint "tour_programs_id", null: false
     t.bigint "reviews_id"
     t.bigint "comments_id"
     t.datetime "created_at", null: false
@@ -70,13 +72,16 @@ ActiveRecord::Schema.define(version: 2021_04_07_041318) do
     t.index ["comments_id"], name: "index_tours_on_comments_id"
     t.index ["photos_id"], name: "index_tours_on_photos_id"
     t.index ["reviews_id"], name: "index_tours_on_reviews_id"
-    t.index ["tour_program_id"], name: "index_tours_on_tour_program_id"
+    t.index ["tour_programs_id"], name: "index_tours_on_tour_programs_id"
     t.index ["tour_type_id"], name: "index_tours_on_tour_type_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "phone_number", default: "", null: false
+    t.string "address", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
