@@ -224,12 +224,12 @@
           </ul>
         </div>
         <div class="f-right h-line hidden-lg hidden-md">
-          <img src="/Content/ThemeHe/img/h-line.png" alt="line">
+          <%= image_tag "h-line.png", alt: "line" %>
         </div>
         <div class="f-right lang-info">
           <div class="obj pos-relative">
             <div class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/Content/ThemeHe/img/vn.png" alt="Vietnamese">
+              <%= image_tag "vn.png", alt: "Vietnamese" %>
               <span style="padding-left: 5px;" class="hidden-xs">VN</span>
             </div>
             <ul class="dropdown-menu">
@@ -239,11 +239,11 @@
           </div>
         </div>
         <div class="f-right h-line">
-          <img src="/Content/ThemeHe/img/h-line.png" alt="line">
+          <%= image_tag "h-line.png", alt: "line" %>
         </div>
         <div class="f-right user-info">
           <div class="obj pos-relative">
-            <img src="/Content/ThemeHe/img/user-s.png" alt="Tài khoản" class="dropdown-toggle" data-toggle="dropdown">
+            <%= image_tag "user-s.png", alt: "Tài khoản", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
             <ul class="dropdown-menu">
               <li style="border-bottom: 1px dashed #ccc;">
                 <%= link_to 'Đăng nhập', new_user_session_path, id: "btDangNhap", data: {toggle: "modal"}, data: {target: "#dangnhap"} %>
@@ -255,12 +255,12 @@
         </div>
 
         <div class="f-right h-line">
-          <img src="/Content/ThemeHe/img/h-line.png" alt="line">
+          <%= image_tag "h-line.png", alt: "line" %>
         </div>
         <div class="f-right cart-info">
           <div class="obj pos-relative cart-info-bag">
             <a id="shopping-cart-bag" href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/Content/ThemeHe/img/i-cart.png" alt="line">
+              <%= image_tag "i-cart.png", alt: "line" %>
               <div class="frame-cart">
                 <div class="circle-num">
                   <span class="num numCard">0</span>
@@ -330,17 +330,17 @@
           </div>
         </div>
         <div class="f-right hidden-xs">
-          <img src="/Content/ThemeHe/img/h-line.png" alt="line">
+          <%= image_tag "h-line.png", alt: "line" %>
         </div>
 
 
         <div class="f-right h-line hidden-xs">
-          <img src="/Content/ThemeHe/img/h-line.png" alt="line">
+          <%= image_tag "h-line.png", alt: "line" %>
         </div>
         <div class="f-right cart-info  hidden-xs">
           <div class="obj pos-relative">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="/Content/ThemeHe/img/v/i-viewed.png" alt="line">
+              <%= image_tag "i-viewed.png", alt: "line" %>
               <div class="frame-cart">
                 <div class="circle-num">
                   <span class="num">5</span>
@@ -413,7 +413,7 @@
         </div>
 
         <div class="f-right hidden-xs">
-          <img src="/Content/ThemeHe/img/h-line.png" alt="line">
+          <%= image_tag "h-line.png", alt: "line" %>
         </div>
 
         <div class="f-right search-mini hidden-xs">
@@ -421,7 +421,7 @@
             <form action="/Tour/SearchToursByDestinationChild" method="post"><input name="__RequestVerificationToken" type="hidden" value="isNxRaEavbctDyZYXmb8ZQFkk7rbmlE4bMlAi-T1fl1qIFgQUL5hrFEHSZgCgk_OJ7NA-wIBx4cRZRvPnLSGS8dgG64zlRY-wpEs2BsRmk41"> <input type="text" class="txt-search form-control input-md " name="search" placeholder="Tour du lịch, Điểm đến...">
               <div class="btn-f">
                 <button type="submit" onclick="ga('event','SearchTop', 'SearchTopClick', 'keywords');" id="btnSearchTour" style="background-color:rgb(241, 241, 241);border:none;height:40px;">
-                  <img src="/Content/ThemeHe/img/i-search-mini.png" alt="search">
+                  <%= image_tag "i-search-mini.png", alt: "search" %>
                 </button>
               </div>
             </form> </div>
@@ -435,7 +435,7 @@
       <div class="row">
         <div class="col-md-4 col-sm-12 col-xs-12">
           <a href="/">
-            <img src="/Content/ThemeHe/img/logo.png" alt="logo">
+            <%= image_tag "logo.png", alt: "logo" %>
           </a>
         </div>
         <div class="col-md-8 hidden-sm col-xs-12">
@@ -501,7 +501,7 @@
             <form action="/Tour/SearchToursByDestinationChild" method="post"><input name="__RequestVerificationToken" type="hidden" value="nJ7ftpkaFeuIEdmLklUZpUZ8FXyOvm8vyRpqooTag7dXv1aKe9yd680bK0qMeIafedOegFk0Js4VqHg1Nu74UxGYagSlUe_Oev3Fo3sPrKw1"> <input type="text" class="txt-search form-control input-md " name="search" placeholder="Tour du lịch, Điểm đến...">
               <div class="btn-f">
                 <button type="submit" onclick="ga('event','SearchTop', 'SearchTopClick', 'keywords');" id="btnSearchTour" style="background-color:white;border:none;">
-                  <img src="/Content/ThemeHe/img/i-search-mini.png" alt="search">
+                  <%= image_tag "i-search-mini.png", alt: "search" %>
                 </button>
               </div>
             </form> </div>
