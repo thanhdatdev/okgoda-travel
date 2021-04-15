@@ -1,5 +1,4 @@
 class Tour < ApplicationRecord
-  extend FriendlyId
   friendly_id :title, use: :slugged
   mount_uploader :photo, PhotoUploader
   has_many   :bookings
