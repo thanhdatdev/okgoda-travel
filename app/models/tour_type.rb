@@ -1,3 +1,3 @@
 class TourType < ApplicationRecord
-  belongs_to :tour
+  has_many :tours
 end

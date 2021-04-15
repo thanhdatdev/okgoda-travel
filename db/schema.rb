@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_09_035720) do
+ActiveRecord::Schema.define(version: 2021_04_13_224016) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
-  create_table "bookings", force: :cascade do |t|
+  create_table "bookings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "tour_id"
     t.datetime "booking_date"
@@ -25,8 +26,8 @@ ActiveRecord::Schema.define(version: 2021_04_09_035720) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
     t.bigint "tour_id"
     t.string "content"
     t.bigint "review_id"
@@ -37,8 +38,11 @@ ActiveRecord::Schema.define(version: 2021_04_09_035720) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "enable_uuids", force: :cascade do |t|
+  end
+
+  create_table "reviews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
     t.bigint "tour_id"
     t.string "content"
     t.integer "rating"
@@ -48,22 +52,24 @@ ActiveRecord::Schema.define(version: 2021_04_09_035720) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "tour_programs", force: :cascade do |t|
+  create_table "tour_programs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.date "tour_program_date", null: false
     t.string "title", null: false
     t.string "description", null: false
     t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "tour_id"
+    t.index ["tour_id"], name: "index_tour_programs_on_tour_id"
   end
 
-  create_table "tour_types", force: :cascade do |t|
-    t.string "type", default: "", null: false
+  create_table "tour_types", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "type_name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tours", force: :cascade do |t|
+  create_table "tours", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.time "start_date", null: false
     t.integer "days", null: false
     t.decimal "price", null: false
@@ -72,21 +78,20 @@ ActiveRecord::Schema.define(version: 2021_04_09_035720) do
     t.string "departure", null: false
     t.bigint "tour_type_id", null: false
     t.string "notice", null: false
-    t.bigint "photos_id", null: false
-    t.bigint "tour_programs_id", null: false
+    t.bigint "tour_programs_id"
     t.bigint "reviews_id"
     t.bigint "comments_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.string "title", default: "", null: false
     t.index ["comments_id"], name: "index_tours_on_comments_id"
-    t.index ["photos_id"], name: "index_tours_on_photos_id"
     t.index ["reviews_id"], name: "index_tours_on_reviews_id"
     t.index ["tour_programs_id"], name: "index_tours_on_tour_programs_id"
     t.index ["tour_type_id"], name: "index_tours_on_tour_type_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -97,10 +102,12 @@ ActiveRecord::Schema.define(version: 2021_04_09_035720) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "users"
   add_foreign_key "reviews", "users"
+  add_foreign_key "tour_programs", "tours"
 end

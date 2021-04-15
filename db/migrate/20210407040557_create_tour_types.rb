@@ -1,8 +1,8 @@
 class CreateTourTypes < ActiveRecord::Migration[5.2]
   def change
-    create_table :tour_types do |t|
-      t.string :type, null: false, default: ""
-      
+    create_table :tour_types, id: :uuid, default: "gen_random_uuid()" do |t|
+      t.string :type_name, null: false, default: ""
+
       t.timestamps
     end
   end
