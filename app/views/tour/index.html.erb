@@ -7,13 +7,13 @@
          <div class="text-center title-descript">Tour giờ chót với giá tốt</div>
       </div>
       <div id="idLastMinute" style="margin-bottom:30px;">
-         <script src="/Content/ThemeHe/js/CoutDown/jquery.countdown.min.js"></script>
-         <% @tours.each do |tour| %>
+         <!-- <script src="/Content/ThemeHe/js/CoutDown/jquery.countdown.min.js"></script> -->
+         <% @tours.each do |t| %>
          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mg-bot30">
             <div class="pos-relative">
-               <a href="/tourNDSGN845-013-090421XE-D/mien-tay-bac-lieu-nha-tho-cha-diep-dat-mui-ca-mau-can-tho-khach-san-5sao.aspx?LM=1" title="Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)">
-               <img src="https://media.travel.com.vn/LastMinute/lm_210401093612_532755.jpg" class="img-responsive pic-tgc" alt="Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)">
-               </a>
+               <%= link_to tour_path(t), title: "Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)" do %>
+                  <img src="https://media.travel.com.vn/LastMinute/lm_210401093612_532755.jpg" class="img-responsive pic-tgc" alt="Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)">
+               <% end %>
                <div class="frame-tgc1">
                   <div class="row">
                      <div class="col-lg-9 col-md-8 col-sm-8 col-xs-8">
@@ -27,7 +27,7 @@
                         <div class="f-left">
                            <%= image_tag "i-chair-w.png", alt: "chair" %>
                         </div>
-                        <div class="f-left chair"><span class="yellow"><%= tour.remain_slot  %></span></div>
+                        <div class="f-left chair"><span class="yellow"><%= t.remain_slot  %></span></div>
                         <div class="clear"></div>
                      </div>
                   </div>
@@ -43,14 +43,15 @@
                </div>
             </div>
             <div class="frame-tgc2">
-               <a href="/tourNDSGN845-013-090421XE-D/mien-tay-bac-lieu-nha-tho-cha-diep-dat-mui-ca-mau-can-tho-khach-san-5sao.aspx?LM=1" title="Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)">
-                  <div class="tgc-title dot-dot-ajax cut-tgc ddd-truncated" style="overflow-wrap: break-word;">Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp… </div>
-               </a>
+
+               <%= link_to tour_path(t), title: "Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)" do %>
+                  <div class="tgc-title dot-dot-ajax cut-tgc ddd-truncated" style="overflow-wrap: break-word;"><%= t.title %></div>
+               <% end %>
                <div class="tgc-line"></div>
                <div class="mg-bot10">
                   <%= image_tag "i-dep.png", class: "f-left" %>
                   <div class="f-left tgc-info">
-                     <span>Nơi khởi hành:&nbsp;&nbsp;<span style="font-weight: bold;color:#212121;"> <%= tour.departure  %></span></span>
+                     <span>Nơi khởi hành:&nbsp;&nbsp;<span style="font-weight: bold;color:#212121;"> <%= t.departure  %></span></span>
                   </div>
                   <div class="clear"></div>
                </div>
@@ -59,7 +60,7 @@
                   <div class="f-left tgc-info">
                      <span class="price-o">
                      2,890,000<span>&nbsp;</span>đ </span>&nbsp;&nbsp;&nbsp;&nbsp;
-                     <span class="price-n"><%= tour.price  %></span>
+                     <span class="price-n"><%= t.price  %></span>
                   </div>
                   <div class="clear"></div>
                </div>

@@ -2,8 +2,9 @@ class TourController < ApplicationController
   def index
     @tours = Tour.all
   end
+
   def show
-    @tour = Tour.find(params[:id])
+    @tour = Tour.friendly.find(params[:id])
   end
 
   def new
