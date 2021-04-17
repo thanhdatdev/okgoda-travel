@@ -4,12 +4,20 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users, id: :uuid, default: 'gen_random_uuid()' do |t|
       ## Database authenticatable
-      t.string :name,               null: false, default: ""
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
-      t.string :phone_number,       null: false, default: ""
-      t.string :address,            null: false, default: ""
-
+      t.string  :name,                     null: false, default: ""
+      t.string  :sex,                      null: false, default: ""
+      t.date    :birthday,                 null: false
+      t.string  :phone_number,             null: false, default: ""
+      t.string  :identity_card,            null: false, default: ""
+      t.date    :issued_on_identity_card
+      t.string  :passport
+      t.string  :email,                    null: false, default: ""
+      t.date    :issued_on_passport
+      t.date    :expiration_date_passport
+      t.string  :address,                  null: false, default: ""
+      t.string  :encrypted_password,       null: false, default: ""
+      t.string  :confirmation_password,    null: false, default: ""
+      t.boolean :admin,                                 default: false
 
       ## Recoverable
       t.string   :reset_password_token
