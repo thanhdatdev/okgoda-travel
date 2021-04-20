@@ -1,29 +1,218 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<div id="main-content">
+   <div id="tuvankhachhang">
+      <div class="container">
+         <div class="row">
+            <div class="col-xs-12 text-center mg-bot30">
+               <h2>Đăng ký hội viên</h2>
+            </div>
+            <div class="col-xs-12">
+               <div class="row">
+                  <div class="col-lg-12 col-md-12 noidungtin">
+                     <p>
+                        <strong style="color:#1583e0 !important;">ĐĂNG KÝ HỘI VIÊN</strong>
+                     </p>
+                     <p>Để hoàn tất đăng ký Hội viên VietravelPlus, quý khách vui lòng điền đầy đủ thông tin vào mẫu dưới đây và nhấn vào nút đăng ký. Xin chân thành cảm ơn quý khách hàng.</p>
+                     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <%= render "devise/shared/error_messages", resource: resource %>
+                        <div class="row" style="margin-bottom:10px">
+                           <div class="col-md-2 col-sm-2 col-xs-12" style="margin-bottom:10px">
+                              <%= f.label :name do %>
+                                Họ tên <span style="color:red">(*)</span>:
+                              <% end %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                             <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                           </div>
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                             <%= f.label :sex do %>
+                               Giới tính <span style="color:red">(*)</span>:
+                             <% end %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <%= f.select :sex, options_for_select(["Nam", "Nữ"]), {}, class: "form-control valid" %>
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                             <%= f.label :birthday do %>
+                               Ngày sinh <span style="color:red">(*)</span>:
+                             <% end %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <%= f.date_field :birthday, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, autocomplete: "off", class: "form-control" %>
+                           </div>
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                             <%= f.label :phone_number do %>
+                               Di động <span style="color:red">(*)</span>:
+                             <% end %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                             <%= f.text_field :phone_number, class: "form-control" %>
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                             <%= f.label :identity_card, "CMND:" %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <%= f.text_field :identity_card, class: "form-control" %>
+                           </div>
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <%= f.label :issued_on_identity_card, "Ngày cấp:" %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <%= f.date_field :issued_on_identity_card, class: "form-control" %>
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <%= f.label :passport, "Passport:" %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <%=f.text_field :passport, class: "form-control", value: "" %>
+                           </div>
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                             <%= f.label :email do %>
+                               Email <span style="color:red">(*)</span>:
+                             <% end %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <%= f.label :issued_on_identity_card, "Ngày cấp:" %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <input type="text" name="issue_date" id="issue_date" class="form-control" data-val="true" autocomplete="off">
+                           </div>
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <label>Ngày hết hạn:</label>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <input type="text" name="deadline_date" id="deadline_date" class="form-control" data-val="true" autocomplete="off">
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <label>Địa chỉ <span style="color:red">(*)</span>:</label>
+                           </div>
+                           <div class="col-md-10 col-sm-10 col-xs-12">
+                              <input type="text" name="Address" id="Address" class="form-control" data-val="true" data-val-required="Vui lòng nhập địa chỉ">
+                              <div class="field-validation-valid text-danger" data-valmsg-for="Address" data-valmsg-replace="true"></div>
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <label>Mã giới thiệu:</label>
+                           </div>
+                           <div class="col-md-10 col-sm-10 col-xs-12">
+                              <input class="form-control" id="ReferBy" name="ReferBy" type="text" value="">
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                             <%= f.label :password do %>
+                               Mật khẩu <span style="color:red">(*)</span>:
+                             <% end %>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <div class="input-group" id="show_hide_password_Password">
+                                <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+                                 <div class="input-group-addon">
+                                    <a><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                 </div>
+                              </div>
+                              <div class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></div>
+                           </div>
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <label>Nhập lại <span style="color:red">(*)</span>:</label>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <div class="input-group" id="show_hide_password_RePassword">
+                                 <input tautocomplete="new-password" type="password" name="RePassword" id="RePassword" class="form-control" data-val="true" data-val-equalto="Nhập lại khẩu không chính xác" data-val-equalto-other="*.Password" data-val-required="Vui lòng nhập lại mật khẩu">
+                                 <div class="input-group-addon">
+                                    <a><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                 </div>
+                              </div>
+                              <div class="field-validation-valid text-danger" data-valmsg-for="RePassword" data-valmsg-replace="true"></div>
+                           </div>
+                        </div>
+                        <div class="row" hidden="">
+                           <div class="col-xs-12">
+                              <hr>
+                           </div>
+                           <div class="col-md-12 col-sm-23 col-xs-12  mg-bot30">
+                              <label class="checkbox-inline">
+                              <input type="checkbox" id="isUseSocialMediaRegister" name="isUseSocialMediaRegister">Sử dụng tài khoản facebook/google
+                              </label>
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px;display: none" id="SocialMedia">
+                           <div class="col-md-2 col-sm-2 col-xs-12">
+                              <label>Tài khoản facebook:</label>
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <input type="text" name="socialid" id="socialid" class="form-control">
+                           </div>
+                           <div class="col-md-4 col-sm-4 col-xs-12">
+                              <input type="text" name="socialtype" id="socialtype" class="form-control">
+                           </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px;">
+                           <div class="col-xs-12">
+                              <hr>
+                           </div>
+                           <div class="col-md-12 col-sm-23 col-xs-12 ">
+                              <button type="button" class="loginBtn loginBtn--facebook" onclick="window.location.href='/Account/Facebook';">
+                              Sử dụng ID Facebook
+                              </button>
+                              <button id="googlebtn" type="button" class="loginBtn loginBtn--google" onclick="window.location.href='/Account/Google';">
+                              Sử dụng ID Google
+                              </button>
+                           </div>
+                        </div>
+                        <div class="row">
+                           <div class="col-xs-12">
+                              <hr>
+                           </div>
+                           <div class="col-md-12 col-sm-23 col-xs-12  mg-bot30">
+                              <label class="checkbox-inline">
+                              <input class="require-one validate-checkbox-oneormore" type="checkbox" id="chkDieuKhoan" name="chkDieuKhoan" data-val="true" data-val-required="Please agree to our policy!">Tôi đã đọc và đồng ý các điều khoản bên dưới
+                              </label>
+                              <div class="field-validation-valid text-danger" data-valmsg-for="chkDieuKhoan" data-valmsg-replace="true"></div>
+                           </div>
+                           <div class="col-md-12 col-sm-12 col-xs-12 mg-bot15 text-right">
+                              <button id="btCapNhat" class="btn btn-md btn-default" type="button" onclick="CheckValidate();">Đăng ký</button>
+                           </div>
+                        </div>
+                     <% end %>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xs-12 mg-bot30">
+                     <hr>
+                  </div>
+                  <div class="col-xs-12">
+                     <div class="noidungtin">
+                        <p>
+                           <strong style="color:#1583e0 !important;">ĐIỀU KHOẢN ĐĂNG KÝ HỘI VIÊN</strong>
+                        </p>
+                        <p>- Hội viên đăng ký chương trình cung cấp đúng các thông tin về số điện thoại, địa chỉ liên hệ, địa chỉ email của Hội viên. Khi có thay đổi, Hội viên có thể tự cập nhật vào tài khoản tại VietravelPlus.com hoặc liên hệ thông báo trực tiếp với nhân viên Vietravel và yêu cầu cập nhật.</p>
+                        <p>- Hội viên tham gia chương trình được cộng điểm Vàng và điểm Thưởng sau khi sử dụng dịch vụ tại Vietravel theo hệ số cộng điểm và theo các quy định về điểm thưởng khác được công bố tại từng thời điểm.</p>
+                        <p>- Vietravel có quyền thay đổi các điều kiện và điều khoản của chương trình Khách hàng thân thiết bất kỳ thời điểm nào có (hoặc không) báo trước và sẽ công bố chính thức trên VietravelPlus.com.</p>
+                        <p>- Vietravel có quyền sửa đổi cách thức của chương trình hoặc những quyền lợi có được từ chương trình tại bất kỳ thời điểm nào, có (hoặc không) báo trước và sẽ công bố chính thức trên VietravelPlus.com.</p>
+                        <p>- Vietravel có quyền tạm ngừng hoặc chấm dứt toàn bộ chương trình Khách hàng thân thiết tại bất kỳ thời điểm nào, có (hoặc không) báo trước.</p>
+                        <p>- Vietravel được miễn trừ chịu trách nhiệm nếu Hội viên không nhận được các ưu đãi và lợi ích từ chương trình do số điện thoại, email Hội viên có thay đổi mà không cập nhật vào hồ sơ hội viên hoặc do gửi ấn phẩm, thư tín qua đường bưu điện đến Hội viên bị thất lạc.</p>
+                        <p>- Mọi khiếu nại, yêu cầu bồi thường của Hội viên liên quan đến chương trình sẽ do Vietravel giải quyết. Sự giải quyết của Vietravel có giá trị áp dụng sau cùng.</p>
+                        <p>- Vietravel được phép sử dụng những thông tin của Hội viên trong các trường hợp: phục vụ cho việc nghiên cứu thị trường, lên kế hoạch kinh doanh nhằm phục vụ Hội viên tốt hơn của Vietravel hoặc đối tác chương trình, gửi phần thưởng hay các ấn phẩm đến Hội viên mà không cần sự đồng ý của Hội viên hoặc các trường hợp khác được Hội viên cho phép.</p>
+                        <p>- Hội viên được khuyến khích đọc kỹ và được xem như chấp nhận nội dung chương trình Khách hàng thân thiết VietravelPlus trước khi đăng ký trở thành Hội viên</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
