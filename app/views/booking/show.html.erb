@@ -43,12 +43,12 @@
                </div>
                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
                   <div class="f-left l"><%= image_tag "i-chair.png", alt: "chair" %></div>
-                  <div class="f-left r">Số chỗ còn nhận: <span class="font500">5</span></div>
+                  <div class="f-left r">Số chỗ còn nhận: <span class="font500"><%= @tour.remain_slot %></span></div>
                   <div class="clear"></div>
                </div>
                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
                   <div class="f-left l"><%= image_tag "i-date.png", alt: "date" %></div>
-                  <div class="f-left r">Ngày khởi hành: <span class="font500">22/04/2021</span></div>
+                  <div class="f-left r">Ngày khởi hành: <span class="font500"><%= @tour.start_date %></span></div>
                   <div class="clear"></div>
                </div>
                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
@@ -58,14 +58,14 @@
                </div>
                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
                   <div class="f-left l"><%= image_tag "i-clock.png", alt: "clock" %></div>
-                  <div class="f-left r">Số ngày: <span class="font500">3</span></div>
+                  <div class="f-left r">Số ngày: <span class="font500"><%= @tour.days %></span></div>
                   <div class="clear"></div>
                </div>
                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
                   <div class="f-left l"><%= image_tag "i-price.png", alt: "price" %></div>
                   <div class="f-left r">
                      Giá:
-                     <span class="font500 price">2,090,000 đ</span>
+                   <span class="font500 price"><%= @tour.price %> đ</span>
                   </div>
                   <div class="clear"></div>
                </div>

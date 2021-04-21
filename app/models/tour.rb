@@ -5,5 +5,6 @@ class Tour < ApplicationRecord
   has_many   :bookings
   has_many   :users, through: :bookings
   has_many   :tour_programs
+  has_many   :price_basics
   belongs_to :tour_type
 end

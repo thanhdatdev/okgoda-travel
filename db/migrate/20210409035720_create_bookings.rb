@@ -8,7 +8,6 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.string     :mobile_booking,    null: false, default: ""
       t.string     :phone_booing,      null: false, default: ""
       t.string     :address,           null: false, default: ""
-      t.string     :customers_type,    null: false, default: ""
       t.string     :customers_number,  null: false, dafault: ""
       t.string     :note,                           default: ""
       t.decimal    :price_booking
