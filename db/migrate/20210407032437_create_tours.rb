@@ -1,6 +1,7 @@
 class CreateTours < ActiveRecord::Migration[5.2]
   def change
     create_table :tours, id: :uuid, default: "gen_random_uuid()" do |t|
+      t.string      :title,         null: false, default: ""
       t.time        :start_date,    null: false
       t.integer     :days,          null: false
       t.decimal     :price,         null: false
@@ -9,6 +10,7 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.string      :departure,     null: false
       t.references  :tour_type,     null: false
       t.string      :notice,        null: false
+      t.string      :photo
       t.references  :price_basics
       t.references  :tour_programs
       t.references  :reviews

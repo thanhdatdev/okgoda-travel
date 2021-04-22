@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2021_04_20_200050) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "hstore"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
@@ -89,7 +88,9 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
 
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "tour_id"
-    t.hstore "settings"
+    t.string "customers_type", default: "", null: false
+    t.decimal "price_default", null: false
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tour_id"], name: "index_price_basics_on_tour_id"
@@ -132,7 +133,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
     t.string "departure", null: false
     t.bigint "tour_type_id", null: false
     t.string "notice", null: false
-    t.bigint "price_basics_id", null: false
+    t.bigint "price_basics_id"
     t.bigint "tour_programs_id"
     t.bigint "reviews_id"
     t.bigint "comments_id"
