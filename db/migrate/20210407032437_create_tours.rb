@@ -9,7 +9,7 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.string      :departure,     null: false
       t.references  :tour_type,     null: false
       t.string      :notice,        null: false
-      t.references  :price_basics,  null: false
+      t.references  :price_basics
       t.references  :tour_programs
       t.references  :reviews
       t.references  :comments
