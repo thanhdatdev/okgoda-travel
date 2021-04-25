@@ -18,19 +18,21 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
 
   create_table "bookings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "user_id"
-    t.uuid "tour_id"
+    t.uuid "tour_id", null: false
     t.string "name_booking", default: "", null: false
     t.string "email_booking", default: "", null: false
     t.string "mobile_booking", default: "", null: false
     t.string "phone_booing", default: "", null: false
     t.string "address", default: "", null: false
+    t.integer "adult_guests_number"
+    t.integer "child_guests_number"
+    t.integer "young_children_guests_number"
+    t.integer "baby_guests_number"
     t.string "customers_number", null: false
     t.string "note", default: ""
-    t.decimal "price_booking"
-    t.decimal "total_price"
+    t.datetime "booking_date"
     t.bigint "list_of_customers_id", null: false
     t.bigint "payments_id", null: false
-    t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["list_of_customers_id"], name: "index_bookings_on_list_of_customers_id"
@@ -72,6 +74,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
     t.string "birthday_list_of_customers", default: "", null: false
     t.string "ages", default: "", null: false
     t.boolean "single_room", default: true, null: false
+    t.decimal "price_booking"
+    t.decimal "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
@@ -81,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
     t.uuid "booking_id"
     t.string "payments_type", default: "", null: false
     t.string "description_payments", default: ""
+    t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_payments_on_booking_id"
@@ -125,6 +130,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
   end
 
   create_table "tours", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", default: "", null: false
     t.time "start_date", null: false
     t.integer "days", null: false
     t.decimal "price", null: false
@@ -133,20 +139,11 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
     t.string "departure", null: false
     t.bigint "tour_type_id", null: false
     t.string "notice", null: false
-    t.bigint "price_basics_id"
-    t.bigint "tour_programs_id"
-    t.bigint "reviews_id"
-    t.bigint "comments_id"
+    t.string "photo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
-    t.string "title", default: "", null: false
     t.string "slug"
-    t.index ["comments_id"], name: "index_tours_on_comments_id"
-    t.index ["price_basics_id"], name: "index_tours_on_price_basics_id"
-    t.index ["reviews_id"], name: "index_tours_on_reviews_id"
     t.index ["slug"], name: "index_tours_on_slug", unique: true
-    t.index ["tour_programs_id"], name: "index_tours_on_tour_programs_id"
     t.index ["tour_type_id"], name: "index_tours_on_tour_type_id"
   end
 

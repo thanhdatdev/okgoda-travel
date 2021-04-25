@@ -11,7 +11,7 @@
          <% @tours.each do |t| %>
          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mg-bot30">
             <div class="pos-relative">
-               <%= link_to tour_path(t), title: "Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)" do %>
+               <%= link_to tour_path(t), title: t.title do %>
                   <img src="https://media.travel.com.vn/LastMinute/lm_210401093612_532755.jpg" class="img-responsive pic-tgc" alt="Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)">
                <% end %>
                <div class="frame-tgc1">
@@ -44,8 +44,10 @@
             </div>
             <div class="frame-tgc2">
 
-               <%= link_to tour_path(t), title: "Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)" do %>
-                  <div class="tgc-title dot-dot-ajax cut-tgc ddd-truncated" style="overflow-wrap: break-word;"><%= t.title %></div>
+               <%= link_to tour_path(t), title: t.title do %>
+                  <div class="tgc-title dot-dot-ajax cut-tgc ddd-truncated" style="overflow-wrap: break-word;">
+                    <%= t.title %>
+                  </div>
                <% end %>
                <div class="tgc-line"></div>
                <div class="mg-bot10">

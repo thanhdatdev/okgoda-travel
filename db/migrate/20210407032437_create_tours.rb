@@ -11,10 +11,6 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.references  :tour_type,     null: false
       t.string      :notice,        null: false
       t.string      :photo
-      t.references  :price_basics
-      t.references  :tour_programs
-      t.references  :reviews
-      t.references  :comments
 
       t.timestamps
     end

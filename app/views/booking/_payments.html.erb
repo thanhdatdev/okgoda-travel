@@ -1,0 +1,75 @@
+<div class="col-xs-12 mg-bot30">
+   <div class="title">XIN QUÝ KHÁCH VUI LÒNG CHỌN HÌNH THỨC THANH TOÁN</div>
+</div>
+<div class="col-xs-12 mg-bot30">
+   <div class="frame-payment">
+      <div class="row">
+         <div class="col-xs-12 bor-bot mg-bot20">
+            <div class="radio tienmat">
+               <label style="display:;"><input type="radio" class="chkPayment" name="paymentID" value="1" checked="checked"><label class="lb_r">Tiền mặt</label></label>
+               <div class="row">
+                  <div class="frame-cards conditionPament" id="conditionPament1">
+                     <title></title>
+                     <p>
+                        Quý khách vui lòng thanh toán tại bất kỳ văn phòng Vietravel trên toàn quốc và các chi nhánh ngoài nước. <a href="https://travel.com.vn/lien-he.aspx" target="_blank">Chi tiết</a>
+                     </p>
+                     <p>
+                        Xin lưu ý, Quý khách nên liên lạc trước khi đến để biết rõ hơn về giờ làm việc và các hồ sơ cần chuẩn bị khi thanh toán.
+                     </p>
+                  </div>
+               </div>
+            </div>
+            <div class="radio chuyenkhoan">
+               <label style="display:;"><input type="radio" class="chkPayment" name="paymentID" value="2"><label class="lb_r">Chuyển khoản</label></label>
+               <div class="row">
+                  <div class="frame-cards conditionPament" id="conditionPament2" style="display:none;"></div>
+               </div>
+            </div>
+            <div class="radio internet">
+               <label><input type="radio" class="chkPayment" name="paymentID" value="9"><label class="lb_r">ATM / Internet Banking</label></label>
+               <div class="row ">
+                  <div class="frame-cards conditionPament" id="conditionPament9" style="display:none;"></div>
+               </div>
+            </div>
+            <div class="radio thetindung">
+               <label><input type="radio" class="chkPayment" name="paymentID" value="15"><label class="lb_r">Thẻ tín dụng</label></label>
+               <div class="row cards" id="divCard" style="display:none;">
+                  <div class="text">
+                     Quý khách vui lòng chọn loại thẻ:
+                  </div>
+                  <div class="frame-cards">
+                     <input id="cardType" name="cardType" type="hidden" val e="visa">
+                     <div card="visa" onclick="ChonLoaiThe('visa')" class="visa card_type f-left">
+                        <%= image_tag "thevisa.png", alt: "visa" %>
+                     </div>
+                     <div card="mastercard" onclick="ChonLoaiThe('mastercard')" class="master card_type f-left mg-left">
+                        <%= image_tag "master.png", alt: "master" %>
+                     </div>
+                     <div card="jcb" onclick="ChonLoaiThe('jcb')" class="jcb card_type f-left mg-left">
+                        <%= image_tag "jcb.png", alt: "jcb" %>
+                     </div>
+                     <div card="amex" onclick="ChonLoaiThe('amex')" class="amex card_type f-left mg-left">
+                        <%= image_tag "amex.png", alt: "amex" %>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="frame-cards conditionPament" id="conditionPament15" style="display:none;"></div>
+               </div>
+            </div>
+            <div class="radio qrcode">
+               <label><input type="radio" class="chkPayment" name="paymentID" value="16"><label class="lb_r">Thanh toán bằng quét QRCode</label></label>
+               <div class="row">
+                  <div class="frame-cards conditionPament" id="conditionPament16" style="display:none;"></div>
+               </div>
+            </div>
+            <div class="radio momo">
+               <label><input type="radio" class="chkPayment" name="paymentID" value="17"><label class="lb_r">Thanh toán bằng Momo</label></label>
+               <div class="row">
+                  <div class="frame-cards conditionPament" id="conditionPament17" style="display:none;"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

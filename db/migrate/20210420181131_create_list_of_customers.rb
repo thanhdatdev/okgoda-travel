@@ -6,7 +6,9 @@ class CreateListOfCustomers < ActiveRecord::Migration[5.2]
       t.string     :sex_list_of_customers,      null: false, default: ""
       t.string     :birthday_list_of_customers, null: false, default: ""
       t.string     :ages,                       null: false, default: ""
-      t.boolean    :single_room,                null: false, default: true              
+      t.boolean    :single_room,                null: false, default: true
+      t.decimal    :price_booking
+      t.decimal    :total_price              
       t.timestamps
     end
   end
