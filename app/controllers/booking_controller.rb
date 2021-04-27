@@ -1,6 +1,7 @@
 class BookingController < ApplicationController
   def show
     @tour = Tour.friendly.find(params[:id])
+    @tour_order_by_position = Tour.friendly.find(params[:id]).price_basics.order(position: :asc)
   end
 
   def new

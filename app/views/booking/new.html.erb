@@ -6,7 +6,7 @@
       <div class="row">
          <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="form-group">
-               <% f.text_field :tour_id, required: "required", value: "#{@tour}", type: "hidden" %>
+               <% f.text_field :tour_id, required: "required", value: @tour, type: "hidden" %>
                <%= f.label :name_booking do %>
                  Họ tên (<span class="star">*</span>)
                <% end %>
