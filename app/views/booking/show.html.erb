@@ -28,17 +28,21 @@
          <div class="title"> THÔNG TIN TOUR</div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-         <a href="/tourNDSGN535-052-220421VU-V-F/da-lat-may-bay-kim-ngan-hill-phim-truong-happy-hill-que-garden-tour-gia-soc.aspx" target="_blank" title="Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)"><img src="https://media.travel.com.vn/destination/tf_210226045729_127096.jpg" alt="Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)" class="img-responsive pic-bt"></a>
+         <%= link_to tour_path(@tour), target: "_blank", title: @tour.title do %>
+           <%= @tour.title %>
+         <% end %>
       </div>
       <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
          <div class="tour-name">
-            <a href="/tourNDSGN535-052-220421VU-V-F/da-lat-may-bay-kim-ngan-hill-phim-truong-happy-hill-que-garden-tour-gia-soc.aspx" target="_blank" title="Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)" class="dot-dot cut-name" style="overflow-wrap: break-word;">Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)</a>
+            <%= link_to tour_path(@tour), target: "_blank", title: @tour.title do %>
+              <%= @tour.title %>
+            <% end %>
          </div>
          <div class="frame-info">
             <div class="row">
                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
                   <div class="f-left l"><%= image_tag "i-code.png", alt: "code" %></div>
-                  <div class="f-left r">NDSGN535-052-220421VU-V-F</div>
+                  <div class="f-left r"><%= @tour.id %></div>
                   <div class="clear"></div>
                </div>
                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
@@ -81,26 +85,28 @@
          <div class="title">GIÁ TOUR CƠ BẢN</div>
       </div>
       <div class="col-xs-12 mg-bot30">
-           <table class="table table-bordered">
-              <thead>
-                 <tr class="tb-title">
-                    <td>Người lớn (Từ 12 tuổi trở lên)</td>
-                    <td>Trẻ em (Từ 5 tuổi đến dưới 12 tuổi)</td>
-                    <td>Trẻ nhỏ (Từ 2 tuổi đến dưới 5 tuổi)</td>
-                    <td>Em bé (Dưới 2 tuổi)</td>
-                    <td>Phụ thu phòng đơn</td>
-                 </tr>
-              </thead>
-              <tbody>
-                 <tr>
-                    <td data-title="Người lớn">2,090,000<span> đ</span></td>
-                    <td data-title="Trẻ em">1,492,500<span> đ</span></td>
-                    <td data-title="Trẻ nhỏ">1,000,000<span> đ</span></td>
-                    <td data-title="Em bé">220,000<span> đ</span></td>
-                    <td data-title="Phụ thu phòng đơn">600,000<span> đ</span></td>
-                 </tr>
-              </tbody>
-           </table>
+         <table class="table table-bordered">
+           <% @tour.price_basics.each do |price_basic| %>
+            <thead>
+               <tr class="tb-title">
+                  <td><%= price_basic.customer_type %></td>
+                  <td>Trẻ em (Từ 5 tuổi đến dưới 12 tuổi)</td>
+                  <td>Trẻ nhỏ (Từ 2 tuổi đến dưới 5 tuổi)</td>
+                  <td>Em bé (Dưới 2 tuổi)</td>
+                  <td>Phụ thu phòng đơn</td>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td data-title="Người lớn">2,090,000<span> đ</span></td>
+                  <td data-title="Trẻ em">1,492,500<span> đ</span></td>
+                  <td data-title="Trẻ nhỏ">1,000,000<span> đ</span></td>
+                  <td data-title="Em bé">220,000<span> đ</span></td>
+                  <td data-title="Phụ thu phòng đơn">600,000<span> đ</span></td>
+               </tr>
+            </tbody>
+            <% end %>
+         </table>
       </div>
       <%= render template: "/booking/new" %>
    </div>
