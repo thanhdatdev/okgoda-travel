@@ -6,8 +6,8 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.string     :name_booking,                 null: false, default: ""
       t.string     :email_booking,                null: false, default: ""
       t.string     :mobile_booking,               null: false, default: ""
-      t.string     :phone_booing,                 null: false, default: ""
-      t.string     :address,                      null: false, default: ""
+      t.string     :phone_booking,                null: false, default: ""
+      t.string     :address_booking,              null: false, default: ""
       t.integer    :adult_guests_number
       t.integer    :child_guests_number
       t.integer    :young_children_guests_number
@@ -15,9 +15,6 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.string     :customers_number,             null: false, dafault: ""
       t.string     :note,                                      default: ""
       t.datetime   :booking_date
-      t.references :list_of_customers,            null: false
-      t.references :payments,                     null: false
-
       t.timestamps
     end
   end

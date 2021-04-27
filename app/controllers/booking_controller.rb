@@ -1,7 +1,7 @@
 class BookingController < ApplicationController
   def show
     @tour = Tour.friendly.find(params[:id])
-    @tour_order_by_position = Tour.friendly.find(params[:id]).price_basics.order(position: :asc)
+    @tour_order_by_position = @tour.price_basics.order(position: :asc)
   end
 
   def new
@@ -15,7 +15,7 @@ class BookingController < ApplicationController
     byebug
      if @booking.save
        respond_to do |format|
-         format.html  { redirect_to(root_path,
+         format.html  { redirect_to(@booking,
                       :notice => 'Booking was successfully created.') }
          format.json  { render :json => @booking,
                       :status => :created, :location => @booking }
@@ -33,9 +33,9 @@ class BookingController < ApplicationController
 
  private
    def booking_params
-      params.require(:booking).permit(:tour_id, :name_booking, :email_booking, :mobile_booking, :phone_booing, :address, :adult_guests_number, :child_guests_number,
+      params.require(:booking).permit(:tour_id, :name_booking, :email_booking, :mobile_booking, :phone_booking, :address_booking, :adult_guests_number, :child_guests_number,
         :young_children_guests_number, :baby_guests_number, :customers_number, :booking_date,
         list_of_customers_attributes: [:id, :name_list_of_customers, :sex_list_of_customers, :birthday_list_of_customers, :ages, :single_room, :price_booking, :total_price],
-        payments_attributes: [:id, :payments_type, :description_payments])
+        payments_attributes: [:id, :payments_type, :description_payments, :position])
    end
 end

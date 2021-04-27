@@ -1,11 +1,10 @@
 class ListOfCustomersController < ApplicationController
   def new
-    @list_of_customers = Booking.new
+    @list_of_customers = ListCustomer.new
   end
 
   def create
-    @list_of_customers = Booking.new(list_of_customers_params)
-    byebug
+    @list_of_customers = ListCustomer.new(list_of_customers_params)
      if @list_of_customers.save
        respond_to do |format|
          format.html  { redirect_to(root_path,
@@ -26,6 +25,6 @@ class ListOfCustomersController < ApplicationController
 
  private
    def list_of_customers_params
-      params.require(:booking).permit(:name_list_of_customers, :sex_list_of_customers, :birthday_list_of_customers, :ages, :single_room, :price_booking, :total_price)
+      params.require(:list_of_customers).permit(:name_list_of_customers, :sex_list_of_customers, :birthday_list_of_customers, :ages, :single_room, :price_booking, :total_price)
    end
 end

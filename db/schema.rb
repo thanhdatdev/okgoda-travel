@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
     t.string "name_booking", default: "", null: false
     t.string "email_booking", default: "", null: false
     t.string "mobile_booking", default: "", null: false
-    t.string "phone_booing", default: "", null: false
-    t.string "address", default: "", null: false
+    t.string "phone_booking", default: "", null: false
+    t.string "address_booking", default: "", null: false
     t.integer "adult_guests_number"
     t.integer "child_guests_number"
     t.integer "young_children_guests_number"
@@ -31,12 +31,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
     t.string "customers_number", null: false
     t.string "note", default: ""
     t.datetime "booking_date"
-    t.bigint "list_of_customers_id", null: false
-    t.bigint "payments_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["list_of_customers_id"], name: "index_bookings_on_list_of_customers_id"
-    t.index ["payments_id"], name: "index_bookings_on_payments_id"
     t.index ["tour_id"], name: "index_bookings_on_tour_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
