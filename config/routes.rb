@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources  :tour
   resources  :booking do
-    resource :list_of_customers
+    resources  :list_of_customers
   end
+  get  "/booking/tourId/:tour_id" => "booking#new", as: "booking_tour_new"
+  post "/booking/tourId/:tour_id" => "booking#create", as: "booking_tour"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

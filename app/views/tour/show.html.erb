@@ -142,7 +142,7 @@
                     </div>
                  </div>
                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 text-right">
-                    <%= link_to booking_path(@tour.id), class: "btn btn-book1 btn-md" do %>
+                    <%= link_to booking_tour_new_path(@tour.id), method: "get", class: "btn btn-book1 btn-md" do %>
                       <i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Đặt ngay
                     <% end %>
                  </div>

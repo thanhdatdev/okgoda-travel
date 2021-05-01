@@ -12,6 +12,16 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require js.cookie
+//= require moment
+//= require daterangepicker
+//= require jquery
+//= require chosen-jquery
+//= require pnotify
+//= require pnotify/pnotify
+//= require pnotify/pnotify.buttons
+//= require jquery_ujs
+//= require bootstrap-sprockets
+//= require bxslider
 //= require turbolinks
 //= require_tree .
-//= require home

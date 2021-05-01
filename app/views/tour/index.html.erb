@@ -7,7 +7,6 @@
          <div class="text-center title-descript">Tour giờ chót với giá tốt</div>
       </div>
       <div id="idLastMinute" style="margin-bottom:30px;">
-         <!-- <script src="/Content/ThemeHe/js/CoutDown/jquery.countdown.min.js"></script> -->
          <% @tours.each do |t| %>
          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mg-bot30">
             <div class="pos-relative">
@@ -43,7 +42,6 @@
                </div>
             </div>
             <div class="frame-tgc2">
-
                <%= link_to tour_path(t), title: t.title do %>
                   <div class="tgc-title dot-dot-ajax cut-tgc ddd-truncated" style="overflow-wrap: break-word;">
                     <%= t.title %>

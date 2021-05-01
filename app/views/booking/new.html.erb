@@ -1,211 +1,105 @@
-<%= form_for(:booking, :html => {role: "form"}, url: booking_index_path) do |f| %>
-   <div class="col-xs-12 mg-bot30">
-      <div class="title">THÔNG TIN LIÊN LẠC</div>
-   </div>
-   <div class="col-xs-12 form-input mg-bot30">
-      <div class="row">
-         <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="form-group">
-               <%= f.label :name_booking do %>
-                 Họ tên (<span class="star">*</span>)
-               <% end %>
-               <div>
-                  <%= f.text_field :tour_id, required: "required", value: @tour.id, type: "hidden" %>
-                  <%= f.text_field :name_booking, required: "required", class: "form-control", value: "" %>
-               </div>
-            </div>
-            <div class="form-group">
-              <%= f.label :mobile_booking do %>
-                Di động (<span class="star">*</span>)
-              <% end %>
-               <div>
-                 <%= f.text_field :mobile_booking, required: "required", class: "form-control", value: "" %>
-               </div>
-            </div>
-            <div class="form-group">
-               <%= f.label :address_booking, "Địa chỉ" %>
-               <div>
-                  <%= f.text_field :address_booking, class: "form-control", value: "" %>
-               </div>
-            </div>
+<div class="container n3-book-tour-1 mg-bot40">
+   <div class="row">
+      <div class="col-xs-12 mg-bot50">
+         <div class="step-by-step">
+            <ul class="stepper stepper-horizontal">
+               <li class="active">
+                  <a>
+                  <span class="circle">1</span>
+                  <span class="label">Nhập thông tin</span>
+                  </a>
+               </li>
+               <li class="warnning">
+                  <a>
+                  <span class="circle">2</span>
+                  <span class="label">Vietravel xác nhận</span>
+                  </a>
+               </li>
+               <li class="warnning">
+                  <a>
+                  <span class="circle">3</span>
+                  <span class="label">&nbsp;&nbsp;Thanh toán</span>
+                  </a>
+               </li>
+            </ul>
          </div>
-         <div class="col-md-6 col-sm-12 col-xs-12">
-            <div class="form-group">
-              <%= f.label :email_booking do %>
-                Email (<span class="star">*</span>)
-              <% end %>
-               <div>
-                  <%= f.text_field :email_booking, required: "required", class: "form-control", value: "" %>
-               </div>
-            </div>
-            <div class="form-group">
-               <%= f.label :phone_booking, "Điện thoại" %>
-               <div>
-                  <%= f.text_field :phone_booking, required: "required", class: "form-control", value: "" %>
-               </div>
-            </div>
-            <div class="form-group">
-               <div class="row">
-                  <div class="col-md-3 col-sm-2 col-xs-6 mg-bot15">
-                     <%= f.label :adult_guests_number, "Người lớn" %>
-                     <div>
-                       <%= f.text_field :adult_guests_number, class: "form-control", value: "1" %>
-                     </div>
-                  </div>
-                  <div class="col-md-2 col-sm-2 col-xs-6  mg-bot15">
-                    <%= f.label :child_guests_number, "Trẻ em" %>
-                     <div>
-                       <%= f.text_field :child_guests_number, class: "form-control", value: "0" %>
-                     </div>
-                  </div>
-                  <div class="col-md-2 col-sm-3 col-xs-6  mg-bot15">
-                     <%= f.label :young_children_guests_number, "Trẻ nhỏ" %>
-                     <div>
-                       <%= f.text_field :young_children_guests_number, class: "form-control", value: "0" %>
-                     </div>
-                  </div>
-                  <div class="col-md-2 col-sm-2 col-xs-6 mg-bot15">
-                     <%= f.label :baby_guests_number, "Em bé" %>
-                     <div>
-                       <%= f.text_field :baby_guests_number, class: "form-control", value: "0" %>
-                     </div>
-                  </div>
-                  <div class="col-md-3 col-sm-3 col-xs-12">
-                     <%= f.label :customers_number, "Số khách" %>
-                     <div>
-                        <%= f.text_field :customers_number, class: "form-control", value: "1", readonly: "readonly" %>
-                     </div>
-                  </div>
-               </div>
-            </div>
+      </div>
+      <div class="col-xs-12 mg-bot30">
+         <div class="title"> THÔNG TIN TOUR</div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+         <%= link_to tour_path(@tour.id), target: "_blank", title: @tour.title do %>
+           <%= @tour.title %>
+         <% end %>
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+         <div class="tour-name">
+            <%= link_to tour_path(@tour.id), target: "_blank", title: @tour.title do %>
+              <%= @tour.title %>
+            <% end %>
          </div>
-         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="form-group">
-               <%= f.label :note, "Ghi chú" %>
-               <div>
-                  <%= f.text_area :note, class: "form-control", cols: "20", rows: "4" %>
+         <div class="frame-info">
+            <div class="row">
+               <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+                  <div class="f-left l"><%= image_tag "i-code.png", alt: "code" %></div>
+                  <div class="f-left r"><%= @tour.id %></div>
+                  <div class="clear"></div>
                </div>
-            </div>
-         </div>
-         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="chuy">
-               <ul class="row list-chuy">
-                  <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                     Người lớn sinh từ: <span class="font500"> 24/04/1951</span> đến <span class="font500">24/04/2009</span>
-                  </li>
-                  <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                     Trẻ em sinh từ: <span class="font500">25/04/2009</span> đến <span class="font500">24/04/2016</span>
-                  </li>
-                  <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                     Trẻ nhỏ sinh từ: <span class="font500">25/04/2016</span> đến <span class="font500">24/04/2019</span>
-                  </li>
-                  <li class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                     Em bé sinh từ: <span class="font500">25/04/2019</span> đến <span class="font500">16/04/2021</span>
-                  </li>
-               </ul>
+               <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+                  <div class="f-left l"><%= image_tag "i-chair.png", alt: "chair" %></div>
+                  <div class="f-left r">Số chỗ còn nhận: <span class="font500"><%= @tour.remain_slot %></span></div>
+                  <div class="clear"></div>
+               </div>
+               <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+                  <div class="f-left l"><%= image_tag "i-date.png", alt: "date" %></div>
+                  <div class="f-left r">Ngày khởi hành: <span class="font500"><%= @tour.start_date %></span></div>
+                  <div class="clear"></div>
+               </div>
+               <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+                  <div class="f-left l"><%= image_tag "i-date.png", alt: "date" %></div>
+                  <div class="f-left r"><a href="/danh-sach-tour/NDSGN535/da-lat-may-bay-kim-ngan-hill-phim-truong-happy-hill-que-garden-tour-gia-soc.aspx" target="_blank" class="b">Ngày khác</a></div>
+                  <div class="clear"></div>
+               </div>
+               <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+                  <div class="f-left l"><%= image_tag "i-clock.png", alt: "clock" %></div>
+                  <div class="f-left r">Số ngày: <span class="font500"><%= @tour.days %></span></div>
+                  <div class="clear"></div>
+               </div>
+               <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
+                  <div class="f-left l"><%= image_tag "i-price.png", alt: "price" %></div>
+                  <div class="f-left r">
+                     Giá:
+                   <span class="font500 price"><%= @tour.price %> đ</span>
+                  </div>
+                  <div class="clear"></div>
+               </div>
             </div>
          </div>
       </div>
-   </div>
-   <div class="col-xs-12 mg-bot30">
-      <ul class="row">
-         <li class="col-xs-12" style="height:35px;">
-            <div class="radio">
-               <label><input type="radio" class="chkListCustomer" name="ListCustomer" value="1" checked="checked"><label class="lb_r">Nhập danh sách khách hàng</label></label>
-            </div>
-         </li>
-      </ul>
-   </div>
-   <%= f.fields_for :list_of_customers do |ff| %>
-     <div id="DanhSachKhach">
-        <div class="col-xs-12 mg-bot30">
-           <div class="title">DANH SÁCH KHÁCH HÀNG</div>
-        </div>
-        <div class="col-xs-12 mg-bot30 list">
-           <script src="/Content/ThemeHe/js/jquery.date-dropdowns.js"></script>
-           <div>
-              <div class="cus-num">Khách hàng 1</div>
-              <div class="frame-cus">
-                 <div class="form-horizontal">
-                    <div class="row mg-bot10">
-                       <div class="col-lg-3 col-md-8 col-sm-6 col-xs-12 mg-bot10">
-                         <%= ff.label :name_list_of_customers do %>
-                           Họ tên (<span class="star">*</span>)
-                         <% end %>
-                         <div>
-                            <%= ff.text_field :name_list_of_customers, required: "required", class: "form-control", value: "" %>
-                         </div>
-                       </div>
-                       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                          <%= ff.label :sex_list_of_customers, "Giới tính", class: "mg-bot5" %>
-                          <div>
-                             <%= ff.select :sex_list_of_customers, [["Nam", "1"], ["Nữ", "0"]], {}, { class: "form-control" } %>
-                          </div>
-                       </div>
-                       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                         <%= ff.label :birthday_list_of_customers do %>
-                           Ngày sinh (<span class="star">*</span>)
-                         <% end %>
-                        <div>
-                           <div class="date-dropdowns">
-                              <%= ff.date_select :birthday_list_of_customers, {}, { class: "day hideArow form-control dateDDL" } %>
-                           </div>
-                           <div class="clear"></div>
-                        </div>
-                       </div>
-                       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                          <%= ff.label :ages, "Độ tuổi", class: "mg-bot5" %>
-                          <div>
-                             <%= ff.select :ages, ["Người lớn"], {}, { class: "form-control" } %>
-                          </div>
-                       </div>
-                       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                          <%= ff.label :single_room, "Phòng đơn" %>
-                          <div>
-                             <%= ff.select :single_room, [["Có", "1"], ["Không", "0"]], {}, { class: "form-control" } %>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="row total">
-                       <div class="col-md-12 col-sm-12 text-right">
-                          <%= ff.label :price_booking do %>
-                              Trị giá: <span class="price">2,690,000 đ</span>
-                          <% end %>
-                          <%= ff.text_field :price_booking, class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div class="frame-cus">
-                 <div class="row">
-                    <div class="col-md-12 col-sm-12 text-right">
-                      <%= ff.label :price_booking do %>
-                          Tổng cộng: <span class="price">2,690,000 đ</span>
-                      <% end %>
-                      <%= ff.text_field :price_booking, class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </div>
-   <% end %>
-   <%= render partial: "payments" %>
-   <%= render partial: "rules" %>
-   <div class="col-xs-12 mg-bot30">
-      <div>
-         <div class="f-left mg-bot10 wl">
-            <input type="checkbox" id="chkDieuKhoan">
+      <div class="col-xs-12 mg-bot30">
+         <div class="chuy">
+            Khách nữ từ 55 tuổi trở lên, khách nam từ 60 tuổi trở lên đi tour một mình và khách mang thai trên 4 tháng (16 tuần) vui lòng đăng ký tour trực tiếp tại văn phòng của Vietravel. Không áp dụng đăng ký tour online đối với khách từ 70 tuổi trở lên
          </div>
-         <div class="f-left wr">
-            Tôi đồng ý với các điều kiện trên
-         </div>
-         <div class="clear"></div>
       </div>
+      <div class="col-xs-12 mg-bot30">
+         <div class="title">GIÁ TOUR CƠ BẢN</div>
+      </div>
+      <div class="col-xs-12 mg-bot30">
+        <% @tour_order_by_position.each do |t| %>
+         <table class="table table-bordered">
+            <thead>
+               <tr class="tb-title">
+                  <td><%= t.customers_type %> </td>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td data-title=<%= t.customers_type %>><%= t.price_default %><span> đ</span></td>
+               </tr>
+            </tbody>
+         </table>
+        <% end %>
+      </div>
+      <%= render partial: "/booking/form" %>
    </div>
-   <div class="col-xs-12 mg-bot30 text-center">
-      <%= f.submit "Đặt tour", class: "btn btn-md btn-book" do %>
-        <i class="fas fa-arrow-right"</i>
-      <% end %>
-   </div>
-<% end %>
+</div>

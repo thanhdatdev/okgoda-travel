@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
   create_table "list_of_customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "booking_id"
     t.string "name_list_of_customers", default: "", null: false
-    t.string "sex_list_of_customers", default: "", null: false
-    t.string "birthday_list_of_customers", default: "", null: false
+    t.boolean "sex_list_of_customers", default: true, null: false
+    t.date "birthday_list_of_customers", null: false
     t.string "ages", default: "", null: false
     t.boolean "single_room", default: true, null: false
     t.decimal "price_booking"
@@ -145,7 +145,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_200050) do
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.string "sex", default: "", null: false
+    t.boolean "sex", default: true, null: false
     t.date "birthday", null: false
     t.string "phone_number", default: "", null: false
     t.string "identity_card", default: "", null: false
