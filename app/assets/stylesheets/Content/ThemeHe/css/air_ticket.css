@@ -808,7 +808,7 @@ a:hover {
 	content: "";
 	width: 10px;
 	height: 11px;
-	background: url(../img/common/icon/arrow_right_ico.png) no-repeat top center;
+	background: url('arrow_right_ico.png') no-repeat top center;
 	background-size: 100%;
 	display: inline-block;
 	margin-left: 10px;
