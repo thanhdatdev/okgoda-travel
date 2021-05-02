@@ -69,12 +69,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-#other gem
+# other gem
 gem 'bootstrap', '~> 5.0.0.beta3'
 gem 'bootstrap-daterangepicker-rails'
 gem 'bxslider-rails'
-gem 'jquery-rails'
 gem 'chosen-rails'
+gem 'jquery-rails'
 gem 'pnotify-rails'
 # gem 'jquery-scrollto-rails'
 gem 'js_cookie_rails'
