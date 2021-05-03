@@ -1,160 +1,196 @@
 <div class="n3-footer">
-   <div class="container">
-      <div class="row">
-         <div class="col-sm-12 hidden-xs mg-bot60">
-            <%= image_tag "line-bot.png", class: "img-responsive pic-line", alt: "line" %>
-         </div>
-         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mg-bot30">
-            <h3 class="ft-title">Liên hệ</h3>
-            <div class="mg-bot10">190 Pasteur, Phường 6, Quận 3, TP HCM</div>
-            <div class="mg-bot5">
-               <div class="f-left">
-                  <%= image_tag "i-phone.png", alt: "phone" %>
-               </div>
-               <div class="f-left ft-mg-ct ft-mgtop">
-                  (+84 28) 3822 8898
-               </div>
-               <div class="clear"></div>
-            </div>
-            <div class="mg-bot5">
-               <div class="f-left">
-                  <%= image_tag "i-fax.png", alt: "fax" %>
-               </div>
-               <div class="f-left ft-mg-ct ft-mgtop">
-                  (+84 28) 3829 9142
-               </div>
-               <div class="clear"></div>
-            </div>
-            <div class="mg-bot15">
-               <div class="f-left">
-                  <%= image_tag "i-mail.png", alt: "mail" %>
-               </div>
-               <div class="f-left ft-mg-ct ft-mgtop">
-                  <a href="mailto:info@vietravel.com" style="color:#337ab7;">info@vietravel.com</a>
-               </div>
-               <div class="clear"></div>
-            </div>
-            <div class="mg-bot15"><%= image_tag "ft-line.png", alt: "line" %></div>
-            <div class="mg-bot5">
-               <div class="f-left">
-                  <%= image_tag "i-hotline.png", alt: "hotline" %>
-               </div>
-               <div class="f-left ft-mg-hl">
-                  <div class="hl-num"><a style="color:#ff002d" href="tel:19001839">1900 1839</a></div>
-                  <div class="hl-hour mg-bot10">Sẵn sàng phục vụ 24/7</div>
-               </div>
-               <div class="clear"></div>
-            </div>
-            <div class="mg-bot15"><%= image_tag "ft-line.png", alt: "line" %></div>
-            <a href="http://online.gov.vn/Home/WebDetails/646?AspxAutoDetectCookieSupport=1" target="_blank" rel="nofollow">
-            <%= image_tag "bct.png", alt: "Bộ công thương", class: "img-responsive" %>
-            </a>
-         </div>
-         <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mg-bot30">
-            <div class="row">
-               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mg-bot30">
-                  <h3 class="ft-title">Thông tin</h3>
-                  <div class="row">
-                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                        <ul class="list-info">
-                           <li><a href="https://www.vietravel.com/vn/media/tap-chi-du-lich.aspx" target="_blank">Tạp chí du lịch</a></li>
-                           <li><a href="/du-lich-bang-hinh-anh.aspx">Cẩm nang du lịch</a></li>
-                           <li><a href="/kinh-nghiem-du-lich.aspx">Kinh nghiệm du lịch</a></li>
-                        </ul>
-                     </div>
-                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                        <ul class="list-info">
-                           <li><a href="/tin-tuc-du-lich.aspx">Tin tức</a></li>
-                           <li><a href="/sitemap.aspx">Sitemap</a></li>
-                           <li><a href="/StaticPage/FAQ">FAQ</a></li>
-                        </ul>
-                     </div>
-                  </div>
-                  <div class="mg-bot15"><%= image_tag "ft-line.png", alt: "line" %></div>
-                  <ul class="list-chinhsach">
-                     <li><a href="/vietravel-toolbar.aspx">Vietravel toolbar</a></li>
-                     <li><a href="/privacy-cookies.aspx">Chính sách riêng tư</a></li>
-                     <li><a href="/terms-conditions.aspx">Thỏa thuận sử dụng</a></li>
-                  </ul>
-               </div>
-               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mg-bot30">
-                  <h3 class="ft-title">NEWSLETTER</h3>
-                  <div class="newsletter pos-relative mg-bot30">
-                     <form action="/SubControl/_RegisterNewLetter" method="post">
-                        <input type="text" class="form-control input-md" placeholder="Email của bạn" name="EmailRegister" id="EmailRegisterFooter" required="required">
-                        <div class="btn-f">
-                           <button type="submit" class="bg-btn" style="border:none;">
-                           <i class="far fa-envelope fa-lg"></i>
-                           </button>
-                        </div>
-                     </form>
-                  </div>
-                  <h3 class="ft-title">Tìm kiếm thông tin</h3>
-                  <div class="info-search pos-relative mg-bot30">
-                     <form action="/Tour/SearchToursByDestinationChild" method="post">
-                        <input name="__RequestVerificationToken" type="hidden" value="SkEdwX7eT0KtZs4u0LVap1XicvSdyTK9Qoda4sZu34nYpF_0GJf7bF9JrdYpKaSeCPiE8WGtSRZEt1D2THqm7kRye0UTBiuaoBPEeCAQJ5c1"> <input type="text" class="form-control input-md" name="search" placeholder="Tour du lịch, Điểm đến...">
-                        <div class="btn-f">
-                           <button class="bg-btn" type="submit" onclick="ga('event','SearchTop', 'SearchTopClick', 'keywords');" id="btnSearchTour" style="border:none;">
-                           <i class="fas fa-search fa-lg"></i>
-                           </button>
-                        </div>
-                     </form>
-                  </div>
-               </div>
-               <div class="col-xs-12">
-                  <h3 class="ft-title">Chấp nhận thanh toán</h3>
-                  <div>
-                     <div class="f-left ft-mg"><i class="iconT-123pay"></i></div>
-                     <div class="f-left ft-mg"><i class="iconT-visa"></i></div>
-                     <div class="f-left ft-mg"><i class="iconT-master"></i></div>
-                     <div class="f-left ft-mg"><i class="iconT-jcb"></i></div>
-                     <div class="f-left ft-mg"><i class="iconT-vnpay"></i></div>
-                     <div class="f-left"><i class="iconT-v-visa"></i></div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 mg-bot">
-            <div class="row">
-               <div class="col-lg-12 col-md-3 col-sm-4 col-xs-12">
-                  <h3 class="ft-title">Mạng xã hội</h3>
-                  <div class="mg-bot30">
-                     <div class="f-left">
-                        <a href="https://www.facebook.com/vietravel/" rel="nofollow" target="_blank" title="facebook">
-                        <%= image_tag "fb.png", alt: "facebook" %>
-                        </a>
-                     </div>
-                     <div class="f-left  ft-mg-sc">
-                        <a href="https://www.instagram.com/vietravel/" rel="nofollow" target="_blank" title="instagram">
-                        <%= image_tag "ins.png", alt: "instagram" %>
-                        </a>
-                     </div>
-                     <div class="f-left  ft-mg-sc">
-                        <a href="https://twitter.com/VietravelGroup" rel="nofollow" target="_blank" title="twitter">
-                        <%= image_tag "tw.png", alt: "twitter" %>
-                        </a>
-                     </div>
-                     <div class="f-left  ft-mg-sc">
-                        <a href="https://www.youtube.com/channel/UCY4diIi4ZvrcZIfpLTTM11g?sub_confirmation=1" rel="nofollow" target="_blank" title="youtube">
-                        <%= image_tag "yt.png", alt: "youtube" %>
-                        </a>
-                     </div>
-                     <div class="clear"></div>
-                  </div>
-               </div>
-               <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12">
-                  <h3 class="ft-title">Chứng nhận</h3>
-                  <div class="mg-bot30">
-                     <a href="https://www.dmca.com/Protection/Status.aspx?ID=9e50a0bf-95f9-4d51-9a58-0c1e0eddc3c7&amp;refurl=https://travel.com.vn/" title="DMCA.com Protection Status" class="dmca-badge"> <%= image_tag "https://images.dmca.com/Badges/_dmca_premi_badge_5.png?ID=9e50a0bf-95f9-4d51-9a58-0c1e0eddc3c7", alt: "DMCA.com Protection Status" %></a>
-                     <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
-                  </div>
-                  <div class="mg-bot30"></div>
-               </div>
-            </div>
-         </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 hidden-xs mg-bot60">
+        <%= image_tag "line-bot.png", class: "img-responsive pic-line", alt: "line" %>
       </div>
-   </div>
-   <div class="pos">
-      <p class="text-center">Bản quyền của Vietravel ® 2016. Bảo lưu mọi quyền. <br>Ghi rõ nguồn "www.travel.com.vn" ® khi sử dụng lại thông tin từ website này. <br>Số giấy phép kinh doanh lữ hành Quốc tế: 79-234/2014/TCDL-GP LHQT</p>
-   </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mg-bot30">
+        <h3 class="ft-title">Liên hệ</h3>
+        <div class="mg-bot10">190 Pasteur, Phường 6, Quận 3, TP HCM</div>
+        <div class="mg-bot5">
+          <div class="f-left">
+            <%= image_tag "i-phone.png", alt: "phone" %>
+          </div>
+          <div class="f-left ft-mg-ct ft-mgtop">
+            (+84 28) 3822 8898
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="mg-bot5">
+          <div class="f-left">
+            <%= image_tag "i-fax.png", alt: "fax" %>
+          </div>
+          <div class="f-left ft-mg-ct ft-mgtop">
+            (+84 28) 3829 9142
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="mg-bot15">
+          <div class="f-left">
+            <%= image_tag "i-mail.png", alt: "mail" %>
+          </div>
+          <div class="f-left ft-mg-ct ft-mgtop">
+            <a href="mailto:info@vietravel.com" style="color:#337ab7;">info@vietravel.com</a>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="mg-bot15"><%= image_tag "ft-line.png", alt: "line" %></div>
+        <div class="mg-bot5">
+          <div class="f-left">
+            <%= image_tag "i-hotline.png", alt: "hotline" %>
+          </div>
+          <div class="f-left ft-mg-hl">
+            <div class="hl-num">
+              <a style="color:#ff002d" href="tel:19001839">1900 1839</a>
+            </div>
+            <div class="hl-hour mg-bot10">Sẵn sàng phục vụ 24/7</div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="mg-bot15"><%= image_tag "ft-line.png", alt: "line" %></div>
+        <a href="http://online.gov.vn/Home/WebDetails/646?AspxAutoDetectCookieSupport=1" target="_blank" rel="nofollow">
+          <%= image_tag "bct.png", alt: "Bộ công thương", class: "img-responsive" %>
+        </a>
+      </div>
+      <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 mg-bot30">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mg-bot30">
+            <h3 class="ft-title">Thông tin</h3>
+            <div class="row">
+              <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                <ul class="list-info">
+                  <li>
+                    <a href="https://www.vietravel.com/vn/media/tap-chi-du-lich.aspx" target="_blank">Tạp chí du lịch</a>
+                  </li>
+                  <li>
+                    <a href="/du-lich-bang-hinh-anh.aspx">Cẩm nang du lịch</a>
+                  </li>
+                  <li>
+                    <a href="/kinh-nghiem-du-lich.aspx">Kinh nghiệm du lịch</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                <ul class="list-info">
+                  <li>
+                    <a href="/tin-tuc-du-lich.aspx">Tin tức</a>
+                  </li>
+                  <li>
+                    <a href="/sitemap.aspx">Sitemap</a>
+                  </li>
+                  <li>
+                    <a href="/StaticPage/FAQ">FAQ</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="mg-bot15"><%= image_tag "ft-line.png", alt: "line" %></div>
+            <ul class="list-chinhsach">
+              <li>
+                <a href="/vietravel-toolbar.aspx">Vietravel toolbar</a>
+              </li>
+              <li>
+                <a href="/privacy-cookies.aspx">Chính sách riêng tư</a>
+              </li>
+              <li>
+                <a href="/terms-conditions.aspx">Thỏa thuận sử dụng</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 mg-bot30">
+            <h3 class="ft-title">NEWSLETTER</h3>
+            <div class="newsletter pos-relative mg-bot30">
+              <form action="/SubControl/_RegisterNewLetter" method="post">
+                <input type="text" class="form-control input-md" placeholder="Email của bạn" name="EmailRegister" id="EmailRegisterFooter" required="required">
+                <div class="btn-f">
+                  <button type="submit" class="bg-btn" style="border:none;">
+                    <i class="far fa-envelope fa-lg"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <h3 class="ft-title">Tìm kiếm thông tin</h3>
+            <div class="info-search pos-relative mg-bot30">
+              <form action="/Tour/SearchToursByDestinationChild" method="post">
+                <input name="__RequestVerificationToken" type="hidden" value="SkEdwX7eT0KtZs4u0LVap1XicvSdyTK9Qoda4sZu34nYpF_0GJf7bF9JrdYpKaSeCPiE8WGtSRZEt1D2THqm7kRye0UTBiuaoBPEeCAQJ5c1">
+                <input type="text" class="form-control input-md" name="search" placeholder="Tour du lịch, Điểm đến...">
+                <div class="btn-f">
+                  <button class="bg-btn" type="submit" onclick="ga('event','SearchTop', 'SearchTopClick', 'keywords');" id="btnSearchTour" style="border:none;">
+                    <i class="fas fa-search fa-lg"></i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <h3 class="ft-title">Chấp nhận thanh toán</h3>
+            <div>
+              <div class="f-left ft-mg">
+                <i class="iconT-123pay"></i>
+              </div>
+              <div class="f-left ft-mg">
+                <i class="iconT-visa"></i>
+              </div>
+              <div class="f-left ft-mg">
+                <i class="iconT-master"></i>
+              </div>
+              <div class="f-left ft-mg">
+                <i class="iconT-jcb"></i>
+              </div>
+              <div class="f-left ft-mg">
+                <i class="iconT-vnpay"></i>
+              </div>
+              <div class="f-left">
+                <i class="iconT-v-visa"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 mg-bot">
+        <div class="row">
+          <div class="col-lg-12 col-md-3 col-sm-4 col-xs-12">
+            <h3 class="ft-title">Mạng xã hội</h3>
+            <div class="mg-bot30">
+              <div class="f-left">
+                <a href="https://www.facebook.com/vietravel/" rel="nofollow" target="_blank" title="facebook">
+                  <%= image_tag "fb.png", alt: "facebook" %>
+                </a>
+              </div>
+              <div class="f-left  ft-mg-sc">
+                <a href="https://www.instagram.com/vietravel/" rel="nofollow" target="_blank" title="instagram">
+                  <%= image_tag "ins.png", alt: "instagram" %>
+                </a>
+              </div>
+              <div class="f-left  ft-mg-sc">
+                <a href="https://twitter.com/VietravelGroup" rel="nofollow" target="_blank" title="twitter">
+                  <%= image_tag "tw.png", alt: "twitter" %>
+                </a>
+              </div>
+              <div class="f-left  ft-mg-sc">
+                <a href="https://www.youtube.com/channel/UCY4diIi4ZvrcZIfpLTTM11g?sub_confirmation=1" rel="nofollow" target="_blank" title="youtube">
+                  <%= image_tag "yt.png", alt: "youtube" %>
+                </a>
+              </div>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <div class="col-lg-12 col-md-6 col-sm-4 col-xs-12">
+            <h3 class="ft-title">Chứng nhận</h3>
+            <div class="mg-bot30">
+              <a href="https://www.dmca.com/Protection/Status.aspx?ID=9e50a0bf-95f9-4d51-9a58-0c1e0eddc3c7&amp;refurl=https://travel.com.vn/" title="DMCA.com Protection Status" class="dmca-badge">
+                <%= image_tag "https://images.dmca.com/Badges/_dmca_premi_badge_5.png?ID=9e50a0bf-95f9-4d51-9a58-0c1e0eddc3c7", alt: "DMCA.com Protection Status" %></a>
+              <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
+            </div>
+            <div class="mg-bot30"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pos">
+    <p class="text-center">Bản quyền của Vietravel ® 2016. Bảo lưu mọi quyền.
+      <br>Ghi rõ nguồn "www.travel.com.vn" ® khi sử dụng lại thông tin từ website này.
+      <br>Số giấy phép kinh doanh lữ hành Quốc tế: 79-234/2014/TCDL-GP LHQT</p>
+  </div>
 </div>

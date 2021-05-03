@@ -12,7 +12,7 @@
                         <strong style="color:#1583e0 !important;">ĐĂNG KÝ HỘI VIÊN</strong>
                      </p>
                      <p>Để hoàn tất đăng ký Hội viên VietravelPlus, quý khách vui lòng điền đầy đủ thông tin vào mẫu dưới đây và nhấn vào nút đăng ký. Xin chân thành cảm ơn quý khách hàng.</p>
-                     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                     <% form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                         <%= render "devise/shared/error_messages", resource: resource %>
                         <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12" style="margin-bottom:10px">

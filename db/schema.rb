@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_180819) do
+ActiveRecord::Schema.define(version: 2021_05_02_164438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -18,7 +18,18 @@ ActiveRecord::Schema.define(version: 2021_04_15_180819) do
 
   create_table "bookings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "tour_id"
+    t.uuid "tour_id", null: false
+    t.string "name_booking", default: "", null: false
+    t.string "email_booking", default: "", null: false
+    t.string "mobile_booking", default: "", null: false
+    t.string "phone_booking", default: "", null: false
+    t.string "address_booking", default: "", null: false
+    t.integer "adult_guests_number"
+    t.integer "child_guests_number"
+    t.integer "young_children_guests_number"
+    t.integer "baby_guests_number"
+    t.string "customers_number", null: false
+    t.string "note", default: ""
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,6 +63,40 @@ ActiveRecord::Schema.define(version: 2021_04_15_180819) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "list_of_customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "booking_id"
+    t.string "name_list_of_customers", default: "", null: false
+    t.boolean "sex_list_of_customers", default: true, null: false
+    t.date "birthday_list_of_customers", null: false
+    t.string "ages", default: "", null: false
+    t.boolean "single_room", default: true, null: false
+    t.decimal "price_booking"
+    t.decimal "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
+  end
+
+  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "booking_id"
+    t.string "payments_type", default: "", null: false
+    t.string "description_payments", default: ""
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_payments_on_booking_id"
+  end
+
+  create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "tour_id"
+    t.string "customers_type", default: "", null: false
+    t.decimal "price_default", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tour_id"], name: "index_price_basics_on_tour_id"
+  end
+
   create_table "reviews", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
     t.bigint "tour_id"
@@ -81,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_04_15_180819) do
   end
 
   create_table "tours", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "title", default: "", null: false
     t.time "start_date", null: false
     t.integer "days", null: false
     t.decimal "price", null: false
@@ -89,24 +135,17 @@ ActiveRecord::Schema.define(version: 2021_04_15_180819) do
     t.string "departure", null: false
     t.bigint "tour_type_id", null: false
     t.string "notice", null: false
-    t.bigint "tour_programs_id"
-    t.bigint "reviews_id"
-    t.bigint "comments_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "photo"
-    t.string "title", default: "", null: false
     t.string "slug"
-    t.index ["comments_id"], name: "index_tours_on_comments_id"
-    t.index ["reviews_id"], name: "index_tours_on_reviews_id"
+    t.string "photo"
     t.index ["slug"], name: "index_tours_on_slug", unique: true
-    t.index ["tour_programs_id"], name: "index_tours_on_tour_programs_id"
     t.index ["tour_type_id"], name: "index_tours_on_tour_type_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", default: "", null: false
-    t.string "sex", default: "", null: false
+    t.boolean "sex", default: true, null: false
     t.date "birthday", null: false
     t.string "phone_number", default: "", null: false
     t.string "identity_card", default: "", null: false
@@ -117,7 +156,6 @@ ActiveRecord::Schema.define(version: 2021_04_15_180819) do
     t.date "expiration_date_passport"
     t.string "address", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "confirmation_password", default: "", null: false
     t.boolean "admin", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -128,7 +166,11 @@ ActiveRecord::Schema.define(version: 2021_04_15_180819) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "tours"
   add_foreign_key "comments", "users"
+  add_foreign_key "list_of_customers", "bookings"
+  add_foreign_key "payments", "bookings"
+  add_foreign_key "price_basics", "tours"
   add_foreign_key "reviews", "users"
   add_foreign_key "tour_programs", "tours"
 end
