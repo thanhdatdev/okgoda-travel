@@ -10,7 +10,6 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.string      :departure,     null: false
       t.references  :tour_type,     null: false
       t.string      :notice,        null: false
-      t.string      :photo
 
       t.timestamps
     end

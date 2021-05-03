@@ -10,10 +10,10 @@ class Tour < ApplicationRecord
   has_many   :reviews
   has_many   :comments
 
-  ADULT = "Người lớn"
-  CHILD = "Trẻ em"
-  YOUNG = "Trẻ nhỏ"
-  BABY = "Em bé"
+  # ADULT = "Người lớn"
+  # CHILD = "Trẻ em"
+  # YOUNG = "Trẻ nhỏ"
+  # BABY = "Em bé"
 
   # def total_price
   #   price_basics.each do |price_basic|
