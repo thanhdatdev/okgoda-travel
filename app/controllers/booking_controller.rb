@@ -3,7 +3,7 @@ class BookingController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def show
-    @booking = Booking.find(params[:id])
+    @price_booking = params[:price_booking]
   end
 
   def new
