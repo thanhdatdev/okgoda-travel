@@ -91,16 +91,16 @@ Rails.application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  host = 'okgoda-travel-application.herokuapp.com' #replace with your own url
+  host = 'smtp.gmail.com' #replace with your own url
   config.action_mailer.default_url_options = { host: host }
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :domain               => 'mail.google.com',
-    :user_name            => 'zxzmakerzxz@gmail.com',
-    :password             => 'Dungyeuthai',
+    :domain               => "mail.google.com",
+    :user_name            => "thanhdat.nguyen2104@gmail.com",
+    :password             => "dungyeuthai",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
