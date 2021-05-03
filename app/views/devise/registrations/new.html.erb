@@ -12,7 +12,7 @@
                         <strong style="color:#1583e0 !important;">ĐĂNG KÝ HỘI VIÊN</strong>
                      </p>
                      <p>Để hoàn tất đăng ký Hội viên VietravelPlus, quý khách vui lòng điền đầy đủ thông tin vào mẫu dưới đây và nhấn vào nút đăng ký. Xin chân thành cảm ơn quý khách hàng.</p>
-                     <% form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                         <%= render "devise/shared/error_messages", resource: resource %>
                         <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12" style="margin-bottom:10px">
@@ -82,33 +82,26 @@
                         </div>
                         <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12">
-                              <%= f.label :issued_on_identity_card, "Ngày cấp:" %>
+                              <%= f.label :issued_on_passport, "Ngày cấp:" %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <input type="text" name="issue_date" id="issue_date" class="form-control" data-val="true" autocomplete="off">
+                              <%= f.date_field :issued_on_passport, autocomplete: "off", class: "form-control"%>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
-                              <label>Ngày hết hạn:</label>
+                              <%= f.label :expiration_date_passport, "Ngày hết hạn:" %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <input type="text" name="deadline_date" id="deadline_date" class="form-control" data-val="true" autocomplete="off">
+                              <%= f.date_field :expiration_date_passport, autocomplete: "off", class: "form-control"%>
                            </div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12">
-                              <label>Địa chỉ <span style="color:red">(*)</span>:</label>
+                             <%= f.label :address do %>
+                               Đia chỉ <span style="color:red">(*)</span>:
+                             <% end %>
                            </div>
                            <div class="col-md-10 col-sm-10 col-xs-12">
-                              <input type="text" name="Address" id="Address" class="form-control" data-val="true" data-val-required="Vui lòng nhập địa chỉ">
-                              <div class="field-validation-valid text-danger" data-valmsg-for="Address" data-valmsg-replace="true"></div>
-                           </div>
-                        </div>
-                        <div class="row" style="margin-bottom:10px">
-                           <div class="col-md-2 col-sm-2 col-xs-12">
-                              <label>Mã giới thiệu:</label>
-                           </div>
-                           <div class="col-md-10 col-sm-10 col-xs-12">
-                              <input class="form-control" id="ReferBy" name="ReferBy" type="text" value="">
+                              <%= f.text_field :address, class: "form-control"%>
                            </div>
                         </div>
                         <div class="row">
@@ -127,12 +120,13 @@
                               <div class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></div>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
-                              <label>Nhập lại <span style="color:red">(*)</span>:</label>
+                             <%= f.label :password_confirmation do %>
+                               Nhập lại <span style="color:red">(*)</span>:
+                             <% end %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
                               <div class="input-group" id="show_hide_password_RePassword">
-                                 <input tautocomplete="new-password" type="password" name="RePassword" id="RePassword" class="form-control" data-val="true" data-val-equalto="Nhập lại khẩu không chính xác" data-val-equalto-other="*.Password" data-val-required="Vui lòng nhập lại mật khẩu">
-                                 <div class="input-group-addon">
+                                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
                                     <a><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                                  </div>
                               </div>
@@ -184,7 +178,7 @@
                               <div class="field-validation-valid text-danger" data-valmsg-for="chkDieuKhoan" data-valmsg-replace="true"></div>
                            </div>
                            <div class="col-md-12 col-sm-12 col-xs-12 mg-bot15 text-right">
-                              <button id="btCapNhat" class="btn btn-md btn-default" type="button" onclick="CheckValidate();">Đăng ký</button>
+                              <%= f.submit "Đăng ký", class: "btn btn-md btn-default" %>
                            </div>
                         </div>
                      <% end %>

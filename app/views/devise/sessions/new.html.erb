@@ -1,41 +1,43 @@
-<div id="dangnhap" class="modal fade in" role="dialog" style="display: block; padding-right: 10px;">
-  <div class="modal-dialog">
-     <div class="modal-content">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div id="dangnhap" class="modal fade in" role="dialog" style="display: block; padding-right: 10px;">
+    <div class="modal-dialog">
+      <div class="modal-content">
         <div class="modal-header">
-           <button type="button" class="close" data-dismiss="modal">×</button>
-           <h4 class="modal-title">ĐĂNG NHẬP</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title">ĐĂNG NHẬP</h4>
         </div>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="modal-body">
-           <div class="row">
-              <div class="col-md-12 mg-bot15">
-                 <div class="input-container">
-                    <i class="fas fa-user icon"></i>
-                    <%= f.email_field :email, class: "input-field" ,autofocus: true, autocomplete: "email", placeholder: "Tài khoản", value: "" %>
-                 </div>
+          <div class="row">
+            <div class="col-md-12 mg-bot15">
+              <div class="input-container">
+                <i class="fas fa-user icon"></i>
+                <%= f.email_field :email, class: "input-field" ,autofocus: true, autocomplete: "email", placeholder: "Tài khoản", value: "" %>
               </div>
-              <div class="col-md-12 mg-bot15">
-                 <div class="input-container">
-                    <i class="fa fa-key icon"></i>
-                    <%= f.password_field :password, class: "input-field", autocomplete: "current-password", placeholder: "Tài khoản", value: "" %>
-                 </div>
+            </div>
+            <div class="col-md-12 mg-bot15">
+              <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                <%= f.password_field :password, class: "input-field", autocomplete: "current-password", placeholder: "Tài khoản", value: "" %>
               </div>
-              <div class="col-md-12">
-                 <div>
-                   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-                     Bạn chưa có tài khoản? <%= link_to "Đăng ký ngay hoàn toàn miễn phí", new_registration_path(resource_name), target: "_blank" %><br>
-                   <% end %>
-                   <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-                     Quên mật khẩu? <%= link_to "Lấy lại mật khẩu", new_password_path(resource_name) %>
-                   <% end %>
-                 </div>
+            </div>
+            <div class="col-md-12">
+              <div>
+                <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                  Bạn chưa có tài khoản?
+                  <%= link_to "Đăng ký ngay hoàn toàn miễn phí", new_registration_path(resource_name), target: "_blank" %><br>
+                <% end %>
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  Quên mật khẩu?
+                  <%= link_to "Lấy lại mật khẩu", new_password_path(resource_name) %>
+                <% end %>
               </div>
-           </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
-           <%= f.submit "Đăng nhập", class: "btn btn-md btn-default" %>
+          <%= f.submit "Đăng nhập", class: "btn btn-md btn-default" %>
         </div>
-        <% end %>
-     </div>
+      </div>
+    </div>
   </div>
-</div>
+<% end %>
