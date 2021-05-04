@@ -6,8 +6,8 @@
     <div class="row">
       <div class="col-xs-12 bor-bot mg-bot20">
         <div class="radio tienmat">
-          <label style="display:;"><input type="radio" class="chkPayment" name="paymentID" value="1" checked="checked">
-            <label class="lb_r">Tiền mặt</label>
+          <label style="display:;"><%= f.radio_button :payments, class: "chkPayment", value: "1", checked: "checked" %>
+            <%= f.label :payments, "Tiền mặt", class: "lb_r" %>
           </label>
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament1">
@@ -23,24 +23,24 @@
           </div>
         </div>
         <div class="radio chuyenkhoan">
-          <label style="display:;"><input type="radio" class="chkPayment" name="paymentID" value="2">
-            <label class="lb_r">Chuyển khoản</label>
+          <label style="display:;"><%= f.radio_button :payments, class: "chkPayment", value: "2" %>
+            <%= f.label :payments, "Chuyển khoản", class: "lb_r" %>
           </label>
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament2" style="display:none;"></div>
           </div>
         </div>
         <div class="radio internet">
-          <label><input type="radio" class="chkPayment" name="paymentID" value="9">
-            <label class="lb_r">ATM / Internet Banking</label>
+          <label><%= f.radio_button :payments, class: "chkPayment", value: "9" %>
+            <%= f.label :payments, "ATM / Internet Banking", class: "lb_r" %>
           </label>
           <div class="row ">
             <div class="frame-cards conditionPament" id="conditionPament9" style="display:none;"></div>
           </div>
         </div>
         <div class="radio thetindung">
-          <label><input type="radio" class="chkPayment" name="paymentID" value="15">
-            <label class="lb_r">Thẻ tín dụng</label>
+          <label><%= f.radio_button :payments, class: "chkPayment", value: "15" %>
+            <%= f.label :payments, "Thẻ ứng dụng", class: "lb_r" %>
           </label>
           <div class="row cards" id="divCard" style="display:none;">
             <div class="text">
@@ -66,14 +66,14 @@
             <div class="frame-cards conditionPament" id="conditionPament15" style="display:none;"></div>
           </div>
         </div>
-        <div class="radio qrcode">
+        <!-- <div class="radio qrcode">
           <label><input type="radio" class="chkPayment" name="paymentID" value="16">
             <label class="lb_r">Thanh toán bằng quét QRCode</label>
           </label>
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament16" style="display:none;"></div>
           </div>
-        </div>
+        </div> -->
         <div class="radio momo">
           <label><input type="radio" class="chkPayment" name="paymentID" value="17">
             <label class="lb_r">Thanh toán bằng Momo</label>
@@ -86,3 +86,63 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    //$(document).ready(function () {
+        paymentID = $('.chkPayment:checked').val();
+        LoadConditionPayment(paymentID);
+    //});
+
+    $('.chkPayment').click('change', function () {
+        paymentID = $('.chkPayment:checked').val();
+        $(".conditionPament").hide();
+
+        LoadConditionPayment(paymentID);
+
+        if (paymentID == 15) {
+            $('#divCard').show();
+            $('#divVNPay').hide();
+        }
+        else if (paymentID == 16) {
+            $('#divVNPay').show();
+            $('#divCard').hide();
+        }
+        else if (paymentID == 17) {
+            $('#divCard').hide();
+            $('#divVNPay').hide();
+        }
+        else {
+            $('#divCard').hide();
+            $('#divVNPay').hide();
+        }
+        $('#conditionPament' + paymentID).show();
+    });
+
+    function LoadConditionPayment(paymentID) {
+
+        // Tương tác với server
+        $.ajax({
+            url: "/Booking/GetConditionPayment",
+            data: { paymentID: paymentID },
+            success: function (result) {
+                $('#conditionPament' + paymentID).html(result);
+
+            }
+        });
+
+    }
+
+    function ChonLoaiThe(type) {
+        $('.card_type').each(function () {
+            if ($(this).attr('card') == type) {
+                $('#cardType').val(type);
+                $(this).addClass('card_active');
+                $(this).removeClass('card_opacity');
+            }
+            else {
+                $(this).removeClass('card_active');
+                $(this).addClass('card_opacity');
+            }
+        })
+    }
+</script>

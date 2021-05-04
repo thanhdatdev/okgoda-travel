@@ -116,83 +116,8 @@
          </li>
       </ul>
    </div>
-   <%= f.fields_for :list_of_customers do |ff| %>
-     <div id="DanhSachKhach">
-        <div class="col-xs-12 mg-bot30">
-           <div class="title">DANH SÁCH KHÁCH HÀNG</div>
-        </div>
-        <div class="col-xs-12 mg-bot30 list">
-           <script src="/Content/ThemeHe/js/jquery.date-dropdowns.js"></script>
-           <div>
-              <div class="cus-num">Khách hàng 1</div>
-              <div class="frame-cus">
-                 <div class="form-horizontal">
-                    <div class="row mg-bot10">
-                       <div class="col-lg-3 col-md-8 col-sm-6 col-xs-12 mg-bot10">
-                         <%= ff.label :name_list_of_customers do %>
-                           Họ tên (<span class="star">*</span>)
-                         <% end %>
-                         <div>
-                            <%= ff.text_field :name_list_of_customers, required: "required", class: "form-control", value: "" %>
-                         </div>
-                       </div>
-                       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                          <%= ff.label :sex_list_of_customers, "Giới tính", class: "mg-bot5" %>
-                          <div>
-                             <%= ff.select :sex_list_of_customers, [["Nam", "1"], ["Nữ", "0"]], {}, { class: "form-control" } %>
-                          </div>
-                       </div>
-                       <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                         <%= ff.label :birthday_list_of_customers do %>
-                           Ngày sinh (<span class="star">*</span>)
-                         <% end %>
-                        <div>
-                           <div class="date-dropdowns">
-                              <%= ff.date_select :birthday_list_of_customers, { :order => [:day, :month, :year],
-                                                 :start_year => Date.current.year, :end_year => 1960,
-                                                 :prompt => {day: 'Ngày', month: 'Tháng', year: 'Năm'}}, class: 'day hideArow form-control dateDDL'  %>
-                           </div>
-                           <div class="clear"></div>
-                        </div>
-                       </div>
-                       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                          <%= ff.label :ages, "Độ tuổi", class: "mg-bot5" %>
-                          <div>
-                             <%= ff.select :ages, ["Người lớn"], {}, { class: "form-control" } %>
-                          </div>
-                       </div>
-                       <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-                          <%= ff.label :single_room, "Phòng đơn" %>
-                          <div>
-                             <%= ff.select :single_room, [["Có", "1"], ["Không", "0"]], {}, { class: "form-control" } %>
-                          </div>
-                       </div>
-                    </div>
-                    <div class="row total">
-                       <div class="col-md-12 col-sm-12 text-right">
-                          <%= ff.label :price_booking do %>
-                              Trị giá: <span class="price">2,690,000 đ</span>
-                          <% end %>
-                          <%= ff.text_field :price_booking, class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
-                       </div>
-                    </div>
-                 </div>
-              </div>
-              <div class="frame-cus">
-                 <div class="row">
-                    <div class="col-md-12 col-sm-12 text-right">
-                      <%= ff.label :price_booking do %>
-                          Tổng cộng: <span class="price">2,690,000 đ</span>
-                      <% end %>
-                      <%= ff.text_field :price_booking, class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
-                    </div>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </div>
-   <% end %>
-   <%# <%= render partial: "payments" %> %>
+   <%= render partial: "list_of_customers_form", locals: { f: f } %>
+   <%= render partial: "payments", locals: { f: f } %>
    <%= render partial: "rules" %>
    <div class="col-xs-12 mg-bot30">
       <div>
