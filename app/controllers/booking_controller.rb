@@ -51,7 +51,7 @@ class BookingController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:tour_id, :name_booking, :email_booking, :mobile_booking, :phone_booking, :address_booking, :adult_guests_number, :child_guests_number,
-                                    :young_children_guests_number, :baby_guests_number, :customers_number, :payments, :booking_date,
+                                    :young_children_guests_number, :baby_guests_number, :customers_number, :payments_id, :booking_date,
                                     list_of_customers_attributes: %i[name_list_of_customers sex_list_of_customers birthday_list_of_customers ages single_room price_booking total_price booking_id _destroy])
   end
 end

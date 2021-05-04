@@ -40,28 +40,28 @@
         </div>
         <div class="radio thetindung">
           <label><%= f.radio_button :payments, class: "chkPayment", value: "15" %>
-            <%= f.label :payments, "Thẻ ứng dụng", class: "lb_r" %>
+            <%= f.label :payments, "Thanh toán bằng Paypal", class: "lb_r" %>
           </label>
-          <div class="row cards" id="divCard" style="display:none;">
+          <!-- <div class="row cards" id="divCard" style="display:none;">
             <div class="text">
               Quý khách vui lòng chọn loại thẻ:
             </div>
             <div class="frame-cards">
               <input id="cardType" name="cardType" type="hidden" val="val" e="visa">
               <div card="visa" onclick="ChonLoaiThe('visa')" class="visa card_type f-left">
-                <%= image_tag "thevisa.png", alt: "visa" %>
+                <% image_tag "thevisa.png", alt: "visa" %>
               </div>
               <div card="mastercard" onclick="ChonLoaiThe('mastercard')" class="master card_type f-left mg-left">
-                <%= image_tag "master.png", alt: "master" %>
+                <% image_tag "master.png", alt: "master" %>
               </div>
               <div card="jcb" onclick="ChonLoaiThe('jcb')" class="jcb card_type f-left mg-left">
-                <%= image_tag "jcb.png", alt: "jcb" %>
+                <% image_tag "jcb.png", alt: "jcb" %>
               </div>
               <div card="amex" onclick="ChonLoaiThe('amex')" class="amex card_type f-left mg-left">
-                <%= image_tag "amex.png", alt: "amex" %>
+                <% image_tag "amex.png", alt: "amex" %>
               </div>
             </div>
-          </div>
+          </div>-->
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament15" style="display:none;"></div>
           </div>
@@ -75,8 +75,8 @@
           </div>
         </div> -->
         <div class="radio momo">
-          <label><input type="radio" class="chkPayment" name="paymentID" value="17">
-            <label class="lb_r">Thanh toán bằng Momo</label>
+          <label><%= f.radio_button :payments, class: "chkPayment", value: "17" %>
+            <%= f.label :payments, "Thanh toán bằng momo", class: "lb_r" %>
           </label>
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament17" style="display:none;"></div>

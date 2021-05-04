@@ -16,6 +16,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.string     :note,                                      default: ""
       t.string     :payments                      null: false
       t.datetime   :booking_date
+      t.references :payments,                     null: false
       t.timestamps
     end
   end
