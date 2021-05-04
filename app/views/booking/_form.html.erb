@@ -192,12 +192,12 @@
         </div>
      </div>
    <% end %>
-   <%# <%= render partial: "payments" %> %>
+   <%= render partial: "payments" %>
    <%= render partial: "rules" %>
    <div class="col-xs-12 mg-bot30">
       <div>
          <div class="f-left mg-bot10 wl">
-            <input type="checkbox" id="chkDieuKhoan">
+            <%= f.check_box :rules_booking %>
          </div>
          <div class="f-left wr">
             Tôi đồng ý với các điều kiện trên

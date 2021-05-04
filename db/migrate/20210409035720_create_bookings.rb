@@ -14,6 +14,7 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.integer    :baby_guests_number
       t.string     :customers_number,             null: false, dafault: ""
       t.string     :note,                                      default: ""
+      t.boolean    :rules_booking,                null: false, default: false
       t.datetime   :booking_date
       t.timestamps
     end

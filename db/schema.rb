@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.integer "baby_guests_number"
     t.string "customers_number", null: false
     t.string "note", default: ""
+    t.boolean "rules_booking", default: false, null: false
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
