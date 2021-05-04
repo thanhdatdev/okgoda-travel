@@ -6,7 +6,7 @@ class Booking < ApplicationRecord
   accepts_nested_attributes_for :list_of_customers, allow_destroy: true
 
   validates :name_booking, presence: true, length: { minimum: 3 }
-  validates :email_booking, persence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email_booking, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :mobile_booking, presence: { message: 'bad operation!' },
                              numericality: true,
                              length: { minimum: 10, maximum: 15 }
