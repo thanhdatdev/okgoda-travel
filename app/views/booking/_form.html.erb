@@ -49,25 +49,25 @@
                   <div class="col-md-3 col-sm-2 col-xs-6 mg-bot15">
                      <%= f.label :adult_guests_number, "Người lớn" %>
                      <div>
-                       <%= f.text_field :adult_guests_number, class: "form-control", value: "1", onblur: "javascript:clear_text(this);", onclick: "javascript:show_text('Từ 12 tuổi trở lên',this)", onkeypress: "return funCheckInt(event)" %>
+                       <%= f.text_field :adult_guests_number, class: "form-control", id: "adult", value: "1", onblur: "javascript:clear_text(this);", onclick: "javascript:show_text('Từ 12 tuổi trở lên',this)", onkeypress: "return funCheckInt(event)" %>
                      </div>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-6  mg-bot15">
                     <%= f.label :child_guests_number, "Trẻ em" %>
                      <div>
-                       <%= f.text_field :child_guests_number, class: "form-control", value: "0" %>
+                       <%= f.text_field :child_guests_number, class: "form-control", id: "children11", value: "0" %>
                      </div>
                   </div>
                   <div class="col-md-2 col-sm-3 col-xs-6  mg-bot15">
                      <%= f.label :young_children_guests_number, "Trẻ nhỏ" %>
                      <div>
-                       <%= f.text_field :young_children_guests_number, class: "form-control", value: "0" %>
+                       <%= f.text_field :young_children_guests_number, class: "form-control", id: "children", value: "0" %>
                      </div>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-6 mg-bot15">
                      <%= f.label :baby_guests_number, "Em bé" %>
                      <div>
-                       <%= f.text_field :baby_guests_number, class: "form-control", value: "0" %>
+                       <%= f.text_field :baby_guests_number, class: "form-control", id: "small_children", value: "0" %>
                      </div>
                   </div>
                   <div class="col-md-3 col-sm-3 col-xs-12">
@@ -111,7 +111,10 @@
       <ul class="row">
          <li class="col-xs-12" style="height:35px;">
             <div class="radio">
-               <label><input type="radio" value="1" checked="checked"><label class="lb_r">Nhập danh sách khách hàng</label></label>
+              <label>
+                <input type="radio" class="chkListCustomer" name="ListCustomer" value="1" checked="checked">
+                <label class="lb_r">Nhập danh sách khách hàng</label>
+              </label>
             </div>
          </li>
       </ul>
@@ -121,8 +124,9 @@
         <div class="col-xs-12 mg-bot30">
            <div class="title">DANH SÁCH KHÁCH HÀNG</div>
         </div>
+        <%= javascript_include_tag 'booking.js', 'data-turbolinks-track': 'reload' %>
+
         <div class="col-xs-12 mg-bot30 list">
-           <script src="/Content/ThemeHe/js/jquery.date-dropdowns.js"></script>
            <div>
               <div class="cus-num">Khách hàng 1</div>
               <div class="frame-cus">
@@ -192,7 +196,7 @@
         </div>
      </div>
    <% end %>
-   <%# <%= render partial: "payments" %> %>
+   <%# <%= render partial: "payments" %>
    <%= render partial: "rules" %>
    <div class="col-xs-12 mg-bot30">
       <div>
@@ -210,4 +214,191 @@
         <i class="fas fa-arrow-right"</i>
       <% end %>
    </div>
-<% end %>
+ <% end %>
+
+<script>
+    //var CaptchaCallback = function () {
+
+  //};
+
+    //var correctCaptcha_quote = function (response) {
+    //    $("#responseCaptchaInbound").val(response);
+    //};
+
+    CaculatorPrice();
+    function CheckMobile() {
+        var mobilephone = $("#mobilephone").val();
+        $("#mobile0").val(mobilephone);
+    }
+    //$(function () {
+    $("#adult").change(function () {
+        if (parseInt(this.value) < 1) {
+            alert('Dữ liệu nhập vào không hợp lệ');
+            this.focus();
+            this.value = 1;
+            this.select();
+
+            return;
+        }
+        else {
+            callTotal(this);
+        }
+    });
+    $("#children11").change(function () {
+        callTotal(this);
+    });
+    $("#children").change(function () {
+        callTotal(this);
+    });
+    $("#small_children").change(function () {
+        callTotal(this);
+    });
+
+    function callTotal(_this) {
+        numNguoiLon = parseInt($("#adult").val());
+        numTreEm = parseInt($("#children11").val());
+        numTreNho = parseInt($("#children").val());
+        numEmBe = parseInt($("#small_children").val());
+        _tour_id = '<%= @tour.id %>'.toString();
+        _LM = parseInt('0');
+        _TO = parseInt('0');
+
+        total = numNguoiLon + numTreEm + numTreNho + numEmBe;
+
+        if (total > parseInt('<%= @tour.remain_slot %>')) {
+            alert('Số chỗ còn nhận cho tour này là ' + <%= @tour.remain_slot %> + '. Quý khách cần chọn lại số lượng khách')
+            $("#adult").val("1");
+            $("#children11").val("0");
+            $("#children").val("0");
+            $("#small_children").val("0");
+
+            total = 1;
+            numNguoiLon = 1;
+            numTreEm = 0;
+            numTreNho = 0;
+            numEmBe = 0;
+        }
+
+        if (total > 0) {
+            $("#guests").val(total);
+
+            // Call Ajax
+            $.ajax({
+                url: "/booking/inbound_members",
+                data: { total: total, adult: numNguoiLon, children11: numTreEm, children: numTreNho, small_children: numEmBe, tour_id: _tour_id, LM: _LM, TO: _TO },
+                success: function (response) {
+                    // Hiển thị kết quả tìm kiếm
+                    $("div.list").html(response.data);
+                }
+            });
+        }
+        else {
+            alert('Dữ liệu nhập vào không hợp lệ');
+            _this.focus();
+            _this.value = 1;
+            _this.select();
+
+            $("#guests").val(1);
+
+            // Call Ajax
+            $.ajax({
+                url: "/booking/inbound_members",
+                data: { total: 1, adult: 1, children11: 0, children: 0, small_children: 0, tour_id: _tour_id, LM: _LM, TO: _TO },
+                success: function (response) {
+                    // Hiển thị kết quả tìm kiếm
+                    $("div.list").html(response.data);
+                }
+            });
+
+            return false;
+        }
+        CaculatorPrice();
+        return true;
+    }
+    //});
+
+    function CheckDieuKhoan() {
+        $('#responseCaptchaInbound').val(grecaptcha.getResponse());
+        //if ($('#chkDieuKhoan').is(':checked')) {
+        if (document.getElementById("chkDieuKhoan").checked) {
+
+            var end_date = new Date('2021', parseInt('5') - 1, '9', '15', '30', '0');
+            //var guests = $("#guests").val();
+            var guests = document.getElementById("guests").value;
+
+            var icheck = 0;//Kiểm tra số lượng khách trên 18 tuổi
+
+            //Kiem tra bat buoc khi booking phải là người lớn trên 18 tuổi
+            for (var i = 0; i < guests; i++) {
+                //var personkind = $("#personkind" + i).val();
+                var personkind = document.getElementById("personkind" + i).value;
+                if (personkind == 0) {
+                    //var ldob = $("#dateofbirth" + i).val().split("/");
+                    var ldob = document.getElementById("dateofbirth" + i).value.split("/");
+                    var dobNew = new Date(parseInt(ldob[2]) + 18 + "-" + ldob[1] + "-" + ldob[0]);//Them 18 nam so với chọn ngày sinh
+
+                    if (dobNew > end_date) {
+                        icheck = icheck + 1;//Khách chưa đủ 18 tuổi
+                    }
+                    else {
+                        icheck = icheck - 5;
+                    }
+                }
+            }
+
+            if (icheck > 0) {
+                alert('Booking phải có ít nhất 1 khách trên 18 tuổi');
+                return false;
+            }
+            else { return true; }
+        } else {
+            alert('Quý khách cần chọn Điều khoản đăng ký online');
+            return false;
+        }
+    }
+
+    value = $('.chkListCustomer:checked').val();
+    LoadInfoCustomer(value);
+
+    $('.chkListCustomer').click('change', function () {
+        value = $('.chkListCustomer:checked').val();
+        LoadInfoCustomer(value);
+    });
+    function LoadInfoCustomer(value) {
+        if (value == 1) {
+            $("#DanhSachKhach").show();
+            $("#divTongTien").hide();
+            $("#ThongTinKhach").hide();
+            $('input[name="[0].fullname"]').prop('required', true);
+        }
+        else {
+            $("#DanhSachKhach").hide();
+            $("#divTongTien").show();
+            $("#ThongTinKhach").show();
+            $('input[name="[0].fullname"]').removeAttr('required');
+        }
+    }
+
+    function CaculatorPrice() {
+        var CurrencyName = 'đ';
+        var Rate = '1';
+
+        var adult = $('#adult').val();
+        var children11 = $('#children11').val();
+        var children = $('#children').val();
+        var small_children = $('#small_children').val();
+
+        var adult_price = parseFloat('2990000');//Nguoi lon
+        var child_price11 = parseFloat('2242500');//TreEm
+        var child_price = parseFloat('1000000');//TreNho
+        var child_price5 = parseFloat('220000');//EmBe
+        var phuthuphongdon_vn = parseFloat('1200000');//PhuThuPhongDon
+
+        if (adult == 1) {
+            adult_price = adult_price + phuthuphongdon_vn;
+        }
+        var totalPrice = (adult * adult_price) + (children11 * child_price11) + (children * child_price) + (small_children * child_price5);
+
+        $("#spanTotalPriceBK").text(formatnumber((totalPrice / Rate).toFixed(0)) + ' ' + CurrencyName);
+}
+</script>

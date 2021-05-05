@@ -9,3 +9,6 @@ class CreatePriceBasics < ActiveRecord::Migration[5.2]
     end
   end
 end
+
+# Thêm 1 trường là title
+# customer_type để là adult, children11, children, small_children

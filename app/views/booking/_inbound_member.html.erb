@@ -1,0 +1,287 @@
+<div>
+  <% total.times.each do |index| %>
+    <% customer_type_hash.each do |key, number_of_customer| %>
+      <% number_of_customer.times.each do  %>
+        <%= render partial: 'booking/inbound_member_item', locals: { index: index, customer_type: key, tour: tour } %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<script>
+    //$(function () {
+        ChangeChoose();
+    //});
+
+    function CheckDOBByPersonkind() {
+        var totalMember = parseInt('3');
+        var end_date = new Date('2021', parseInt('5') - 1, '9', '15', '30', '0');
+
+        for (var i = 0; i < totalMember; i++) {
+            var dateofbirth = $("#dateofbirth" + i).val();
+            var personkind = $("#personkind" + i).val();//(0 : NguoiLon,1:TreNho, 2:EmBe, 3: TreEm)
+
+            var ldob = dateofbirth.split("/");
+
+            if (personkind == 0)//Nguoi lon >= 12 tuổi
+            {
+                //var year = parseInt(ldob[2]) + 12;
+                var dobNew = new Date(parseInt(ldob[2]) + 12 + "-" + ldob[1] + "-" + ldob[0]);//Them 12 nam so với chọn ngày sinh
+
+                if (dobNew > end_date) {
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    $("#dateofbirth" + i).val("");
+                    $("#dateofbirth" + i).focus();
+
+                    $("#dob" + i).val("");
+                    $("#dob" + i + "_day").val("");
+                    $("#dob" + i + "_month").val("");
+                    $("#dob" + i + "_year").val("");
+                }
+            }
+            if (personkind == 3)//5 tuoi <= Tre em < 12 tuoi
+            {
+                var dobMin = new Date(parseInt(ldob[2]) + 5 + "-" + ldob[1] + "-" + ldob[0]);
+                var dobMax = new Date(parseInt(ldob[2]) + 12 + "-" + ldob[1] + "-" + ldob[0]);
+
+                if (dobMin > end_date || dobMax < end_date) {
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    $("#dateofbirth" + i).val("");
+                    $("#dateofbirth" + i).focus();
+
+                    $("#dob" + i).val("");
+                    $("#dob" + i + "_day").val("");
+                    $("#dob" + i + "_month").val("");
+                    $("#dob" + i + "_year").val("");
+                }
+            }
+            if (personkind == 1)//2 tuoi <= Tre Nhỏ < 5 tuoi
+            {
+                var dobMin = new Date(parseInt(ldob[2]) + 2 + "-" + ldob[1] + "-" + ldob[0]);
+                var dobMax = new Date(parseInt(ldob[2]) + 5 + "-" + ldob[1] + "-" + ldob[0]);
+
+                if (dobMin > end_date || dobMax < end_date) {
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    $("#dateofbirth" + i).val("");
+                    $("#dateofbirth" + i).focus();
+
+                    $("#dob" + i).val("");
+                    $("#dob" + i + "_day").val("");
+                    $("#dob" + i + "_month").val("");
+                    $("#dob" + i + "_year").val("");
+                }
+            }
+            if (personkind == 2)//Em bé <= 2 tuoi
+            {
+                var dobNew = new Date(parseInt(ldob[2]) + 2 + "-" + ldob[1] + "-" + ldob[0]);
+
+                if (dobNew < end_date) {
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    $("#dateofbirth" + i).val("");
+                    $("#dateofbirth" + i).focus();
+
+                    $("#dob" + i).val("");
+                    $("#dob" + i + "_day").val("");
+                    $("#dob" + i + "_month").val("");
+                    $("#dob" + i + "_year").val("");
+                }
+            }
+        }
+    }
+
+    function ChangeChoose() {
+        var CurrencyName = 'đ';
+        var Rate = '1';
+
+        var totalMember = parseInt('3');
+        var totalAdult = parseInt('1');
+
+        var totalPrice = 0;
+        for (var i = 0; i < totalMember; i++) {
+            var amount_vn = 0;
+            var loaikhachnoidia = $("#loaikhachnoidia" + i).val();//(0 : VietNam, 1: Viet kiều, 2: Nuoc ngoài)
+            var personkind = $("#personkind" + i).val();//(0 : NguoiLon,1:TreNho, 2:EmBe, 3: TreEm)
+            var loaiphuthuphongdon = $("#loaiphuthuphongdon" + i).val();//(0:Không, 1 : Có)
+
+            $("#loaikhachnoidia" + i).change(function () {
+                loaikhachnoidia = $("#loaikhachnoidia" + i).val();
+            });
+
+            $("#personkind" + i).change(function () {
+                personkind = $("#personkind" + i).val();
+            });
+
+            $("#loaiphuthuphongdon" + i).change(function () {
+                loaiphuthuphongdon = $("#loaiphuthuphongdon" + i).val();
+            });
+
+            if (totalAdult == 1) {
+                $("#loaiphuthuphongdon0").val('1');
+
+            }
+            loaiphuthuphongdon = $("#loaiphuthuphongdon" + i).val();
+
+            amount_vn = CalPrice(loaikhachnoidia, personkind, loaiphuthuphongdon);
+
+            //$("#price" + i).val(formatnumber(amount_vn.toString()) + ' đ');
+            $("#price" + i).val((amount_vn / Rate).toFixed(0) + ' ' + CurrencyName);
+            $("#spanprice" + i).text(formatnumber((amount_vn / Rate).toFixed(0)) + ' ' + CurrencyName);
+
+            totalPrice += amount_vn;
+        }
+
+        //$("#TotalPrice").val(formatnumber(totalPrice.toString()) + ' đ');
+        $("#TotalPrice").val((totalPrice / Rate).toFixed(0) + ' ' + CurrencyName);
+        $("#spanTotalPrice").text(formatnumber((totalPrice / Rate).toFixed(0)) + ' ' + CurrencyName);
+    }
+
+    function CalPrice(loaikhachnoidia, personkind, loaiphuthuphongdon) {
+
+        //Gia tri cua tour
+
+        //NguoiLon
+        var adult_price = parseFloat('2990000');//VietNam
+        var adult_o_price = parseFloat('2990000');//VietKieu
+        var adult_f_price = parseFloat('2990000');//NuocNgoai
+
+        //TreNho
+        var child_price = parseFloat('1000000');//VietNam
+        var child_o_price = parseFloat('1000000');//VietKieu
+        var child_f_price = parseFloat('1000000');//NuocNgoai
+
+        //EmBe
+        var child_price5 = parseFloat('220000');//VietNam
+        var pretty_o_price = parseFloat('220000');//VietKieu
+        var pretty_f_price = parseFloat('220000');//NuocNgoai
+
+        //TreEm
+        var child_price11 = parseFloat('2242500');//VietNam
+        var child_o_price11 = parseFloat('2242500');//VietKieu
+        var child_f_price11 = parseFloat('2242500');//NuocNgoai
+
+        var phuthuphongdon_vn = parseFloat('1200000');//VietNam
+        var phuthuphongdon_vk = parseFloat('1200000');//VietKieu
+        var phuthuphongdon_nn = parseFloat('1200000');//NuocNgoai
+
+        //Gia tri cua tour
+
+        var amount_vn = 0;
+
+        /* Xử lý tính giá tiền theo độ tuổi,loại khách, phụ thu phòng đơn */
+        switch (personkind)//Độ tuổi
+        {
+            case "0"://Người lớn
+                switch (loaikhachnoidia)//loại khách
+                {
+                    case "0": amount_vn = adult_price;//VietNam
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vn;
+                        }
+                        break;
+                    case "1": amount_vn = adult_o_price;//Vietkieu
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vk;
+                        }
+                        break;
+                    case "2": amount_vn = adult_f_price;//Nuocngoai
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_nn;
+                        }
+                        break;
+                }
+                break;
+
+            case "1"://Trẻ nhỏ
+                switch (loaikhachnoidia)//loại khách
+                {
+                    case "0": amount_vn = child_price;//VietNam
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vn;
+                        }
+                        break;
+                    case "1": amount_vn = child_o_price;//Vietkieu
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vk;
+                        }
+                        break;
+                    case "2": amount_vn = child_f_price;//Nuocngoai
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_nn;
+                        }
+                        break;
+                }
+                break;
+
+            case "2"://Em bé
+                switch (loaikhachnoidia)//loại khách
+                {
+                    case "0": amount_vn = child_price5;//VietNam
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vn;
+                        }
+                        break;
+                    case "1": amount_vn = pretty_o_price;//Vietkieu
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vk;
+                        }
+                        break;
+                    case "2": amount_vn = pretty_f_price;//Nuocngoai
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_nn;
+                        }
+                        break;
+                }
+                break;
+
+            case "3"://Trẻ em
+                switch (loaikhachnoidia)//loại khách
+                {
+                    case "0": amount_vn = child_price11;//VietNam
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vn;
+                        }
+                        break;
+                    case "1": amount_vn = child_o_price11;//Vietkieu
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_vk;
+                        }
+                        break;
+                    case "2": amount_vn = child_f_price11;//Nuocngoai
+                        if (loaiphuthuphongdon == 1)//Phụ thu phòng đơn
+                        {
+                            amount_vn = amount_vn + phuthuphongdon_nn;
+                        }
+                        break;
+                }
+                break;
+        }
+        /* End Xử lý tính giá tiền theo độ tuổi,loại khách, phụ thu phòng đơn */
+        return amount_vn;
+    }
+
+    var datenow = '05/05/2021';
+    var datemin = '05/05/1951';
+    var yearmin = '1951';
+    var yearmax = '2021';
+    $(".date").datepicker({
+        dateFormat: 'dd/mm/yy',
+        defaultDate: '01/01/1980',
+        inline: true,
+        changeMonth: true,
+        changeYear: true,
+        maxDate: datenow,
+        minDate: datemin,
+        yearRange: yearmin + ':' + yearmax
+    });
+    
+</script>

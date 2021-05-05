@@ -38,6 +38,34 @@ class BookingController < ApplicationController
     end
   end
 
+  def inbound_members
+    tour = Tour.find(params[:tour_id])
+
+    # validate remain_slot
+    # Tạo ra 1 service để validate
+    # /services/tour_valiation_service.rb
+    #
+    price_basics = tour.price_basics
+
+    customer_type_hash = {
+      adult: params[:adult].to_i,
+      children11: params[:children11].to_i,
+      children: params[:children].to_i,
+      small_children: params[:small_children].to_i
+    }
+
+    render json: {
+      data: render_to_string(
+        partial: 'booking/inbound_member',
+        locals: {
+          tour: tour,
+          total: params[:total].to_i,
+          customer_type_hash: customer_type_hash
+        }
+      )
+    }
+  end
+
   private
 
   def set_booking
