@@ -11,7 +11,7 @@
                <% end %>
                <div>
                   <%= f.hidden_field :tour_id, required: "required", value: @tour.id, type: "hidden" %>
-                  <%= f.text_field :name_booking, required: "required", class: "form-control", value: "" %>
+                  <%= f.text_field :name_booking, id: "contact_name", required: "required", class: "form-control", value: "" %>
                </div>
             </div>
             <div class="form-group">
@@ -19,13 +19,13 @@
                  Di động (<span class="star">*</span>)
                <% end %>
                <div>
-                 <%= f.text_field :mobile_booking, required: "required", class: "form-control", value: "" %>
+                 <%= f.text_field :mobile_booking, id: "mobilephone", onchange:"CheckMobile();", onkeypress: "return funCheckInt(event)", required: "required", class: "form-control", value: "" %>
                </div>
             </div>
             <div class="form-group">
                <%= f.label :address_booking, "Địa chỉ" %>
                <div>
-                  <%= f.text_field :address_booking, class: "form-control", value: "" %>
+                  <%= f.text_field :address_booking, id: "address", class: "form-control", value: "" %>
                </div>
             </div>
          </div>
@@ -35,13 +35,13 @@
                 Email (<span class="star">*</span>)
               <% end %>
                <div>
-                  <%= f.text_field :email_booking, required: "required", class: "form-control", value: "" %>
+                  <%= f.text_field :email_booking, id: "email", required: "required", class: "form-control", value: "" %>
                </div>
             </div>
             <div class="form-group">
                <%= f.label :phone_booking, "Điện thoại" %>
                <div>
-                  <%= f.text_field :phone_booking, required: "required", class: "form-control", value: "" %>
+                  <%= f.text_field :phone_booking, id: "phone", required: "required", class: "form-control", value: "" %>
                </div>
             </div>
             <div class="form-group">
@@ -55,25 +55,25 @@
                   <div class="col-md-2 col-sm-2 col-xs-6  mg-bot15">
                     <%= f.label :child_guests_number, "Trẻ em" %>
                      <div>
-                       <%= f.text_field :child_guests_number, class: "form-control", id: "children11", value: "0" %>
+                       <%= f.text_field :child_guests_number, class: "form-control", id: "children11", value: "0", onblur: "javascript:clear_text(this);", onclick: "javascript:show_text('Từ 5 tuổi đến dưới 12 tuổi',this)", onkeypress: "return funCheckInt(event)" %>
                      </div>
                   </div>
                   <div class="col-md-2 col-sm-3 col-xs-6  mg-bot15">
                      <%= f.label :young_children_guests_number, "Trẻ nhỏ" %>
                      <div>
-                       <%= f.text_field :young_children_guests_number, class: "form-control", id: "children", value: "0" %>
+                       <%= f.text_field :young_children_guests_number, class: "form-control", id: "children", value: "0", onblur: "javascript:clear_text(this);", onclick: "javascript:show_text('Từ 2 tuổi đến dưới 5 tuổi',this)", onkeypress: "return funCheckInt(event)" %>
                      </div>
                   </div>
                   <div class="col-md-2 col-sm-2 col-xs-6 mg-bot15">
                      <%= f.label :baby_guests_number, "Em bé" %>
                      <div>
-                       <%= f.text_field :baby_guests_number, class: "form-control", id: "small_children", value: "0" %>
+                       <%= f.text_field :baby_guests_number, class: "form-control", id: "small_children", value: "0", onblur: "javascript:clear_text(this);", onclick: "javascript:show_text('Dưới 2 tuổi',this)", onkeypress: "return funCheckInt(event)" %>
                      </div>
                   </div>
                   <div class="col-md-3 col-sm-3 col-xs-12">
                      <%= f.label :customers_number, "Số khách" %>
                      <div>
-                        <%= f.text_field :customers_number, class: "form-control", value: "1", readonly: "readonly" %>
+                        <%= f.text_field :customers_number, class: "form-control", id: "guests", value: "1", readonly: "readonly" %>
                      </div>
                   </div>
                </div>
@@ -83,7 +83,7 @@
             <div class="form-group">
                <%= f.label :note, "Ghi chú" %>
                <div>
-                  <%= f.text_area :note, class: "form-control", cols: "20", rows: "4" %>
+                  <%= f.text_area :note, class: "form-control", id: "note", cols: "20", rows: "4" %>
                </div>
             </div>
          </div>
@@ -154,7 +154,7 @@
                            <div class="date-dropdowns">
                               <%= ff.date_select :birthday_list_of_customers, { :order => [:day, :month, :year],
                                                  :start_year => Date.current.year, :end_year => 1960,
-                                                 :prompt => {day: 'Ngày', month: 'Tháng', year: 'Năm'}}, class: 'day hideArow form-control dateDDL'  %>
+                                                 :prompt => {day: 'Ngày', month: 'Tháng', year: 'Năm'}}, class: 'day hideArow form-control dateDDL', id: "dateofbirth0" %>
                            </div>
                            <div class="clear"></div>
                         </div>
@@ -162,22 +162,28 @@
                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
                           <%= ff.label :ages, "Độ tuổi", class: "mg-bot5" %>
                           <div>
-                             <%= ff.select :ages, ["Người lớn"], {}, { class: "form-control" } %>
+                             <%= ff.select :ages, ["Người lớn"], {}, { class: "form-control", id: "personkind0", onchange: "ChangeChoose();" } %>
                           </div>
                        </div>
+                       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mg-bot10" style="display:none;">
+                        <%= ff.label :domestic_customers, "Loại khách:", class: "mg-bot5" %>
+                        <div>
+                          <%= ff.select :domestic_customers, [["Nam", "1"], ["Nữ", "0"]], {}, { class: "form-control", id: "loaikhachnoidia0", onchange: "ChangeChoose();" } %>
+                        </div>
+                      </div>
                        <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
                           <%= ff.label :single_room, "Phòng đơn" %>
                           <div>
-                             <%= ff.select :single_room, [["Có", "1"], ["Không", "0"]], {}, { class: "form-control" } %>
+                             <%= ff.select :single_room, [["Có", "1"], ["Không", "0"]], {}, { class: "form-control", id: "loaiphuthuphongdon0", onchange: "ChangeChoose();" } %>
                           </div>
                        </div>
                     </div>
                     <div class="row total">
                        <div class="col-md-12 col-sm-12 text-right">
                           <%= ff.label :price_booking do %>
-                              Trị giá: <span class="price">2,690,000 đ</span>
+                              Trị giá: <span class="price" id="spanprice0"><%= @tour.price + 2090000 %> đ</span>
                           <% end %>
-                          <%= ff.text_field :price_booking, class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
+                          <%= ff.text_field :price_booking, id: "spanprice0", class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
                        </div>
                     </div>
                  </div>
@@ -185,10 +191,10 @@
               <div class="frame-cus">
                  <div class="row">
                     <div class="col-md-12 col-sm-12 text-right">
-                      <%= ff.label :price_booking do %>
-                          Tổng cộng: <span class="price">2,690,000 đ</span>
+                      <%= ff.label :total_price do %>
+                          Tổng cộng: <span class="price" id="spanTotalPrice"><%= @tour.price + 2090000 %> đ</span>
                       <% end %>
-                      <%= ff.text_field :price_booking, class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
+                      <%= ff.text_field :total_price, id: "TotalPrice", class: "form-control", disabled: "disabled", type: "hidden", value: "2690000 đ"  %>
                     </div>
                  </div>
               </div>

@@ -12,7 +12,7 @@
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
           <label class="mg-bot5">Giới t&#237;nh</label>
           <div>
-            <select class="form-control" name="[0].gender"><option value="0">Nữ</option>
+            <select class="form-control" name="booking[list_of_customers_attributes][<%= index %>][sex_list_of_customers]"><option value="0">Nữ</option>
               <option value="1">Nam</option>
             </select>
           </div>
@@ -20,8 +20,10 @@
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mg-bot10">
           <label class="mg-bot5">Ng&#224;y sinh (<span class="star">*</span>)</label>
           <div>
-            <input data-val="true" data-val-date="The field dateofbirth must be a date." id="dateofbirth0" name="booking[list_of_customers_attributes][<%= index %>][birthday_list_of_customers]" type="hidden" value="" />
-            <input type="hidden" id="dob<%= index %>" />
+            <input data-val="true" data-val-date="The field dateofbirth must be a date." id="dateofbirth<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][birthday_list_of_customers]" type="hidden" value="" />
+            <div class="date-dropdowns">
+              <input type="hidden" id="dob<%= index %>" name="dob<%= index %>">
+            </div>
             <script>
               $("#dob" + '<%= index %>').dateDropdowns({
                 submitFieldName: 'dob' + '<%= index %>',
@@ -40,17 +42,15 @@
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
           <label class="mg-bot5">Độ tuổi</label>
           <div>
-            <select class="form-control" id="personkind0" name="[0].personkind" onchange="ChangeChoose();"><option value="0">Người lớn</option>
-
+            <select class="form-control" id="personkind<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][ages]" onchange="ChangeChoose();"><option value="0">Người lớn</option>
             <!-- dựa vào key truyền sang để hiện thị cho chính xác thông tin  -->
-
             </select>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mg-bot10" style="display:none;">
           <label class="mg-bot5">Loại kh&#225;ch:</label>
           <div>
-            <select class="form-control" id="loaikhachnoidia0" name="[0].loaikhachnoidia" onchange="ChangeChoose();"><option value="0">Việt Nam</option>
+            <select class="form-control" id="loaikhachnoidia<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][domestic_customers]" onchange="ChangeChoose();"><option value="0">Việt Nam</option>
               <option value="1">Việt kiều</option>
               <option value="2">Nước ngo&#224;i</option>
             </select>
@@ -59,18 +59,27 @@
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
           <label class="mg-bot5">Ph&#242;ng đơn</label>
           <div>
-            <select class="form-control" id="loaiphuthuphongdon0" name="[0].loaiphuthuphongdon" onchange="ChangeChoose();"><option value="0">Kh&#244;ng</option>
+            <select class="form-control" id="loaiphuthuphongdon<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][single_room]" onchange="ChangeChoose();"><option value="0">Kh&#244;ng</option>
               <option value="1">C&#243;</option>
             </select> </div>
         </div>
       </div>
       <div class="row total">
         <div class="col-md-12 col-sm-12 text-right">
-          <% customer_type_hash.each do |customer_type, value| %>
+          <% customer_type_hash.each do |customer_type, number_of_customer| %>
             <% price = tour.price_basics.find_by(customers_type: customer_type) %>
-            Trị gi&#225;: <span class="price" id="spanprice0"><%= price&.price_default %></span>
-            <input class="form-control" disabled="disabled" id="price0" name="price0" type="hidden" value="<%= price&.price_default %> + <%= tour.price %>" />
+            <% value = number_of_customer %>
           <% end %>
+          Trị gi&#225;: <span class="price" id="spanprice<%= index %>"></span>
+          <input class="form-control" disabled="disabled" id="price<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][price_booking]" type="hidden">
+        </div>
+      </div>
+      <div class="frame-cus">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 text-right">
+            Tổng cộng: <span class="price" id="spanTotalPrice"></span>
+            <input type="hidden" id="TotalPrice" disabled="disabled" class="form-control">
+          </div>
         </div>
       </div>
     </div>

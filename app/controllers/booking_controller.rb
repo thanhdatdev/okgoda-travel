@@ -46,8 +46,7 @@ class BookingController < ApplicationController
     # /services/tour_valiation_service.rb
     #
     price = 0
-    price_basics = tour.price_basics
-
+    value = 0
     customer_type_hash = {
       adult: params[:adult].to_i,
       children11: params[:children11].to_i,
@@ -59,7 +58,8 @@ class BookingController < ApplicationController
       data: render_to_string(
         partial: 'booking/inbound_member',
         locals: {
-          price: price,
+          price: price.to_i,
+          value: value.to_i,
           tour: tour,
           total: params[:total].to_i,
           params: params,

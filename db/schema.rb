@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.date "birthday_list_of_customers", null: false
     t.string "ages", default: "", null: false
     t.boolean "single_room", default: true, null: false
+    t.boolean "domestic_customers"
     t.decimal "price_booking"
     t.decimal "total_price"
     t.datetime "created_at", null: false

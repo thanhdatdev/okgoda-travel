@@ -18,11 +18,8 @@
 //= require pnotify/pnotify
 //= require pnotify/pnotify.buttons
 //= require jquery_ujs
-//= require bootstrap-sprockets
 //= require js.cookie
 //= require moment
-//= require daterangepicker
 //= require bxslider
 //= require turbolinks
-//= require scripts
 //= require customizes/scripts

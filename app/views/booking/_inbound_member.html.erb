@@ -1,6 +1,6 @@
 <div>
   <% total.times.each do |index| %>
-      <%= render partial: 'booking/inbound_member_item', locals: { index: index, params: params, tour: tour, customer_type_hash: customer_type_hash } %>
+      <%= render partial: 'booking/inbound_member_item', locals: { index: index, tour: tour, customer_type_hash: customer_type_hash, price: price, value: value } %>
   <% end %>
 </div>
 <script>

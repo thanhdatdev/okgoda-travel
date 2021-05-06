@@ -13,7 +13,6 @@
  *= require_self
  *= require chosen
  *= require pnotify
- *= require daterangepicker
  *= require bxslider
  *= require_tree .
  */
