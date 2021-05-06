@@ -45,6 +45,7 @@ class BookingController < ApplicationController
     # Tạo ra 1 service để validate
     # /services/tour_valiation_service.rb
     #
+    price = 0
     price_basics = tour.price_basics
 
     customer_type_hash = {
@@ -58,8 +59,10 @@ class BookingController < ApplicationController
       data: render_to_string(
         partial: 'booking/inbound_member',
         locals: {
+          price: price,
           tour: tour,
           total: params[:total].to_i,
+          params: params,
           customer_type_hash: customer_type_hash
         }
       )

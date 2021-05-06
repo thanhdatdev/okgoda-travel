@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
 
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "tour_id"
+    t.string "title", default: "", null: false
     t.string "customers_type", default: "", null: false
     t.decimal "price_default", null: false
     t.integer "position"

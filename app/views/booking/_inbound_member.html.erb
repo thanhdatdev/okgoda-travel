@@ -1,10 +1,6 @@
 <div>
   <% total.times.each do |index| %>
-    <% customer_type_hash.each do |key, number_of_customer| %>
-      <% number_of_customer.times.each do  %>
-        <%= render partial: 'booking/inbound_member_item', locals: { index: index, customer_type: key, tour: tour } %>
-      <% end %>
-    <% end %>
+      <%= render partial: 'booking/inbound_member_item', locals: { index: index, params: params, tour: tour, customer_type_hash: customer_type_hash } %>
   <% end %>
 </div>
 <script>
@@ -283,5 +279,5 @@
         minDate: datemin,
         yearRange: yearmin + ':' + yearmax
     });
-    
+
 </script>

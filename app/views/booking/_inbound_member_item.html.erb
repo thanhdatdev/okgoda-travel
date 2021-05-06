@@ -66,13 +66,12 @@
       </div>
       <div class="row total">
         <div class="col-md-12 col-sm-12 text-right">
-          <% price = tour.price_basics.find_by(customers_type: customer_type) %>
-
-          Trị gi&#225;: <span class="price" id="spanprice0"><%= price&.price_default %></span>
-          <input class="form-control" disabled="disabled" id="price0" name="price0" type="hidden" value="<%= price&.price_default %>" />
+          <% customer_type_hash.each do |customer_type, value| %>
+            <% price = tour.price_basics.find_by(customers_type: customer_type) %>
+            Trị gi&#225;: <span class="price" id="spanprice0"><%= price&.price_default %></span>
+            <input class="form-control" disabled="disabled" id="price0" name="price0" type="hidden" value="<%= price&.price_default %> + <%= tour.price %>" />
+          <% end %>
         </div>
       </div>
     </div>
   </div>
-
-
