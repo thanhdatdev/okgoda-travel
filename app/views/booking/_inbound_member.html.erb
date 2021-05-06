@@ -28,10 +28,10 @@
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
-                    $("#dob" + i).val("");
-                    $("#dob" + i + "_day").val("");
-                    $("#dob" + i + "_month").val("");
-                    $("#dob" + i + "_year").val("");
+                    $("#dobs" + i).val("");
+                    $("#dobs" + i + "_day").val("");
+                    $("#dobs" + i + "_month").val("");
+                    $("#dobs" + i + "_year").val("");
                 }
             }
             if (personkind == 3)//5 tuoi <= Tre em < 12 tuoi
@@ -44,10 +44,10 @@
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
-                    $("#dob" + i).val("");
-                    $("#dob" + i + "_day").val("");
-                    $("#dob" + i + "_month").val("");
-                    $("#dob" + i + "_year").val("");
+                    $("#dobs" + i).val("");
+                    $("#dobs" + i + "_day").val("");
+                    $("#dobs" + i + "_month").val("");
+                    $("#dobs" + i + "_year").val("");
                 }
             }
             if (personkind == 1)//2 tuoi <= Tre Nhỏ < 5 tuoi
@@ -60,10 +60,10 @@
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
-                    $("#dob" + i).val("");
-                    $("#dob" + i + "_day").val("");
-                    $("#dob" + i + "_month").val("");
-                    $("#dob" + i + "_year").val("");
+                    $("#dobs" + i).val("");
+                    $("#dobs" + i + "_day").val("");
+                    $("#dobs" + i + "_month").val("");
+                    $("#dobs" + i + "_year").val("");
                 }
             }
             if (personkind == 2)//Em bé <= 2 tuoi
@@ -75,10 +75,10 @@
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
-                    $("#dob" + i).val("");
-                    $("#dob" + i + "_day").val("");
-                    $("#dob" + i + "_month").val("");
-                    $("#dob" + i + "_year").val("");
+                    $("#dobs" + i).val("");
+                    $("#dobs" + i + "_day").val("");
+                    $("#dobs" + i + "_month").val("");
+                    $("#dobs" + i + "_year").val("");
                 }
             }
         }
@@ -135,28 +135,28 @@
         //Gia tri cua tour
 
         //NguoiLon
-        var adult_price = parseFloat('2990000');//VietNam
-        var adult_o_price = parseFloat('2990000');//VietKieu
-        var adult_f_price = parseFloat('2990000');//NuocNgoai
+        var adult_price = <%= tour.price_basics.find_by(customers_type: "adult").price_default %>;//VietNam
+        var adult_o_price = <%= tour.price_basics.find_by(customers_type: "adult").price_default %>;//VietKieu
+        var adult_f_price = <%= tour.price_basics.find_by(customers_type: "adult").price_default %>;//NuocNgoai
 
         //TreNho
-        var child_price = parseFloat('1000000');//VietNam
-        var child_o_price = parseFloat('1000000');//VietKieu
-        var child_f_price = parseFloat('1000000');//NuocNgoai
+        var child_price = <%= tour.price_basics.find_by(customers_type: "small_children").price_default %>;//VietNam
+        var child_o_price = <%= tour.price_basics.find_by(customers_type: "small_children").price_default %>;//VietKieu
+        var child_f_price = <%= tour.price_basics.find_by(customers_type: "small_children").price_default %>;//NuocNgoai
 
         //EmBe
-        var child_price5 = parseFloat('220000');//VietNam
-        var pretty_o_price = parseFloat('220000');//VietKieu
-        var pretty_f_price = parseFloat('220000');//NuocNgoai
+        var child_price5 = <%= tour.price_basics.find_by(customers_type: "children").price_default %>//VietNam
+        var pretty_o_price = <%= tour.price_basics.find_by(customers_type: "children").price_default %>//VietKieu
+        var pretty_f_price = <%= tour.price_basics.find_by(customers_type: "children").price_default %>//NuocNgoai
 
         //TreEm
-        var child_price11 = parseFloat('2242500');//VietNam
-        var child_o_price11 = parseFloat('2242500');//VietKieu
-        var child_f_price11 = parseFloat('2242500');//NuocNgoai
+        var child_price11 = <%= tour.price_basics.find_by(customers_type: "children11").price_default %>//VietNam
+        var child_o_price11 = <%= tour.price_basics.find_by(customers_type: "children11").price_default %>//VietKieu
+        var child_f_price11 = <%= tour.price_basics.find_by(customers_type: "children11").price_default %>//NuocNgoai
 
-        var phuthuphongdon_vn = parseFloat('1200000');//VietNam
-        var phuthuphongdon_vk = parseFloat('1200000');//VietKieu
-        var phuthuphongdon_nn = parseFloat('1200000');//NuocNgoai
+        var phuthuphongdon_vn = <%= tour.price_basics.find_by(customers_type: "single_room").price_default %>//VietNam
+        var phuthuphongdon_vk = <%= tour.price_basics.find_by(customers_type: "single_room").price_default %>//VietKieu
+        var phuthuphongdon_nn = <%= tour.price_basics.find_by(customers_type: "single_room").price_default %>//NuocNgoai
 
         //Gia tri cua tour
 
