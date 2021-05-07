@@ -3,8 +3,8 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create([{ name_category: 'Star Wars' }, { name_category: 'Lord of the Rings' }])
+#   Character.create(name_category: 'Luke', movie: movies.first)
 TourType.create!(type_name: 'Giá rẻ')
 TourType.create!(type_name: "Ưu đãi mùa hè")
 
@@ -26,3 +26,25 @@ PriceBasic.create!(tour: Tour.last, customers_type: "Trẻ em",    price_default
 PriceBasic.create!(tour: Tour.last, customers_type: "Trẻ nhỏ",   price_default: "1000000", position: "3")
 PriceBasic.create!(tour: Tour.last, customers_type: "Em bé",     price_default: "220000", position: "4")
 PriceBasic.create!(tour: Tour.last, customers_type: "Phụ thu phòng đơn", price_default: "600000", position: "5")
+
+Category.create!(name_category: "Du lịch")
+Category.create!(name_category: "Khách sạn")
+Category.create!(name_category: "Vận chuyển")
+Category.create!(name_category: "Tin tức")
+Category.create!(name_category: "Khuyến mãi")
+Category.create!(name_category: "VietravelPlus")
+Category.create!(name_category: "Liên hệ")
+
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Tour xuyên việt")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du lịch trong nước")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du lịch tự chọn")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du lịch an toàn")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du học")
+
+ItemCategory.create!(category_id: Category.find_by(name_category: "Vận chuyển").id, name_item_category: "Thuê xe")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Vận chuyển").id, name_item_category: "Vé máy bay")
+
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Tin tức")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Cẩm nang du lịch")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Kinh nghiệm du lịch")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Thông tin visa")
