@@ -31,8 +31,8 @@
                 maxAge: 68,
                 required: true
               });
-              $('#dob' + '<%= index %>').change(function () {
-                $('#dateofbirth' + '<%= index %>').val($('#dob' + '<%= index %>').val());
+              $('#dobs' + '<%= index %>').change(function () {
+                $('#dateofbirth' + '<%= index %>').val($('#dobs' + '<%= index %>').val());
                 CheckDOBByPersonkind();
               });
             </script>
@@ -44,10 +44,10 @@
           <div>
             <% customer_type_hash.each do |customer_type, number_of_customer| %>
               <% title_personkind = tour.price_basics.find_by(customers_type: customer_type).title %>
-              <select class="form-control" id="personkind<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][ages]" onchange="ChangeChoose();"><option value="<%= index %>"><%= title_personkind %></option>
-              <!-- dựa vào key truyền sang để hiện thị cho chính xác thông tin  -->
-              </select>
             <% end %>
+            <select class="form-control" id="personkind<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][ages]" onchange="ChangeChoose();"><option value="<%= index %>"><%= title_personkind %></option> %>
+            <!-- dựa vào key truyền sang để hiện thị cho chính xác thông tin  -->
+            </select>
 
           </div>
         </div>
