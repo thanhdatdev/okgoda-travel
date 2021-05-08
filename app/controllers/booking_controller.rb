@@ -52,11 +52,13 @@ class BookingController < ApplicationController
       small_children: params[:small_children].to_i
     }
     title_personkind = ''
+    number_of_customer = ''
 
     render json: {
       data: render_to_string(
         partial: 'booking/inbound_member',
         locals: {
+          number_of_customer: number_of_customer,
           title_personkind: title_personkind,
           tour: tour,
           total: params[:total].to_i,

@@ -42,13 +42,14 @@
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
           <label class="mg-bot5">Độ tuổi</label>
           <div>
-            <% customer_type_hash.each do |customer_type, number_of_customer| %>
-              <% title_personkind = tour.price_basics.find_by(customers_type: customer_type).title %>
+            <% customer_type_hash.each do |customer_type, value| %>
+                <% if !customer_type_hash.delete(value < 0) %>
+                  <% title_personkind = tour.price_basics.find_by(customers_type: customer_type).title %>
+                  <select class="form-control" id="personkind<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][ages]" onchange="ChangeChoose();"><option value="<%= index %>"><%= title_personkind %></option> %>
+                  <!-- dựa vào key truyền sang để hiện thị cho chính xác thông tin  -->
+                  </select>
+                <% end %>
             <% end %>
-            <select class="form-control" id="personkind<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][ages]" onchange="ChangeChoose();"><option value="<%= index %>"><%= title_personkind %></option> %>
-            <!-- dựa vào key truyền sang để hiện thị cho chính xác thông tin  -->
-            </select>
-
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mg-bot10" style="display:none;">
