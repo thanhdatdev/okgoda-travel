@@ -1,26 +1,18 @@
-<nav class="menu hidden-xs">
-  <ul>
-    <li class="hidden-xs">
-      <% @categories.each do |category| %>
-        <a href="/"><%= category %></a>
-      <% end %>
-      <ul class="sub-menu">
-        <li>
-          <a href="https://xuyenviet.travel.com.vn/">Tour xuyên việt</a>
-        </li>
-        <li>
-          <a href="/du-lich-viet-nam.aspx">Du lịch trong nước</a>
-        </li>
-        <li>
-          <a href="https://travel.com.vn/Hotel/Destination" rel="nofollow">Du lịch tự chọn</a>
-        </li>
-        <li>
-          <a href="https://dulichantoan.vietravel.com/">Du lịch an toàn</a>
-        </li>
-        <li>
-          <a href="http://vscc.edu.vn/" target="_blank" rel="nofollow">Du học</a>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<% @categories.each do |category| %>
+  <nav class="menu hidden-xs">
+    <ul>
+      <li class="hidden-xs">
+          <a href="/"><%= category.name_category %></a>
+        <ul class="sub-menu">
+          <li>
+            <%= link_to item_category_path(@item.id) do %>
+              <% @item_category.each do |item| %>
+                <%= item.name_item_category %>
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+<% end %>

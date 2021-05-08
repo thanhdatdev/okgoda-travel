@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
 
   create_table "categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name_category", default: "", null: false
+    t.string "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

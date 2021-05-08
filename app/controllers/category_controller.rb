@@ -4,6 +4,7 @@ class CategoryController < ApplicationController
   end
 
   def show
-    @item_categories = ItemCategory.find_by(params[:category_id])
+    byebug
+    @item = ItemCategory.find(params[:item_category_id])
   end
 end
