@@ -4,13 +4,13 @@
       <li class="hidden-xs">
           <a href="/"><%= category.name_category %></a>
         <ul class="sub-menu">
-          <li>
-            <%= link_to item_category_path(@item.id) do %>
-              <% @item_category.each do |item| %>
-                <%= item.name_item_category %>
-              <% end %>
-            <% end %>
-          </li>
+          <% category.item_categories.each do |item_category| %>
+            <li>
+                <%= link_to item_category_path(item_category.id) do %>
+                  <%= item_category.name_item_category %>
+                <% end %>
+            </li>
+          <% end %>
         </ul>
       </li>
     </ul>
