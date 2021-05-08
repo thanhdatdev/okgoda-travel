@@ -1,0 +1,18 @@
+<% @categories.each do |category| %>
+  <nav class="menu hidden-xs">
+    <ul>
+      <li class="hidden-xs">
+          <a href="/"><%= category.name_category %></a>
+        <ul class="sub-menu">
+          <% category.item_categories.each do |item_category| %>
+            <li>
+                <%= link_to item_category_path(item_category.id) do %>
+                  <%= item_category.name_item_category %>
+                <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_02_164438) do
+ActiveRecord::Schema.define(version: 2021_05_06_201158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,6 +37,13 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name_category", default: "", null: false
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
     t.bigint "tour_id"
@@ -61,6 +68,14 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "item_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "category_id"
+    t.string "name_item_category", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_item_categories_on_category_id"
   end
 
   create_table "list_of_customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -168,6 +183,7 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
 
   add_foreign_key "bookings", "tours"
   add_foreign_key "comments", "users"
+  add_foreign_key "item_categories", "categories"
   add_foreign_key "list_of_customers", "bookings"
   add_foreign_key "payments", "bookings"
   add_foreign_key "price_basics", "tours"
