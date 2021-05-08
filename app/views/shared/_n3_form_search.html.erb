@@ -1,0 +1,856 @@
+<div class="n3-form-search" style="z-index: initial; position: initial; background: rgb(241, 241, 241); --darkreader-inline-bgimage: initial; --darkreader-inline-bgcolor:#202324;" data-darkreader-inline-bgimage="" data-darkreader-inline-bgcolor="">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="frame-search">
+          <div class="o-dl hvtt">
+            <a href="https://xuyenviet.travel.com.vn/" target="_blank">
+              <i class="iconT-i-c5 mg-b"></i>
+              <p class="text1">Tour</p>
+              <p class="text2 text-hvtt">Xuyên Việt</p>
+            </a>
+          </div>
+          <div class="o-dl dltn">
+            <i class="iconT-i-c1 mg-b"></i>
+            <p class="text1">Tìm tour</p>
+            <p class="text2 text-dltn">Trong nước</p>
+          </div>
+          <div class="o-dl vmb">
+            <div class="vua"><img src="https://travel.com.vn/content/themehe/img/vietravel-airlines-logo-116px.png" alt="Vietravel Airlines"></div>
+            <p class="text1"></p>
+            <p class="text2 text-dlnn">Vé máy bay</p>
+          </div>
+          <div class="o-dl dltc">
+            <i class="iconT-i-c6 mg-b"></i>
+            <p class="text1">Dịch vụ</p>
+            <p class="text2 text-dltc">Vé máy bay / Xe + khách sạn</p>
+          </div>
+          <div class="o-dl combo">
+            <a href="https://travel.com.vn/Hotel/Destination">
+              <i class="iconT-i-c3 mg-b"></i>
+              <p class="text1">Dịch vụ</p>
+              <p class="text2 text-combo">Khách sạn</p>
+            </a>
+          </div>
+          <div class="o-dl tttc">
+            <i class="iconT-i-c4 mg-b"></i>
+            <p class="text1">Tìm kiếm</p>
+            <p class="text2 text-dltt">Booking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="frmsDL">
+    <form action="/Tour/SearchFirst" method="post">
+      <input name="__RequestVerificationToken" type="hidden" value="0iTlKeGoCHH-_h4b4rWzq4Vs6oTa9QFc147hKWzp0qxk8p_2S44zrHbZZQqk-djN9_eyVANaACnXttnck7njQnZZkNjM7cCkVFwXRoDiREY1">
+      <div class="form-info-search bg-dltn pos-relative" style="display: none;">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="triangle-up"></div>
+              <div class="pad-tb">
+                <div class="row">
+                  <div class="col-xs-12 mg-bot15">
+                    <div style="font-size: 16px; line-height: 24px; color: rgb(33, 33, 33); --darkreader-inline-color:#d3cfca;" data-darkreader-inline-color="">
+                      Nơi khởi hành:&nbsp;&nbsp;
+                      <select class="nkh text-dltn" id="departureID" name="departureID"></select>
+                    </div>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+                    <div class="form-group noidia" style="position: relative;">
+                      <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
+                        <img src="/Content/ThemeHe/img/i-map2.png" alt="map">
+                      </div>
+                      <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
+                        <span style="color: rgb(0, 137, 255); font-size: 14px; font-weight: 500; --darkreader-inline-color:#33a6ff;" data-darkreader-inline-color="">Điểm đến</span>
+                      </div>
+                      <select name="GroupId" id="GroupId" class="chosen-select" style="display: none;">
+                        <option value="0">Bạn muốn đi du lịch ở đâu?</option>
+                        <option value="99">An Giang</option>
+                        <option value="130">Bắc Kạn</option>
+                        <option value="206">Bạc Liêu</option>
+                        <option value="46">Bảo Lộc</option>
+                        <option value="188">Bến Tre</option>
+                        <option value="94">Bình Định</option>
+                        <option value="367">Bình Dương</option>
+                        <option value="369">Bình Phước</option>
+                        <option value="194">Bình Thuận</option>
+                        <option value="47">Buôn Ma Thuột</option>
+                        <option value="137">Cà Mau</option>
+                        <option value="212">Cam Ranh</option>
+                        <option value="344">Cần Giờ</option>
+                        <option value="56">Cần Thơ</option>
+                        <option value="129">Cao Bằng</option>
+                        <option value="192">Côn Đảo</option>
+                        <option value="45">Đà Lạt</option>
+                        <option value="42">Đà Nẵng</option>
+                        <option value="341">Đắk Nông</option>
+                        <option value="191">Đông Bắc</option>
+                        <option value="52">Đồng Nai</option>
+                        <option value="199">Đồng Tháp</option>
+                        <option value="108">Nghệ An</option>
+                        <option value="135">Hà Giang</option>
+                        <option value="32">Hạ Long</option>
+                        <option value="361">Hà Nam</option>
+                        <option value="29">Hà Nội</option>
+                        <option value="36">Hà Tây</option>
+                        <option value="30">Hải Phòng</option>
+                        <option value="197">Hồ Chí Minh</option>
+                        <option value="39">Huế</option>
+                        <option value="193">Kiên Giang</option>
+                        <option value="48">Kon Tum</option>
+                        <option value="37">Lạng Sơn</option>
+                        <option value="38">Lào Cai</option>
+                        <option value="371">Nam Du</option>
+                        <option value="44">Nha Trang</option>
+                        <option value="35">Ninh Bình</option>
+                        <option value="106">Ninh Thuận</option>
+                        <option value="49">Pleiku</option>
+                        <option value="51">Phan Thiết</option>
+                        <option value="54">Phú Quốc</option>
+                        <option value="34">Phú Thọ</option>
+                        <option value="121">Phú Yên</option>
+                        <option value="41">Quảng Bình</option>
+                        <option value="198">Quảng Ngãi</option>
+                        <option value="43">Quảng Nam</option>
+                        <option value="196">Quảng Ninh</option>
+                        <option value="40">Quảng Trị</option>
+                        <option value="141">Quy Nhơn</option>
+                        <option value="58">Sóc Trăng</option>
+                        <option value="134">Sơn La</option>
+                        <option value="189">Tây Bắc</option>
+                        <option value="203">Tây Ninh</option>
+                        <option value="55">Tiền Giang</option>
+                        <option value="213">Trà Vinh</option>
+                        <option value="133">Thanh Hóa</option>
+                        <option value="57">Vĩnh Long</option>
+                        <option value="202">Vĩnh Phúc</option>
+                        <option value="53">Vũng Tàu</option>
+                        <option value="231">Yên Bái</option>
+                      </select>
+                      <div class="chosen-container chosen-container-single" title="" id="GroupId_chosen" style="width: 0px;">
+                        <a class="chosen-single">
+                          <span>Bạn muốn đi du lịch ở đâu?</span>
+                          <div><b></b></div>
+                        </a>
+                        <div class="chosen-drop">
+                          <div class="chosen-search">
+                            <input class="chosen-search-input" type="text" autocomplete="off">
+                          </div>
+                          <ul class="chosen-results"></ul>
+                        </div>
+                      </div>
+                      <input type="hidden" name="TourTypeId" value="1">
+                      <input type="hidden" name="ConCho" value="-1">
+                      <input type="hidden" name="DongTour" value="0">
+                      <input type="hidden" name="PriceId" value="0">
+                      <input type="hidden" name="submitButton" value="SearchTour">
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                    <div class="row" style="position: relative;">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group" style="position: relative;">
+                          <div style="position: absolute;left: 16px; top: 18px;">
+                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                          </div>
+                          <div style="position: absolute;left: 50px; top: 12px;">
+                            <span style="color: rgb(0, 137, 255); font-size: 14px; font-weight: 500; --darkreader-inline-color:#33a6ff;" data-darkreader-inline-color="">Từ ngày</span>
+                          </div>
+                          <input autocomplete="off" class="form-control new" name="DepartureDate" id="DepartureDate" type="text" value=" 09/05/2021" placeholder="09/05/2021">
+                        </div>
+                      </div>
+                      <div style="position: absolute;top: 25px;left: 45%;display:none" class="hidden-xs">
+                        <img src="/Content/ThemeHe/img/i-arrow2.png" alt="arrow">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group" style="position: relative;">
+                          <div style="position: absolute;left: 16px; top: 18px;">
+                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                          </div>
+                          <div style="position: absolute;left: 50px; top: 12px;">
+                            <span style="color: rgb(0, 137, 255); font-size: 14px; font-weight: 500; --darkreader-inline-color:#33a6ff;" data-darkreader-inline-color="">Đến ngày</span>
+                          </div>
+                          <input autocomplete="off" class="form-control new" name="DepartureDateTo" id="DepartureDateTo" value=" 09/06/2021" type="text" placeholder="09/06/2021">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 gb-tim">
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-default btn-lg btn-md btn-timtour1" onclick="return checkSearch('departureID');"><i class="fas fa-search"></i>&nbsp;&nbsp;Tìm kiếm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form action="/Tour/SearchFirst" method="post">
+      <input name="__RequestVerificationToken" type="hidden" value="8Rj5C7V2UYrWarpp-mb6ohU8Wd0QQFBgul4zt2uG5AAknWPPV9J06GWDpvkEDxYJnV2dfWNiAIazypumBgpeyh4qm4YU1jwPmnV5vaMW4uE1">
+      <div class="form-info-search bg-dlnn pos-relative" style="display: none;">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="triangle-up"></div>
+              <div class="pad-tb">
+                <div class="row">
+                  <div class="col-xs-12 mg-bot15">
+                    <div style="font-size: 16px; line-height: 24px; color: rgb(33, 33, 33); --darkreader-inline-color:#d3cfca;" data-darkreader-inline-color="">
+                      Nơi khởi hành:&nbsp;&nbsp;
+                      <select class="nkh text-dlnn" id="departureIDOB" name="departureID"></select>
+                    </div>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
+                    <div class="form-group outbound" style="position: relative;">
+                      <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
+                        <img src="/Content/ThemeHe/img/i-map2.png" alt="map">
+                      </div>
+                      <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
+                        <span style="color: rgb(240, 67, 58); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f14e46;" data-darkreader-inline-color="">Điểm đến</span>
+                      </div>
+                      <select name="GroupId" id="GroupIdOB" class="chosen-select" style="display: none;">
+                        <option value="0">Bạn muốn đi du lịch ở đâu?</option>
+                        <option value="14">Ai Cập</option>
+                        <option value="98">Ấn Độ</option>
+                        <option value="169">Anh</option>
+                        <option value="170">Áo</option>
+                        <option value="127">Argentina</option>
+                        <option value="278">Azerbaijan</option>
+                        <option value="160">Ba Lan</option>
+                        <option value="220">Bhutan</option>
+                        <option value="168">Bỉ</option>
+                        <option value="157">Bồ Đào Nha</option>
+                        <option value="249">Bosnia</option>
+                        <option value="126">Brazil</option>
+                        <option value="102">Brunei</option>
+                        <option value="281">Bulgaria</option>
+                        <option value="5">Campuchia</option>
+                        <option value="114">Canada</option>
+                        <option value="162">Cộng Hòa Séc</option>
+                        <option value="245">Croatia</option>
+                        <option value="125">Cuba</option>
+                        <option value="128">Chile</option>
+                        <option value="110">Đài Loan</option>
+                        <option value="152">Đan Mạch</option>
+                        <option value="167">Đức </option>
+                        <option value="279">Georgia</option>
+                        <option value="103">Nga</option>
+                        <option value="166">Hà Lan</option>
+                        <option value="11">Hàn Quốc</option>
+                        <option value="7">Hồng Kông &amp; Macau</option>
+                        <option value="161">Hungary</option>
+                        <option value="150">Hy Lạp</option>
+                        <option value="111">Indonesia</option>
+                        <option value="112">ISRAEL</option>
+                        <option value="211">Jordan</option>
+                        <option value="138">Kazakhstan</option>
+                        <option value="209">Kenya</option>
+                        <option value="113">Lào</option>
+                        <option value="185">Luxembourg</option>
+                        <option value="246">Madagascar </option>
+                        <option value="9">Malaysia</option>
+                        <option value="131">Maldives</option>
+                        <option value="215">Malta</option>
+                        <option value="140">Mauritius</option>
+                        <option value="217">Mexico</option>
+                        <option value="119">Mông Cổ</option>
+                        <option value="204">Monaco</option>
+                        <option value="364">Montenegro</option>
+                        <option value="272">Morocco</option>
+                        <option value="13">Mỹ - Hoa Kỳ</option>
+                        <option value="117">Myanmar</option>
+                        <option value="151">Na Uy</option>
+                        <option value="15">Nam Phi</option>
+                        <option value="123">Nepal</option>
+                        <option value="115">New Zealand</option>
+                        <option value="92">Nhật Bản</option>
+                        <option value="366">North Macedonia</option>
+                        <option value="218">Oman</option>
+                        <option value="216">Panama</option>
+                        <option value="207">Peru</option>
+                        <option value="154">Phần Lan</option>
+                        <option value="149">Pháp</option>
+                        <option value="120">Philippines</option>
+                        <option value="280">Romania</option>
+                        <option value="158">Scotland</option>
+                        <option value="250">Serbia</option>
+                        <option value="10">Singapore</option>
+                        <option value="155">Slovakia</option>
+                        <option value="244">Slovenia</option>
+                        <option value="210">Sri Lanka</option>
+                        <option value="165">Tây Ban Nha</option>
+                        <option value="124">Tour du thuyền</option>
+                        <option value="219">Triều Tiên</option>
+                        <option value="6">Trung Quốc</option>
+                        <option value="8">Thái Lan</option>
+                        <option value="159">Thổ Nhĩ Kỳ</option>
+                        <option value="153">Thụy Điển</option>
+                        <option value="164">Thụy Sĩ</option>
+                        <option value="270">UAE (Dubai, Abu Dhabi..)</option>
+                        <option value="12">Úc</option>
+                        <option value="247">Uzbekistan</option>
+                        <option value="163">Ý</option>
+                      </select>
+                      <div class="chosen-container chosen-container-single" title="" id="GroupIdOB_chosen" style="width: 0px;">
+                        <a class="chosen-single">
+                          <span>Bạn muốn đi du lịch ở đâu?</span>
+                          <div><b></b></div>
+                        </a>
+                        <div class="chosen-drop">
+                          <div class="chosen-search">
+                            <input class="chosen-search-input" type="text" autocomplete="off">
+                          </div>
+                          <ul class="chosen-results"></ul>
+                        </div>
+                      </div>
+                      <input type="hidden" name="TourTypeId" value="2">
+                      <input type="hidden" name="ConCho" value="-1">
+                      <input type="hidden" name="DongTour" value="0">
+                      <input type="hidden" name="PriceId" value="0">
+                      <input type="hidden" name="submitButton" value="SearchTour">
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                    <div class="row" style="position: relative;">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group" style="position: relative;">
+                          <div style="position: absolute;left: 16px; top: 18px;">
+                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                          </div>
+                          <div style="position: absolute;left: 50px; top: 12px;">
+                            <span style="color: rgb(240, 67, 58); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f14e46;" data-darkreader-inline-color="">Từ ngày</span>
+                          </div>
+                          <input autocomplete="off" class="form-control new" name="DepartureDate" id="DepartureDateOB" type="text" value=" 09/05/2021" placeholder="09/05/2021">
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                        <div class="form-group" style="position: relative;">
+                          <div style="position: absolute;left: 16px; top: 18px;">
+                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                          </div>
+                          <div style="position: absolute;left: 50px; top: 12px;">
+                            <span style="color: rgb(240, 67, 58); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f14e46;" data-darkreader-inline-color="">Đến ngày</span>
+                          </div>
+                          <input autocomplete="off" class="form-control new" name="DepartureDateTo" id="DepartureDateToOB" type="text" value=" 09/06/2021" placeholder="09/06/2021">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 gb-tim">
+                    <div class="text-right">
+                      <button type="submit" onclick="return checkSearch('departureIDOB');" class="btn btn-default btn-lg btn-timtour2"><i class="fas fa-search"></i>&nbsp;&nbsp;Tìm kiếm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form action="/Combo/SearchFirst" method="post">
+      <input name="__RequestVerificationToken" type="hidden" value="13oM1qffwmt6UQfP47jsDWg-qtykjniLiEh8XJ-Ho6BkbaJv1W_DnhGpVMYcAigKga18I0xLbO7y9CkBCaHLUlYJZQXFQDjDT71CziC3-Tw1">
+      <div class="form-info-search bg-dltc pos-relative" style="display: none;">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="triangle-up"></div>
+              <div class="pad-tb">
+                <div class="row">
+                  <div class="col-xs-12 mg-bot15">
+                    <div style="font-size: 16px; line-height: 24px; color: rgb(33, 33, 33); --darkreader-inline-color:#d3cfca;" data-darkreader-inline-color="">
+                      Nơi khởi hành:&nbsp;&nbsp;
+                      <select class="nkh text-dltc" id="comboDepartureId" name="departureID"></select>
+                    </div>
+                  </div>
+                  <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="display:none;">
+                    <div class="form-group noidia" style="position: relative;">
+                      <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
+                        <img src="/Content/ThemeHe/img/i-price.png" alt="price">
+                      </div>
+                      <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
+                        <span style="color: rgb(242, 163, 15); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f3ac27;" data-darkreader-inline-color="">Combo</span>
+                      </div>
+                      <select name="LoaiCombo" id="LoaiCombo" class="chosen-select" style="display: none;">
+                        <option value="0">Vui lòng chọn loại combo thích hợp cho chuyến đi của bạn</option>
+                        <option value="2">Combo nghỉ dưỡng cao cấp</option>
+                        <option value="4">Combo nghỉ dưỡng tiêu chuẩn</option>
+                        <option value="6">Combo trải nghiệm</option>
+                      </select>
+                      <div class="chosen-container chosen-container-single" title="" id="LoaiCombo_chosen" style="width: 0px;">
+                        <a class="chosen-single">
+                          <span>Vui lòng chọn loại combo thích hợp cho chuyến đi của bạn</span>
+                          <div><b></b></div>
+                        </a>
+                        <div class="chosen-drop">
+                          <div class="chosen-search">
+                            <input class="chosen-search-input" type="text" autocomplete="off">
+                          </div>
+                          <ul class="chosen-results"></ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group noidia" style="position: relative;">
+                      <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
+                        <img src="/Content/ThemeHe/img/i-map2.png" alt="map">
+                      </div>
+                      <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
+                        <span style="color: rgb(242, 163, 15); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f3ac27;" data-darkreader-inline-color="">Bạn muốn đi đâu?</span>
+                      </div>
+                      <select name="CBTinhThanh" id="CBTinhThanh" class="chosen-select" style="display: none;">
+                        <option value="0">Vui lòng chọn địa điểm hay tên khách sạn </option>
+                        <option value="5f451d79-fc4b-4569-b3d1-fa78adc187b3">An Giang</option>
+                        <option value="332a5123-f3f8-4710-9526-140691edea17">Bà Rịa - Vũng Tàu</option>
+                        <option value="99faba2a-fcc5-4a00-b97f-67fa3bb5c4f4">Cần Thơ</option>
+                        <option value="7de7451c-22b2-4c51-aada-8883df39164b">Côn Đảo</option>
+                        <option value="c704a1a3-be74-455a-b904-10c3c0ff3c3e">Đà Lạt</option>
+                        <option value="5f4520e7-c63b-4c57-b417-d91091c2093a">Đà Nẵng</option>
+                        <option value="e1c0aaca-911e-4d79-aab5-3520002cad67">Hạ Long</option>
+                        <option value="c5fe8aff-4c66-4907-954d-a3d9577cfd09">Hà Nội</option>
+                        <option value="76002619-5294-4ab4-a219-3be78868d550">Hoà Bình</option>
+                        <option value="05edcf1f-c950-4465-addc-10f6827ab752">Nha Trang</option>
+                        <option value="2ba10470-dd7d-42ff-8e23-37430c19e801">Ninh Bình</option>
+                        <option value="e68a2c40-095a-4cf3-a3ec-3c9c1af2de25">Ninh Thuận</option>
+                        <option value="5c5837db-4eb6-4e44-a486-54d29d65d8dd">Phan Thiết</option>
+                        <option value="80aaad72-03c8-449c-97ad-cfb26a1a215a">Phú Quốc</option>
+                        <option value="5e4f05c1-d47a-4960-8c9d-d8e17b81b7d7">Phú Yên</option>
+                        <option value="a51cccff-021d-4263-9aca-eb25d5bf0c16">Quảng Bình</option>
+                        <option value="e0f8e055-aecd-4a3a-a22b-2bd236de12fe">Quảng Ninh</option>
+                        <option value="4506c020-f5ff-4357-89d2-0d1d6cfc98b7">Quy Nhơn</option>
+                        <option value="a8ca2519-c622-4eb1-84ae-ec7aa608df3a">Sapa</option>
+                        <option value="6d910462-7f5e-4272-8c1c-7c84bcaaf03d">Thanh Hoá</option>
+                        <option value="33371d95-ad67-4e76-bc04-c8d23cdd3fcf">Tiền Giang</option>
+                        <option value="ce934e15-eb2e-454c-8235-2d5bef57a855">Tp. HCM</option>
+                        <option value="f7ca90bc-bef8-41dc-9702-265f588f011b">Yên Bái</option>
+                        <option value="a4ebfecb-3b75-4f81-877a-d0d482b3ecd6">Combo 2N1Đ Khách sạn Mường Thanh Holiday Mũi Né</option>
+                        <option value="5d576f92-bcc1-4b6b-81e0-9471d4298a39">Combo 3N2Đ Khách sạn Mường Thanh Grand Nha Trang</option>
+                        <option value="84035be3-b9a9-492b-915e-892c4d72168f">Combo TripU 2N1Đ Emeralda Resort Ninh Bình</option>
+                        <option value="7f8e56e8-2ea3-4318-84d6-46b4ea4febf3">Combo Tripu 2N1Đ Khách sạn Azerai Cần Thơ</option>
+                        <option value="4b6529f3-8f48-4c23-b72b-d00312b06fc3">Combo Tripu 2N1Đ Khách sạn Cồn Khương Cần Thơ</option>
+                        <option value="ab3e27d0-e612-4cd2-9bb5-6587ec16475d">Combo TripU 2N1Đ Khách sạn D'LIORO Hạ Long</option>
+                        <option value="2406986a-686a-4bab-b3ec-3341caba16c5">Combo Tripu 2N1Đ Khách sạn Ecolodge Cần Thơ</option>
+                        <option value="8869c17e-0f55-4900-80fe-51307dc95768">Combo TripU 2N1Đ Khách sạn FLC Grand Hạ Long</option>
+                        <option value="20e6f8f3-abc2-4061-8368-78d5c0c3589e">Combo TripU 2N1Đ Khách sạn FLC Sầm Sơn</option>
+                        <option value="19336ef5-2f7d-4ac5-94f2-7f648ca259c6">Combo TripU 2N1Đ Khách sạn Ibis Styles Vũng Tàu</option>
+                        <option value="fd03ea14-d7d1-484e-9f47-4ab968d2a94c">Combo TripU 2N1Đ Khách sạn KK Sapa</option>
+                        <option value="33ba2e57-646b-40fb-8319-a3c2fcb2a858">Combo TripU 2N1Đ Khách sạn Malibu Vũng Tàu</option>
+                        <option value="a830dd0d-d16b-4ea5-abe4-32da0825386e">Combo TripU 2N1Đ Khách sạn Mekong Lodge</option>
+                        <option value="3331101b-b48f-4638-b681-48fb5a85d8f9">Combo TripU 2N1Đ Khách sạn Mercure Vũng Tàu</option>
+                        <option value="ac1f4b8c-4a34-4c14-ada2-0a977ba9c8fe">Combo Tripu 2N1Đ Khách sạn Mường Thanh Luxury Cần Thơ</option>
+                        <option value="27fe8965-adfe-4d75-8d12-cdafbd9594e4">Combo TripU 2N1Đ Khách sạn New Wave Vũng Tàu</option>
+                        <option value="0727e4d1-e372-4485-bd4c-a7d2ec9ec5f5">Combo TripU 2N1Đ Khách sạn Paradise Suites</option>
+                        <option value="214c91cf-71e3-4ed5-ab20-1f6c81b47a06">Combo TripU 2N1Đ Khách sạn Pistachio Sapa</option>
+                        <option value="c55bc9d9-ac09-4dda-a0c0-022066a91027">Combo TripU 2N1Đ Khách sạn Pullman Vũng Tàu</option>
+                        <option value="3203be2e-8ad9-4e50-9dec-342bafdda117">Combo TripU 2N1Đ Khách sạn Victoria Núi Sam Lodge</option>
+                        <option value="d988122c-f4db-46ec-b630-eaba2dbd42f4">Combo TripU 2N1Đ Khu nghỉ dưỡng Six Senses Côn Đảo</option>
+                        <option value="a4b656a3-5ba5-40a5-b0f6-4e64cffc0892">Combo TripU 2N1Đ Lan Rừng Phước Hải Resort</option>
+                        <option value="9f118330-83cc-46a9-bfa2-efa375c10d95">Combo TripU 2N1Đ Mai Chau Hideaway Lake Resort Hòa Bình</option>
+                        <option value="91ba3465-f3a2-4cf2-b855-d1676c262824">Combo TripU 2N1Đ Marina Bay Côn Đảo Hotel</option>
+                        <option value="49e31b66-b5aa-4dcd-b3db-364055a583f1">Combo TripU 2N1Đ Mekong Ecolodge Bungalow</option>
+                        <option value="6fae0c2b-f52d-41a2-a06c-15960ea0dd30">Combo TripU 2N1Đ Mekong Riverside Boutique Resort &amp; Spa</option>
+                        <option value="ea1c222a-2ae5-4b16-8c55-6718959ced0d">Combo TripU 2N1Đ Melia Hồ Tràm Beach Resort</option>
+                        <option value="9ad1369a-2636-4bfa-aa10-16b6c866bdc4">Combo TripU 2N1Đ Minera Hot Springs Bình Châu</option>
+                        <option value="06fdecc8-5f5d-4448-bf9d-d5369664ee33">Combo TripU 2N1Đ Poulo Condor Boutique Resort &amp; Spa Côn Đảo</option>
+                        <option value="7e98e6be-f092-4e41-9562-0b8db6412bfa">Combo TripU 2N1Đ Puluong Retreat Thanh Hóa</option>
+                        <option value="a76aa05e-4d53-45a7-ab3e-ab255ac66d61">Combo TripU 2N1Đ Seava Hồ Tràm Beach Resort</option>
+                        <option value="b8c1b621-c7b5-48ec-acb9-2e96b53741c8">Combo TripU 2N1Đ Serena Resort Kim Bôi</option>
+                        <option value="dbb985d2-707b-42ca-89a7-e96f3ceb1ca6">Combo TripU 2N1Đ Silk Path Grand Resort &amp; Spa</option>
+                        <option value="49b1a1df-e5ff-4c36-bb8d-13d29867d3b0">Combo TripU 2N1Đ Tân Sơn Nhất Côn Đảo Resort</option>
+                        <option value="b22d6dd5-8937-4dfe-8286-eb5ae9d73161">Combo TripU 2N1Đ Vinpearl Resort &amp; Spa Hạ Long</option>
+                        <option value="dfcd896d-a170-446c-97dc-f919c24be516">COMBO TRIPU 3N2D AN MỘC GIA TRANG BUNGALOW ĐÀ LẠT</option>
+                        <option value="493811eb-f704-4950-bd0f-de1617d632a3">Combo TripU 3N2Đ Avani Quy Nhơn Resort &amp; Spa </option>
+                        <option value="439ff087-1c72-4427-922e-909f24dd5b19">Combo TripU 3N2Đ Best Western Premier Sonasea Phú Quốc</option>
+                        <option value="9af5f8a0-8ee3-4a41-a2b0-e00bfbe532c4">Combo TripU 3N2Đ Côn Đảo Resort</option>
+                        <option value="80dc2ab0-6e91-4c86-8e25-12c29bc6e769">Combo TripU 3N2Đ Crown Retreat Trung Lương Bình Định</option>
+                        <option value="1face4e8-4bf0-49d8-b993-2f8ef5f3fcd1">Combo TripU 3N2Đ Đà Lạt Wonder Resort</option>
+                        <option value="b80efbc9-5af8-4f8c-8fee-20763bc70da8">Combo TripU 3N2Đ Edensee Lake Resort &amp; Spa Đà Lạt</option>
+                        <option value="0096b16a-9dd6-4abe-8bf3-c6636b144563">Combo TripU 3N2Đ Fusion Resort Phú Quốc</option>
+                        <option value="45575896-f426-4cd5-9cd9-5e3ee2be0bf1">Combo TripU 3N2Đ Hôtel Colline Đà Lạt</option>
+                        <option value="d9b03a4d-7bde-4439-a6a2-4e0fb6874a75">Combo TripU 3N2Đ Hôtel Colline Đà Lạt</option>
+                        <option value="a25fabe4-c6bf-4829-bb59-02b6681d675f">Combo TripU 3N2Đ InterContinental Đà Nẵng Sun Peninsula Resort</option>
+                        <option value="09cad6dc-23aa-4d13-a9de-f7b731001a85">Combo TripU 3N2Đ InterContinental Phú Quốc Long Beach Resort</option>
+                        <option value="3bc8b827-4e6b-404b-b5be-e96548386c1d">Combo TripU 3N2Đ JW Marriott Phu Quoc Emerald Bay Resort &amp; Spa</option>
+                        <option value="7e804ae1-1309-4806-bf70-953830bc238e">Combo TripU 3N2Đ Khách sạn Amazing Sapa</option>
+                        <option value="101d1218-899f-425a-a7dd-3f39bd8f9f37">Combo TripU 3N2Đ Khách sạn Anya Premier Quy Nhơn</option>
+                        <option value="b9c3f8a3-837a-4b33-939e-097321924c13">Combo TripU 3N2Đ Khách sạn ANYA Quy Nhơn</option>
+                        <option value="02dcb599-158b-4759-bca0-5c4ea96219e1">Combo TripU 3N2Đ Khách sạn AVS Phú Quốc</option>
+                        <option value="f20e0a85-d848-4e2d-9403-60455d8b50f6">Combo TripU 3N2Đ Khách sạn Bamboo Sapa</option>
+                        <option value="bf0bc0b6-5053-4b35-b87f-a19776069eec">Combo TripU 3N2Đ Khách sạn De La Coupole Sapa - MGallery by Sofitel</option>
+                        <option value="404804d1-c86b-419f-8f93-38ce82cf41f6">Combo TripU 3N2Đ Khách sạn De La Coupole Sapa - MGallery by Sofitel</option>
+                        <option value="b08134bd-9e3e-471e-abaf-d04f70cf1c67">Combo TripU 3N2Đ Khách sạn Dendro Gold Nha Trang</option>
+                        <option value="35aca3bf-f6b9-496c-b3c9-5fe5d26e6c8a">Combo Tripu 3N2Đ Khách sạn D'qua Nha Trang</option>
+                        <option value="af06c8a3-6d23-41f4-8091-1e10c025f7ab">Combo TripU 3N2Đ Khách sạn Dragon King 1</option>
+                        <option value="66952503-f3f8-4e7d-9335-e98e5ef5fb18">Combo TripU 3N2Đ Khách sạn Eastin Grand Nha Trang</option>
+                        <option value="39732834-e26b-403a-816e-72247089467c">Combo TripU 3N2Đ Khách sạn Emerald Bay Nha Trang</option>
+                        <option value="40b05abb-d0f2-48c3-ae60-4eaadd02d881">Combo TripU 3N2Đ Khách sạn Fivitel Đà Nẵng</option>
+                        <option value="db860257-5e2b-48d7-91dc-0fab35d93afe">Combo TripU 3N2Đ Khách sạn FLC Luxury Quy Nhơn</option>
+                        <option value="9a70d682-49c6-45a4-bc7b-1b7207f6af2a">Combo TripU 3N2Đ Khách sạn Four Points by Sheraton Đà Nẵng</option>
+                        <option value="b40a2757-855d-4ef6-8d84-50ca344343d2">Combo TripU 3N2Đ Khách sạn Golden Bay Đà Nẵng</option>
+                        <option value="8464771b-8e36-4b3a-82be-c952723907c7">Combo TripU 3N2Đ Khách sạn Golf Valley Đà Lạt</option>
+                        <option value="31fd973c-84f9-479a-8a65-f2b93f9e2ba5">Combo TripU 3N2Đ Khách sạn Golf Valley Đà Lạt</option>
+                        <option value="35b05f2a-e697-4bb4-b319-e552662ba353">Combo TripU 3N2Đ Khách sạn Grand Mercure Đà Nẵng</option>
+                        <option value="d06cc10a-c299-4f96-a9e8-687724b6950b">Combo TripU 3N2Đ Khách sạn Happy Phú Quốc</option>
+                        <option value="28f95962-ead3-478d-8bc3-43fb91656172">Combo TripU 3N2Đ Khách sạn Hilton Đà Nẵng</option>
+                        <option value="7bff0443-836a-470e-a3cd-bae3ef9b8b07">Combo TripU 3N2Đ Khách sạn Hoàng Yến 2 Quy Nhơn</option>
+                        <option value="a96a29e0-a1eb-43c3-9e6b-82716ca86f43">Combo TripU 3N2Đ Khách sạn Hoàng Yến Quy Nhơn</option>
+                        <option value="ae72f1c5-1c6a-41da-85e5-bf0b74180eb3">Combo TripU 3N2Đ Khách sạn Holiday Phú Quốc</option>
+                        <option value="f2d65bdc-394f-41dd-a96c-74f8ac9ca62f">Combo TripU 3N2Đ Khách sạn Homestead Phú Quốc</option>
+                        <option value="a2f39a9e-94aa-488f-8e21-daf082242211">Combo TripU 3N2Đ Khách sạn Ibiza Riverfront</option>
+                        <option value="2b511193-ac28-4af8-a0ca-0afdb4b5bf34">Combo TripU 3N2Đ Khách sạn InterContinental Nha Trang</option>
+                        <option value="88302be8-6d5b-4821-8c8a-e1f70195f76d">Combo TripU 3N2Đ Khách sạn KK Sapa</option>
+                        <option value="6082b24e-37ab-4285-8614-9a5108e580ad">Combo TripU 3N2Đ Khách sạn KK Sapa</option>
+                        <option value="bfd16ba5-ab12-4469-adc3-0dc0aefaa879">Combo TripU 3N2Đ Khách sạn Ladalat</option>
+                        <option value="ed35a886-fb3b-493d-9372-ddc051179c04">Combo TripU 3N2Đ Khách sạn Ladalat</option>
+                        <option value="6c59e335-5356-43c7-a532-15643ac296f0">Combo TripU 3N2Đ Khách sạn Lan Anh Đà Lạt</option>
+                        <option value="41b76652-273c-4c40-9282-de8edc978466">Combo TripU 3N2Đ Khách sạn Legacy Yên Tử - Mgallery</option>
+                        <option value="160b1b8d-04aa-4f84-9211-c82b0ac21b6b">Combo Tripu 3N2Đ Khách sạn Lemore Nha Trang</option>
+                        <option value="75770776-e449-49e4-a89f-1ebdb4ddb789">COMBO TRIPU 3N2D KHÁCH SẠN LIIBRARY BOUTIQUE ĐÀ LẠT</option>
+                        <option value="faed7c85-e038-47e3-8e4a-7e9ad638c923">Combo TripU 3N2Đ Khách sạn Mai Thắng Đà Lạt</option>
+                        <option value="6c8856c7-12bc-4d7e-83ee-f8c85204df2f">Combo TripU 3N2Đ Khách sạn Mường Thanh Holiday Đà Lạt</option>
+                        <option value="36c55449-e5bd-4c2b-8add-237c4472e1f8">Combo Tripu 3N2Đ Khách sạn Mường Thanh Holiday Mũi Né</option>
+                        <option value="c15663df-36e2-40a4-b826-9c622f753de5">Combo TripU 3N2Đ Khách sạn Mường Thanh Holiday Quảng Bình</option>
+                        <option value="db80df54-761c-436e-b02c-937c558da58e">Combo TripU 3N2Đ Khách sạn Mường Thanh Luxury Đà Nẵng</option>
+                        <option value="2b2343a9-49db-4a5d-ad23-d9a2ab1bc733">Combo TripU 3N2Đ Khách sạn Mường Thanh Quy Nhơn</option>
+                        <option value="471d84fc-8e05-439c-a596-fc5a0d7924fc">Combo TripU 3N2Đ Khách sạn Nalod Đà Nẵng</option>
+                        <option value="9ab5e77c-166b-41c8-bac6-14f60e1f814c">Combo TripU 3N2Đ Khách Sạn Nesta Hà Nội</option>
+                        <option value="6091ebbb-3cf6-46af-9610-aaf3edf54e50">Combo TripU 3N2Đ Khách sạn Nesta Phú Quốc</option>
+                        <option value="a25c2478-cab9-4000-bad8-cac86a5a1edf">Combo TripU 3N2Đ Khách sạn New Wave Vũng Tàu</option>
+                        <option value="d1f47ae6-147d-4db7-91d7-b5fdb042b7bc">Combo TripU 3N2Đ Khách sạn Orange Quy Nhơn</option>
+                        <option value="7116b884-d872-45b6-b83f-d20f4bafbda7">Combo TripU 3N2Đ Khách sạn Phước Mỹ An Beach</option>
+                        <option value="abec36e2-151d-45ab-9c95-01be89c06324">Combo TripU 3N2Đ Khách sạn Pistachio Sapa</option>
+                        <option value="543225ed-e8cb-4c20-83bf-3acd16397a71">Combo TripU 3N2Đ Khách sạn Pistachio Sapa</option>
+                        <option value="99ecc7ac-7cae-453d-9626-f0e569069d86">Combo TripU 3N2Đ Khách sạn Pullman Đà Nẵng </option>
+                        <option value="90aa7d0b-c404-4fd5-afe6-0d6919ffadbe">Combo TripU 3N2Đ Khách Sạn Pullman Hà Nội</option>
+                        <option value="ea482161-ec7e-47bc-8581-153d575cb0c8">Combo TripU 3N2Đ Khách sạn Renaissance Riverside Sài Gòn</option>
+                        <option value="62a980bf-02ef-409b-bd01-4cf36ea511ad">Combo TripU 3N2Đ Khách sạn Sammy Đà Lạt</option>
+                        <option value="a82eaf24-3722-4d1b-8b0b-5e8de989af7f">Combo TripU 3N2Đ Khách sạn Seagull (Hải Âu) Quy Nhơn</option>
+                        <option value="79fa2f99-cea7-4017-b10e-052f5c8b30a5">Combo TripU 3N2Đ Khách sạn Star City Nha Trang</option>
+                        <option value="6e1fcbbe-19f9-4576-9830-8e750dec43f7">Combo TripU 3N2Đ khách sạn Sunny Mountain Sapa</option>
+                        <option value="fdae4f09-2a66-4a64-a92d-d6169379fa7a">Combo TripU 3N2Đ Khách sạn The Cliff Resort &amp; Residences Mũi Né</option>
+                        <option value="c7e2f81b-e3f6-4bf5-a1e0-0c5c08703e22">Combo TripU 3N2Đ Khách Sạn The Light Hà Nội</option>
+                        <option value="70df4b27-3f0c-49fa-a1f7-1aeed87ee5a1">Combo TripU 3N2Đ Khách sạn The Sailing Bay Nha Trang</option>
+                        <option value="8c13e09a-95b9-4ed2-b7ab-30e25987198e">Combo TripU 3N2Đ Khách sạn TTC Ngọc Lan Đà Lạt</option>
+                        <option value="c89f9cfa-c9a3-496b-8ee6-ed9dc308d807">Combo TripU 3N2Đ Khách sạn TTC Ngọc Lan Đà Lạt</option>
+                        <option value="436b7019-383a-4f70-a369-b27256aa653e">Combo TripU 3N2Đ Khách sạn Virgo Nha Trang</option>
+                        <option value="6e853a63-72c5-41b6-b944-f01076dfbe95">Combo TripU 3N2Đ Khu nghỉ dưỡng &amp; Spa Victoria Sapa</option>
+                        <option value="70035095-309f-456c-83cb-530d0b3e40b8">Combo TripU 3N2Đ Khu nghỉ dưỡng Sandy Beach Non Nước</option>
+                        <option value="cc5d4df1-a12f-4589-9abe-88f307951deb">Combo Tripu 3N2Đ Khu nghỉ dưỡng Six Senses Côn Đảo</option>
+                        <option value="1cafcc9d-1902-4b3b-b2a2-1652cfcbe505">Combo TripU 3N2Đ Le Champ Tú Lệ Resort</option>
+                        <option value="dfc5d481-5496-4473-ad4b-c2fcfce0a4ba">Combo TripU 3N2Đ Movenpick Resort Waverly Phú Quốc</option>
+                        <option value="3da8323e-57dd-4415-8f5a-9b7c1a9155e6">Combo TripU 3N2Đ Mường Thanh Luxury Phú Quốc</option>
+                        <option value="76385648-b40d-493d-be0c-ae0aa7ef493b">Combo TripU 3N2Đ Naman Retreat Đà Nẵng</option>
+                        <option value="f9e523a2-1ec0-4616-86d3-513229fd7dac">Combo TripU 3N2Đ Nhà Khách Côn Đảo</option>
+                        <option value="afb7f797-5e9d-42a5-b0ff-e235f38257bb">Combo Tripu 3N2Đ Novela Mui Ne Resort &amp; Spa</option>
+                        <option value="deb58854-eee3-4f1f-86db-e47eb47f9ce4">Combo TripU 3N2Đ Novela Mũi Né Resort &amp; Spa</option>
+                        <option value="7b3dfe6b-07e2-4edd-90c0-d0159b53b5a4">Combo TripU 3N2Đ Novotel Phú Quốc Resort</option>
+                        <option value="57ce951e-5a4c-48e9-9dd7-26ca8bb5c009">Combo Tripu 3N2Đ Phú Hải Beach Resort &amp; Spa Phan Thiết</option>
+                        <option value="bc569b80-60d6-4a8e-a898-8224fe7c6e1c">Combo TripU 3N2Đ Premier Residences Phú Quốc Emerald Bay</option>
+                        <option value="d713c375-f874-4998-92a2-817626bf5dd0">Combo TripU 3N2Đ Premier Village Phú Quốc Resort</option>
+                        <option value="b0d39bed-fa87-41ca-a8e5-0cff01c6300f">Combo TripU 3N2Đ Pullman Phú Quốc Beach Resort</option>
+                        <option value="3f57603e-62de-4980-9867-f7bd0a860a59">Combo Tripu 3N2Đ Queen T&amp;T Đà Lạt</option>
+                        <option value="3a9ade15-2463-4b14-8b98-783b200227d9">Combo TripU 3N2Đ Radisson Blu Resort Phú Quốc</option>
+                        <option value="08d35a7a-585d-45dc-a160-36ab6394ee15">Combo Tripu 3N2Đ Romana Resort &amp; Spa Phan Thiết</option>
+                        <option value="71bf4ef1-b083-47bb-9cac-13ef0b200096">Combo TripU 3N2Đ Salinda Resort Phú Quốc</option>
+                        <option value="8b309926-8810-44ca-907c-b0a9c5a606c0">Combo TripU 3N2Đ Salmalia Boutique Hotel &amp; Spa Đà Nẵng</option>
+                        <option value="4be056b2-9d96-49b4-bdde-b2c7fb26a009">Combo TripU 3N2Đ San Marino Boutique Đà Nẵng</option>
+                        <option value="e6a92269-ce53-4ed9-9d29-e42b781a9cc3">Combo TripU 3N2Đ Sapa Jade Hill Resort &amp; Spa</option>
+                        <option value="a42531dd-0d9a-4052-b7ba-4ffb04c85e7d">Combo TripU 3N2Đ Seashells Hotel &amp; Spa Phú Quốc</option>
+                        <option value="2c3712f4-96c2-462c-a8d3-a8b0cb31cecc">Combo TripU 3N2Đ Seaside Boutique Resort Quy Nhơn</option>
+                        <option value="5292b224-c91c-43d6-8035-86279814cffc">Combo TripU 3N2D Silk Path Grand Resort &amp; Spa</option>
+                        <option value="6a1c70b4-a988-45e2-99b0-a741ad02d923">Combo TripU 3N2Đ Silk Path Grand Resort &amp; Spa</option>
+                        <option value="c5395364-6a69-4976-89e2-923091330753">Combo TripU 3N2Đ SOL by Melia Phú Quốc</option>
+                        <option value="3dd647f4-873c-4544-ab9e-0f76efe50706">Combo TripU 3N2Đ Sunset Beach Resort &amp; Spa</option>
+                        <option value="29cbf970-1e87-477b-96bb-ff81939a732e">Combo TripU 3N2Đ Sunset Sanato Resort &amp; Villas Phú Quốc</option>
+                        <option value="3b0c657d-1099-446e-be99-bd6cfed8e92f">Combo TripU 3N2Đ Tân Sơn Nhất Côn Đảo Resort</option>
+                        <option value="5eee7a61-1a0f-41df-b766-3b3a6eca867f">Combo TripU 3N2Đ Terracotta Hotel &amp; Resort Đà Lạt</option>
+                        <option value="e8a5716a-aa7c-4a27-8be2-8dc3dddb14ec">Combo TripU 3N2Đ Terracotta Hotel &amp; Resort Đà Lạt</option>
+                        <option value="6a36326f-f440-415c-9c21-f7eb50cd7d26">Combo TripU 3N2Đ The Palmy Phú Quốc Resort &amp; Spa</option>
+                        <option value="704015d6-c992-46dc-813b-4400c4c3b73c">COMBO TRIPU 3N2D Trải nghiệm 1 đêm sống chậm giữa thiên nhiên với Đà Lạt Camp</option>
+                        <option value="bc263172-6bda-44ac-a35f-2c16255c753a">Combo TripU 3N2Đ Victoria Phan Thiết Beach Resort &amp; Spa</option>
+                        <option value="e25fcac2-5449-4f86-b193-e9734857fe16">Combo Tripu 3N2Đ Vinpearl Resort &amp; Spa Nha Trang Bay</option>
+                        <option value="d61bd693-e4d7-422d-a83e-d60f91bdae1e">Combo TripU 4N3Đ Avani Quy Nhơn Resort &amp; Spa</option>
+                        <option value="0d80b84d-321c-41ff-980e-d0ee05d191ac">Combo TripU 4N3Đ Khách sạn Anya Premier Quy Nhơn</option>
+                        <option value="b5fc2538-7026-40f1-84aa-898144886b5b">Combo TripU 4N3Đ Khách sạn ANYA Quy Nhơn</option>
+                        <option value="f0bf12e1-7a39-4edd-a9fd-619bfffd0864">Combo TripU 4N3Đ Khách sạn AVS Phú Quốc</option>
+                        <option value="0a1bd6a6-6824-4792-9136-9dde1b64ed77">Combo TripU 4N3Đ Khách sạn Dendro Gold Nha Trang</option>
+                        <option value="3ad56f6f-ea93-473c-b924-69c393461eee">Combo TripU 4N3Đ Khách sạn Emerald Bay Nha Trang</option>
+                        <option value="63cb93c2-4e86-4387-895c-f32927bb4b0c">Combo TripU 4N3Đ Khách sạn Holiday Phú Quốc</option>
+                        <option value="90a4e470-5c14-43ea-ac2e-07df52ed5495">Combo TripU 4N3Đ Khách sạn Homestead Phú Quốc</option>
+                        <option value="db650318-f681-444e-898c-13fea93d8b31">Combo TripU 4N3Đ Khách sạn InterContinental Nha Trang</option>
+                        <option value="8506842a-31a8-4def-83fb-d851782cebf5">Combo TripU 4N3Đ Khách sạn Liberty Central Nha Trang</option>
+                        <option value="c4551207-831b-4646-aeb7-f8a001bbbd28">Combo TripU 4N3Đ Khách sạn Mường Thanh Holiday Vũng Tàu</option>
+                        <option value="e8bc4774-1588-4d6b-a677-da9cabc79b9c">Combo TripU 4N3Đ Khách sạn Mường Thanh Luxury Cần Thơ</option>
+                        <option value="4f8e1003-434d-444d-963d-fca3dd194667">Combo TripU 4N3Đ Khách sạn Mường Thanh Luxury Nha Trang</option>
+                        <option value="133cd424-ea8c-4211-ac1c-f1589c3ebb71">Combo TripU 4N3Đ Khách sạn Mường Thanh Luxury Phú Quốc</option>
+                        <option value="c106a727-2778-4bda-b43c-68faf7e65615">Combo TripU 4N3Đ Khách Sạn Nesta Hà Nội</option>
+                        <option value="39dbde54-d4b3-493f-90af-b4cb62ee3dbf">Combo TripU 4N3Đ Khách sạn Nesta Phú Quốc</option>
+                        <option value="53b85467-c69b-41c0-9e72-cf15c36be315">Combo TripU 4N3Đ Khách sạn New Wave Vũng Tàu</option>
+                        <option value="0b6a9eae-70c7-470b-8432-8a92813aa1ca">Combo TripU 4N3Đ Khách sạn Phước Mỹ An Beach</option>
+                        <option value="ff4c0641-c74b-4d21-997c-4ac65c29da11">Combo TripU 4N3Đ Khách sạn Renaissance Riverside Sài Gòn</option>
+                        <option value="d24b0c94-b332-422f-b903-79b11f220bb3">Combo TripU 4N3Đ Khách sạn Seagull (Hải Âu) Quy Nhơn</option>
+                        <option value="1c300e16-7114-4ac2-9c92-ffe2576ce068">Combo TripU 4N3Đ Khách Sạn The Light Hà Nội</option>
+                        <option value="25f537ab-642f-48e5-9745-c8c9fbe8dd57">Combo TripU 4N3Đ Khách sạn The Sailing Bay Nha Trang</option>
+                        <option value="0b2598db-352e-435d-8731-766eadd4186b">Combo TripU 4N3Đ Khách sạn TTC Hotel Cần Thơ</option>
+                        <option value="532cb410-d9f3-4a6c-8782-4a690e21e463">Combo TripU 4N3Đ Khu nghỉ dưỡng &amp; Spa Victoria Sapa</option>
+                        <option value="e0210cb3-7c30-450e-af9f-c67b3282f953">Combo TripU 4N3Đ Novela Mũi Né Resort &amp; Spa</option>
+                        <option value="dfc5461c-b853-4b6b-9c7d-d7ae074368d2">Combo TripU 4N3Đ Premier Residences Phú Quốc Emerald Bay</option>
+                        <option value="af97c455-3350-4157-82db-4edc90aaed5d">Combo TripU 4N3Đ Radisson Blu Resort Phú Quốc</option>
+                        <option value="96517a0c-a037-4675-8d26-2b97af6b660c">Combo TripU 4N3Đ The Palmy Phú Quốc Resort &amp; Spa</option>
+                        <option value="ac10dd1f-3dd2-4158-8e60-24c7d7cab7cf">Combo TripU 4N3Đ Vietsovpetro Resort Hồ Tràm</option>
+                        <option value="55607bc2-4b95-4802-b1e9-15deb2ba433e">Vinpearl Phú Quốc Combo TripU 3N2Đ Vinholidays Fiesta (VinHolidays 1)</option>
+                        <option value="7e7afb58-168b-4233-8c38-cb47dc8e5c43">VINPEARL PHÚ QUỐC COMBO TRIPU 3N2D VINOASIS</option>
+                        <option value="6d1f1bef-1d9a-4592-be6e-0da14b813383">VINPEARL PHÚ QUỐC COMBO TRIPU 3N2D VINOASIS</option>
+                        <option value="d551b31b-4bb9-47db-868d-89c0f11a2715">VINPEARL PHÚ QUỐC COMBO TRIPU 3N2D VINOASIS</option>
+                        <option value="b4c1b84f-1fff-4457-b7e5-8c281ebde65b">VINPEARL PHÚ QUỐC COMBO TRIPU 3N2Đ VINOASIS</option>
+                        <option value="1bbbd7d7-1285-42a3-975d-5a2855edb8f0">Vinpearl Phú Quốc Combo TripU 4N3Đ Vinholidays Fiesta (VinHolidays 1)</option>
+                        <option value="85d1a74f-0d2b-4bbb-bed1-ea899703f6e9">Vinpearl Phú Quốc Combo TripU 4N3Đ VinOasis</option>
+                      </select>
+                      <div class="chosen-container chosen-container-single" title="" id="CBTinhThanh_chosen" style="width: 0px;">
+                        <a class="chosen-single">
+                          <span>Vui lòng chọn địa điểm hay tên khách sạn </span>
+                          <div><b></b></div>
+                        </a>
+                        <div class="chosen-drop">
+                          <div class="chosen-search">
+                            <input class="chosen-search-input" type="text" autocomplete="off">
+                          </div>
+                          <ul class="chosen-results"></ul>
+                        </div>
+                      </div>
+                    </div>
+                    <input type="hidden" id="CBTinhThanhtext" name="CBTinhThanhtext" value="aaaa">
+                  </div>
+                  <div class="col-xs-12 gb-tim">
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-default btn-lg btn-md btn-timtour3" onclick="return ga('event', 'Search', 'SearchClick', 'keywords');"><i class="fas fa-search"></i>&nbsp;&nbsp;Tìm kiếm</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form action="/Booking/SearchBookingFirst" method="post">
+      <div class="form-info-search bg-dltt pos-relative" style="display: none;">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="triangle-up"></div>
+              <div class="pad-tb">
+                <div class="row">
+                  <div class="col-lg-2 col-md-9 col-sm-9 col-xs-12"></div>
+                  <div class="col-lg-8 col-xs-12">
+                    <div class="row">
+                      <div class="col-xs-12 mg-bot10">
+                        <p class="text-dltt" style="font-size: 20px;line-height: 24px;">Tra cứu thông tin booking</p>
+                      </div>
+                      <div class="col-xs-12">
+                        <div class="form-group" style="position: relative;">
+                          <div style="position: absolute;left: 16px; top: 18px;">
+                            <img src="/Content/ThemeHe/img/i-booking2.png" alt="booking">
+                          </div>
+                          <div style="position: absolute;left: 50px; top: 12px;">
+                            <span style="color: rgb(0, 140, 114); font-size: 14px; --darkreader-inline-color:#6affe3;" data-darkreader-inline-color="">Số booking</span>
+                          </div>
+                          <input id="pin_code" name="pin_code" class="form-control new" type="text" placeholder="Nhập số booking của bạn">
+                        </div>
+                      </div>
+                      <div class="col-xs-12">
+                        <div class="text-right">
+                          <button type="submit" class="btn btn-default btn-lg btn-tracuu"><i class="fas fa-search"></i>&nbsp;&nbsp;Tìm kiếm</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-9 col-sm-9 col-xs-12"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="form-info-search bg-vmb pos-relative" style="display: none;">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="triangle-up"></div>
+            <div class="pad-tb">
+              <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                  <div class="row">
+                    <div class="tab-content" id="Booking">
+                      <div class="booking-box">
+                        <form action="#" class="frm-booking step2" id="Booking" method="get">
+                          <h3 class="intro">Xin chào, bạn muốn đi đâu? </h3>
+                          <div class="wrap-col">
+                            <div class="inp-col">
+                              <div class="form-group">
+                                <div class="drp-location dropbtn">
+                                  <div class="icon-box"><i class="icon-location-pin icons"></i></div>
+                                  <p class="placeholder">Điểm đi</p>
+                                  <p class="dropval"></p>
+                                  <div class="input-holder"></div>
+                                  <input type="text" name="des_filter_from" value="" readonly="" class="inp-filter">
+                                  <input type="hidden" name="flight_from" id="flight_from" class="form-control" required="">
+                                  <div id="flightFrom" class="dropdown-content">
+                                    <div class="inn" id="pfrom">
+                                      <h4 class="title-list">Trong nước</h4>
+                                      <ul class="des-list">
+                                        <li><a data-option="0" data-index="0"><span class="name">Tp. Hồ Chí Minh</span><span class="cd">SGN</span></a></li>
+                                        <li><a data-option="0" data-index="1"><span class="name">Hà Nội</span><span class="cd">HAN</span></a></li>
+                                        <li><a data-option="0" data-index="2"><span class="name">Đà Nẵng</span><span class="cd">DAD</span></a></li>
+                                        <li><a data-option="0" data-index="3"><span class="name">Phú Quốc</span><span class="cd">PQC</span></a></li>
+                                        <li><a data-option="0" data-index="4"><span class="name">Đà Lạt</span><span class="cd">DLI</span></a></li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="inp-col">
+                              <div class="form-group">
+                                <div class="drp-location dropbtn">
+                                  <div class="icon-box"><i class="icon-location-pin icons"></i></div>
+                                  <p class="placeholder">Điểm đến</p>
+                                  <p class="dropval" id="dropvalto"></p>
+                                  <input type="text" name="des_filter_to" value="" class="inp-filter" readonly="">
+                                  <input type="hidden" name="flight_to" id="flight_to" class="form-control" required="">
+                                  <div id="flightTo" class="dropdown-content">
+                                    <div class="wrap-scroll">
+                                      <div class="inn" id="pto"></div>
+                                    </div>
+                                    <div class="close-bar">
+                                      <button><i class="fal fa-times-circle"></i></button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="inp-col st2">
+                              <div class="inp-place drp-date">
+                                <div class="icon-box"><i class="far fa-calendar-alt"></i></div>
+                                <div class="col-md-8 col-sm-8 col-xs-8 date-left">
+                                  <div class="date-start">
+                                    <p class="placeholder small">Ngày đi</p>
+                                    <input type="hidden" name="date_start" id="date_start" value="" class="form-control">
+                                  </div>
+                                  <div class="date-end">
+                                    <p class="placeholder small">Ngày về</p>
+                                    <input type="hidden" name="date_end" id="date_end" value="" class="form-control">
+                                  </div>
+                                  <div class="datestartend">
+                                    <input type="text" id="datestartview" class="form-control dshow" readonly="">
+                                    <input type="text" id="datestart" class="form-control dhidden" style="height: 1px; font-size: 0px; color: rgb(255, 255, 255); background-color: rgb(255, 255, 255); --darkreader-inline-color:#e8e6e3; --darkreader-inline-bgcolor:#181a1b;" readonly="" required="" data-darkreader-inline-color="" data-darkreader-inline-bgcolor="">
+                                  </div>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-4 date-right"><span><input type="checkbox" id="singleDatePicker"><br>Một chiều</span></div>
+                              </div>
+                            </div>
+                            <div class="inp-col st2">
+                              <div class="inp-place drp-customer">
+                                <div class="icon-box"><i class="fal fa-user-friends"></i></div>
+                                <div class="wr-inp drd-btn">
+                                  <p class="placeholder small">Hành khách</p>
+                                  <input type="text" name="customer_type" id="customer_type" value="1 Người lớn" readonly="" class="form-control customer_filter" required="">
+                                  <div class="dropdown-content">
+                                    <div class="wrap-scroll">
+                                      <p class="title-option">&nbsp;</p>
+                                      <ul class="list-option">
+                                        <li>
+                                          <div class="wr-type adults">
+                                            Người lớn
+                                            <div class="num-func">
+                                              <input type="number" name="num_adults" id="num_adult" value="1" class="custom-num">
+                                              <div class="btn-row">
+                                                <a class="btn-num" href="javascript:void(0);"><i class="far fa-minus"></i></a>
+                                                <a class="btn-num" href="javascript:void(0);"><i class="far fa-plus"></i></a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="wr-type child">
+                                            Trẻ em
+                                            <div class="num-func">
+                                              <input type="number" name="num_child" id="num_child" value="0" class="custom-num">
+                                              <div class="btn-row">
+                                                <a class="btn-num" href="javascript:void(0);"><i class="far fa-minus"></i></a>
+                                                <a class="btn-num" href="javascript:void(0);"><i class="far fa-plus"></i></a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                        <li>
+                                          <div class="wr-type infant">
+                                            Trẻ sơ sinh
+                                            <div class="num-func">
+                                              <input type="number" name="num_infant" id="num_infant" value="0" class="custom-num">
+                                              <div class="btn-row">
+                                                <a class="btn-num" href="javascript:void(0);"><i class="far fa-minus"></i></a>
+                                                <a class="btn-num" href="javascript:void(0);"><i class="far fa-plus"></i></a>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="close-bar">
+                                      <button onclick="return closeDrdCustomer();"><i class="fal fa-times-circle"></i></button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="inp-col st2">
+                              <div class="inp-place drp-ticket">
+                                <div class="icon-box"><i class="fal fa-ticket-alt"></i></div>
+                                <div class="wr-inp drd-btn">
+                                  <p class="placeholder small">Hạng vé</p>
+                                  <input type="text" name="ticket_type" value="Phổ thông" readonly="" class="form-control eco-color ticket_filter" required="">
+                                  <div class="dropdown-content">
+                                    <div class="wrap-scroll">
+                                      <p class="title-option">Chọn hạng vé</p>
+                                      <ul class="list-option">
+                                        <li class="active">
+                                          <label class="custom-lbl">
+                                          <span class="ticket_name"> Phổ thông</span>
+                                          <input type="radio" checked="checked" class="ticket_value" value="0" name="ticket_option">
+                                          <span class="checkmark"></span>
+                                          </label>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="close-bar">
+                                      <button onclick="return closeDrdTicket();"><i class="fal fa-times-circle"></i></button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="inp-col col-submit">
+                              <button type="button" class="btn btn-custom btnFightSearch">Xem chuyến bay</button>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
