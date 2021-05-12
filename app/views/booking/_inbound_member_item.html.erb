@@ -1,5 +1,5 @@
 <div>
-  <div class="cus-num">Kh&#225;ch h&#224;ng <%= index + 1 %></div>
+  <div class="cus-num">Kh&#225;ch h&#224;ng <%= index %></div>
   <div class="frame-cus">
     <div class="form-horizontal">
       <div class="row mg-bot10">
@@ -42,14 +42,9 @@
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
           <label class="mg-bot5">Độ tuổi</label>
           <div>
-            <% customer_type_hash.each do |customer_type, value| %>
-                <% if !customer_type_hash.delete(value < 0) %>
-                  <% title_personkind = tour.price_basics.find_by(customers_type: customer_type).title %>
-                  <select class="form-control" id="personkind<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][ages]" onchange="ChangeChoose();"><option value="<%= index %>"><%= title_personkind %></option> %>
-                  <!-- dựa vào key truyền sang để hiện thị cho chính xác thông tin  -->
-                  </select>
-                <% end %>
-            <% end %>
+            <select class="form-control" id="personkind<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][ages]" onchange="ChangeChoose();">
+            <option value="<%= price_basic.personal_kind %>"><%= price_basic.title %></option> %>
+            </select>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mg-bot10" style="display:none;">
@@ -64,24 +59,28 @@
         <div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 mg-bot10">
           <label class="mg-bot5">Ph&#242;ng đơn</label>
           <div>
-            <select class="form-control" id="loaiphuthuphongdon<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][single_room]" onchange="ChangeChoose();"><option value="0">Kh&#244;ng</option>
+            <select class="form-control" id="loaiphuthuphongdon<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][single_room]" onchange="ChangeChoose();">
+              <option value="0">Kh&#244;ng</option>
               <option value="1">C&#243;</option>
-            </select> </div>
+            </select>
+          </div>
         </div>
       </div>
       <div class="row total">
         <div class="col-md-12 col-sm-12 text-right">
-          Trị gi&#225;: <span class="price" id="spanprice<%= index %>"></span>
+          Trị gi&#225;: <span class="price" id="spanprice<%= index %>"><%= price_basic.price_default %></span>
           <input class="form-control" disabled="disabled" id="price<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][price_booking]" type="hidden">
         </div>
       </div>
     </div>
   </div>
-  <div class="frame-cus">
-    <div class="row">
-      <div class="col-md-12 col-sm-12 text-right">
-        Tổng cộng: <span class="price" id="spanTotalPrice"></span>
-        <input type="hidden" id="TotalPrice" disabled="disabled" class="form-control">
+  <% if index == total %>
+    <div class="frame-cus">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-right">
+          Tổng cộng: <span class="price" id="spanTotalPrice"></span>
+          <input type="hidden" id="TotalPrice" disabled="disabled" class="form-control">
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>

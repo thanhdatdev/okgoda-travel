@@ -1,6 +1,17 @@
 <div>
-  <% total.times.each do |index| %>
-      <%= render partial: 'booking/inbound_member_item', locals: { number_of_customer: number_of_customer, title_personkind: title_personkind, index: index, tour: tour, customer_type_hash: customer_type_hash } %>
+  <% index = 1 %>
+  <% customer_types.each do |key, value| %>
+    <% value[:number_of_booking].times.each do %>
+      <%=
+        render partial: 'booking/inbound_member_item', locals: {
+          index: index,
+          total: total,
+          tour: tour,
+          price_basic: value[:price_basic]
+        }
+      %>
+      <% index += 1%>
+    <% end %>
   <% end %>
 </div>
 <script>
@@ -88,11 +99,11 @@
         var CurrencyName = 'đ';
         var Rate = '1';
 
-        var totalMember = parseInt('3');
-        var totalAdult = parseInt('1');
+        var totalMember = parseInt('<%= total %>');
+        var totalAdult = parseInt('<%= params[:adult]%>');
 
         var totalPrice = 0;
-        for (var i = 0; i < totalMember; i++) {
+        for (var i = 1; i <= totalMember; i++) {
             var amount_vn = 0;
             var loaikhachnoidia = $("#loaikhachnoidia" + i).val();//(0 : VietNam, 1: Viet kiều, 2: Nuoc ngoài)
             var personkind = $("#personkind" + i).val();//(0 : NguoiLon,1:TreNho, 2:EmBe, 3: TreEm)

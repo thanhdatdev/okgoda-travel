@@ -45,24 +45,42 @@ class BookingController < ApplicationController
     # Tạo ra 1 service để validate
     # /services/tour_valiation_service.rb
     #
-    customer_type_hash = {
-      adult: params[:adult].to_i,
-      children11: params[:children11].to_i,
-      children: params[:children].to_i,
-      small_children: params[:small_children].to_i
+    customer_types = {
+      adult: {
+        number_of_booking: params[:adult].to_i,
+        price_basic: nil
+      },
+      children11: {
+        number_of_booking: params[:children11].to_i,
+        price_basic: nil
+      },
+      children: {
+        number_of_booking: params[:children].to_i,
+        price_basic: nil
+      },
+      small_children: {
+        number_of_booking: params[:small_children].to_i,
+        price_basic: nil
+      }
     }
-    title_personkind = ''
-    number_of_customer = ''
+
+    customer_types.each do |key, value|
+      price_basic = tour.price_basics.find_by(customers_type: key)
+
+      if price_basic
+        value[:price_basic] = price_basic
+      else
+        customer_types.delete(key)
+      end
+    end
 
     render json: {
       data: render_to_string(
         partial: 'booking/inbound_member',
         locals: {
-          number_of_customer: number_of_customer,
-          title_personkind: title_personkind,
           tour: tour,
-          total: params[:total].to_i,
-          customer_type_hash: customer_type_hash
+          customer_types: customer_types,
+          total: params[:total].to_i
         }
       )
     }
