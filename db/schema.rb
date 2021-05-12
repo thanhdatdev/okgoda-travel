@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.date "birthday_list_of_customers", null: false
     t.string "ages", default: "", null: false
     t.boolean "single_room", default: true, null: false
+    t.boolean "domestic_customers"
     t.decimal "price_booking"
     t.decimal "total_price"
     t.datetime "created_at", null: false
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
 
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "tour_id"
+    t.string "title", default: "", null: false
     t.string "customers_type", default: "", null: false
     t.decimal "price_default", null: false
     t.integer "position"
