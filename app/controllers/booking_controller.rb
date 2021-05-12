@@ -14,6 +14,7 @@ class BookingController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.booking_date = Time.now
     respond_to do |format|
       if @booking.save
         BookingMailer.welcome_email(@booking).deliver
