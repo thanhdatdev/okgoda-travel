@@ -20,8 +20,7 @@ PriceBasic.create!(tour: Tour.first, title: "Trẻ em", customers_type: "childre
 PriceBasic.create!(tour: Tour.first, title: "Trẻ nhỏ", customers_type: "children",   price_default: "1000000", position: "3")
 PriceBasic.create!(tour: Tour.first, title: "Em bé", customers_type: "small_children",     price_default: "220000", position: "4")
 PriceBasic.create!(tour: Tour.first, title: "Phụ thu phòng đơn", customers_type: "single_room", price_default: "600000", position: "5")
-#
-<<<<<<< HEAD
+
 PriceBasic.create!(tour: Tour.last, customers_type: "Người lớn", price_default: "2090000", position: "1")
 PriceBasic.create!(tour: Tour.last, customers_type: "Trẻ em",    price_default: "1492500", position: "2")
 PriceBasic.create!(tour: Tour.last, customers_type: "Trẻ nhỏ",   price_default: "1000000", position: "3")
@@ -49,10 +48,3 @@ ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").i
 ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Cẩm nang du lịch")
 ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Kinh nghiệm du lịch")
 ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Thông tin visa")
-=======
-PriceBasic.create!(tour: Tour.last, title: "Người lớn", customers_type: "adult", price_default: "2090000", position: "1")
-PriceBasic.create!(tour: Tour.last, title: "Trẻ em", customers_type: "children11",    price_default: "1492500", position: "2")
-PriceBasic.create!(tour: Tour.last, title: "Trẻ nhỏ", customers_type: "children",   price_default: "1000000", position: "3")
-PriceBasic.create!(tour: Tour.last, title: "Em bé", customers_type: "small_children",     price_default: "220000", position: "4")
-PriceBasic.create!(tour: Tour.last, title: "Phụ thu phòng đơn", customers_type: "single_room", price_default: "600000", position: "5")
->>>>>>> 0926ce08dc47b76a3577a58957d680344f666fa0
