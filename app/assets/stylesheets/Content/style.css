@@ -1,5 +1,5 @@
 html.loading {
-	background: #333 url(images/ajax-load.gif) no-repeat 50% 50%;
+	background: #333 url(image_path('ajax-load.gif')) no-repeat 50% 50%;
 	-webkit-transition: background-color 0;
 	transition: background-color 0
 }
@@ -18,7 +18,7 @@ html.loading body {
 	height: 100%;
 	z-index: 9999;
 	opacity: .5;
-	background: url(images/ajax-load.gif) 50% 50% no-repeat #f9f9f9
+	background: url(image_path('ajax-load.gif')) 50% 50% no-repeat #f9f9f9
 }
 
 .is-hidden-button {

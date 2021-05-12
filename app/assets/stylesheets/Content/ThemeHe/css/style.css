@@ -574,7 +574,7 @@ h2.title-l {
 }
 
 .n3-form-search select {
-	background: url(../content/themehe/img/i-arrow-sel.png) no-repeat right;
+	background: url(image-path('i-arrow-sel.png')) no-repeat right;
 	-webkit-appearance: none;
 	background-position-x: 150px
 }
@@ -1058,7 +1058,7 @@ a:hover {
 }
 
 .n3-pay-online .frame-po-l {
-	background-image: url(https://travel.com.vn/content/themehe/img/bg-ud1.png);
+	background-image: url(image-path('bg-ud1.png'));
 	position: absolute;
 	bottom: 0;
 	padding: 90px 10px 10px;
@@ -1158,7 +1158,7 @@ a:hover {
 }
 
 .n3-fe .frame-fe-s {
-	background-image: url(../img/bg-fe-s.png);
+	background-image: url(image-path('bg-fe-s.png'));
 	position: absolute;
 	bottom: 0;
 	padding: 80px 10px 10px;
@@ -1167,7 +1167,7 @@ a:hover {
 }
 
 .n3-fe .frame-fe-l {
-	background-image: url(../img/bg-fe-l.png);
+	background-image: url(image-path('bg-fe-l.png'));
 	position: absolute;
 	bottom: 0;
 	padding: 140px 10px 10px;
@@ -1229,19 +1229,19 @@ a:hover {
 }
 
 .n3-destination .frame-destination.d1 {
-	background-image: url(https://travel.com.vn/Content/ThemeHe/img/bg-dd1.png)
+	background-image: url(image-path('bg-dd1.png'))
 }
 
 .n3-destination .frame-destination.d2 {
-	background-image: url(https://travel.com.vn/Content/ThemeHe/img/bg-dd2.png)
+	background-image: url(image-path('bg-dd2.png'))
 }
 
 .n3-destination .frame-destination.d3 {
-	background-image: url(https://travel.com.vn/Content/ThemeHe/img/bg-dd3.png)
+	background-image: url(image-path('bg-dd3.png'))
 }
 
 .n3-destination .frame-destination.d4 {
-	background-image: url(https://travel.com.vn/Content/ThemeHe/img/bg-dd4.png)
+	background-image: url(image-path('bg-dd4.png'))
 }
 
 .n3-destination .frame-destination .destination-name {
@@ -1547,7 +1547,7 @@ a:hover {
 }
 
 .n3-footer {
-	background: url(../img/bg-footer.png) no-repeat center bottom;
+	background: url(bg-footer.png')) no-repeat center bottom;
 	height: 550px;
 	position: relative
 }
@@ -1584,7 +1584,7 @@ a:hover {
 	margin: 10px 0!important;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat left center;
+	background: url(image-path('circle.png')) no-repeat left center;
 	padding-left: 20px;
 	transition: all linear .15s
 }
@@ -1800,11 +1800,11 @@ a:hover {
 }
 
 #social .show1 {
-	background: url(../img/arrow-full.png) -14px 3px
+	background: url(image-path('arrow-full.png')) -14px 3px
 }
 
 #social .show2 {
-	background: url(../img/arrow-full.png) 0 3px
+	background: url(image-path('arrow-full.png')) 0 3px
 }
 
 .n3-breadcrumb {
@@ -1955,7 +1955,7 @@ a:hover {
 }
 
 .rateit .rateit-selected {
-	background: url(../content/themehe/img/star.gif) left -16px
+	background: url(image_path('star.gif') left -16px
 }
 
 .rateit .rateit-hover,
@@ -1968,7 +1968,7 @@ a:hover {
 	position: relative;
 	display: -moz-inline-box;
 	display: inline-block;
-	background: url(../content/themehe/img/star.gif);
+	background: url(image_path('star.gif');
 	outline: none;
 	margin-top: -8px;
 	margin-right: 15px;
@@ -2352,7 +2352,7 @@ ol {
 	margin: 5px 0 10px!important;
 	display: block;
 	list-style: none;
-	background: url(https://travel.com.vn/content/themehe/img/360.png) no-repeat left center;
+	background: url(https://travel.com.vn/content/themehe/img/360.png')) no-repeat left center;
 	padding-left: 20px;
 	line-height: 14px;
 	transition: all linear .15s
@@ -2533,7 +2533,7 @@ ol {
 	margin: 10px 0!important;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat left center;
+	background: url(image-path('circle.png')) no-repeat left center;
 	padding-left: 20px;
 	text-transform: uppercase;
 	transition: all linear .15s
@@ -2560,7 +2560,7 @@ ol {
 	margin: 10px 0!important;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat top left;
+	background: url(image-path('circle.png')) no-repeat top left;
 	padding-left: 20px;
 	font-weight: 400
 }
@@ -2665,7 +2665,7 @@ ol {
 	color: #333;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat top left;
+	background: url(image-path('circle.png')) no-repeat top left;
 	padding-left: 20px;
 	line-height: 14px;
 	transition: all linear .15s
@@ -3694,7 +3694,7 @@ ul.stepper li a .label {
 	margin: 8px 0 10px!important;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat top left;
+	background: url(image-path('circle.png')) no-repeat top left;
 	padding-left: 20px;
 	line-height: 15px;
 	cursor: pointer;
@@ -3881,7 +3881,7 @@ ul.stepper li a .label {
 	margin: 5px 0!important;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat top left;
+	background: url(image-path('circle.png')) no-repeat top left;
 	padding-left: 20px;
 	line-height: 15px;
 	text-align: justify;
@@ -4034,7 +4034,7 @@ ul.stepper li a .label {
 	margin: 5px 0!important;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat top left;
+	background: url(image-path('circle.png')) no-repeat top left;
 	padding-left: 20px;
 	line-height: 16px
 }
@@ -4316,7 +4316,7 @@ ul.stepper li a .label {
 	color: #333;
 	display: block;
 	list-style: none;
-	background: url(../img/circle.png) no-repeat top left;
+	background: url(image-path('circle.png')) no-repeat top left;
 	padding-left: 20px;
 	line-height: 14px;
 	transition: all linear .15s
@@ -5277,7 +5277,7 @@ html .n3-tour-detail .ui-button.ui-state-disabled:active {
 .isd-alo-ph-img-circle {
 	width: 40px;
 	height: 40px;
-	background: rgba(252, 207, 0, .45) url(../content/themehe/img/i-sphone.png) no-repeat center center;
+	background: rgba(252, 207, 0, .45) url(image_path('i-sphone.png')) no-repeat center center;
 	background-size: 30px;
 	-webkit-border-radius: 100%;
 	-moz-border-radius: 100%;
@@ -5570,7 +5570,7 @@ html .n3-tour-detail .ui-button.ui-state-disabled:active {
 	width: 30px;
 	height: 30px;
 	float: right;
-	background: url(../content/themehe/img/close.png) no-repeat left top;
+	background: url(image_path('close.png')) no-repeat left top;
 	position: absolute;
 	top: 40px;
 	right: 0
@@ -5608,7 +5608,7 @@ html .n3-tour-detail .ui-button.ui-state-disabled:active {
 	width: 30px;
 	height: 30px;
 	float: right;
-	background: url(../content/themehe/img/close.png) no-repeat left top
+	background: url(image_path('close.png')) no-repeat left top
 }
 
 .dvid .f {

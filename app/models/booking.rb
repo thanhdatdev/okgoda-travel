@@ -1,4 +1,7 @@
 class Booking < ApplicationRecord
+  include PgSearch::Model
+  multisearchable against: [:id]
+
   belongs_to :user, optional: true
   belongs_to :tour
   has_many   :payments, inverse_of: :booking
