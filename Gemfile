@@ -70,8 +70,6 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # other gem
-gem 'bootstrap', '~> 5.0.0.beta3'
-gem 'bootstrap-daterangepicker-rails'
 gem 'bxslider-rails'
 gem 'chosen-rails'
 gem 'jquery-rails'

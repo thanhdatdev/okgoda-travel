@@ -14,6 +14,7 @@ class BookingController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.booking_date = Time.now
     respond_to do |format|
       if @booking.save
         BookingMailer.welcome_email(@booking).deliver
@@ -36,6 +37,54 @@ class BookingController < ApplicationController
         end
       end
     end
+  end
+
+  def inbound_members
+    tour = Tour.find(params[:tour_id])
+
+    # validate remain_slot
+    # Tạo ra 1 service để validate
+    # /services/tour_valiation_service.rb
+    #
+    customer_types = {
+      adult: {
+        number_of_booking: params[:adult].to_i,
+        price_basic: nil
+      },
+      children11: {
+        number_of_booking: params[:children11].to_i,
+        price_basic: nil
+      },
+      children: {
+        number_of_booking: params[:children].to_i,
+        price_basic: nil
+      },
+      small_children: {
+        number_of_booking: params[:small_children].to_i,
+        price_basic: nil
+      }
+    }
+
+    customer_types.each do |key, value|
+      price_basic = tour.price_basics.find_by(customers_type: key)
+
+      if price_basic
+        value[:price_basic] = price_basic
+      else
+        customer_types.delete(key)
+      end
+    end
+
+    render json: {
+      data: render_to_string(
+        partial: 'booking/inbound_member',
+        locals: {
+          tour: tour,
+          customer_types: customer_types,
+          total: params[:total].to_i
+        }
+      )
+    }
   end
 
   private
