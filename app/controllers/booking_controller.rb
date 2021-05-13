@@ -87,6 +87,17 @@ class BookingController < ApplicationController
     }
   end
 
+  def get_condition_payment
+    render json: {
+      data: render_to_string(
+        partial: 'booking/get_condition_payment',
+        locals: {
+          paymentID: params[:paymentID].to_i
+        }
+      )
+    }
+  end
+
   private
 
   def set_booking

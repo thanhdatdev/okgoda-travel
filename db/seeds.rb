@@ -8,11 +8,9 @@
 TourType.create!(type_name: 'Giá rẻ')
 TourType.create!(type_name: "Ưu đãi mùa hè")
 
-# PriceBasic.create!(Tour.first, settings: [{ "customers_type" => "Người lớn", "price_default" => "2090000" }, { "customers_type" => "Trẻ em", "price_default" => "1492500" }] )
-
-Tour.create!(title: "Việt Nam đẹp lắm người ơi", start_date: Time.now, days: "4", price: "3950000", slot: "15", remain_slot: "7", departure: "Hồ Chí Minh",
+Tour.create!(title: "Việt Nam đẹp lắm người ơi", start_date: Time.now, end_date: Time.now + 3, days: "4", price: "3950000", slot: "15", remain_slot: "7", departure: "Hồ Chí Minh",
   tour_type: TourType.first, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
-Tour.create!(title: "Hà nội xinh khỏi bàn", start_date: Time.now, days: "5", price: "2900000", slot: "20", remain_slot: "8", departure: "Hà Nội",
+Tour.create!(title: "Hà nội xinh khỏi bàn", start_date: Time.now, end_date: Time.now + 3, days: "5", price: "2900000", slot: "20", remain_slot: "8", departure: "Hà Nội",
   tour_type: TourType.last, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
 
 PriceBasic.create!(tour: Tour.first, title: "Người lớn", customers_type: "adult", price_default: "2090000", position: "1")

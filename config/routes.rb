@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources  :booking do
     resources :list_of_customers
     collection do
-      get :inbound_members
+      get :inbound_members, :get_condition_payment
     end
   end
   resources  :category do

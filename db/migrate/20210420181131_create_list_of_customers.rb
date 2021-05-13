@@ -8,8 +8,8 @@ class CreateListOfCustomers < ActiveRecord::Migration[5.2]
       t.string     :ages,                       null: false, default: ""
       t.boolean    :single_room,                null: false, default: true
       t.boolean    :domestic_customers
-      t.decimal    :price_booking
-      t.decimal    :total_price
+      t.monetize   :price_booking, currency: { present: true }
+      t.monetize   :total_price, currency: { present: true }
       t.timestamps
     end
   end

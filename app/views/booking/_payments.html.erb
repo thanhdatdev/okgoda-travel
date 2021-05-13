@@ -11,14 +11,6 @@
           </label>
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament1">
-              <title></title>
-              <p>
-                Quý khách vui lòng thanh toán tại bất kỳ văn phòng Vietravel trên toàn quốc và các chi nhánh ngoài nước.
-                <a href="https://travel.com.vn/lien-he.aspx" target="_blank">Chi tiết</a>
-              </p>
-              <p>
-                Xin lưu ý, Quý khách nên liên lạc trước khi đến để biết rõ hơn về giờ làm việc và các hồ sơ cần chuẩn bị khi thanh toán.
-              </p>
             </div>
           </div>
         </div>
@@ -27,7 +19,8 @@
             <label class="lb_r">Chuyển khoản</label>
           </label>
           <div class="row">
-            <div class="frame-cards conditionPament" id="conditionPament2" style="display:none;"></div>
+            <div class="frame-cards conditionPament" id="conditionPament2" style="">
+            </div>
           </div>
         </div>
         <div class="radio internet">
@@ -41,39 +34,39 @@
         <div class="radio thetindung">
           <label><input type="radio" class="chkPayment" name="paymentID" value="15">
             <label class="lb_r">Thẻ tín dụng</label>
+            <div class="row cards" id="divCard" style="display:none;">
+              <div class="text">
+                Quý khách vui lòng chọn loại thẻ:
+              </div>
+              <div class="frame-cards">
+                <input id="cardType" name="cardType" type="hidden" val="val" e="visa">
+                <div card="visa" onclick="ChonLoaiThe('visa')" class="visa card_type f-left">
+                  <%= image_tag "thevisa.png", alt: "visa" %>
+                </div>
+                <div card="mastercard" onclick="ChonLoaiThe('mastercard')" class="master card_type f-left mg-left">
+                  <%= image_tag "master.png", alt: "master" %>
+                </div>
+                <div card="jcb" onclick="ChonLoaiThe('jcb')" class="jcb card_type f-left mg-left">
+                  <%= image_tag "jcb.png", alt: "jcb" %>
+                </div>
+                <div card="amex" onclick="ChonLoaiThe('amex')" class="amex card_type f-left mg-left">
+                  <%= image_tag "amex.png", alt: "amex" %>
+                </div>
+              </div>
+            </div>
           </label>
-          <div class="row cards" id="divCard" style="display:none;">
-            <div class="text">
-              Quý khách vui lòng chọn loại thẻ:
-            </div>
-            <div class="frame-cards">
-              <input id="cardType" name="cardType" type="hidden" val="val" e="visa">
-              <div card="visa" onclick="ChonLoaiThe('visa')" class="visa card_type f-left">
-                <%= image_tag "thevisa.png", alt: "visa" %>
-              </div>
-              <div card="mastercard" onclick="ChonLoaiThe('mastercard')" class="master card_type f-left mg-left">
-                <%= image_tag "master.png", alt: "master" %>
-              </div>
-              <div card="jcb" onclick="ChonLoaiThe('jcb')" class="jcb card_type f-left mg-left">
-                <%= image_tag "jcb.png", alt: "jcb" %>
-              </div>
-              <div card="amex" onclick="ChonLoaiThe('amex')" class="amex card_type f-left mg-left">
-                <%= image_tag "amex.png", alt: "amex" %>
-              </div>
-            </div>
-          </div>
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament15" style="display:none;"></div>
           </div>
         </div>
-        <div class="radio qrcode">
+        <!-- <div class="radio qrcode">
           <label><input type="radio" class="chkPayment" name="paymentID" value="16">
             <label class="lb_r">Thanh toán bằng quét QRCode</label>
           </label>
           <div class="row">
             <div class="frame-cards conditionPament" id="conditionPament16" style="display:none;"></div>
           </div>
-        </div>
+        </div> -->
         <div class="radio momo">
           <label><input type="radio" class="chkPayment" name="paymentID" value="17">
             <label class="lb_r">Thanh toán bằng Momo</label>
@@ -86,3 +79,60 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  //$(document).ready(function () {
+  paymentID = $('.chkPayment:checked').val();
+  LoadConditionPayment(paymentID);
+  //});
+
+  $('.chkPayment').click('change', function() {
+      paymentID = $('.chkPayment:checked').val();
+      $(".conditionPament").hide();
+
+      LoadConditionPayment(paymentID);
+
+      if (paymentID == 15) {
+          $('#divCard').show();
+          $('#divVNPay').hide();
+      } else if (paymentID == 16) {
+          $('#divVNPay').show();
+          $('#divCard').hide();
+      } else if (paymentID == 17) {
+          $('#divCard').hide();
+          $('#divVNPay').hide();
+      } else {
+          $('#divCard').hide();
+          $('#divVNPay').hide();
+      }
+      $('#conditionPament' + paymentID).show();
+  });
+
+  function LoadConditionPayment(paymentID) {
+
+      // Tương tác với server
+      $.ajax({
+          url: "/booking/get_condition_payment",
+          data: {
+              paymentID: paymentID
+          },
+          success: function(result) {
+              $('#conditionPament' + paymentID).html(result.data);
+          }
+      });
+
+  }
+
+  function ChonLoaiThe(type) {
+      $('.card_type').each(function() {
+          if ($(this).attr('card') == type) {
+              $('#cardType').val(type);
+              $(this).addClass('card_active');
+              $(this).removeClass('card_opacity');
+          } else {
+              $(this).removeClass('card_active');
+              $(this).addClass('card_opacity');
+          }
+      })
+  }
+</script>
