@@ -75,7 +75,7 @@
         <div class="f-left l"><%= image_tag "i-price.png", alt: "price" %></div>
         <div class="f-left r">
           Giá:
-          <span class="font500 price"><%= @tour.price %>
+          <span class="font500 price"><%= @tour.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
             đ</span>
         </div>
         <div class="clear"></div>
@@ -102,7 +102,7 @@
       </thead>
       <tbody>
         <tr>
-          <td data-title=<%= t.customers_type %>><%= t.price_default %>
+          <td data-title=<%= t.customers_type %>><%= t.price_default_cents.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
             <span>
               đ</span></td>
         </tr>

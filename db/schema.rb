@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.integer "baby_guests_number"
     t.string "customers_number", null: false
     t.string "note", default: ""
+    t.integer "status"
+    t.string "token"
+    t.string "error_message"
+    t.string "payment_gateway"
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,8 +90,10 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.string "ages", default: "", null: false
     t.boolean "single_room", default: true, null: false
     t.boolean "domestic_customers"
-    t.decimal "price_booking"
-    t.decimal "total_price"
+    t.integer "price_booking_cents", default: 0, null: false
+    t.string "price_booking_currency", default: "VND", null: false
+    t.integer "total_price_cents", default: 0, null: false
+    t.string "total_price_currency", default: "VND", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
@@ -107,7 +113,8 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.uuid "tour_id"
     t.string "title", default: "", null: false
     t.string "customers_type", default: "", null: false
-    t.decimal "price_default", null: false
+    t.integer "price_default_cents", default: 0, null: false
+    t.string "price_default_currency", default: "VND", null: false
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -147,7 +154,8 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.date "start_date", null: false
     t.date "end_date", null: false
     t.integer "days", null: false
-    t.decimal "price", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "VND", null: false
     t.integer "slot", null: false
     t.integer "remain_slot", null: false
     t.string "departure", null: false

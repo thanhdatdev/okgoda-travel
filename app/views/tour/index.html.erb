@@ -22,7 +22,7 @@
                 <div class="f-left date">
                   <span class="yellow">09/04/2021</span>
                   -
-                  <span class="yellow">3 ngày</span></div>
+                  <span class="yellow"><%= t.days %></span></div>
                 <div class="clear"></div>
               </div>
               <div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">
@@ -36,7 +36,7 @@
             </div>
           </div>
           <div class="frame-tgc">
-            <span id="countDownDayNDSGN845-013-090421XE-D">Còn 00 ngày 05:27:50</span>
+            <span id="countDownDayNDSGN845-013-090421XE-D"></span>
             <script type="text/javascript">
               var newYear = '2021/04/07 17:00:00';
               $('#countDownDayNDSGN845-013-090421XE-D').countdown(newYear, function (event) {
@@ -63,10 +63,10 @@
         <div class="mg-bot10">
           <%= image_tag "i-price.png", class: "f-left", alt: "price" %>
           <div class="f-left tgc-info">
-            <span class="price-o">
+            <!-- <span class="price-o">
               2,890,000<span>&nbsp;</span>đ
-            </span>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span class="price-n"><%= t.price %></span>
+            </span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+            <span class="price-n"><%= t.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> đ</span>
           </div>
           <div class="clear"></div>
         </div>
@@ -77,8 +77,8 @@
     $(".dot-dot-ajax").dotdotdot();
   </script>
 </div>
-<div class="col-xs-12 text-center">
-  <a href="/du-lich-gio-chot.aspx" class="btn btn-book1 btn-md">Xem thêm</a>
-</div>
+  <div class="col-xs-12 text-center">
+    <a href="/du-lich-gio-chot.aspx" class="btn btn-book1 btn-md">Xem thêm</a>
+  </div>
 </div>
 </div>
