@@ -1,52 +1,31 @@
-class StripeChargesServices
-  DEFAULT_CURRENCY = 'vnd'.freeze
-
-  def initialize(params, user)
-    @stripe_email = params[:stripeEmail]
-    @stripe_token = params[:stripeToken]
-    @booking = params[:booking_id]
-    @user = user
-  end
-
-  def call
-    create_charge(find_customer)
-  end
-
-  private
-
-  attr_accessor :user, :stripe_email, :stripe_token, :order
-
-  def find_customer
-  if user.stripe_token
-    retrieve_customer(user.stripe_token)
-  else
-    create_customer
-  end
-  end
-
-  def retrieve_customer(stripe_token)
-    Stripe::Customer.retrieve(stripe_token)
-  end
-
-  def create_customer
-    customer = Stripe::Customer.create(
-      email: stripe_email,
-      source: stripe_token
-    )
-    user.update(stripe_token: customer.id)
-    customer
-  end
-
-  def create_charge(customer)
-    Stripe::Charge.create(
-      customer: customer.id,
-      amount: booking_amount,
-      description: customer.email,
-      currency: DEFAULT_CURRENCY
-    )
-  end
-
-  def booking_amount
-    Booking.list_of_customers.find_by(booking_id: booking).total_price
-  end
+require 'stripe'
+require 'sinatra'
+# This is your real test secret API key.
+Stripe.api_key = Rails.application.secrets.stripe_secret_key
+set :static, true
+set :public_folder, File.dirname(__FILE__)
+set :port, 3000
+YOUR_DOMAIN = 'http://localhost:3000'
+post '/create-checkout-session' do
+  content_type 'application/json'
+  session = Stripe::Checkout::Session.create({
+    payment_method_types: ['card'],
+    line_items: [{
+      price_data: {
+        unit_amount: 2000,
+        currency: 'usd',
+        product_data: {
+          name: 'Stubborn Attachments',
+          images: ['https://i.imgur.com/EHyR2nP.png'],
+        },
+      },
+      quantity: 1,
+    }],
+    mode: 'payment',
+    success_url: YOUR_DOMAIN + '/success.html',
+    cancel_url: YOUR_DOMAIN + '/cancel.html',
+  })
+  {
+    id: session.id
+  }.to_json
 end

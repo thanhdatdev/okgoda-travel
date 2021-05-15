@@ -52,7 +52,9 @@
     <div class="col-xs-12 mg-bot50">
       <div class="thanks">
         <p class="mg-bot5">Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi</p>
-        <button class="btn btn-md btn-book in-booking" data-toggle="modal" data-target="#ConfirmPayment"><i class="fa fa-money"></i>&nbsp;&nbsp;Thanh toán</button>
+        <%= button_to checkout_create_booking_index_path, class:"btn btn-md btn-book in-booking", method: :post, params: {id: @booking.id} do %>
+          <i class="fa fa-money"></i>&nbsp;&nbsp;Thanh toán
+        <% end %>
       </div>
     </div>
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mg-bot30">
@@ -150,7 +152,7 @@
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Trị giá booking:</div>
-          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500"><span class="font500">3,690,000 đ</span></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500"><span class="font500"><%= @booking.list_of_customers.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> đ</span></div>
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Ngày đăng ký:</div>
@@ -280,13 +282,38 @@
       <div class="frame-cong">
         <p class="mg-bot5">Chúc quý khách 1 chuyến du lịch thật vui vẻ và bổ ích</p>
         <p>Quý khách vui lòng kiểm tra email để nhận phiếu xác nhận đặt dịch vụ thành công từ Vietravel</p>
-        <input type=”hidden” name=”stripeToken” />
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Monthly subscription"
-          data-amount="<%= @booking.list_of_customers.total_price_cents %>"
-          data-locale="auto"></script>
+        <%= button_to checkout_create_booking_index_path, id: "checkout-button", class:"btn btn-md btn-book in-booking", method: :post, params: {id: @booking.id} do %>
+          <i class="fa fa-money"></i>&nbsp;&nbsp;Thanh toán
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    // Create an instance of the Stripe object with your publishable API key
+    var stripe = Stripe("<%= Rails.configuration.stripe[:publishable_key] %>");
+    var checkoutButton = document.getElementById("checkout-button");
+    checkoutButton.addEventListener("click", function () {
+      fetch("/booking/checkout/create", {
+        method: "POST",
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (session) {
+          return stripe.redirectToCheckout({ sessionId: session.id });
+        })
+        .then(function (result) {
+          // If redirectToCheckout fails due to a browser or network
+          // error, you should display the localized error message to your
+          // customer using error.message.
+          if (result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(function (error) {
+          console.error("Error:", error);
+        });
+    });
+  </script>

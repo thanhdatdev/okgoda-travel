@@ -31,9 +31,6 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.string "customers_number", null: false
     t.string "note", default: ""
     t.integer "status"
-    t.string "token"
-    t.string "error_message"
-    t.string "payment_gateway"
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -97,16 +94,6 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
-  end
-
-  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "booking_id"
-    t.string "payments_type", default: "", null: false
-    t.string "description_payments", default: ""
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_payments_on_booking_id"
   end
 
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -196,7 +183,6 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
   add_foreign_key "comments", "users"
   add_foreign_key "item_categories", "categories"
   add_foreign_key "list_of_customers", "bookings"
-  add_foreign_key "payments", "bookings"
   add_foreign_key "price_basics", "tours"
   add_foreign_key "reviews", "users"
   add_foreign_key "tour_programs", "tours"
