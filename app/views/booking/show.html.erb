@@ -132,7 +132,7 @@
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 mg-bot">Số khách:</div>
           <div class="col-lg-9 col-md-10 col-sm-10 col-xs-12 font500 line-h">
-            1 (Người lớn: 1&nbsp;&nbsp;Trẻ em: 0&nbsp;&nbsp;Trẻ nhỏ: 0&nbsp;&nbsp;Em bé: 0)
+            <%= @booking.customers_number %> (Người lớn: <%= @booking.adult_guests_number %>&nbsp;&nbsp;Trẻ em: <%= @booking.child_guests_number %>&nbsp;&nbsp;Trẻ nhỏ: <%= @booking.young_children_guests_number %>&nbsp;&nbsp;Em bé: <%= @booking.baby_guests_number %>)
           </div>
         </div>
         <div class="row bor-bot">
@@ -156,7 +156,7 @@
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Ngày đăng ký:</div>
-          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500 line-h"><span class="font500">03/05/2021 23:39:51 (Theo giờ Việt Nam)</span></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500 line-h"><span class="font500"><%= @booking.booking_date %> (Theo giờ Việt Nam)</span></div>
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot"><span class="hidden-md hidden-sm">Hình thức thanh toán:</span><span class="hidden-lg hidden-xs">Hình thức thanh toán:</span></div>

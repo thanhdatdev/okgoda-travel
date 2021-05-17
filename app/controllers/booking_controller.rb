@@ -3,8 +3,9 @@ class BookingController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def show
-    @price_booking = @booking.list_of_customers.find_by(params[:list_of_customers_id]).price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-    @total_price = @booking.list_of_customers.find_by(params[:list_of_customers_id]).total_price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    @list_of_customers = @booking.list_of_customers.find_by(params[:list_of_customers_id])
+    @price_booking = @list_of_customers.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    @total_price = @list_of_customers.total_price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
 
   def new
