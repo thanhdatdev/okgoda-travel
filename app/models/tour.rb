@@ -1,5 +1,8 @@
 class Tour < ApplicationRecord
   extend FriendlyId
+  include PgSearch::Model
+  multisearchable against: [:title, :tour_type]
+
   friendly_id :title, use: :slugged
   mount_uploader :photo, PhotoUploader
   belongs_to :tour_type

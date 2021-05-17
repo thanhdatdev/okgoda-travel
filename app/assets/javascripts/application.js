@@ -14,6 +14,7 @@
 //= require activestorage
 //= require jquery
 //= require chosen-jquery
+//= require daterangepicker
 //= require pnotify
 //= require pnotify/pnotify
 //= require pnotify/pnotify.buttons

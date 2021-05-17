@@ -296,8 +296,12 @@
 
 @font-face {
 	font-family: 'Glyphicons Halflings';
-	src: url('../fonts/glyphicons-halflings-regular.eot');
-	src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff2') format('woff2'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
+	src: url(font_path('glyphicons-halflings-regular.eot'));
+	src: url(font_path('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+	 url(font_path('glyphicons-halflings-regular.woff2') format('woff2'),
+	 url(font_path('glyphicons-halflings-regular.woff') format('woff'),
+	 url(font_path('glyphicons-halflings-regular.ttf') format('truetype'),
+	 url(font_path('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg')
 }
 
 .bootstrap-iso .glyphicon {
@@ -20140,8 +20144,12 @@ button.close {
 	font-family: Font Awesome\ 5 Brands;
 	font-style: normal;
 	font-weight: 400;
-	src: url(fa-brands-400.eot);
-	src: url(fa-brands-400.eot?#iefix) format("embedded-opentype"), url(fa-brands-400.woff2) format("woff2"), url(fa-brands-400.woff) format("woff"), url(fa-brands-400.ttf) format("truetype"), url(fa-brands-400.svg#fontawesome) format("svg")
+	src: url(font_path('fa-brands-400.eot'));
+	src: url(font_path('fa-brands-400.eot?#iefix') format("embedded-opentype"),
+	url(font_path('fa-brands-400.woff2') format("woff2"),
+	url(font_path('fa-brands-400.woff') format("woff"),
+	url(font_path('fa-brands-400.ttf') format("truetype"),
+	url(font_path('fa-brands-400.svg#fontawesome') format("svg")
 }
 
 .fab {
@@ -20152,8 +20160,12 @@ button.close {
 	font-family: Font Awesome\ 5 Free;
 	font-style: normal;
 	font-weight: 400;
-	src: url(fa-regular-400.eot);
-	src: url(fa-regular-400.eot?#iefix) format("embedded-opentype"), url(fa-regular-400.woff2) format("woff2"), url(fa-regular-400.woff) format("woff"), url(fa-regular-400.ttf) format("truetype"), url(fa-regular-400.svg#fontawesome) format("svg")
+	src: url(font_path('fa-regular-400.eot'));
+	src: url(font_path('fa-regular-400.eot?#iefix') format("embedded-opentype"),
+	url(font_path('fa-regular-400.woff2') format("woff2"),
+	url(font_path('fa-regular-400.woff') format("woff"),
+	url(font_path('fa-regular-400.ttf') format("truetype"),
+	url(font_path('fa-regular-400.svg#fontawesome') format("svg")
 }
 
 .far {
@@ -20164,8 +20176,12 @@ button.close {
 	font-family: Font Awesome\ 5 Free;
 	font-style: normal;
 	font-weight: 900;
-	src: url(fa-solid-900.eot);
-	src: url(fa-solid-900.eot?#iefix) format("embedded-opentype"), url(fa-solid-900.woff2) format("woff2"), url(fa-solid-900.woff) format("woff"), url(fa-solid-900.ttf) format("truetype"), url(fa-solid-900.svg#fontawesome) format("svg")
+	src: url(font_path('fa-solid-900.eot'));
+	src: url(font_path('fa-solid-900.eot?#iefix') format("embedded-opentype"),
+	url(font_path('fa-solid-900.woff2') format("woff2"),
+	url(font_path('fa-solid-900.woff') format("woff"),
+	url(font_path('fa-solid-900.ttf') format("truetype"),
+	url(font_path('fa-solid-900.svg#fontawesome') format("svg")
 }
 
 .fa,
@@ -25031,23 +25047,23 @@ table.dataTable thead .sorting_desc_disabled {
 }
 
 table.dataTable thead .sorting {
-	background: url('images/sort_both.png') no-repeat center right
+	background: url(image_path('sort_both.png')) no-repeat center right
 }
 
 table.dataTable thead .sorting_asc {
-	background: url('images/sort_asc.png') no-repeat center right
+	background: url(image_path('sort_asc.png')) no-repeat center right
 }
 
 table.dataTable thead .sorting_desc {
-	background: url('images/sort_desc.png') no-repeat center right
+	background: url(image_path('sort_desc.png')) no-repeat center right
 }
 
 table.dataTable thead .sorting_asc_disabled {
-	background: url('images/sort_asc_disabled.png') no-repeat center right
+	background: url(image_path('sort_asc_disabled.png')) no-repeat center right
 }
 
 table.dataTable thead .sorting_desc_disabled {
-	background: url('images/sort_desc_disabled.png') no-repeat center right
+	background: url(image_path('sort_desc_disabled.png')) no-repeat center right
 }
 
 table.dataTable th:active {
@@ -25198,7 +25214,7 @@ div.DTFC_LeftFootWrapper table {
 
 [class^="iconT-"],
 [class*="iconT-"] {
-	background-image: url(../images/Content/ThemeHe/icons.png);
+	background-image: url(image_path('icons.png'));
 	background-size: 472px 316px
 }
 
