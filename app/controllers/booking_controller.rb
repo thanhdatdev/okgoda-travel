@@ -3,7 +3,6 @@ class BookingController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def show
-    @price_booking = params[:price_booking]
   end
 
   def new
@@ -15,6 +14,7 @@ class BookingController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.booking_date = Time.now
+    byebug
     respond_to do |format|
       if @booking.save
         BookingMailer.welcome_email(@booking).deliver

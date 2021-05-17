@@ -88,9 +88,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.boolean "single_room", default: true, null: false
     t.boolean "domestic_customers"
     t.integer "price_booking_cents", default: 0, null: false
-    t.string "price_booking_currency", default: "VND", null: false
     t.integer "total_price_cents", default: 0, null: false
-    t.string "total_price_currency", default: "VND", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
@@ -142,7 +140,6 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.date "end_date", null: false
     t.integer "days", null: false
     t.integer "price_cents", default: 0, null: false
-    t.string "price_currency", default: "VND", null: false
     t.integer "slot", null: false
     t.integer "remain_slot", null: false
     t.string "departure", null: false
