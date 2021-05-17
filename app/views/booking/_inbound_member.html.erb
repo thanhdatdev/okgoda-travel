@@ -130,14 +130,14 @@
             amount_vn = CalPrice(loaikhachnoidia, personkind, loaiphuthuphongdon);
 
             //$("#price" + i).val(formatnumber(amount_vn.toString()) + ' đ');
-            $("#price" + i).val((amount_vn / Rate).toFixed(0) + ' ' + CurrencyName);
+            $("#price" + i).val((amount_vn / Rate).toFixed(0));
             $("#spanprice" + i).text(formatnumber((amount_vn / Rate).toFixed(0)) + ' ' + CurrencyName);
 
             totalPrice += amount_vn;
         }
 
         //$("#TotalPrice").val(formatnumber(totalPrice.toString()) + ' đ');
-        $("#TotalPrice").val((totalPrice / Rate).toFixed(0) + ' ' + CurrencyName);
+        $("#TotalPrice").val((totalPrice / Rate).toFixed(0));
         $("#spanTotalPrice").text(formatnumber((totalPrice / Rate).toFixed(0)) + ' ' + CurrencyName);
     }
 
@@ -146,28 +146,28 @@
         //Gia tri cua tour
 
         //NguoiLon
-        var adult_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "adult").price_default %>));//VietNam
-        var adult_o_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "adult").price_default %>));//VietKieu
-        var adult_f_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "adult").price_default %>));//NuocNgoai
+        var adult_price = <%= tour.price_basics.find_by(customers_type: "adult").price_default %>;//VietNam
+        var adult_o_price = <%= tour.price_basics.find_by(customers_type: "adult").price_default %>;//VietKieu
+        var adult_f_price = <%= tour.price_basics.find_by(customers_type: "adult").price_default %>;//NuocNgoai
 
         //TreNho
-        var child_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "small_children").price_default %>));//VietNam
-        var child_o_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "small_children").price_default %>));//VietKieu
-        var child_f_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "small_children").price_default %>));//NuocNgoai
+        var child_price = <%= tour.price_basics.find_by(customers_type: "small_children").price_default %>;//VietNam
+        var child_o_price = <%= tour.price_basics.find_by(customers_type: "small_children").price_default %>;//VietKieu
+        var child_f_price = <%= tour.price_basics.find_by(customers_type: "small_children").price_default %>;//NuocNgoai
 
         //EmBe
-        var child_price5 = parseFloat(<%= tour.price_basics.find_by(customers_type: "children").price_default %>))//VietNam
-        var pretty_o_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "children").price_default %>))//VietKieu
-        var pretty_f_price = parseFloat(<%= tour.price_basics.find_by(customers_type: "children").price_default %>))//NuocNgoai
+        var child_price5 = <%= tour.price_basics.find_by(customers_type: "children").price_default %>//VietNam
+        var pretty_o_price = <%= tour.price_basics.find_by(customers_type: "children").price_default %>//VietKieu
+        var pretty_f_price = <%= tour.price_basics.find_by(customers_type: "children").price_default %>//NuocNgoai
 
         //TreEm
-        var child_price11 = parseFloat(<%= tour.price_basics.find_by(customers_type: "children11").price_default %>))//VietNam
-        var child_o_price11 = parseFloat(<%= tour.price_basics.find_by(customers_type: "children11").price_default %>))//VietKieu
-        var child_f_price11 = parseFloat(<%= tour.price_basics.find_by(customers_type: "children11").price_default %>))//NuocNgoai
+        var child_price11 = <%= tour.price_basics.find_by(customers_type: "children11").price_default %>//VietNam
+        var child_o_price11 = <%= tour.price_basics.find_by(customers_type: "children11").price_default %>//VietKieu
+        var child_f_price11 = <%= tour.price_basics.find_by(customers_type: "children11").price_default %>//NuocNgoai
 
-        var phuthuphongdon_vn = parseFloat(<%= tour.price_basics.find_by(customers_type: "single_room").price_default %>)//VietNam
-        var phuthuphongdon_vk = parseFloat(<%= tour.price_basics.find_by(customers_type: "single_room").price_default %>)//VietKieu
-        var phuthuphongdon_nn = parseFloat(<%= tour.price_basics.find_by(customers_type: "single_room").price_default %>)//NuocNgoai
+        var phuthuphongdon_vn = <%= tour.price_basics.find_by(customers_type: "single_room").price_default %>//VietNam
+        var phuthuphongdon_vk = <%= tour.price_basics.find_by(customers_type: "single_room").price_default %>//VietKieu
+        var phuthuphongdon_nn = <%= tour.price_basics.find_by(customers_type: "single_room").price_default %>//NuocNgoai
 
         //Gia tri cua tour
 

@@ -9,23 +9,21 @@ class CheckoutController < ApplicationController
 
     # Setting up a Stripe Session for payment.
     @session = Stripe::Checkout::Session.create(
-      payment_method_type: ['card'],
-      line_item: [{
-        name_booking: booking.name_booking,
-        email_booking: booking.email_booking,
-        price_booking: booking.list_of_customers.total_price,
+      payment_method_types: ['card'],
+      line_items: [{
+        name: booking.name_booking,
+        amount: booking.list_of_customers.find_by(params[:list_of_customers_id]).total_price,
         currency: 'vnd',
         quantity: 1
         }],
-        success_url: checkout_success_booking_index_url,
+        success_url: checkout_success_booking_index_url + '?session_id={CHECKOUT_SESSION_ID}',
         cancel_url: checkout_cancel_booking_index_url
     )
-    respond_to do |format|
-      format.html
-    end
   end
 
   def success
+    @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
   end
 
   def cancel
