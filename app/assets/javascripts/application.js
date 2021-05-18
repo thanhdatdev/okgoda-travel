@@ -14,7 +14,6 @@
 //= require activestorage
 //= require jquery
 //= require chosen-jquery
-//= require daterangepicker
 //= require pnotify
 //= require pnotify/pnotify
 //= require pnotify/pnotify.buttons
@@ -24,3 +23,6 @@
 //= require bxslider
 //= require turbolinks
 //= require customizes/scripts
+//= require customizes/bundlescripts
+//= require customizes/AddCssToClass
+//= require customizes/cookies

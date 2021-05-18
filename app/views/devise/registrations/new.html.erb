@@ -12,7 +12,7 @@
                         <strong style="color:#1583e0 !important;">ĐĂNG KÝ HỘI VIÊN</strong>
                      </p>
                      <p>Để hoàn tất đăng ký Hội viên VietravelPlus, quý khách vui lòng điền đầy đủ thông tin vào mẫu dưới đây và nhấn vào nút đăng ký. Xin chân thành cảm ơn quý khách hàng.</p>
-                     <% form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
                         <%= render "devise/shared/error_messages", resource: resource %>
                         <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12" style="margin-bottom:10px">
@@ -21,7 +21,8 @@
                               <% end %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                             <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                             <%= f.text_field :name, id: "CustomerName", autofocus: true, autocomplete: "name", class: "form-control", data: { val: "true" } %>
+                             <div class="field-validation-valid text-danger" data-valmsg-for="CustomerName" data-valmsg-replace="true"></div>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
                              <%= f.label :sex do %>
@@ -29,7 +30,7 @@
                              <% end %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <%= f.select :sex, options_for_select(["Nam", "Nữ"]), {}, class: "form-control valid" %>
+                              <%= f.select :sex, [['Nam', 1], ['Nữ', 0]], {}, class: "form-control valid", id: "Gender" %>
                            </div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
@@ -39,7 +40,8 @@
                              <% end %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <%= f.date_field :birthday, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, autocomplete: "off", class: "form-control" %>
+                              <%= f.date_field :birthday, data: { val: "true" }, autofocus: true, autocomplete: "off", class: "form-control" %>
+                              <div class="field-validation-valid text-danger" data-valmsg-for="Birthday" data-valmsg-replace="true"></div>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
                              <%= f.label :phone_number do %>
@@ -47,7 +49,8 @@
                              <% end %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                             <%= f.text_field :phone_number, class: "form-control" %>
+                             <%= f.text_field :phone_number, class: "form-control", id: "Phone", data: { val: "true" } %>
+                             <div class="field-validation-valid text-danger" data-valmsg-for="Phone" data-valmsg-replace="true"></div>
                            </div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
@@ -55,13 +58,15 @@
                              <%= f.label :identity_card, "CMND:" %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <%= f.text_field :identity_card, class: "form-control" %>
+                              <%= f.text_field :identity_card, id: "IdCard", class: "form-control" %>
+                              <div class="field-validation-valid text-danger" data-valmsg-for="IdCard" data-valmsg-replace="true"></div>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
                               <%= f.label :issued_on_identity_card, "Ngày cấp:" %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <%= f.date_field :issued_on_identity_card, class: "form-control" %>
+                              <%= f.date_field :issued_on_identity_card, class: "form-control", id: "id_issue_date" %>
+                              <div class="field-validation-valid text-danger" data-valmsg-for="id_issue_date" data-valmsg-replace="true"></div>
                            </div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
@@ -69,7 +74,7 @@
                               <%= f.label :passport, "Passport:" %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <%=f.text_field :passport, class: "form-control", value: "" %>
+                              <%=f.text_field :passport, id: "passport_no", class: "form-control", value: "" %>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
                              <%= f.label :email do %>
@@ -77,7 +82,8 @@
                              <% end %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+                              <%= f.email_field :email, id: "Email", autofocus: true, autocomplete: "email", class: "form-control", data: { val: "true" } %>
+                              <div class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></div>
                            </div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
@@ -85,21 +91,49 @@
                               <%= f.label :issued_on_identity_card, "Ngày cấp:" %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <input type="text" name="issue_date" id="issue_date" class="form-control" data-val="true" autocomplete="off">
+                              <%= f.date_field :issued_on_identity_card, id: "issue_date", class: "form-control", data: {val: true}, autocomplete: "off" %>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
-                              <label>Ngày hết hạn:</label>
+                              <%= f.label :expiration_date_passport, "Ngày hết hạn:" %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
-                              <input type="text" name="deadline_date" id="deadline_date" class="form-control" data-val="true" autocomplete="off">
+                              <%= f.date_field :expiration_date_passport, id: "deadline_date", class: "form-control", data: {val: true}, autocomplete: "off" %>
                            </div>
                         </div>
                         <div class="row" style="margin-bottom:10px">
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                            <%= f.label :country do %>
+                              Quốc gia <span style="color:red">(*)</span>:
+                            <% end %>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-12">
+                            <%= f.select :country, [],{}, id: "CountryId", class: "form-control valid", onchange: "LoadTinhThanh('');" %>
+                          </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                            <%= f.label :province do %>
+                              Tỉnh/TP <span style="color:red">(*)</span>:
+                            <% end %>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-12">
+                            <%= f.select :province, [],{},id: "ProvinceId", class: "form-control valid", onchange: "LoadQuanHuyen('');" %>
+                          </div>
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                            <%= f.label :district, "Quận/Huyện:" %>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-12">
+                            <%= f.select :district, [],{},id: "DistrictId", class: "form-control valid" %>
+                          </div>
+                        </div>
+                        <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12">
-                              <label>Địa chỉ <span style="color:red">(*)</span>:</label>
+                             <%= f.label :address do %>
+                               Địa chỉ <span style="color:red">(*)</span>:
+                             <% end %>
                            </div>
                            <div class="col-md-10 col-sm-10 col-xs-12">
-                              <input type="text" name="Address" id="Address" class="form-control" data-val="true" data-val-required="Vui lòng nhập địa chỉ">
+                              <%= f.text_field :address, class: "form-control", id: "Address", data: { val: "true" } %>
                               <div class="field-validation-valid text-danger" data-valmsg-for="Address" data-valmsg-replace="true"></div>
                            </div>
                         </div>
@@ -127,11 +161,13 @@
                               <div class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></div>
                            </div>
                            <div class="col-md-2 col-sm-2 col-xs-12">
-                              <label>Nhập lại <span style="color:red">(*)</span>:</label>
+                             <%= f.label :password_confirmation do %>
+                               Mật khẩu <span style="color:red">(*)</span>:
+                             <% end %>
                            </div>
                            <div class="col-md-4 col-sm-4 col-xs-12">
                               <div class="input-group" id="show_hide_password_RePassword">
-                                 <input tautocomplete="new-password" type="password" name="RePassword" id="RePassword" class="form-control" data-val="true" data-val-equalto="Nhập lại khẩu không chính xác" data-val-equalto-other="*.Password" data-val-required="Vui lòng nhập lại mật khẩu">
+                                 <%= f.password_field :password_confirmation, autocomplete:"new-password", id: "RePassword", class: "form-control", data: {val: "true"} %>
                                  <div class="input-group-addon">
                                     <a><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
                                  </div>
@@ -216,3 +252,504 @@
       </div>
    </div>
 </div>
+<script>
+  $(document).ready(function () {
+      var date_input = $('input[name="date"]'); //our date input has the name "date"
+      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+      date_input.datepicker({
+          format: 'mm/dd/yyyy',
+          container: container,
+          todayHighlight: true,
+          autoclose: true
+      });
+  });
+  $(document).ready(function () {
+      $('.chat_face .title').on('click', function () {
+          if ($('.chat_face').toggleClass('show_chat_box').hasClass('show_chat_box')) {
+              $('.chat_face .title').html('<i class="fa fa-times-circle" aria-hidden="true"></i> Đóng')
+          } else {
+              $('.chat_face .title').html('<i class="fa fa-commenting" aria-hidden="true"></i> Chat với chúng tôi')
+          }
+      });
+  });
+</script>
+<script>
+  $(document).ready(function () {
+      $("#show_hide_password_password a").on('click', function (event) {
+          event.preventDefault();
+          if ($('#show_hide_password_password input').attr("type") == "text") {
+              $('#show_hide_password_password input').attr('type', 'password');
+              $('#show_hide_password_password i').addClass("fa-eye-slash");
+              $('#show_hide_password_password i').removeClass("fa-eye");
+          } else if ($('#show_hide_password_password input').attr("type") == "password") {
+              $('#show_hide_password_password input').attr('type', 'text');
+              $('#show_hide_password_password i').removeClass("fa-eye-slash");
+              $('#show_hide_password_password i').addClass("fa-eye");
+          }
+      });
+  });
+</script>
+<script>
+  $('#Birthday').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      autoclose: true
+  });
+
+  $('#id_issue_date').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      autoclose: true
+  });
+
+  $('#issue_date').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      autoclose: true
+  });
+
+  $('#deadline_date').datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      autoclose: true
+  });
+  $("#isUseSocialMediaRegister").click(function () {
+
+      if ($(this).is(":checked")) {
+          $("#SocialMedia").show();
+      } else {
+          $("#SocialMedia").hide();
+      }
+  });
+
+  $(document).ready(function () {
+      $("#show_hide_password_Password a").on('click', function (event) {
+          event.preventDefault();
+          if ($('#show_hide_password_Password input').attr("type") == "text") {
+              $('#show_hide_password_Password input').attr('type', 'password');
+              $('#show_hide_password_Password i').addClass("fa-eye-slash");
+              $('#show_hide_password_Password i').removeClass("fa-eye");
+          } else if ($('#show_hide_password_Password input').attr("type") == "password") {
+              $('#show_hide_password_Password input').attr('type', 'text');
+              $('#show_hide_password_Password i').removeClass("fa-eye-slash");
+              $('#show_hide_password_Password i').addClass("fa-eye");
+          }
+      });
+
+      $("#show_hide_password_RePassword a").on('click', function (event) {
+          event.preventDefault();
+          if ($('#show_hide_password_RePassword input').attr("type") == "text") {
+              $('#show_hide_password_RePassword input').attr('type', 'password');
+              $('#show_hide_password_RePassword i').addClass("fa-eye-slash");
+              $('#show_hide_password_RePassword i').removeClass("fa-eye");
+          } else if ($('#show_hide_password_RePassword input').attr("type") == "password") {
+              $('#show_hide_password_RePassword input').attr('type', 'text');
+              $('#show_hide_password_RePassword i').removeClass("fa-eye-slash");
+              $('#show_hide_password_RePassword i').addClass("fa-eye");
+          }
+      });
+  });
+
+  $(document).ready(function () {
+      $.validator.methods.date = function (value, element) {
+          return this.optional(element) || $.datepicker.parseDate('dd/mm/yy', value);
+      }
+
+      $.validator.addMethod('validate-checkbox-oneormore', function (value) {
+          return $('.require-one:checked').size() != 0;
+      }, 'Qu&#253; kh&#225;ch vui l&#242;ng check v&#224;o &#244; &quot;T&#244;i đ&#227; đọc v&#224; đồng &#253; c&#225;c điều khoản b&#234;n dưới&quot;');
+  });
+
+  $(document).ready(function () {
+      LoadTinhThanh('');
+      LoadQuanHuyen('');
+
+      loadSocialData();
+
+      $("#btCapNhat").click(function () {
+          form = $("#frm-dangky");
+          form.removeData('validator');
+          form.removeData('unobtrusiveValidation');
+          $.validator.unobtrusive.parse("#frm-dangky");
+          if (form.valid()) {
+              $.ajax({
+                  url: '/TheThanhVien/_DangKy',
+                  type: "POST",
+                  data: form.serialize(),
+                  beforeSend: function (xhr) {
+                      $("#btCapNhat").addClass('hide');
+
+                      $('#preloader-wrapper').toggleClass('hide');
+                  },
+                  success: function (result) {
+                      if (result.status >= 1) {
+                          ShowNotify(result.text, "success", "top");
+
+                          window.location.href = result.obj;
+                      }
+                      else {
+                          ShowNotify(result.text, "warning", "top");
+
+                          $("#btCapNhat").removeClass('hide');
+                      }
+
+                      $('#preloader-wrapper').toggleClass('hide');
+                  },
+                  failure: function (message) {
+                      $("#btCapNhat").removeClass('hide');
+
+                      $('#preloader-wrapper').toggleClass('hide');
+                  }
+              });
+          }
+      });
+  });
+
+  function LoadTinhThanh(ValueDefault) {
+
+      var CountryId = $("#CountryId").val();
+
+      var ProvinceId = $("#ProvinceId");
+
+      ProvinceId.empty();
+
+      $.ajax({
+          type: "GET",
+          async: false,
+          url: '/users/registrations/load_city',
+          data: { CountryId: CountryId },
+          beforeSend: function () {
+              $('#preloader-wrapper').toggleClass('hide');
+          },
+          success: function (result) {
+
+              if (result.status >= 1) {
+                  $.each(result.obj, function (i, state) {
+                      if (this.ProvinceId == 'ce934e15-eb2e-454c-8235-2d5bef57a855')
+                      {
+                          ProvinceId.append($('<option></option>', { value: this.ProvinceId, selected: "selected" }).html(this.ProvinceName));
+                      }
+                      else
+                      {
+                          ProvinceId.append($('<option></option>', { value: this.ProvinceId }).html(this.ProvinceName));
+                      }
+                  });
+              }
+
+              if (ValueDefault != '') {
+                  $('select[name^="ProvinceId"] option').filter(function () {
+                      if (ValueDefault == this.value) {
+                          return true;
+                      }
+
+                      return false;
+                  }).attr('selected', true);
+              }
+
+              ProvinceId.trigger("chosen:updated");
+
+              ProvinceId.trigger('change');
+
+              $('#preloader-wrapper').toggleClass('hide');
+          },
+          failure: function (message) {
+              $('#preloader-wrapper').toggleClass('hide');
+          }
+      });
+  }
+
+  function LoadQuanHuyen(ValueDefault) {
+
+      var ProvinceId = $("#ProvinceId").val();
+
+      var DistrictId = $("#DistrictId");
+      DistrictId.empty();
+
+      $.ajax({
+          type: "GET",
+          async: false,
+          url: '/users/registrations/load_province',
+          data: { ProvinceId: ProvinceId },
+          beforeSend: function () {
+              $('#preloader-wrapper').toggleClass('hide');
+          },
+          success: function (result) {
+
+              if (result.status >= 1) {
+                  $.each(result.obj, function (i, state) {
+                      DistrictId.append($('<option></option>', { value: this.DistrictId }).html(this.DistrictName));
+                  });
+              }
+
+              if (ValueDefault != '') {
+                  $('select[name^="DistrictId"] option').filter(function () {
+                      if (ValueDefault == this.value) {
+                          return true;
+                      }
+
+                      return false;
+                  }).attr('selected', true);
+              }
+
+              DistrictId.trigger("chosen:updated");
+
+              DistrictId.trigger('change');
+
+              $('#preloader-wrapper').toggleClass('hide');
+          },
+          failure: function (message) {
+              $('#preloader-wrapper').toggleClass('hide');
+          }
+      });
+  }
+
+  function CheckValidate() {
+    //+ Ngày cấp CMND nhỏ hơn ngày hiện tại
+      var currentDate = new Date('2021', parseInt('5') - 1, '17', '20', '29', '51');
+      var issue = document.getElementById("id_issue_date").value.split("/");
+      var id_issue_date = new Date(parseInt(issue[2]) + "-" + parseInt(issue[1]) + "-" + parseInt(issue[0]));
+      if (id_issue_date > currentDate) {
+          alert('Ngày cấp CMND phải nhỏ hơn ngày hiện tại');
+          return;
+      }
+
+      //+ So sánh ngày sinh với ngày hiện tại nếu nhỏ hơn 15 tuổi thì	(Không bắt buộc nhập: Di Động, CMND, Ngày cấp, Bắt buộc nhập Mã người giới thiệu)
+      var dob = document.getElementById("Birthday").value.split("/");
+      var Birthday = new Date(parseInt(dob[2]) + 15 + "-" + parseInt(dob[1]) + "-" + parseInt(dob[0]));
+      if (Birthday > currentDate)//Nhỏ hơn 15 tuổi
+      {
+          //Bắt buộc nhập Mã người giới thiệu
+          var ReferBy = $('#ReferBy').val();
+          if (ReferBy == '') {
+              alert('Vui lòng nhập mã người giới thiệu');
+              return;
+          }
+      }
+      else {//Lớn hơn 15 tuổi
+          //bắt buộc nhập: Di Động, CMND, Ngày cấp
+          if ($('#Phone').val() == '') {
+              alert('Vui lòng nhập di động');
+              return;
+          }
+          //if ($('#IdCard').val() == '') {
+          //    alert('Vui lòng nhập CMND');
+          //    return;
+          //}
+          //if ($('#id_issue_date').val() == '') {
+          //    alert('Vui lòng nhập ngày cấp CMND');
+          //    return;
+          //}
+      }
+      //Kiem tra mật khẩu >=8 ký tự
+      var Password = $('#Password').val();
+      if (Password.length < 8)
+      {
+          alert('Vui lòng nhập mật khẩu >=8 ký tự');
+          return;
+      }
+
+  }
+  function loadSocialData() {
+      var result = parseURLParams(location.search);
+      if (result) {
+          if (result.isUseSocialMediaRegister[0] == "True") {
+              $('#Email').val(result.Email[0]);
+              $('#CustomerName').val(result.CustomerName[0]);
+              $('#isUseSocialMediaRegister').prop('checked', true);
+              $('#socialid').val(result.socialid[0]);
+              $('#socialtype').val(result.socialtype[0]);
+
+
+          }
+      }
+  }
+
+function parseURLParams(url) {
+        var queryStart = url.indexOf("?") + 1,
+         queryEnd   = url.indexOf("#") + 1 || url.length + 1,
+        query = url.slice(queryStart, queryEnd - 1),
+        pairs = query.replace(/\+/g, " ").split("&"),
+         parms = {}, i, n, v, nv;
+
+       if (query === url || query === "") return;
+
+       for (i = 0; i < pairs.length; i++) {
+            nv = pairs[i].split("=", 2);
+            n = decodeURIComponent(nv[0]);
+            v = decodeURIComponent(nv[1]);
+
+              if (!parms.hasOwnProperty(n)) parms[n] = [];
+             parms[n].push(nv.length === 2 ? v : null);
+       }
+       return parms;
+      }
+</script>
+<script type="text/javascript">
+
+  var $modalQuenMatKhau = $('#quenmatkhau');
+
+  function QuenMatKhau() {
+      $modalQuenMatKhau.show();
+
+      $modalDangNhap.hide();
+  }
+
+  $('.btnCloseQuenMatKhau').on('click', function (event) {
+      $modalQuenMatKhau.hide();
+  });
+
+  $('#btnQuenMatKhau').on('click', function (event) {
+      if (!$('#form-forget-password').valid()) {
+          alert('Vui lòng nhập đầy đủ thông tin', 'warning', 'top');
+
+          var validator = $("#form-forget-password").validate();
+          validator.focusInvalid();
+          return false;
+      } else if ($("#EmailForgetPassword").val() == '' && $("#SoDienThoaiForgetPassword").val() == '') {
+          alert('Vui lòng nhập đầy đủ thông tin', 'warning', 'top');
+      } else {
+
+          var datas = $("#form-forget-password").serialize();
+
+          $.ajax({
+              type: "POST",
+              url: '/Account/_ForgetPassword',
+              data: datas,
+              beforeSend: function () {
+                  $('#preloader-wrapper').toggleClass('hide');
+              },
+              success: function (result) {
+
+                  $('#preloader-wrapper').toggleClass('hide');
+
+                  if (result.status >= 1) {
+                      ShowNotify(result.text, "success", "top");
+                  }
+                  else {
+                      ShowNotify(result.text, "warning", "top");
+                  }
+              },
+              error: function (data) {
+                  $('#preloader-wrapper').toggleClass('hide');
+                  alert('Thao tác thất bại');
+              }
+          });
+      }
+  });
+
+  var $modalDangNhap = $('#dangnhap');
+
+  function DangNhapShow() {
+      $modalDangNhap.show();
+  }
+
+  $('.btnCloseLoginShared').on('click', function (event) {
+      $modalDangNhap.hide();
+  });
+
+  $('#btnLoginShared').on('click', function (event) {
+      event.preventDefault();
+
+      if (!$('#form-login').valid()) {
+          alert('Vui lòng nhập đầy đủ thông tin', 'warning', 'top');
+
+          var validator = $("#form-login").validate();
+          validator.focusInvalid();
+          return false;
+      } else {
+
+          var datas = $("#form-login").serialize();
+          $.ajax({
+              type: "POST",
+              url: '/Account/LoginShared',
+              data: datas,
+              beforeSend: function () {
+                  $('#preloader-wrapper').toggleClass('hide');
+              },
+              success: function (result) {
+                  $('#preloader-wrapper').toggleClass('hide');
+                  if (result.id > 0) {
+                      alert(result.message);
+                      document.location.href = '/';
+
+                      return false;
+                  } else {
+                      alert(result.message);
+                  }
+              },
+              error: function (data) {
+                  $('#preloader-wrapper').toggleClass('hide');
+                  alert('Thao tác thất bại');
+              }
+          });
+      }
+  });
+
+  function LogoutShared() {
+      $.ajax({
+          type: "POST",
+          url: '/Account/LogoutShared',
+          //data: datas,
+          beforeSend: function () {
+              $('#preloader-wrapper').toggleClass('hide');
+          },
+          success: function (result) {
+              $('#preloader-wrapper').toggleClass('hide');
+              if (result.id > 0) {
+                  alert(result.message);
+                  document.location.href = '/';
+              } else {
+                  alert(result.message);
+              }
+          }
+          //},
+          //error: function (data) {
+          //    $('#preloader-wrapper').toggleClass('hide');
+          //    alert('Thao tác thất bại');
+          //}
+      });
+  }
+</script>
+<script type="text/javascript">
+  var xpos = '10.7808619';
+  var ypos = '106.69561';
+  $('#us1').locationpicker({
+      location: { latitude: xpos, longitude: ypos },
+      radius: 150,
+      inputBinding: {
+          latitudeInput: $('#Latitude'),
+          longitudeInput: $('#Longtitude'),
+          //locationNameInput: $('#Address')
+      },
+      enableAutocomplete: true
+  });
+
+  $('#sendNewsletter').on('click', function (event) {
+      if ($('#newsletterEmail').val() == '') {
+          alert('Vui lòng nhập email');
+          $('#newsletterEmail').focus();
+          return false;
+      }
+
+      if (!isEmail($('#newsletterEmail').val())) {
+          alert('Địa chỉ email không hợp lệ');
+          $('#newsletterEmail').focus();
+          return false;
+      }
+
+      $.ajax({
+          type: "POST",
+          url: "/Home/SaveNewsletter",
+          data: { 'email': $('#newsletterEmail').val() },
+          success: function (data) {
+              if (data.id > 0) {
+                  alert(data.message);
+                  $('#newsletterEmail').val('');
+              } else {
+                  alert(data.message);
+              }
+          }
+      });
+      return true;
+  });
+</script>

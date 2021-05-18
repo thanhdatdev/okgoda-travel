@@ -180,6 +180,9 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
     t.string "email", default: "", null: false
     t.date "issued_on_passport"
     t.date "expiration_date_passport"
+    t.string "country", null: false
+    t.string "province", null: false
+    t.string "district"
     t.string "address", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.boolean "admin", default: false

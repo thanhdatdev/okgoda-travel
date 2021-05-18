@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  devise_for :users
+  devise_for :users, controllers: {
+        registrations: 'users/registration'
+  }
+
   resources  :tour
   resources  :booking do
     resources :list_of_customers
