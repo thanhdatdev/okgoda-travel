@@ -20149,7 +20149,7 @@ button.close {
 	url(font_path('fa-brands-400.woff2') format("woff2"),
 	url(font_path('fa-brands-400.woff') format("woff"),
 	url(font_path('fa-brands-400.ttf') format("truetype"),
-	url(font_path('fa-brands-400.svg#fontawesome') format("svg"));
+	url(font_path('fa-brands-400.svg#fontawesome') format("svg"))))))
 }
 
 .fab {
@@ -20165,7 +20165,7 @@ button.close {
 	url(font_path('fa-regular-400.woff2') format("woff2"),
 	url(font_path('fa-regular-400.woff') format("woff"),
 	url(font_path('fa-regular-400.ttf') format("truetype"),
-	url(font_path('fa-regular-400.svg#fontawesome') format("svg"));
+	url(font_path('fa-regular-400.svg#fontawesome') format("svg"))))))
 }
 
 .far {
@@ -20181,7 +20181,7 @@ button.close {
 	url(font_path('fa-solid-900.woff2') format("woff2"),
 	url(font_path('fa-solid-900.woff') format("woff"),
 	url(font_path('fa-solid-900.ttf') format("truetype"),
-	url(font_path('fa-solid-900.svg#fontawesome') format("svg"));
+	url(font_path('fa-solid-900.svg#fontawesome') format("svg"))))))
 }
 
 .fa,
