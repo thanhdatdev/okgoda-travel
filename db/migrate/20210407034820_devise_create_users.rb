@@ -14,6 +14,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string  :email,                    null: false, default: ""
       t.date    :issued_on_passport
       t.date    :expiration_date_passport
+      t.string  :country,                   null: false
+      t.string  :province,                     null: false
+      t.string  :district
       t.string  :address,                  null: false, default: ""
       t.string  :encrypted_password,       null: false, default: ""
       t.boolean :admin,                                 default: false

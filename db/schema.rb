@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_201158) do
+ActiveRecord::Schema.define(version: 2021_05_10_194308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -96,6 +96,16 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
   end
 
+  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "booking_id"
+    t.string "payments_type", default: "", null: false
+    t.string "description_payments", default: ""
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_payments_on_booking_id"
+  end
+
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "tour_id"
     t.string "title", default: "", null: false
@@ -167,6 +177,9 @@ ActiveRecord::Schema.define(version: 2021_05_06_201158) do
     t.string "email", default: "", null: false
     t.date "issued_on_passport"
     t.date "expiration_date_passport"
+    t.string "country", null: false
+    t.string "province", null: false
+    t.string "district"
     t.string "address", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.boolean "admin", default: false

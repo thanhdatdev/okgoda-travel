@@ -4,11 +4,11 @@
       <div class="col-xs-12">
         <div class="frame-search">
           <div class="o-dl hvtt">
-            <a href="https://xuyenviet.travel.com.vn/" target="_blank">
+            <%= link_to through_vietnam_tour_path, target: '_blank' do %>
               <i class="iconT-i-c5 mg-b"></i>
               <p class="text1">Tour</p>
               <p class="text2 text-hvtt">Xuyên Việt</p>
-            </a>
+            <% end %>
           </div>
           <div class="o-dl dltn">
             <i class="iconT-i-c1 mg-b"></i>
@@ -16,7 +16,7 @@
             <p class="text2 text-dltn">Trong nước</p>
           </div>
           <div class="o-dl vmb">
-            <div class="vua"><img src="https://travel.com.vn/content/themehe/img/vietravel-airlines-logo-116px.png" alt="Vietravel Airlines"></div>
+            <div class="vua"><%= image_tag "vietravel-airlines-logo-116px.png", alt: "Vietravel Airlines" %></div>
             <p class="text1"></p>
             <p class="text2 text-dlnn">Vé máy bay</p>
           </div>
@@ -60,7 +60,7 @@
                   <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                     <div class="form-group noidia" style="position: relative;">
                       <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
-                        <img src="/Content/ThemeHe/img/i-map2.png" alt="map">
+                        <%= image_tag "i-map2.png", alt: "map" %>
                       </div>
                       <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
                         <span style="color: rgb(0, 137, 255); font-size: 14px; font-weight: 500; --darkreader-inline-color:#33a6ff;" data-darkreader-inline-color="">Điểm đến</span>
@@ -153,7 +153,7 @@
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group" style="position: relative;">
                           <div style="position: absolute;left: 16px; top: 18px;">
-                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                            <%= image_tag "i-calendar2.png", alt: "calendar" %>
                           </div>
                           <div style="position: absolute;left: 50px; top: 12px;">
                             <span style="color: rgb(0, 137, 255); font-size: 14px; font-weight: 500; --darkreader-inline-color:#33a6ff;" data-darkreader-inline-color="">Từ ngày</span>
@@ -162,12 +162,12 @@
                         </div>
                       </div>
                       <div style="position: absolute;top: 25px;left: 45%;display:none" class="hidden-xs">
-                        <img src="/Content/ThemeHe/img/i-arrow2.png" alt="arrow">
+                        <%= image_tag "i-arrow2.png", alt: "arrow" %>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group" style="position: relative;">
                           <div style="position: absolute;left: 16px; top: 18px;">
-                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                            <%= image_tag "i-calendar2.png", alt: "calendar" %>
                           </div>
                           <div style="position: absolute;left: 50px; top: 12px;">
                             <span style="color: rgb(0, 137, 255); font-size: 14px; font-weight: 500; --darkreader-inline-color:#33a6ff;" data-darkreader-inline-color="">Đến ngày</span>
@@ -207,7 +207,7 @@
                   <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                     <div class="form-group outbound" style="position: relative;">
                       <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
-                        <img src="/Content/ThemeHe/img/i-map2.png" alt="map">
+                        <%= image_tag "i-map2.png", alt: "map" %>
                       </div>
                       <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
                         <span style="color: rgb(240, 67, 58); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f14e46;" data-darkreader-inline-color="">Điểm đến</span>
@@ -319,7 +319,7 @@
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group" style="position: relative;">
                           <div style="position: absolute;left: 16px; top: 18px;">
-                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                            <%= image_tag "i-calendar2.png", alt: "calendar" %>
                           </div>
                           <div style="position: absolute;left: 50px; top: 12px;">
                             <span style="color: rgb(240, 67, 58); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f14e46;" data-darkreader-inline-color="">Từ ngày</span>
@@ -330,7 +330,7 @@
                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                         <div class="form-group" style="position: relative;">
                           <div style="position: absolute;left: 16px; top: 18px;">
-                            <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                            <%= image_tag "i-calendar2.png", alt: "calendar" %>
                           </div>
                           <div style="position: absolute;left: 50px; top: 12px;">
                             <span style="color: rgb(240, 67, 58); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f14e46;" data-darkreader-inline-color="">Đến ngày</span>
@@ -370,7 +370,7 @@
                   <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="display:none;">
                     <div class="form-group noidia" style="position: relative;">
                       <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
-                        <img src="/Content/ThemeHe/img/i-price.png" alt="price">
+                        <%= image_tag "i-price.png", alt: "price" %>
                       </div>
                       <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
                         <span style="color: rgb(242, 163, 15); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f3ac27;" data-darkreader-inline-color="">Combo</span>
@@ -398,7 +398,7 @@
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="form-group noidia" style="position: relative;">
                       <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
-                        <img src="/Content/ThemeHe/img/i-map2.png" alt="map">
+                        <%= image_tag "i-map2.png", alt: "map" %>
                       </div>
                       <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
                         <span style="color: rgb(242, 163, 15); font-size: 14px; font-weight: 500; --darkreader-inline-color:#f3ac27;" data-darkreader-inline-color="">Bạn muốn đi đâu?</span>
@@ -655,7 +655,7 @@
                       <div class="col-xs-12">
                         <div class="form-group" style="position: relative;">
                           <div style="position: absolute;left: 16px; top: 18px;">
-                            <img src="/Content/ThemeHe/img/i-booking2.png" alt="booking">
+                            <%= image_tag "i-booking2.png", alt: "booking" %>
                           </div>
                           <div style="position: absolute;left: 50px; top: 12px;">
                             <span style="color: rgb(0, 140, 114); font-size: 14px; --darkreader-inline-color:#6affe3;" data-darkreader-inline-color="">Số booking</span>
@@ -854,3 +854,573 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  //config destination
+  var pFrom = '{"placeFrom":[' + '{"Name":"Tp. Hồ Chí Minh","Code":"SGN", "placeTo":[{"Name":"Hà Nội", "Code": "HAN"},{"Name":"Đà Nẵng","Code":"DAD"},{"Name":"Phú Quốc","Code":"PQC"},{"Name":"Đà Lạt", "Code":"DLI"}] },' + '{"Name":"Hà Nội", "Code": "HAN", "placeTo":[{"Name":"Tp. Hồ Chí Minh", "Code": "SGN"},{"Name":"Đà Nẵng","Code":"DAD"}] },' + '{"Name":"Đà Nẵng","Code":"DAD", "placeTo":[{"Name":"Tp. Hồ Chí Minh", "Code": "SGN"},{"Name":"Hà Nội","Code":"HAN"}]},' + '{"Name":"Phú Quốc","Code":"PQC", "placeTo":[{"Name":"Tp. Hồ Chí Minh", "Code": "SGN"},{"Name":"Hà Nội","Code":"HAN"}]},' + '{"Name":"Đà Lạt","Code":"DLI", "placeTo":[{"Name":"Tp. Hồ Chí Minh", "Code": "SGN"}]' + '}]}';
+
+  //điểm đi
+  obj = JSON.parse(pFrom);
+  var countFrom = Object.keys(obj.placeFrom).length;
+  var pfrom = "<h4 class='title-list'>Trong nước</h4><ul class='des-list'>";
+  for (var i = 0; i < countFrom; i++) {
+      pfrom += "<li><a data-option='0' data-index='" + i + "'><span class='name'>" + obj.placeFrom[i].Name + "</span><span class='cd'>" + obj.placeFrom[i].Code + "</span></a></li>";
+  }
+  pfrom += "</ul>";
+  document.getElementById("pfrom").innerHTML = pfrom;
+  //điểm đến
+  function loadPlaceTo(findex) {
+      obj = JSON.parse(pFrom);
+      var countFrom = Object.keys(obj.placeFrom[findex].placeTo).length;
+      var pto = "<h4 class='title-list'>Trong nước</h4><ul class='des-list'>";
+      for (var t = 0; t < countFrom; t++) {
+          pto += "<li onclick=\"FightTo('" + obj.placeFrom[findex].placeTo[t].Name + "', '" + obj.placeFrom[findex].placeTo[t].Code + "')\"><a data-option='1'><span class='name'>" + obj.placeFrom[findex].placeTo[t].Name + "</span><span class='cd'>" + obj.placeFrom[findex].placeTo[t].Code + "</span></a></li>";
+      }
+      pto += "</ul>";
+      document.getElementById("pto").innerHTML = pto;
+  }
+  function FightTo(sname, scode) {
+      document.getElementById('dropvalto').innerHTML = sname + "<sup>" + scode + "</sup>";
+      document.getElementById('flight_to').value = scode;
+      updateConfigDate();
+  }
+  /*
+* Location Dropdown Script
+//*/
+  var drp_locations = document.querySelectorAll(".drp-location");
+  for (let i = 0; i < drp_locations.length; i++) {
+      drp_locations[i].addEventListener("click", function(e) {
+          e.preventDefault();
+          resetDrdDestination();
+          let parent_drp = e.target.closest(".drp-location");
+          if (!parent_drp.querySelector('.dropdown-content').contains(e.target)) {
+              parent_drp.classList.add("blur");
+              parent_drp.querySelector('.inp-filter').focus();
+              parent_drp.querySelector('.dropval').innerHTML = "";
+              document.getElementById('dropvalto').innerHTML = "";
+              parent_drp.querySelector('.placeholder').classList.add("small");
+          }
+
+      });
+  }
+
+  var inp_filters = document.querySelectorAll(".drp-location .inp-filter");
+  for (let j = 0; j < inp_filters.length; j++) {
+      inp_filters[j].addEventListener("keyup", (e)=>{
+          e.target.closest(".drp-location").querySelector('.dropval').innerHTML = e.target.value;
+      }
+      );
+  }
+
+  function resetDrdDestination() {
+      let dropdowns = document.getElementsByClassName("drp-location");
+      for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          openDropdown.classList.remove('blur');
+          if (openDropdown.querySelector('.dropval').innerHTML == "") {
+              openDropdown.querySelector('.placeholder').classList.remove("small");
+          }
+      }
+  }
+
+  // Event Click Destination
+  var des_links = document.querySelectorAll(".drp-location .des-list li a");
+  for (let i = 0; i < des_links.length; i++) {
+      let des_link = des_links[i];
+      des_link.addEventListener("click", function(e) {
+          e.preventDefault();
+          let des_name = des_link.querySelector('.name').innerHTML;
+          let des_cd = des_link.querySelector('.cd').innerHTML;
+          e.target.closest('.drp-location').querySelector('.inp-filter').value = "";
+          e.target.closest('.drp-location').querySelector('.dropval').innerHTML = des_name + "<sup>" + des_cd + "</sup>";
+          e.target.closest('.drp-location').classList.remove("blur");
+          var des_index = des_link.getAttribute("data-index");
+          var des_data = des_link.getAttribute("data-option");
+          document.getElementById('flight_from').value = des_cd;
+          loadPlaceTo(des_index);
+      });
+  }
+
+  //date
+  //updateConfigDate();
+  function updateConfigDate() {
+      var today = new Date().getMonth() + 1 + "/" + new Date().getDate() + "/" + new Date().getFullYear();
+      var isOneway = false;
+      var options = {};
+      options.timePicker = false;
+      options.showDropdowns = false;
+      options.autoApply = true;
+      options.startDate = today;
+      options.minDate = today;
+      if ($('#singleDatePicker').is(':checked')) {
+          options.singleDatePicker = true;
+          isOneway = true;
+          document.querySelector('.date-end').style.display = 'none';
+      } else {
+          document.querySelector('.date-end').style.display = 'block';
+      }
+
+      $('#datestart').daterangepicker(options, function(start, end) {
+          document.getElementById('datestartview').value = (options.singleDatePicker == true ? start.format('DD/MM/YYYY') : start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+          document.getElementById('date_start').value = start.format('YYYY-MM-DD');
+          document.getElementById('date_end').value = end.format('YYYY-MM-DD');
+      }).click();
+  }
+  $('#singleDatePicker').click(function() {
+      updateConfigDate();
+  });
+  $('#datestartview').click(function() {
+      updateConfigDate();
+  });
+
+  //hành khách
+  var drp_wr = document.querySelectorAll(".drp-customer");
+  for (let i = 0; i < drp_wr.length; i++) {
+      drp_wr[i].addEventListener("click", function(e) {
+          e.preventDefault();
+          //updateConfigDate();
+          let parent_drp = e.target.closest(".wr-inp");
+          if (!parent_drp.querySelector('.dropdown-content').contains(e.target)) {
+              parent_drp.classList.add("blur");
+              parent_drp.querySelector('.customer_filter').focus();
+          }
+      });
+  }
+
+  function closeDrdCustomer() {
+      let dropdowns = document.getElementsByClassName("drp-customer");
+      for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.querySelector('.wr-inp').classList.contains("blur")) {
+              openDropdown.querySelector('.wr-inp').classList.remove("blur");
+          }
+      }
+  }
+
+  //event hành khách
+  var num_adults = 0;
+  num_childs = 0;
+  num_infants = 0,
+  max_pax = 9;
+  num_adults = parseInt(document.getElementById('num_adult').value);
+  num_childs = parseInt(document.getElementById('num_child').value);
+  num_infants = parseInt(document.getElementById('num_infant').value)
+  $('.drp-customer .adults .fa-plus').click(function() {
+      if (num_adults + num_childs < max_pax) {
+          num_adults = parseInt(document.getElementById('num_adult').value) + 1;
+      } else {
+          num_adults = parseInt(document.getElementById('num_adult').value);
+      }
+      document.getElementById('num_adult').value = num_adults;
+      document.getElementById('customer_type').value = num_adults + " Người lớn" + (num_childs > 0 ? "; " + num_childs + " Trẻ em" : "") + (num_infants > 0 ? "; " + num_infants + " Trẻ nhỏ" : "");
+  });
+
+  $('.drp-customer .adults .fa-minus').click(function() {
+      if (num_adults >= 1) {
+          num_adults = parseInt(document.getElementById('num_adult').value) - 1;
+      } else {
+          num_adults = 0;
+      }
+      document.getElementById('num_adult').value = num_adults;
+      document.getElementById('customer_type').value = num_adults + " Người lớn" + (num_childs > 0 ? "; " + num_childs + " Trẻ em" : "") + (num_infants > 0 ? "; " + num_infants + " Trẻ nhỏ" : "");
+  });
+
+  $('.drp-customer .child .fa-plus').click(function() {
+      if (num_adults + num_childs < max_pax && num_childs < num_adults * 2 && num_childs < 3) {
+          num_childs = parseInt(document.getElementById('num_child').value) + 1;
+      } else {
+          num_childs = parseInt(document.getElementById('num_child').value);
+      }
+      document.getElementById('num_child').value = num_childs;
+      document.getElementById('customer_type').value = num_adults + " Người lớn" + (num_childs > 0 ? "; " + num_childs + " Trẻ em" : "") + (num_infants > 0 ? "; " + num_infants + " Trẻ nhỏ" : "");
+  });
+  $('.drp-customer .child .fa-minus').click(function() {
+      if (num_childs >= 1) {
+          num_childs = parseInt(document.getElementById('num_child').value) - 1;
+      } else {
+          num_childs = 0;
+      }
+      document.getElementById('num_child').value = num_childs;
+      document.getElementById('customer_type').value = num_adults + " Người lớn" + (num_childs > 0 ? "; " + num_childs + " Trẻ em" : "") + (num_infants > 0 ? "; " + num_infants + " Trẻ nhỏ" : "");
+  });
+
+  $('.drp-customer .infant .fa-plus').click(function() {
+      if (num_infants < num_adults && num_infants < 3) {
+          num_infants = parseInt(document.getElementById('num_infant').value) + 1;
+      } else {
+          num_infants = parseInt(document.getElementById('num_infant').value);
+      }
+      document.getElementById('num_infant').value = num_infants;
+      document.getElementById('customer_type').value = num_adults + " Người lớn" + (num_childs > 0 ? "; " + num_childs + " Trẻ em" : "") + (num_infants > 0 ? "; " + num_infants + " Trẻ nhỏ" : "");
+  });
+  $('.drp-customer .infant .fa-minus').click(function() {
+      if (num_infants >= 1) {
+          num_infants = parseInt(document.getElementById('num_infant').value) - 1;
+      } else {
+          num_infants = 0;
+      }
+      document.getElementById('num_infant').value = num_infants;
+      document.getElementById('customer_type').value = num_adults + " Người lớn" + (num_childs > 0 ? "; " + num_childs + " Trẻ em" : "") + (num_infants > 0 ? "; " + num_infants + " Trẻ nhỏ" : "");
+  });
+
+  //hạng vé
+  drp_wr = document.querySelectorAll(".drp-ticket");
+  for (let i = 0; i < drp_wr.length; i++) {
+      drp_wr[i].addEventListener("click", function(e) {
+          e.preventDefault();
+          let parent_drp = e.target.closest(".wr-inp");
+          if (!parent_drp.querySelector('.dropdown-content').contains(e.target)) {
+              parent_drp.classList.add("blur");
+              parent_drp.querySelector('.ticket_filter').focus();
+          }
+      });
+  }
+  var ticket_links = document.querySelectorAll(".drp-ticket .list-option li");
+  for (let i = 0; i < ticket_links.length; i++) {
+      let ticket_link = ticket_links[i];
+      ticket_link.addEventListener("click", function(e) {
+          e.preventDefault();
+          let ticket_name = ticket_link.querySelector('.ticket_name').innerHTML;
+          let ticket_value = ticket_link.querySelector('.ticket_value').innerHTML;
+          e.target.closest('.drp-ticket').querySelector('.ticket_filter').value = ticket_name;
+          //e.target.closest('.drp-ticket').querySelector('.ticket_desc').innerHTML = ticket_name;
+          e.target.closest('.wr-inp').classList.remove("blur");
+      });
+  }
+  function closeDrdTicket() {
+      let dropdowns = document.getElementsByClassName("drp-ticket");
+      for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.querySelector('.wr-inp').classList.contains("blur")) {
+              openDropdown.querySelector('.wr-inp').classList.remove("blur");
+          }
+      }
+  }
+
+  window.onclick = function(event) {
+      var classes = event.target.className.split(' ');
+      var found = false
+        , foundcus = false
+        , foundticket = false;
+      var i = 0;
+      while (i < classes.length && !found) {
+          if (classes[i] == 'dropbtn')
+              found = true;
+          else
+              ++i;
+      }
+
+      while (i < classes.length && !foundcus) {
+          if (classes[i] == 'inp-place') {
+              foundcus = true;
+              foundticket = true;
+          } else
+              ++i;
+      }
+
+      var dropdowns = document.querySelectorAll(".drp-location");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+          if (dropdowns[i].contains(event.target)) {
+              found = true
+          }
+      }
+
+      if (!found) {
+          resetDrdDestination();
+          document.querySelector(".placeholder.small").closest(".drp-location");
+      }
+
+      //reset customer
+      dropdowns = document.querySelectorAll(".drp-customer");
+      for (i = 0; i < dropdowns.length; i++) {
+          if (dropdowns[i].contains(event.target)) {
+              foundcus = true;
+          }
+      }
+      if (!foundcus) {
+          closeDrdCustomer();
+      }
+
+      //reset ticket
+      dropdowns = document.querySelectorAll(".drp-ticket");
+      for (i = 0; i < dropdowns.length; i++) {
+          if (dropdowns[i].contains(event.target)) {
+              foundticket = true;
+          }
+      }
+      if (!foundticket) {
+          closeDrdTicket();
+      }
+  }
+
+  //button
+  $('.booking-box .btnFightSearch').click(function() {
+      var param = "";
+      param += "&routes[0][from]=" + document.getElementById('flight_from').value;
+      param += "&routes[0][to]=" + document.getElementById('flight_to').value;
+      param += "&routes[0][date]=" + document.getElementById('date_start').value;
+      if ($('#singleDatePicker').is(':checked')) {//
+      } else {
+          param += "&routes[1][from]=" + document.getElementById('flight_to').value;
+          param += "&routes[1][to]=" + document.getElementById('flight_from').value;
+          param += "&routes[1][date]=" + document.getElementById('date_end').value;
+      }
+      param += "&passengers[0][code]=ADT&passengers[0][count]=" + document.getElementById('num_adult').value;
+      param += "&passengers[1][code]=CHD&passengers[1][count]=" + document.getElementById('num_child').value;
+      param += "&passengers[2][code]=INF&passengers[2][count]=" + document.getElementById('num_infant').value;
+      param += "&lowestFare=false";
+      // False giá chính xác của ngày bay, True : giá thấp nhất theo khoảng ngày
+      param += "&promoCode=";
+      param += "&currency=VND";
+      //document.location.href = "http://localhost:52352/?execute=true" + param;
+      document.location.href = "https://booking.vietravelairlines.vn/vi/search?execute=true" + param;
+  });
+
+  var $ = jQuery.noConflict();
+  $(".dltn").click(function() {
+      LoadDauKhoiHanh('departureID', 's_depart');
+      $.scrollTo(document.getElementById('frmsDL'), 800, {
+          offset: -10
+      });
+      //frmsDLTN , { offset: 20 } { offset: document.getElementById('frmsDLTN').offsetTop }
+      //console.log('dltn');
+  });
+  $(".dlnn").click(function() {
+      LoadDauKhoiHanh('departureIDOB', 's_depart');
+      $.scrollTo(document.getElementById('frmsDL'), 800, {
+          offset: -10
+      });
+  });
+  $(".dltc").click(function() {
+      //LoadDauKhoiHanh('departureIDTC', 's_depart');
+      LoadDauKhoiHanh('comboDepartureId', 's_depart');
+      $.scrollTo(document.getElementById('frmsDL'), 800, {
+          offset: -10
+      });
+  });
+  $(".tttc").click(function() {
+      $.scrollTo(document.getElementById('frmsDL'), 800, {
+          offset: -10
+      });
+  });
+  $(".vmb").click(function() {
+      $.scrollTo(document.getElementById('frmsDL'), 800, {
+          offset: -10
+      });
+  });
+  var currDate = new Date();
+  $("#DepartureDate").datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      startDate: new Date(),
+      //endDate: currDate,
+      autoclose: true
+  });
+
+  $("#DepartureDateTo").datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      startDate: new Date(),
+      //endDate: currDate,
+      autoclose: true
+  });
+
+  $("#DepartureDateOB").datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      startDate: new Date(),
+      //endDate: currDate,
+      autoclose: true
+  });
+
+  $("#DepartureDateToOB").datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      startDate: new Date(),
+      //endDate: currDate,
+      autoclose: true
+  });
+
+  $("#DepartureDateTC").datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      startDate: new Date(),
+      //endDate: currDate,
+      autoclose: true
+  });
+
+  $("#DepartureDateToTC").datepicker({
+      format: 'dd/mm/yyyy',
+      todayHighlight: true,
+      startDate: new Date(),
+      //endDate: currDate,
+      autoclose: true
+  });
+
+  function LoadDauKhoiHanh(id, cookies_name) {
+      var s_depart = getCookie(cookies_name);
+      if (s_depart == "") {
+          s_depart = 0;
+      }
+      // Tương tác với server
+      $.ajax({
+          url: '/tour/load_departure_day',
+          data: {
+              LanguageID: '2'
+          },
+          success: function(result) {
+              //Reset option Destination
+              $("#" + id).empty();
+
+              for (n = 0; n < result.length; n++) {
+                  if (result[n].Id == s_depart) {
+                      $("#" + id).append($("<option selected></option>").val(result[n].Id).html(result[n].Name));
+                  } else {
+                      $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+                  }
+              }
+          }
+      });
+  }
+  ;
+  function LoadDiemDen(type, id) {
+      // Tương tác với server
+      $.ajax({
+          url: '/tour/load_destination',
+          data: {
+              type: type
+          },
+          success: function(result) {
+              //Reset option Destination
+              $("#" + id).empty();
+              $("#" + id).append($("<option></option>").val('0').html('Bạn muốn đi du lịch ở đâu?'));
+
+              for (n = 0; n < result.length; n++) {
+                  $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+              }
+              $("#" + id).trigger("chosen:updated");
+          }
+      });
+  }
+  ;
+  function LoadDiemDenMegre(id) {
+      // Tương tác với server
+      $.ajax({
+          url: '/tour/load_destination',
+          data: {
+              type: 1
+          },
+          success: function(result) {
+              //Reset option Destination
+              $("#" + id).empty();
+              $("#" + id).append($("<option></option>").val('0').html('Bạn muốn đi du lịch ở đâu?'));
+
+              for (n = 0; n < result.length; n++) {
+                  $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+              }
+              $("#" + id).trigger("chosen:updated");
+
+              $.ajax({
+                  url: '/SubControl/LoadDestination',
+                  data: {
+                      type: 2
+                  },
+                  success: function(result) {
+                      //Reset option Destination
+                      $("#" + id).append($("<option></option>").val('0').html('----------------------------------------------------------'));
+
+                      for (n = 0; n < result.length; n++) {
+                          $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+                      }
+                      $("#" + id).trigger("chosen:updated");
+                  }
+              });
+          }
+      });
+  }
+  ;
+  function LoadLoaiCombo(id) {
+      // Tương tác với server
+      $.ajax({
+          url: '/tour/load_combo_type',
+          data: null,
+          success: function(result) {
+              //Reset option Destination
+              $("#" + id).empty();
+              $("#" + id).append($("<option></option>").val('0').html('Vui lòng chọn loại combo thích hợp cho chuyến đi của bạn'));
+
+              for (n = 0; n < result.length; n++) {
+                  $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+              }
+              $("#" + id).trigger("chosen:updated");
+          }
+      });
+  };
+  function LoadTinhThanhByLoaiCombo(id) {
+      var loaiComBoId = $('#LoaiCombo').val();
+      // Tương tác với server
+      $.ajax({
+          url: '/tour/load_province_by_combo',
+          data: {
+              loaiComBoId: loaiComBoId
+          },
+          success: function(result) {
+              //Reset option Destination
+              $("#" + id).empty();
+              $("#" + id).append($("<option></option>").val('0').html('Vui lòng chọn địa điểm hay tên khách sạn '));
+              for (n = 0; n < result.length; n++) {
+                  $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+              }
+              $("#" + id).trigger("chosen:updated");
+
+              $.ajax({
+                  url: '/SubControl/LoadTinhThanhByCombo_NameKS',
+                  success: function(result) {
+
+                      for (n = 0; n < result.length; n++) {
+                          $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+                      }
+                      $("#" + id).trigger("chosen:updated");
+                  }
+              });
+
+          }
+      });
+  };
+</script>
+<script type="text/javascript">
+  $(document).ready(function(event) {
+      LoadDiemDen(1, 'GroupId');
+      LoadDiemDen(2, 'GroupIdOB');
+      //LoadDiemDenMegre('GroupIdTC');
+      LoadLoaiCombo('LoaiCombo');
+      LoadTinhThanhByLoaiCombo('CBTinhThanh');
+
+      //setTimeout(function () {
+      //    $('.chosen-select').chosen(config['.chosen-select']);
+      //}, 3000);
+  })
+
+  $("#LoaiCombo").change(function() {
+      LoadTinhThanhByLoaiCombo('CBTinhThanh');
+  });
+
+  $("#CBTinhThanh").on("change", function() {
+      $("#CBTinhThanhtext").val($("#CBTinhThanh option:selected").text());
+  });
+
+  function checkSearch(id) {
+      departureID1 = $('#' + id).val();
+      if (departureID1 > 0) {
+          var s_depart = getCookie('s_depart');
+          if (s_depart != "" && s_depart != departureID1) {
+              setCookie('s_depart', departureID1, 365);
+          }
+          return true;
+      } else {
+          alert('Bạn cần chọn nơi khởi hành');
+          return false;
+      }
+  }
+</script>
