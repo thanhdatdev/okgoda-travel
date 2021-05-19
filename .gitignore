@@ -25,4 +25,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+<<<<<<< HEAD
 /config/secrets.yml
+=======
+/config/credentials.yml.enc
+>>>>>>> 3a1d2c6... add gem elasticsearch
