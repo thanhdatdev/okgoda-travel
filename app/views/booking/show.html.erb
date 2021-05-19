@@ -132,7 +132,7 @@
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 mg-bot">Số khách:</div>
           <div class="col-lg-9 col-md-10 col-sm-10 col-xs-12 font500 line-h">
-            1 (Người lớn: 1&nbsp;&nbsp;Trẻ em: 0&nbsp;&nbsp;Trẻ nhỏ: 0&nbsp;&nbsp;Em bé: 0)
+            <%= @booking.customers_number %> (Người lớn: <%= @booking.adult_guests_number %>&nbsp;&nbsp;Trẻ em: <%= @booking.child_guests_number %>&nbsp;&nbsp;Trẻ nhỏ: <%= @booking.young_children_guests_number %>&nbsp;&nbsp;Em bé: <%= @booking.baby_guests_number %>)
           </div>
         </div>
         <div class="row bor-bot">
@@ -152,11 +152,11 @@
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Trị giá booking:</div>
-          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500"><span class="font500"><%= @booking.list_of_customers.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> đ</span></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500"><span class="font500"><%= @price_booking %> đ</span></div>
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Ngày đăng ký:</div>
-          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500 line-h"><span class="font500">03/05/2021 23:39:51 (Theo giờ Việt Nam)</span></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500 line-h"><span class="font500"><%= @booking.booking_date %> (Theo giờ Việt Nam)</span></div>
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot"><span class="hidden-md hidden-sm">Hình thức thanh toán:</span><span class="hidden-lg hidden-xs">Hình thức thanh toán:</span></div>
@@ -196,7 +196,7 @@
             <tr>
               <td colspan="11" align="right">
                 <span>Tổng cộng:</span>
-                <span class="price">3,690,000 đ</span>
+                <span class="price"><%= @total_price %> đ</span>
               </td>
             </tr>
           </tfoot>
@@ -289,31 +289,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-    // Create an instance of the Stripe object with your publishable API key
-    var stripe = Stripe("<%= Rails.configuration.stripe[:publishable_key] %>");
-    var checkoutButton = document.getElementById("checkout-button");
-    checkoutButton.addEventListener("click", function () {
-      fetch("/booking/checkout/create", {
-        method: "POST",
-      })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (session) {
-          return stripe.redirectToCheckout({ sessionId: session.id });
-        })
-        .then(function (result) {
-          // If redirectToCheckout fails due to a browser or network
-          // error, you should display the localized error message to your
-          // customer using error.message.
-          if (result.error) {
-            alert(result.error.message);
-          }
-        })
-        .catch(function (error) {
-          console.error("Error:", error);
-        });
-    });
-  </script>
