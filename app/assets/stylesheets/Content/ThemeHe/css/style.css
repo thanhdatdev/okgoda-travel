@@ -1547,7 +1547,7 @@ a:hover {
 }
 
 .n3-footer {
-	background: url(bg-footer.png')) no-repeat center bottom;
+	background: url(image_path('bg-footer.png') no-repeat center bottom);
 	height: 550px;
 	position: relative
 }
