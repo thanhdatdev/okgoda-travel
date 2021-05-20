@@ -15629,7 +15629,7 @@ function getCookie(cname) {
         html = "<div id='vtv_overlay' class='hidden-xs'></div>\
 <div id='vtv_popup' class='hidden-xs'>\
 <div id='vtv_close'><img src='https://travel.com.vn/images/vtvpopup/close.png' alt='Close Popup'/> </div>\
-<a href='http://bit.ly/popupUudaiT5'><img src='https://travel.com.vn/Content/ThemeHe/img/fs-ngay-hoi-du-lich.png' alt='Ngày hội du lịch' /></a>\
+<a href='http://bit.ly/popupUudaiT5'><img src='https://travel.com.vn/images/fs-ngay-hoi-du-lich.png', alt:'Ngày hội du lịch' /></a>\
 </div>";
         $('body').append(html);
         $('#vtv_overlay').click(vtv_closepopup);

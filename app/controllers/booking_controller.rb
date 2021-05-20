@@ -3,7 +3,9 @@ class BookingController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def show
-    @booking = Booking.find(params[:id])
+    @list_of_customers = @booking.list_of_customers.find_by(params[:list_of_customers_id])
+    @price_booking = @list_of_customers.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    @total_price = @list_of_customers.total_price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
 
   def new
@@ -14,6 +16,7 @@ class BookingController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.booking_date = Time.now
     respond_to do |format|
       if @booking.save
         BookingMailer.welcome_email(@booking).deliver
@@ -38,6 +41,65 @@ class BookingController < ApplicationController
     end
   end
 
+  def inbound_members
+    tour = Tour.find(params[:tour_id])
+
+    # validate remain_slot
+    # Tạo ra 1 service để validate
+    # /services/tour_valiation_service.rb
+    #
+    customer_types = {
+      adult: {
+        number_of_booking: params[:adult].to_i,
+        price_basic: nil
+      },
+      children11: {
+        number_of_booking: params[:children11].to_i,
+        price_basic: nil
+      },
+      children: {
+        number_of_booking: params[:children].to_i,
+        price_basic: nil
+      },
+      small_children: {
+        number_of_booking: params[:small_children].to_i,
+        price_basic: nil
+      }
+    }
+
+    customer_types.each do |key, value|
+      price_basic = tour.price_basics.find_by(customers_type: key)
+
+      if price_basic
+        value[:price_basic] = price_basic
+      else
+        customer_types.delete(key)
+      end
+    end
+
+    render json: {
+      data: render_to_string(
+        partial: 'booking/inbound_member',
+        locals: {
+          tour: tour,
+          customer_types: customer_types,
+          total: params[:total].to_i
+        }
+      )
+    }
+  end
+
+  def get_condition_payment
+    render json: {
+      data: render_to_string(
+        partial: 'booking/get_condition_payment',
+        locals: {
+          paymentID: params[:paymentID].to_i
+        }
+      )
+    }
+  end
+
   private
 
   def set_booking
@@ -55,6 +117,3 @@ class BookingController < ApplicationController
                                     list_of_customers_attributes: %i[name_list_of_customers sex_list_of_customers birthday_list_of_customers ages single_room price_booking total_price booking_id _destroy])
   end
 end
-
-# , :price_booking, :total_price
-# payments_attributes: [:id, :payments_type, :description_payments, :position]

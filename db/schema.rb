@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_02_164438) do
+ActiveRecord::Schema.define(version: 2021_05_10_194308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,11 +30,19 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.integer "baby_guests_number"
     t.string "customers_number", null: false
     t.string "note", default: ""
+    t.integer "status"
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tour_id"], name: "index_bookings_on_tour_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name_category", default: "", null: false
+    t.string "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -63,6 +71,14 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "item_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "category_id"
+    t.string "name_item_category", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_item_categories_on_category_id"
+  end
+
   create_table "list_of_customers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "booking_id"
     t.string "name_list_of_customers", default: "", null: false
@@ -70,8 +86,9 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.date "birthday_list_of_customers", null: false
     t.string "ages", default: "", null: false
     t.boolean "single_room", default: true, null: false
-    t.decimal "price_booking"
-    t.decimal "total_price"
+    t.boolean "domestic_customers"
+    t.integer "price_booking_cents", default: 0, null: false
+    t.integer "total_price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
@@ -89,8 +106,10 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
 
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "tour_id"
+    t.string "title", default: "", null: false
     t.string "customers_type", default: "", null: false
-    t.decimal "price_default", null: false
+    t.integer "price_default_cents", default: 0, null: false
+    t.string "price_default_currency", default: "VND", null: false
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -127,9 +146,10 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
 
   create_table "tours", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.time "start_date", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.integer "days", null: false
-    t.decimal "price", null: false
+    t.integer "price_cents", default: 0, null: false
     t.integer "slot", null: false
     t.integer "remain_slot", null: false
     t.string "departure", null: false
@@ -154,6 +174,9 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
     t.string "email", default: "", null: false
     t.date "issued_on_passport"
     t.date "expiration_date_passport"
+    t.string "country", null: false
+    t.string "province", null: false
+    t.string "district"
     t.string "address", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.boolean "admin", default: false
@@ -168,8 +191,8 @@ ActiveRecord::Schema.define(version: 2021_05_02_164438) do
 
   add_foreign_key "bookings", "tours"
   add_foreign_key "comments", "users"
+  add_foreign_key "item_categories", "categories"
   add_foreign_key "list_of_customers", "bookings"
-  add_foreign_key "payments", "bookings"
   add_foreign_key "price_basics", "tours"
   add_foreign_key "reviews", "users"
   add_foreign_key "tour_programs", "tours"

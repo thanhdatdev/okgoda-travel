@@ -2,16 +2,20 @@
 <html>
   <head>
     <title>OkgodaTravel</title>
-    <link rel="Shortcut icon" type="image/x-icon" href="app/assets/Content/ThemeHe/favicon.ico" />
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
 
   <body>
     <%= render '/shared/n3_header' %>
+    <%= render '/shared/slider' %>
+    <%= render '/shared/n3_form_search' %>
     <%= yield %>
     <%= render '/shared/footer' %>
   </body>

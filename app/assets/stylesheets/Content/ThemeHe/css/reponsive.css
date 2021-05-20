@@ -47,7 +47,7 @@
 		-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 		-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 		transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-		background: url(../content/themehe/img/i-arrow-sel.png) no-repeat 90% #f1f1f1!important;
+		background: url(image_path('i-arrow-sel.png')) no-repeat 90% #f1f1f1!important;
 		-webkit-appearance: none;
 		width: 100%
 	}
@@ -956,7 +956,7 @@
 		top: 20px
 	}
 	.n3-tour-detail .services .frame-service ul.list-service li {
-		background: url(../content/themehe/img/circle.png) no-repeat top left;
+		background: url(image_path('circle.png')) no-repeat top left;
 		padding-left: 20px
 	}
 	.n3-form-search .fr-cale {
