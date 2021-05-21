@@ -69,7 +69,7 @@
       <div class="row total">
         <div class="col-md-12 col-sm-12 text-right">
           Trị gi&#225;: <span class="price" id="spanprice<%= index %>"><%= price_basic.price_default %></span>
-          <input class="form-control" disabled="disabled" id="price<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][price_booking]" type="hidden">
+          <input class="form-control" id="price<%= index %>" name="booking[list_of_customers_attributes][<%= index %>][price_booking]" type="hidden">
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 text-right">
           Tổng cộng: <span class="price" id="spanTotalPrice"></span>
-          <input type="hidden" id="TotalPrice" disabled="disabled" class="form-control">
+          <input type="hidden" id="TotalPrice" class="form-control" name="booking[list_of_customers_attributes][<%= index %>][total_price]">
         </div>
       </div>
     </div>

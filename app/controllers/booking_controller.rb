@@ -3,7 +3,9 @@ class BookingController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def show
-    @price_booking = params[:price_booking]
+    @list_of_customers = @booking.list_of_customers.find_by(params[:list_of_customers_id])
+    @price_booking = @list_of_customers.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    @total_price = @list_of_customers.total_price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
   end
 
   def new
@@ -87,6 +89,17 @@ class BookingController < ApplicationController
     }
   end
 
+  def get_condition_payment
+    render json: {
+      data: render_to_string(
+        partial: 'booking/get_condition_payment',
+        locals: {
+          paymentID: params[:paymentID].to_i
+        }
+      )
+    }
+  end
+
   private
 
   def set_booking
@@ -104,6 +117,3 @@ class BookingController < ApplicationController
                                     list_of_customers_attributes: %i[name_list_of_customers sex_list_of_customers birthday_list_of_customers ages single_room price_booking total_price booking_id _destroy])
   end
 end
-
-# , :price_booking, :total_price
-# payments_attributes: [:id, :payments_type, :description_payments, :position]

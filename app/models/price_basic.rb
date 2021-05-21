@@ -1,5 +1,6 @@
 class PriceBasic < ApplicationRecord
   belongs_to :tour
+  monetize   :price_default_cents
 
   PERSONAL_KINDS = {
     adult: 0,

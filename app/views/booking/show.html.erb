@@ -1,3 +1,13 @@
+<div class="n3-breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 ">
+        <div class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container n3-book-tour-2 mg-bot40">
   <div class="row">
     <div class="col-xs-12 mg-bot50">
@@ -42,6 +52,9 @@
     <div class="col-xs-12 mg-bot50">
       <div class="thanks">
         <p class="mg-bot5">Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi</p>
+        <%= button_to checkout_create_booking_index_path, class:"btn btn-md btn-book in-booking", method: :post, params: {id: @booking.id} do %>
+          <i class="fa fa-money"></i>&nbsp;&nbsp;Thanh toán
+        <% end %>
       </div>
     </div>
     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mg-bot30">
@@ -74,7 +87,7 @@
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 mg-bot">Ngày về:</div>
           <div class="col-lg-9 col-md-10 col-sm-10 col-xs-12 font500">
-            09/05/2021
+            <%= @booking.tour.end_date %>
           </div>
         </div>
         <div class="row bor-bot">
@@ -119,7 +132,7 @@
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 mg-bot">Số khách:</div>
           <div class="col-lg-9 col-md-10 col-sm-10 col-xs-12 font500 line-h">
-            1 (Người lớn: 1&nbsp;&nbsp;Trẻ em: 0&nbsp;&nbsp;Trẻ nhỏ: 0&nbsp;&nbsp;Em bé: 0)
+            <%= @booking.customers_number %> (Người lớn: <%= @booking.adult_guests_number %>&nbsp;&nbsp;Trẻ em: <%= @booking.child_guests_number %>&nbsp;&nbsp;Trẻ nhỏ: <%= @booking.young_children_guests_number %>&nbsp;&nbsp;Em bé: <%= @booking.baby_guests_number %>)
           </div>
         </div>
         <div class="row bor-bot">
@@ -139,11 +152,11 @@
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Trị giá booking:</div>
-          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500"><span class="font500">3,690,000 đ</span></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500"><span class="font500"><%= @price_booking %> đ</span></div>
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Ngày đăng ký:</div>
-          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500 line-h"><span class="font500">03/05/2021 23:39:51 (Theo giờ Việt Nam)</span></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500 line-h"><span class="font500"><%= @booking.booking_date %> (Theo giờ Việt Nam)</span></div>
         </div>
         <div class="row mg-bot10 bor-bot">
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot"><span class="hidden-md hidden-sm">Hình thức thanh toán:</span><span class="hidden-lg hidden-xs">Hình thức thanh toán:</span></div>
@@ -183,7 +196,7 @@
             <tr>
               <td colspan="11" align="right">
                 <span>Tổng cộng:</span>
-                <span class="price">3,690,000 đ</span>
+                <span class="price"><%= @total_price %> đ</span>
               </td>
             </tr>
           </tfoot>
@@ -265,256 +278,13 @@
         </div>
       </div>
     </div>
-    <script>
-      function CheckDiscountByVoucher() {
-          vouchercode = $("#vouchercode").val();
-
-          if (vouchercode != '') {
-              $.ajax({
-                  url: "/Booking/CheckDiscountByVoucher",
-                  data: { vouchercode: vouchercode },
-                  beforeSend: function (xhr) {
-                      $(".divLoading").addClass("loading");
-                  },
-                  success: function (result) {
-                      $(".divLoading").removeClass("loading");
-                      if (result.voucherstatus == 'Inprocess') {
-
-                          $("#divResultCustomer").show();
-                          $("#hidMemberCode").val(result.membercode);
-                          $("#hidVoucherCode").val(result.vouchercode);
-
-                          $("#spanMemberName").text(result.membername);
-                          $("#spanGiftName").text(result.giftname);
-                          $("#spanVoucherCode").text(result.vouchercode);
-                          $("#spanDiscount").text(result.vouchervalue);
-                          $("#spanMemberCode").text(result.membercode);
-
-                          var d1 = new Date(parseInt(result.issuedate.slice(6, -2)));
-                          var issuedate = d1.getDate() + '/' + (1 + d1.getMonth()) + '/' + d1.getFullYear().toString();
-                          $("#spanIssueDate").text(issuedate);
-
-                          var d = new Date(parseInt(result.expireddate.slice(6, -2)));
-                          var expireddate = d.getDate() + '/' + (1 + d.getMonth()) + '/' + d.getFullYear().toString();
-                          $("#spanExpiredDate").text(expireddate);
-
-                          $("#spanVoucherStatus").text('Chưa sử dụng');
-
-                          $("#btnDiscountCustomerCard").show();
-
-                      }
-                      else {
-                          $("#divResultCustomer").hide();
-                          $("#hidMemberCode").val('');
-                          $("#hidVoucherCode").val('');
-
-                          $("#spanMemberName").text('');
-                          $("#spanGiftName").text('');
-                          $("#spanVoucherCode").text('');
-                          $("#spanDiscount").text('0');
-                          $("#spanMemberCode").text('');
-                          $("#spanIssueDate").text('');
-                          $("#spanExpiredDate").text('');
-                          $("#spanVoucherStatus").text('');
-                          $("#btnDiscountCustomerCard").hide();
-                          alert('Mã khách hàng này chưa đúng. Vui lòng kiểm tra lại hoặc liên hệ 1900.1839 để được hỗ trợ');
-                      }
-                  },
-                  failure: function (message) {
-                      $(".divLoading").removeClass("loading");
-                  }
-              });
-          }
-          else {
-              alert('Quý khách vui lòng nhập Mã voucher');
-          }
-      }
-
-      function ConfirmDiscountByVoucher()
-      {
-          $('#btnDiscountCustomerCard').attr('style', 'display:none');
-
-          var memberCode = $("#hidMemberCode").val();
-          var voucherCode = $("#hidVoucherCode").val();
-          var memberId = $("#hidmember_id").val();
-          var tourType = $("#hidTourTypeId").val();
-          var booking_id = $("#hidbooking_id").val();
-
-          $.ajax({
-              url: "/Booking/ConfirmDiscountByVoucher",
-              data: { memberCode: memberCode, voucherCode: voucherCode, memberId: memberId, tourType: tourType },
-              beforeSend: function (xhr) {
-                  $(".divLoading").addClass("loading");
-
-                  $('#btnDiscountCustomerCard').attr('style', 'display:none');
-              },
-              success: function (result) {
-                  $(".divLoading").removeClass("loading");
-
-                  if (result.status == 1) {
-                      alert('Giảm giá voucher thành công');
-
-                      if (tourType == 1) {
-                          window.location = "/Booking/SearchBookingIB?pin_code=" + booking_id;
-                      }
-                      else {
-                          window.location = "/Booking/SearchBookingOB?pin_code=" + booking_id;
-                      }
-                  }
-                  else {
-                      $('#btnDiscountCustomerCard').attr('style', '');
-
-                      alert('Giảm giá voucher không thành công. Vui lòng liên hệ 1900 1839 để được hỗ trợ');
-                  }
-              },
-              failure: function (message) {
-                  $(".divLoading").removeClass("loading");
-
-                  $('#btnDiscountCustomerCard').attr('style', '');
-              }
-          });
-      }
-
-    </script>
-    <div id="idCheckDiscount" class="modal fade" role="dialog">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">×</button>
-            <h4 class="modal-title">NHẬP MÃ GIẢM GIÁ</h4>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <div class="row mg-bot5">
-                <div class="col-md-4" style="font-weight: bold;margin-top:10px;">Mã giảm giá(*)</div>
-                <div class="col-md-8">
-                  <input class="form-control" id="DiscountCode" name="DiscountCode" required="required" type="text" value="">
-                  <input type="hidden" id="hidBooking_id" value="98be1442-ab38-4378-822d-949cc4a13fa8">
-                </div>
-              </div>
-              <div class="row mg-bot5">
-                <div class="col-md-4" style="font-weight: bold;margin-top:10px;">&nbsp;</div>
-                <div class="col-md-8">
-                  <a style="color:#fff;" onclick="CheckDiscount()" class="btn btn-default">Kiểm tra</a>
-                </div>
-              </div>
-            </div>
-            <div class="clear"></div>
-            <div style="padding: 10px; border: 1px dotted #ccc; margin-top: 10px; margin-bottom: 10px; display:none;" id="divResultDiscount">
-              <div class="row mg-bot10">
-                <div class="col-md-4" style="font-weight: bold">Mã: </div>
-                <input type="hidden" id="hidPromotionId">
-                <div class="col-md-8"><span id="spanPromotionCode"></span></div>
-              </div>
-              <div class="row mg-bot10">
-                <div class="col-md-4" style="font-weight: bold">Giảm giá: </div>
-                <div class="col-md-8"><span id="spanVDiscount"></span> đ</div>
-              </div>
-              <div class="row mg-bot10">
-                <div class="col-md-4" style="font-weight: bold;margin-top:10px;">&nbsp;</div>
-                <div class="col-md-8">
-                  <a style="color:#fff;" class="btn btn-default" onclick="ConfirmDiscount()">Xác nhận</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      function CheckDiscount()
-      {
-          DiscountCode = $("#DiscountCode").val();
-          booking_id = $("#hidBooking_id").val();
-
-
-          if (DiscountCode != '') {
-              $.ajax({
-                  url: "/Coupon/CheckDiscount",
-                  data: { DiscountCode: DiscountCode, booking_id: booking_id },
-                  success: function (result) {
-                      if (result.PromotionId > 0) {
-                          $("#divResultDiscount").show();
-
-                          $("#hidPromotionId").val(result.PromotionId);
-                          $("#spanPromotionCode").text(result.PromotionCode);
-                          $("#spanVDiscount").text(result.Discount);
-                      }
-                      else {
-                          $("#divResultDiscount").hide();
-
-                          $("#hidPromotionId").val('');
-                          $("#spanPromotionCode").text('');
-                          $("#spanVDiscount").text('');
-
-                          alert('Mã giảm giá này chưa đúng hoặc đã sử dụng. Vui lòng kiểm tra lại hoặc liên hệ 1900.1839 để được hỗ trợ');
-                      }
-                  }
-              });
-          }
-          else {
-              alert('Quý khách vui lòng nhập mã giảm giá');
-          }
-      }
-
-      function ConfirmDiscount()
-      {
-          var booking_id = '98be1442-ab38-4378-822d-949cc4a13fa8';
-          var PromotionCode = $("#spanPromotionCode").text();
-          var TourType = '1';
-
-          $.ajax({
-              url: "/Coupon/ConfirmDiscount",
-              data: { PromotionCode: PromotionCode, booking_id: booking_id},
-              success: function (result) {
-                  if (result == 1) {
-                      alert('Giảm giá thành công');
-                      if (TourType == '1') {
-                          window.location = "/Booking/SearchBookingIB?pin_code=" + booking_id;
-                      }
-                      else {
-                          window.location = "/Booking/SearchBookingOB?pin_code=" + booking_id;
-                      }
-                  }
-                  if (result == 0) {
-                      alert('Giảm giá không thành công. Vui lòng liên hệ 1900 1839 để được hỗ trợ');
-                  }
-              }
-          });
-      }
-    </script>
-    <script>
-      $('.cDiscount').click(function () {
-
-          var member_id = $(this).attr('data-member_id');
-          var fullname = $(this).attr('data-fullname');
-
-          $("#hidbooking_id").val('98be1442-ab38-4378-822d-949cc4a13fa8');
-          $("#hidmember_id").val(member_id);
-          $("#hidTourTypeId").val('1');
-          $("#Fullname").text(fullname);
-
-          $("#divResultCustomer").hide();
-          $("#customer_no").val('');
-          $("#hidCustomer_id").val('');
-          $("#spanFullname").text('');
-          $("#spanBirthday").text('');
-          $("#spanGender").text('');
-          $("#spanAddress").text('');
-          $("#spanTelephone").text('');
-          $("#spanMobile").text('');
-          $("#spanDiscount").text('0');
-      });
-
-      $('.cEVoucher').click(function () {
-          $("#hidVbooking_id").val('98be1442-ab38-4378-822d-949cc4a13fa8');
-          $("#hidVTourTypeId").val('1');
-      });
-    </script>
     <div class="col-xs-12 mg-bot30">
       <div class="frame-cong">
         <p class="mg-bot5">Chúc quý khách 1 chuyến du lịch thật vui vẻ và bổ ích</p>
         <p>Quý khách vui lòng kiểm tra email để nhận phiếu xác nhận đặt dịch vụ thành công từ Vietravel</p>
+        <%= button_to checkout_create_booking_index_path, id: "checkout-button", class:"btn btn-md btn-book in-booking", method: :post, params: {id: @booking.id} do %>
+          <i class="fa fa-money"></i>&nbsp;&nbsp;Thanh toán
+        <% end %>
       </div>
     </div>
   </div>

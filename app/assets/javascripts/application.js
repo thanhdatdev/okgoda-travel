@@ -23,6 +23,6 @@
 //= require bxslider
 //= require turbolinks
 //= require customizes/scripts
+//= require customizes/addcsstoclass
 //= require customizes/bundlescripts
-//= require customizes/AddCssToClass
 //= require customizes/cookies

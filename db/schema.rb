@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_194308) do
+ActiveRecord::Schema.define(version: 2021_05_20_194136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
     t.integer "baby_guests_number"
     t.string "customers_number", null: false
     t.string "note", default: ""
+    t.integer "status"
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,6 +55,13 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
     t.index ["review_id"], name: "index_comments_on_review_id"
     t.index ["tour_id"], name: "index_comments_on_tour_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name_country"
+    t.string "code_country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "enable_uuids", force: :cascade do |t|
@@ -86,37 +94,19 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
     t.string "ages", default: "", null: false
     t.boolean "single_room", default: true, null: false
     t.boolean "domestic_customers"
-    t.decimal "price_booking"
-    t.decimal "total_price"
+    t.integer "price_booking_cents", default: 0, null: false
+    t.integer "total_price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
-  end
-
-  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "booking_id"
-    t.string "payments_type", default: "", null: false
-    t.string "description_payments", default: ""
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_payments_on_booking_id"
-  end
-
-  create_table "pg_search_documents", force: :cascade do |t|
-    t.text "content"
-    t.string "searchable_type"
-    t.bigint "searchable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
   end
 
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "tour_id"
     t.string "title", default: "", null: false
     t.string "customers_type", default: "", null: false
-    t.decimal "price_default", null: false
+    t.integer "price_default_cents", default: 0, null: false
+    t.string "price_default_currency", default: "VND", null: false
     t.integer "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -153,9 +143,10 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
 
   create_table "tours", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title", default: "", null: false
-    t.time "start_date", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.integer "days", null: false
-    t.decimal "price", null: false
+    t.integer "price_cents", default: 0, null: false
     t.integer "slot", null: false
     t.integer "remain_slot", null: false
     t.string "departure", null: false
@@ -199,7 +190,6 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
   add_foreign_key "comments", "users"
   add_foreign_key "item_categories", "categories"
   add_foreign_key "list_of_customers", "bookings"
-  add_foreign_key "payments", "bookings"
   add_foreign_key "price_basics", "tours"
   add_foreign_key "reviews", "users"
   add_foreign_key "tour_programs", "tours"

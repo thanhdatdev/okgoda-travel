@@ -4,7 +4,7 @@ class CreatePriceBasics < ActiveRecord::Migration[5.2]
       t.belongs_to :tour,              foreign_key: true, type: :uuid
       t.string    :title,              null: false, default: ""
       t.string    :customers_type,     null: false, default: ""
-      t.decimal   :price_default ,     null: false
+      t.monetize  :price_default,      currency: { present: true }
       t.integer   :position
       t.timestamps
     end
