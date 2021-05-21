@@ -71,8 +71,8 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # other gem
 gem 'bxslider-rails'
-gem 'chosen-rails'
 gem 'jquery-rails'
+gem 'chosen-rails'
 gem 'pnotify-rails'
 gem 'js_cookie_rails'
 gem 'momentjs-rails'

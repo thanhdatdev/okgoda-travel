@@ -42,8 +42,7 @@
     </div>
   </div>
   <div id="frmsDL">
-    <form action="/Tour/SearchFirst" method="post">
-      <input name="__RequestVerificationToken" type="hidden" value="0iTlKeGoCHH-_h4b4rWzq4Vs6oTa9QFc147hKWzp0qxk8p_2S44zrHbZZQqk-djN9_eyVANaACnXttnck7njQnZZkNjM7cCkVFwXRoDiREY1">
+    <%= form_tag(search_path, method: "get") do %>
       <div class="form-info-search bg-dltn pos-relative" style="display: none;">
         <div class="container">
           <div class="row">
@@ -54,7 +53,9 @@
                   <div class="col-xs-12 mg-bot15">
                     <div style="font-size: 16px; line-height: 24px; color: rgb(33, 33, 33); --darkreader-inline-color:#d3cfca;" data-darkreader-inline-color="">
                       Nơi khởi hành:&nbsp;&nbsp;
-                      <select class="nkh text-dltn" id="departureID" name="departureID"></select>
+                      <% @tours.each do |tour| %>
+                        <%= select_tag(:departure, options_for_select([["#{tour.departure}",1]], params[:departure]), class:"nkh text-dltn", id: "departureID") %>
+                      <% end %>
                     </div>
                   </div>
                   <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
@@ -67,10 +68,17 @@
                       </div>
                       <select name="GroupId" id="GroupId" class="chosen-select" style="display: none;">
                         <option value="0">Bạn muốn đi du lịch ở đâu?</option>
+                        <% @tours.each do |tour| %>
+                          <%= select_tag (:destination, options_for_select([["#{tour.destination}",1]], params[:destination]), class: 'chosen-select', id: "GroupId")  %>
+                        <% end %>
+
                       </select>
                       <div class="chosen-container chosen-container-single" title="" id="GroupIdOB_chosen" style="width: 0px;">
                         <a class="chosen-single">
                           <span>Bạn muốn đi du lịch ở đâu?</span>
+                          <% @tours.each do |tour| %>
+                            <span><%= tour.destination %> </span>
+                          <% end %>
                           <div><b></b></div>
                         </a>
                         <div class="chosen-drop">
@@ -124,7 +132,7 @@
           </div>
         </div>
       </div>
-    </form>
+    <% end %>
     <form action="/Combo/SearchFirst" method="post">
       <input name="__RequestVerificationToken" type="hidden" value="13oM1qffwmt6UQfP47jsDWg-qtykjniLiEh8XJ-Ho6BkbaJv1W_DnhGpVMYcAigKga18I0xLbO7y9CkBCaHLUlYJZQXFQDjDT71CziC3-Tw1">
       <div class="form-info-search bg-dltc pos-relative" style="display: none;">

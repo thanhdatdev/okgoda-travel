@@ -1,6 +1,6 @@
 class Tour < ApplicationRecord
   extend FriendlyId
-  include PgSearch::Model
+  # include PgSearch::Model
   # multisearchable against: [:title, :tour_type]
 
   friendly_id :title, use: :slugged

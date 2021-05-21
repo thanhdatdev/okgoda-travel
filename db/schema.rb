@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
     t.integer "slot", null: false
     t.integer "remain_slot", null: false
     t.string "departure", null: false
+    t.string "destination", null: false
     t.bigint "tour_type_id", null: false
     t.string "notice", null: false
     t.datetime "created_at", null: false
