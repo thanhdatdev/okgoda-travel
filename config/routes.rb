@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'search', to: 'search#show'
   root to: 'home#index'
   devise_for :users, controllers: {
