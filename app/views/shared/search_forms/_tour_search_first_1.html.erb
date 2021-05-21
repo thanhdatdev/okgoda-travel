@@ -1,4 +1,5 @@
-<form action="/Tour/SearchFirst" method="post"><input name="__RequestVerificationToken" type="hidden" value="5kaElB3NCHt5hTE-QMPLhGXJf9NgplLhJvhAtpZFNXKodIO2m1IuMRtHf315SzMSIL5NAz-JN7PIHe1nZ2SjoTvg5cV46Nn6MdI8uDnM0to1">  <div class="form-info-search bg-dlnn pos-relative" style="display: none;">
+<%= form_tag search_path, method: "get" do %>
+  <div class="form-info-search bg-dlnn pos-relative" style="display: none;">
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
@@ -14,12 +15,15 @@
               <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12">
                 <div class="form-group outbound" style="position: relative;">
                   <div style="position: absolute;left: 16px; top: 18px;z-index:1;">
-                    <img src="/Content/ThemeHe/img/i-map2.png" alt="map">
+                    <%= image_tag "i-map2.png", alt: "map" %>
                   </div>
                   <div style="position: absolute;left: 50px; top: 12px;z-index:1;">
                     <span style="color: #f0433a;font-size: 14px;font-weight:500;">Điểm đến</span>
                   </div>
-                  <select name="GroupId" id="GroupIdOB" class="chosen-select" style="display: none;"><option value="0">Bạn muốn đi du lịch ở đâu?</option><option value="14">Ai Cập</option><option value="98">Ấn Độ</option><option value="169">Anh</option><option value="170">Áo</option><option value="127">Argentina</option><option value="278">Azerbaijan</option><option value="160">Ba Lan</option><option value="220">Bhutan</option><option value="168">Bỉ</option><option value="157">Bồ Đào Nha</option><option value="249">Bosnia</option><option value="126">Brazil</option><option value="102">Brunei</option><option value="281">Bulgaria</option><option value="5">Campuchia</option><option value="114">Canada</option><option value="162">Cộng Hòa Séc</option><option value="245">Croatia</option><option value="125">Cuba</option><option value="128">Chile</option><option value="110">Đài Loan</option><option value="152">Đan Mạch</option><option value="167">Đức </option><option value="279">Georgia</option><option value="103">Nga</option><option value="166">Hà Lan</option><option value="11">Hàn Quốc</option><option value="7">Hồng Kông &amp; Macau</option><option value="161">Hungary</option><option value="150">Hy Lạp</option><option value="111">Indonesia</option><option value="112">ISRAEL</option><option value="211">Jordan</option><option value="138">Kazakhstan</option><option value="209">Kenya</option><option value="113">Lào</option><option value="185">Luxembourg</option><option value="246">Madagascar </option><option value="9">Malaysia</option><option value="131">Maldives</option><option value="215">Malta</option><option value="140">Mauritius</option><option value="217">Mexico</option><option value="119">Mông Cổ</option><option value="204">Monaco</option><option value="364">Montenegro</option><option value="272">Morocco</option><option value="13">Mỹ - Hoa Kỳ</option><option value="117">Myanmar</option><option value="151">Na Uy</option><option value="15">Nam Phi</option><option value="123">Nepal</option><option value="115">New Zealand</option><option value="92">Nhật Bản</option><option value="366">North Macedonia</option><option value="218">Oman</option><option value="216">Panama</option><option value="207">Peru</option><option value="154">Phần Lan</option><option value="149">Pháp</option><option value="120">Philippines</option><option value="280">Romania</option><option value="158">Scotland</option><option value="250">Serbia</option><option value="10">Singapore</option><option value="155">Slovakia</option><option value="244">Slovenia</option><option value="210">Sri Lanka</option><option value="165">Tây Ban Nha</option><option value="124">Tour du thuyền</option><option value="219">Triều Tiên</option><option value="6">Trung Quốc</option><option value="8">Thái Lan</option><option value="159">Thổ Nhĩ Kỳ</option><option value="153">Thụy Điển</option><option value="164">Thụy Sĩ</option><option value="270">UAE (Dubai, Abu Dhabi..)</option><option value="12">Úc</option><option value="247">Uzbekistan</option><option value="163">Ý</option></select><div class="chosen-container chosen-container-single" title="" id="GroupIdOB_chosen" style="width: 0px;"><a class="chosen-single">
+                  <select name="GroupId" id="GroupIdOB" class="chosen-select" style="display: none;">
+                    <option value="0">Bạn muốn đi du lịch ở đâu?</option>
+                  </select><div class="chosen-container chosen-container-single" title="" id="GroupIdOB_chosen" style="width: 0px;">
+                    <a class="chosen-single">
                       <span>Bạn muốn đi du lịch ở đâu?</span>
                       <div><b></b></div>
                     </a>
@@ -41,7 +45,7 @@
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group" style="position: relative;">
                       <div style="position: absolute;left: 16px; top: 18px;">
-                        <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                        <%= image_tag "i-calendar2.png", alt: "calendar" %>
                       </div>
                       <div style="position: absolute;left: 50px; top: 12px;">
                         <span style="color: #f0433a;font-size: 14px;font-weight:500;">Từ ngày</span>
@@ -52,7 +56,7 @@
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group" style="position: relative;">
                       <div style="position: absolute;left: 16px; top: 18px;">
-                        <img src="/Content/ThemeHe/img/i-calendar2.png" alt="calendar">
+                        <%= image_tag "i-calendar2.png", alt: "calendar" %>
                       </div>
                       <div style="position: absolute;left: 50px; top: 12px;">
                         <span style="color: #f0433a;font-size: 14px;font-weight:500;">Đến ngày</span>
@@ -73,4 +77,4 @@
       </div>
     </div>
   </div>
-</form>
+<% end %>

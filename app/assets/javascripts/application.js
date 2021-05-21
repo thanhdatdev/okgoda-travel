@@ -12,19 +12,22 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require turbolinks
 //= require jquery
+//= require customizes/addcsstoclass
+//= require scripts
+//= require customizes/bundlescripts
 //= require chosen-jquery
+//= require jquery_ujs
 //= require pnotify
 //= require pnotify/pnotify
 //= require pnotify/pnotify.buttons
-//= require jquery_ujs
 //= require js.cookie
 //= require moment
 //= require bxslider
-//= require turbolinks
 //= require customizes/scripts
-//= require customizes/addcsstoclass
-//= require customizes/bundlescripts
 //= require customizes/cookies
-//= require scripts
-//= require script
+
+$(document).on('turbolinks:load', function() {
+  $(".chosen-select").chosen();
+});
