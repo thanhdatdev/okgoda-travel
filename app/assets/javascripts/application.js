@@ -26,3 +26,5 @@
 //= require customizes/addcsstoclass
 //= require customizes/bundlescripts
 //= require customizes/cookies
+//= require scripts
+//= require script

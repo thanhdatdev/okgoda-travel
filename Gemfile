@@ -10,7 +10,6 @@ gem 'rails', '~> 5.2.5'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
-gem 'pg_search'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -73,10 +72,12 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # other gem
 gem 'bxslider-rails'
-gem 'chosen-rails'
 gem 'jquery-rails'
+gem 'chosen-rails'
 gem 'pnotify-rails'
 gem 'js_cookie_rails'
 gem 'momentjs-rails'
 gem 'money-rails'
 gem 'stripe'
+
+gem 'searchkick'
