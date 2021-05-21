@@ -35,29 +35,6 @@ class TourController < ApplicationController
     end
   end
 
-  def load_departure_day
-
-  end
-
-  def load_destination
-    tour = Tour.find(params[:tour_id])
-    render json: {
-      data: render_to_string(
-        partial: 'tour/load_destination',
-        locals: {
-          tour: tour
-        }
-      )
-    }
-  end
-
-  def load_combo_type
-
-  end
-
-  def load_province_by_combo
-
-  end
   private
 
   def tour_params

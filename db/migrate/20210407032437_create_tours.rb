@@ -9,6 +9,7 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.integer     :slot,          null: false
       t.integer     :remain_slot,   null: false
       t.string      :departure,     null: false
+      t.string      :destination,   null: false
       t.references  :tour_type,     null: false
       t.string      :notice,        null: false
 
