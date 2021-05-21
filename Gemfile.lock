@@ -183,12 +183,9 @@ GEM
       money (~> 6.13.2)
       railties (>= 3.0)
     msgpack (1.4.2)
-<<<<<<< HEAD
     nested_form (0.3.2)
-=======
     multi_json (1.15.0)
     multipart-post (2.1.1)
->>>>>>> 962bbf6a19f45c34b842f5d8f53d56f20cfaec87
     nio4r (2.5.7)
     nokogiri (1.11.4)
       mini_portile2 (~> 2.5.0)
