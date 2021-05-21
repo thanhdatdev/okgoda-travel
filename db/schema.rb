@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_194308) do
+ActiveRecord::Schema.define(version: 2021_05_20_194136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -57,6 +57,13 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "countries", force: :cascade do |t|
+    t.string "name_country"
+    t.string "code_country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "enable_uuids", force: :cascade do |t|
   end
 
@@ -92,16 +99,6 @@ ActiveRecord::Schema.define(version: 2021_05_10_194308) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"
-  end
-
-  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "booking_id"
-    t.string "payments_type", default: "", null: false
-    t.string "description_payments", default: ""
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_payments_on_booking_id"
   end
 
   create_table "price_basics", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
