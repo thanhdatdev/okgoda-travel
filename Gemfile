@@ -79,6 +79,4 @@ gem 'momentjs-rails'
 gem 'money-rails'
 gem 'stripe'
 
-#elasticsearch
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
+gem 'searchkick'

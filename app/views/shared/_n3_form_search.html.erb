@@ -68,10 +68,7 @@
                       </div>
                       <select name="GroupId" id="GroupId" class="chosen-select" style="display: none;">
                         <option value="0">Bạn muốn đi du lịch ở đâu?</option>
-                        <% @tours.each do |tour| %>
-                          <%= select_tag (:destination, options_for_select([["#{tour.destination}",1]], params[:destination]), class: 'chosen-select', id: "GroupId")  %>
-                        <% end %>
-
+                        <%= select_tag(:destination, options_from_collection_for_select(@tours, "id", "destination", @tours.first&.id&.to_s), class: 'chosen-select', id: "GroupId")  %>
                       </select>
                       <div class="chosen-container chosen-container-single" title="" id="GroupIdOB_chosen" style="width: 0px;">
                         <a class="chosen-single">
