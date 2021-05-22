@@ -4,7 +4,7 @@
     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
       <div class="list-tour" itemscope="" itemtype="http://schema.org/Place" id="searchResult">
         <div class="des-tour">
-          <h1 itemprop="name">Danh sách tour du lịch khởi hành từ Đà Nẵng</h1>
+          <h1 itemprop="name">Danh sách tour du lịch khởi hành từ <%= @departure %></h1>
           <div class="clear"></div>
           <div class="des-content">
             <div class="mg-bot10">
@@ -109,13 +109,13 @@
                             <div class="col-md-7 col-sm-7 col-xs-12 mg-bot10">
                               <div class="f-left l"><% image_tag "i-date.png", alt: "date" %></div>
                               <div class="f-left r">Ngày đi:
-                                <span class="font500"><%= tour.departure %> </span></div>
+                                <span class="font500"><%= tour.start_date %> </span></div>
                               <div class="clear"></div>
                             </div>
                             <div class="col-md-5 col-sm-5 col-xs-12 mg-bot10">
                               <div class="f-left l"><% image_tag "i-clock.png", alt: "clock" %></div>
                               <div class="f-left r">Giờ đi:
-                                <span class="font500">07:30</span></div>
+                                <span class="font500"><%= tour.start_hour.strftime("%I:%M %p") %></span></div>
                               <div class="clear"></div>
                             </div>
                             <div class="col-md-7 col-sm-7 col-xs-12 mg-bot10">

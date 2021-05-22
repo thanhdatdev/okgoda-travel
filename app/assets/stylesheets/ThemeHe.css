@@ -25721,3 +25721,11 @@ ul li i {
 	display: block;
 	margin: 0 auto 0
 }
+
+.dot-dot-ajax{
+	overflow: hidden;
+	width:320px;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}

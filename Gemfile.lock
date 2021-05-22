@@ -348,6 +348,7 @@ DEPENDENCIES
   friendly_id (~> 5.4.0)
   jbuilder (~> 2.5)
   jquery-rails
+  jquery-ui-rails
   js_cookie_rails
   listen (>= 3.0.5, < 3.2)
   momentjs-rails

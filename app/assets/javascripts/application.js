@@ -19,6 +19,7 @@
 //= require customizes/bundlescripts
 //= require chosen-jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require pnotify
 //= require pnotify/pnotify
 //= require pnotify/pnotify.buttons

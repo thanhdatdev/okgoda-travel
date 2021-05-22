@@ -3,6 +3,7 @@ class CreateTours < ActiveRecord::Migration[5.2]
     create_table :tours, id: :uuid, default: "gen_random_uuid()" do |t|
       t.string      :title,         null: false, default: ""
       t.date        :start_date,    null: false
+      t.time        :start_hour,    null: false
       t.date        :end_date,      null: false
       t.integer     :days,          null: false
       t.monetize    :price,         currency: { present: false }

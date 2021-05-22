@@ -1,9 +1,17 @@
 class SearchController < ApplicationController
-  def show
+  def tour_search
     if check_params(params)
-      @tours = Tour.where("departure = ? OR destination = ? AND start_date BETWEEN ? AND ?", @departure, @destination, @departureDate, @departureDateTo)
+      @tours = Tour.where("departure = ? OR destination = ? OR start_date BETWEEN ? AND ?", @departure, @destination, @departureDate, @departureDateTo)
     else
       @tours = Tour.all
+    end
+  end
+
+  def booking_search
+    if params[:bookingID].present?
+      @booking = Booking.find_by(id: params[:bookingID])
+    else
+      redirect_to root_path
     end
   end
 

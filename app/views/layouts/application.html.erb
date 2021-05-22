@@ -15,8 +15,10 @@
   <body>
     <div class="a" id="che" searchid="dltn"></div>
     <%= render '/shared/n3_header' %>
-    <%= render '/shared/slider' %>
-    <%= render '/shared/n3_form_search' %>
+    <% if current_page?('/') %>
+      <%= render '/shared/slider' %>
+      <%= render '/shared/n3_form_search' %>
+    <% end %>
     <%= yield %>
     <%= render '/shared/footer' %>
   </body>

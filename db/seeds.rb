@@ -9,22 +9,21 @@
 TourType.create!(type_name: 'Giá rẻ')
 TourType.create!(type_name: "Ưu đãi mùa hè")
 
-Tour.create!(title: "Việt Nam đẹp lắm người ơi", start_date: Time.now, start_hour: Time.now.strftime("%I:%M%p"), end_date: Time.now + 3, days: "4", price: "3950000", slot: "15", remain_slot: "7", departure: "Hồ Chí Minh",
-destination: "An Giang", tour_type: TourType.first, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
-Tour.create!(title: "Hà nội xinh khỏi bàn", start_date: Time.now, end_date: Time.now + 3, days: "5", price: "2900000", slot: "20", remain_slot: "8", departure: "Hà Nội",
-destination: "Bắc Kạn", tour_type: TourType.last, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
+Tour.create!(title: 'Miền Tây Sông Nước: Châu Đốc - Hà Tiên - Phú Quốc - Cần Thơ - Chương Trình Mới', start_date: Date.parse('26-05-2021'), start_hour: Time.now.strftime("%I:%M %p"), end_date: Date.parse('31-05-2021'), days: "4", price: "3950000", slot: "15", remain_slot: "7", departure: "Hồ Chí Minh", destination: "An Giang", tour_type: TourType.first, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
 
-PriceBasic.create!(tour: Tour.first, title: "Người lớn", customers_type: "adult", price_default: "2090000", position: "1")
-PriceBasic.create!(tour: Tour.first, title: "Trẻ em", customers_type: "children11",    price_default: "1492500", position: "2")
-PriceBasic.create!(tour: Tour.first, title: "Trẻ nhỏ", customers_type: "children",   price_default: "1000000", position: "3")
-PriceBasic.create!(tour: Tour.first, title: "Em bé", customers_type: "small_children",     price_default: "220000", position: "4")
-PriceBasic.create!(tour: Tour.first, title: "Phụ thu phòng đơn", customers_type: "single_room", price_default: "600000", position: "5")
+PriceBasic.create!(tour: Tour.find_by(title:'Miền Tây Sông Nước: Châu Đốc - Hà Tiên - Phú Quốc - Cần Thơ - Chương Trình Mới'), title: "Người lớn", customers_type: "adult", price_default: "6990000", position: "1")
+PriceBasic.create!(tour: Tour.find_by(title:'Miền Tây Sông Nước: Châu Đốc - Hà Tiên - Phú Quốc - Cần Thơ - Chương Trình Mới'), title: "Trẻ em", customers_type: "children11", price_default: "3490000", position: "2")
+PriceBasic.create!(tour: Tour.find_by(title:'Miền Tây Sông Nước: Châu Đốc - Hà Tiên - Phú Quốc - Cần Thơ - Chương Trình Mới'), title: "Trẻ nhỏ", customers_type: "children", price_default: "0", position: "3")
+PriceBasic.create!(tour: Tour.find_by(title:'Miền Tây Sông Nước: Châu Đốc - Hà Tiên - Phú Quốc - Cần Thơ - Chương Trình Mới'), title: "Em bé", customers_type: "small_children", price_default: "0", position: "4")
+PriceBasic.create!(tour: Tour.find_by(title:'Miền Tây Sông Nước: Châu Đốc - Hà Tiên - Phú Quốc - Cần Thơ - Chương Trình Mới'), title: "Phụ thu phòng đơn", customers_type: "single_room", price_default: "2600000", position: "5")
 
-PriceBasic.create!(tour: Tour.last, title: "Người lớn", customers_type: "adult", price_default: "2090000", position: "1")
-PriceBasic.create!(tour: Tour.last, title: "Trẻ em", customers_type: "children11",    price_default: "1492500", position: "2")
-PriceBasic.create!(tour: Tour.last, title: "Trẻ nhỏ", customers_type: "children",   price_default: "1000000", position: "3")
-PriceBasic.create!(tour: Tour.last, title: "Em bé", customers_type: "small_children",     price_default: "220000", position: "4")
-PriceBasic.create!(tour: Tour.last, title: "Phụ thu phòng đơn", customers_type: "single_room", price_default: "600000", position: "5")
+Tour.create!(title: 'Vi Vu Giữa Chốn Thông Reo: Đà Lạt - Chèo Thuyền Khám Phá Hồ Tuyền Lâm - Kim Ngân Hills - Terracotta Resort - Chương Trình Mới', start_date: Date.parse('28-05-2021'), start_hour: Time.now.strftime("%I:%M %p"), end_date: Date.parse('03-06-2021'), days: "5", price: "2900000", slot: "20", remain_slot: "8", departure: "Hà Nội", destination: "Bắc Kạn", tour_type: TourType.last, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
+
+PriceBasic.create!(tour: Tour.find_by(title:'Vi Vu Giữa Chốn Thông Reo: Đà Lạt - Chèo Thuyền Khám Phá Hồ Tuyền Lâm - Kim Ngân Hills - Terracotta Resort - Chương Trình Mới'), title: "Người lớn", customers_type: "adult", price_default: "5990000", position: "1")
+PriceBasic.create!(tour: Tour.find_by(title:'Vi Vu Giữa Chốn Thông Reo: Đà Lạt - Chèo Thuyền Khám Phá Hồ Tuyền Lâm - Kim Ngân Hills - Terracotta Resort - Chương Trình Mới'), title: "Trẻ em", customers_type: "children11", price_default: "2990000", position: "2")
+PriceBasic.create!(tour: Tour.find_by(title:'Vi Vu Giữa Chốn Thông Reo: Đà Lạt - Chèo Thuyền Khám Phá Hồ Tuyền Lâm - Kim Ngân Hills - Terracotta Resort - Chương Trình Mới'), title: "Trẻ nhỏ", customers_type: "children", price_default: "0", position: "3")
+PriceBasic.create!(tour: Tour.find_by(title:'Vi Vu Giữa Chốn Thông Reo: Đà Lạt - Chèo Thuyền Khám Phá Hồ Tuyền Lâm - Kim Ngân Hills - Terracotta Resort - Chương Trình Mới'), title: "Em bé", customers_type: "small_children", price_default: "0", position: "4")
+PriceBasic.create!(tour: Tour.find_by(title:'Vi Vu Giữa Chốn Thông Reo: Đà Lạt - Chèo Thuyền Khám Phá Hồ Tuyền Lâm - Kim Ngân Hills - Terracotta Resort - Chương Trình Mới'), title: "Phụ thu phòng đơn", customers_type: "single_room", price_default: "2500000", position: "5")
 
 Category.create!(name_category: "Du lịch", position: '1')
 Category.create!(name_category: "Khách sạn", position: '2')
