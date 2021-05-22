@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name_category: 'Star Wars' }, { name_category: 'Lord of the Rings' }])
 #   Character.create(name_category: 'Luke', movie: movies.first)
-User.create!(name: "Thanh Dat Nguyen", sex: true, birthday: Time.now, phone_number: "0359208878", identity_card: "281263881", issued_on_identity_card: Time.now, email: "thanhdat.nguyen2104@gmail.com", country: "")
+# User.create!(name: "Thanh Dat Nguyen", sex: true, birthday: Time.now, phone_number: "0359208878", identity_card: "281263881", issued_on_identity_card: Time.now, email: "thanhdat.nguyen2104@gmail.com", country: "")
 TourType.create!(type_name: 'Giá rẻ')
 TourType.create!(type_name: "Ưu đãi mùa hè")
 

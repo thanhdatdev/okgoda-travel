@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
   def show
     if check_params(params)
-      @tours = Tour.where("departure = ? AND destination = ? AND start_date BETWEEN ? AND ?", @departure, @destination, @departureDate, @departureDateTo)
+      @tours = Tour.where("departure = ? OR destination = ? AND start_date BETWEEN ? AND ?", @departure, @destination, @departureDate, @departureDateTo)
     else
       @tours = Tour.all
     end
