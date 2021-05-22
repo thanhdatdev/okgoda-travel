@@ -9,10 +9,7 @@
 TourType.create!(type_name: 'Giá rẻ')
 TourType.create!(type_name: "Ưu đãi mùa hè")
 
-Tour.create!(title: "Việt Nam đẹp lắm người ơi", start_date: Time.now, end_date: Time.now + 3, days: "4", price: "3950000", slot: "15", remain_slot: "7", departure: "Hồ Chí Minh",
-destination: "An Giang", tour_type: TourType.first, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
-Tour.create!(title: "Hà nội xinh khỏi bàn", start_date: Time.now, end_date: Time.now + 3, days: "5", price: "2900000", slot: "20", remain_slot: "8", departure: "Hà Nội",
-destination: "Bắc Kạn", tour_type: TourType.last, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
+Tour.create!(title: "Miền Tây Sông Nước”, start_date: “2021-05-26”, start_hour: Time.now.strftime("%I:%M %p"), end_date: “2021-05-31", days: "5", price: "6990000", slot: "15",remain_slot: "7", departure: "Hồ Chí Minh", destination: "An Giang",tour_type: TourType.first, notice: "Ữu đãi khi thanh toán trực tuyến", photo: "")
 
 PriceBasic.create!(tour: Tour.first, title: "Người lớn", customers_type: "adult", price_default: "2090000", position: "1")
 PriceBasic.create!(tour: Tour.first, title: "Trẻ em", customers_type: "children11",    price_default: "1492500", position: "2")

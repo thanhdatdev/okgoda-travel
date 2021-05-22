@@ -1,0 +1,313 @@
+<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mg-bot30">
+  <!-- <script src="/Content/ThemeHe/js/jquery-ui.js"></script> -->
+  <!-- <link href="/Content/ThemeHe/css/jquery-ui.css" rel="stylesheet"> -->
+  <!-- <link href="/Content/ThemeHe/css/bootstrap-datepicker3.css" rel="stylesheet"> -->
+  <%= form_tag search_path, method: "get" do %>
+    <div class="search-sidebar">
+      <div class="title">Tìm kiếm</div>
+      <div class="frame-search">
+        <div class="noikhoihanh mg-bot15">
+          <%= label_tag 'departure', 'Nơi khởi hành' %>
+          <%= select_tag "departureIDFilter", options_from_collection_for_select(@tours, "id", "departure"), { class: "form-control", :include_blank => "--Tất cả--" } %>
+        </div>
+        <div class="loaitour mg-bot15">
+          <%= label_tag 'tour_type', 'Loại tour' %>
+          <%= select_tag "TourTypeIdFilter", options_from_collection_for_select(@tours, "id", "tour_type"),  class: "form-control" %>
+        </div>
+        <div class="noiden mg-bot15">
+          <%= label_tag 'destination', 'Nơi đến' %>
+          <%= select_tag "group_idFilter", options_from_collection_for_select(@tours, "id", "destination"), { class: "form-control", :include_blank => "--Chọn điểm đến--" } %>
+        </div>
+        <div class="ngaykhoihanh mg-bot15">
+          <label>Ngày khởi hành</label>
+          <div class="pos-relative">
+            <%= text_field_tag "departureDateFilter", nil, autocomplete: "off", class: "form-control input-md hasDatepicke", value: "#{Time.now.strftime("%d-%m-%Y")}", placeholder: "#{Time.now.strftime("%d-%m-%Y")}"%>
+            <span class="i-calendar">
+              <i class="far fa-calendar-alt fa-lg"></i>
+            </span>
+          </div>
+        </div>
+        <div class="songay mg-bot20">
+          <label>Giá</label>
+          <select class="form-control" id="priceIDFilter" name="PriceId">
+            <option selected="" value="0">--Tất cả--</option>
+            <option value="25">Dưới 1 Triệu</option>
+            <option value="26">
+              1- 2 Triệu</option>
+            <option value="27">
+              2-4 Triệu</option>
+            <option value="28">
+              4-6 Triệu</option>
+            <option value="29">
+              6-10 Triệu</option>
+            <option value="30">Trên 10 Triệu</option>
+          </select>
+        </div>
+        <div class="but mg-bot15">
+          <%= submit_tag 'Tìm kiếm', class: "btn btn-md btn-search", onclick: "ga('event','Search', 'SearchClick', 'keywords');" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="filter-sidebar">
+    <div class="title">Bộ lọc tìm kiếm</div>
+    <div class="frame-filter">
+      <div class="giatien">
+        <div class="mg-bot15">
+          <div class="f-left wl">
+            Theo giá:
+          </div>
+          <div class="f-left wr">
+            <input type="text" id="txtPrice" readonly="" style="font-size:13.5px; border: 0; color: #fc3400; font-weight: bold; background: initial !important;">
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div id="slider-range1" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+          <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span>
+          <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
+          <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
+          <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="songay dodaitour">
+        <div class="mg-bot15">
+          <div class="f-left wl">
+            Số ngày:
+          </div>
+          <div class="f-left wr">
+            <input type="text" id="txtSoNgay" readonly="" style="font-size:13.5px; border: 0; color: #fc3400; font-weight: bold; background: initial !important;">
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div id="slider-range2" class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content">
+          <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 0%;"></span>
+          <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 100%;"></span>
+          <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
+          <div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 0%; width: 100%;"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <div class="vanchuyen">
+        <label>
+          <i class="fas fa-subway"></i>&nbsp;&nbsp;&nbsp;Thông tin vận chuyển:</label>
+        <div>
+          <div class="f-left mg-bot10 wl">
+            <input type="checkbox" name="TranType" class="tranType" value="2" data-url="TranType">
+          </div>
+          <div class="f-left wr">
+            Máy bay
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div>
+          <div class="f-left wl">
+            <input type="checkbox" name="TranType" class="tranType" value="1" data-url="TranType">
+          </div>
+          <div class="f-left wr">
+            Ô tô
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="tinhtrang">
+        <label>
+          <i class="fas fa-suitcase"></i>&nbsp;&nbsp;&nbsp;Tình trạng:</label>
+        <div>
+          <div class="f-left mg-bot10 wl">
+            <input type="checkbox" name="ConCho" class="statusSeat" value="1" data-url="ConCho" checked="">
+          </div>
+          <div class="f-left wr">
+            Còn chỗ
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div>
+          <div class="f-left wl">
+            <input type="checkbox" name="ConCho" class="statusSeat" value="0" data-url="ConCho">
+          </div>
+          <div class="f-left wr">
+            Hết chỗ
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" id="hidCurrentURL">
+  <input type="hidden" id="hidDepartureIdOld" value="4">
+  <script type="text/javascript">
+    $(document).ready(function () {
+      loadDeparture('1', 'departureIDFilter', '4');
+
+      loadDestination('1', 'group_idFilter', '0');
+
+      loadPriceOption('1', 'priceIDFilter', '0');
+    });
+
+    var priceMin = parseFloat('2990000');
+    var priceMax = parseFloat('5490000');
+
+    var SoNgayMin = parseInt('3');
+    var SoNgayMax = parseInt('4');
+
+    $(function () {
+      $(".giatien #slider-range1").slider({
+        range: true,
+        min: priceMin,
+        max: priceMax,
+        values: [
+          priceMin, priceMax
+        ],
+        step: 100000,
+        slide: function (event, ui) {
+          $("#txtPrice").val(" " + addCommas(ui.values[0]) + " - " + addCommas(ui.values[1]) + " đ");
+        },
+        stop: function (event, ui) {
+          var min = $("#slider-range1").slider("values", 0);
+          var max = $("#slider-range1").slider("values", 1);
+
+          var urlPath = changeURLParameter('Price', min + '-' + max);
+          document.location.href = urlPath;
+        }
+      });
+      $("#txtPrice").val(" " + addCommas($("#slider-range1").slider("values", 0)) + " - " + addCommas($("#slider-range1").slider("values", 1)) + " đ");
+
+      $(".dodaitour #slider-range2").slider({
+        range: true,
+        min: SoNgayMin,
+        max: SoNgayMax,
+        values: [
+          SoNgayMin, SoNgayMax
+        ],
+        step: 1,
+        slide: function (event, ui) {
+          $("#txtSoNgay").val(ui.values[0] + ' - ' + ui.values[1] + ' ngày');
+        },
+        stop: function (event, ui) {
+          //var SoNgay = $("#slider-range2").slider("values", 1);
+          var min = $("#slider-range2").slider("values", 0);
+          var max = $("#slider-range2").slider("values", 1);
+
+          var urlPath = changeURLParameter('SoNgay', min + '-' + max);
+          document.location.href = urlPath;
+
+        }
+      });
+      $("#txtSoNgay").val($("#slider-range2").slider("values", 0) + ' - ' + $("#slider-range2").slider("values", 1) + ' ngày');
+    });
+
+    $("#departureDateFilter").datepicker({dateFormat: "dd/mm/yy", minDate: new Date()});
+
+    $('.statusSeat').on('click', function (event) {
+      var parameterURL = $(this).attr('data-url');
+      var urlPath = changeURLParameter(parameterURL, $(this).val());
+
+      document.location.href = urlPath;
+    })
+
+    $('.tranType').on('click', function (event) {
+      var parameterURL = $(this).attr('data-url');
+      var urlPath = changeURLParameter(parameterURL, $(this).val());
+
+      document.location.href = urlPath;
+    })
+
+    $('.featureType').on('click', function (event) {
+      var parameterURL = $(this).attr('data-url');
+      var price = '';
+      $('.featureType').each(function (event) {
+        if ($(this).prop('checked') == true) {
+          if ($(this).attr('data-url') == parameterURL) {
+            price += $(this).val() + "_";
+          }
+        }
+      })
+      price = price.substring(0, price.length - 1)
+
+      var urlPath = changeURLParameter(parameterURL, price);
+
+      document.location.href = urlPath;
+    })
+
+    $("#TourTypeIdFilter").change(function () {
+      if ($('#TourTypeIdFilter').val() == 6) {
+        loadDestinationMegre('group_idFilter', '1')
+      } else {
+        loadDestination($('#TourTypeIdFilter').val(), 'group_idFilter', '1');
+      }
+      loadPriceOption($('#TourTypeIdFilter').val(), 'priceIDFilter'),
+      '0';
+    });
+
+    function changeURLParameter(parameter, value) {
+      var url = document.URL;
+      //prefer to use l.search if you have a location/link object
+      var urlparts = url.split('?');
+      if (urlparts.length >= 2) {
+
+        var prefix = encodeURIComponent(parameter) + '=';
+        var pars = urlparts[1].split(/[&;]/g);
+
+        for (var i = pars.length; i-- > 0;) {
+          if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+            pars.splice(i, 1);
+          }
+        }
+        if (pars.join('&') != '') {
+          url = urlparts[0] + '?' + pars.join('&');
+          if (value != '') {
+            var child = prefix + value;
+            url += "&" + child;
+          }
+        } else {
+          url = urlparts[0];
+          if (value != '') {
+            var child = prefix + value;
+            url += "?" + child;
+          }
+        }
+
+        return url;
+      } else {
+        return url + "?" + parameter + "=" + value;
+      }
+    }
+
+    function loadPriceOption(type, id, valSelected) {
+      // Tương tác với server
+      $.ajax({
+        url: "/SubControl/LoadPriceOption",
+        data: {
+          type: type
+        },
+        success: function (result) {
+          //Reset option Price
+          $("#" + id).empty();
+
+          for (n = 0; n < result.length; n++) {
+            if (result[n].Id == valSelected) {
+              $("#" + id).append($("<option selected></option>").val(result[n].Id).html(result[n].Name));
+            } else {
+              $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+            }
+          }
+        }
+      });
+    };
+
+    function addCommas(nStr) {
+      nStr += '';
+      x = nStr.split('.');
+      x1 = x[0];
+      x2 = x.length > 1
+        ? '.' + x[1]
+        : '';
+      var rgx = /(\d+)(\d{3})/;
+      while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1,$2');
+      }
+      return x1 + x2;
+    }
+  </script>
+</div>
