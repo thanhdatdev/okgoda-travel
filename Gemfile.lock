@@ -332,6 +332,7 @@ GEM
       nokogiri (~> 1.8)
 
 PLATFORMS
+  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -350,6 +351,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   js_cookie_rails
+  kaminari
   listen (>= 3.0.5, < 3.2)
   momentjs-rails
   money-rails

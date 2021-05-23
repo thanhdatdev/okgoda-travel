@@ -23,7 +23,7 @@
                     <span class="dep-place">
                       <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;<%= tour.departure %>
                     </span>
-                    <span>Có <%= @tours.count %> tour khởi hành vào thời gian bạn chọn</span>
+                    <span>Có <%= @tours.where(departure: tour.departure).count %> tour khởi hành vào thời gian bạn chọn</span>
                   </div>
                 </div>
                 <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
@@ -244,31 +244,7 @@
             });
           });
         </script>
-        <div class="col-xs-12 text-right mg-bot30">
-          <div class="pager_simple_orange">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="">
-                    <a href="/tim-tour/4/1/2021-05-22/0/0/ket-qua-p1.aspx">«</a>
-                  </td>
-                  <td class="active">
-                    <a href="/tim-tour/4/1/2021-05-22/0/0/ket-qua-p1.aspx">1</a>
-                  </td>
-                  <td>
-                    <a href="/tim-tour/4/1/2021-05-22/0/0/ket-qua-p2.aspx">2</a>
-                  </td>
-                  <td>
-                    <a href="/tim-tour/4/1/2021-05-22/0/0/ket-qua-p3.aspx">3</a>
-                  </td>
-                  <td class="">
-                    <a href="/tim-tour/4/1/2021-05-22/0/0/ket-qua-p3.aspx">»</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <%= paginate @tours %>
       </div>
     </div>
   </div>

@@ -558,7 +558,7 @@
     });
     var currDate = new Date();
     $("#DepartureDate").datepicker({
-        format: 'dd/mm/yyyy',
+        dateFormat: 'dd/mm/yy',
         todayHighlight: true,
         startDate: new Date(),
         //endDate: currDate,
@@ -566,7 +566,7 @@
     });
 
     $("#DepartureDateTo").datepicker({
-        format: 'dd/mm/yyyy',
+        dateFormat: 'dd/mm/yy',
         todayHighlight: true,
         startDate: new Date(),
         //endDate: currDate,
@@ -574,7 +574,7 @@
     });
 
     $("#DepartureDateOB").datepicker({
-        format: 'dd/mm/yyyy',
+        dateFormat: 'dd/mm/yy',
         todayHighlight: true,
         startDate: new Date(),
         //endDate: currDate,
@@ -582,7 +582,7 @@
     });
 
     $("#DepartureDateToOB").datepicker({
-        format: 'dd/mm/yyyy',
+        dateFormat: 'dd/mm/yy',
         todayHighlight: true,
         startDate: new Date(),
         //endDate: currDate,
@@ -590,7 +590,7 @@
     });
 
     $("#DepartureDateTC").datepicker({
-        format: 'dd/mm/yyyy',
+        dateFormat: 'dd/mm/yy',
         todayHighlight: true,
         startDate: new Date(),
         //endDate: currDate,
@@ -598,7 +598,7 @@
     });
 
     $("#DepartureDateToTC").datepicker({
-        format: 'dd/mm/yyyy',
+        dateFormat: 'dd/mm/yy',
         todayHighlight: true,
         startDate: new Date(),
         //endDate: currDate,
@@ -606,25 +606,28 @@
     });
 
     function LoadDauKhoiHanh(id, cookies_name) {
-        var s_depart = getCookie(cookies_name);
-        if (s_depart == "") {
-            s_depart = 0;
-        }
+        // var s_depart = getCookie(cookies_name);
+        // if (s_depart == "") {
+        //    s_depart = 0;
+        // }
         // Tương tác với server
         $.ajax({
-            url: '/SubControl/LoadNgayKhoiHanh',
+            url: '/search/load_noi_khoi_hanh',
             data: { LanguageID: '2' },
-            success: function (result) {
+            success: function (res) {
                 //Reset option Destination
                 $("#" + id).empty();
+                result = res.data;
 
                 for (n = 0; n < result.length; n++) {
-                    if (result[n].Id == s_depart) {
-                        $("#" + id).append($("<option selected></option>").val(result[n].Id).html(result[n].Name));
-                    }
-                    else {
-                        $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
-                    }
+                  $("#" + id).append($("<option></option>").val(result[n]).html(result[n]));
+
+                    //if (result[n].Id == s_depart) {
+                    //    $("#" + id).append($("<option selected></option>").val(result[n].Id).html(result[n].Name));
+                    //}
+                    //else {
+                    //    $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+                    //}
                 }
             }
         });

@@ -15,7 +15,7 @@ gem 'js_cookie_rails'
 gem 'momentjs-rails'
 gem 'money-rails'
 gem 'stripe'
-
+gem 'kaminari'
 gem 'searchkick'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

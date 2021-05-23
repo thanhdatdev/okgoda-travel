@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root to: 'home#index'
+
   get 'search/tour', to: 'search#tour_search'
   get 'search/booking', to: 'search#booking_search'
-  root to: 'home#index'
+  get 'search/load_noi_khoi_hanh', to: 'search#load_noi_khoi_hanh'
+
   devise_for :users, controllers: {
         registrations: 'users/registration'
   }
