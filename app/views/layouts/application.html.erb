@@ -9,15 +9,16 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'booking.js', 'data-turbolinks-track': 'reload' %>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="https://js.stripe.com/v3/"></script>
   </head>
 
   <body>
     <div class="a" id="che" searchid="dltn"></div>
     <%= render '/shared/n3_header' %>
-    <%= render '/shared/slider' %>
-    <%= render '/shared/n3_form_search' %>
+    <% if current_page?('/') %>
+      <%= render '/shared/slider' %>
+      <%= render '/shared/n3_form_search' %>
+    <% end %>
     <%= yield %>
     <%= render '/shared/footer' %>
   </body>

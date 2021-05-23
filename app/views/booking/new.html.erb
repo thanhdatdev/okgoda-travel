@@ -30,86 +30,87 @@
     </div>
     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
       <%= link_to tour_path(@tour.id), target: "_blank", title: @tour.title do %>
-      <%= @tour.title %>
-    <% end %>
-  </div>
-  <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-    <div class="tour-name">
-      <%= link_to tour_path(@tour.id), target: "_blank", title: @tour.title do %>
-      <%= @tour.title %>
-    <% end %>
-  </div>
-  <div class="frame-info">
-    <div class="row">
-      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-        <div class="f-left l"><%= image_tag "i-code.png", alt: "code" %></div>
-        <div class="f-left r"><%= @tour.id %></div>
-        <div class="clear"></div>
+        <%= image_tag "tf_210414051133_769849.jpg", alt: "#{@tour.title}", class: "img-responsive pic-bt" %>
+      <% end %>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+      <div class="tour-name">
+        <%= link_to tour_path(@tour.id), target: "_blank", title: @tour.title do %>
+          <%= @tour.title %>
+        <% end %>
       </div>
-      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-        <div class="f-left l"><%= image_tag "i-chair.png", alt: "chair" %></div>
-        <div class="f-left r">Số chỗ còn nhận:
-          <span class="font500"><%= @tour.remain_slot %></span></div>
-        <div class="clear"></div>
-      </div>
-      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-        <div class="f-left l"><%= image_tag "i-date.png", alt: "date" %></div>
-        <div class="f-left r">Ngày khởi hành:
-          <span class="font500"><%= @tour.start_date %></span></div>
-        <div class="clear"></div>
-      </div>
-      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-        <div class="f-left l"><%= image_tag "i-date.png", alt: "date" %></div>
-        <div class="f-left r">
-          <a href="/danh-sach-tour/NDSGN535/da-lat-may-bay-kim-ngan-hill-phim-truong-happy-hill-que-garden-tour-gia-soc.aspx" target="_blank" class="b">Ngày khác</a>
+      <div class="frame-info">
+        <div class="row">
+          <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+            <div class="f-left l"><%= image_tag "i-code.png", alt: "code" %></div>
+            <div class="f-left r"><%= @tour.id %></div>
+            <div class="clear"></div>
+          </div>
+          <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+            <div class="f-left l"><%= image_tag "i-chair.png", alt: "chair" %></div>
+            <div class="f-left r">Số chỗ còn nhận:
+              <span class="font500"><%= @tour.remain_slot %></span></div>
+            <div class="clear"></div>
+          </div>
+          <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+            <div class="f-left l"><%= image_tag "i-date.png", alt: "date" %></div>
+            <div class="f-left r">Ngày khởi hành:
+              <span class="font500"><%= @tour.start_date %></span></div>
+            <div class="clear"></div>
+          </div>
+          <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+            <div class="f-left l"><%= image_tag "i-date.png", alt: "date" %></div>
+            <div class="f-left r">
+              <a href="/danh-sach-tour/NDSGN535/da-lat-may-bay-kim-ngan-hill-phim-truong-happy-hill-que-garden-tour-gia-soc.aspx" target="_blank" class="b">Ngày khác</a>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
+            <div class="f-left l"><%= image_tag "i-clock.png", alt: "clock" %></div>
+            <div class="f-left r">Số ngày:
+              <span class="font500"><%= @tour.days %></span></div>
+            <div class="clear"></div>
+          </div>
+          <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
+            <div class="f-left l"><%= image_tag "i-price.png", alt: "price" %></div>
+            <div class="f-left r">
+              Giá:
+              <span class="font500 price"><%= @tour.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
+                đ</span>
+            </div>
+          <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-      </div>
-      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12 mg-bot10">
-        <div class="f-left l"><%= image_tag "i-clock.png", alt: "clock" %></div>
-        <div class="f-left r">Số ngày:
-          <span class="font500"><%= @tour.days %></span></div>
-        <div class="clear"></div>
-      </div>
-      <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
-        <div class="f-left l"><%= image_tag "i-price.png", alt: "price" %></div>
-        <div class="f-left r">
-          Giá:
-          <span class="font500 price"><%= @tour.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
-            đ</span>
-        </div>
-        <div class="clear"></div>
       </div>
     </div>
   </div>
-</div>
-<div class="col-xs-12 mg-bot30">
-  <div class="chuy">
-    Khách nữ từ 55 tuổi trở lên, khách nam từ 60 tuổi trở lên đi tour một mình và khách mang thai trên 4 tháng (16 tuần) vui lòng đăng ký tour trực tiếp tại văn phòng của Vietravel. Không áp dụng đăng ký tour online đối với khách từ 70 tuổi trở lên
+  <div class="col-xs-12 mg-bot30">
+    <div class="chuy">
+      Khách nữ từ 55 tuổi trở lên, khách nam từ 60 tuổi trở lên đi tour một mình và khách mang thai trên 4 tháng (16 tuần) vui lòng đăng ký tour trực tiếp tại văn phòng của Vietravel. Không áp dụng đăng ký tour online đối với khách từ 70 tuổi trở lên
+    </div>
   </div>
-</div>
-<div class="col-xs-12 mg-bot30">
-  <div class="title">GIÁ TOUR CƠ BẢN</div>
-</div>
-<div class="col-xs-12 mg-bot30">
-  <% @tour_order_by_position.each do |t| %>
-    <table class="table table-bordered">
-      <thead>
-        <tr class="tb-title">
-          <td><%= t.title %>
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td data-title=<%= t.customers_type %>><%= t.price_default_cents.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
-            <span>
-              đ</span></td>
-        </tr>
-      </tbody>
-    </table>
-  <% end %>
-</div>
-<%= render partial: "/booking/form" %>
-</div>
+  <div class="col-xs-12 mg-bot30">
+    <div class="title">GIÁ TOUR CƠ BẢN</div>
+  </div>
+  <div class="col-xs-12 mg-bot30">
+      <table class="table table-bordered">
+        <thead>
+          <tr class="tb-title">
+            <% @tour_order_by_position.each do |tour_title| %>
+              <td><%= tour_title.title %></td>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @tour_order_by_position.each do |tour_price| %>
+            <td data-title=<%= tour_price.customers_type %>><%= tour_price.price_default_cents.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
+              <span>
+                đ</span></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <%= render partial: "/booking/form" %>
+  </div>
 </div>

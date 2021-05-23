@@ -1,0 +1,251 @@
+<div class="container n3-list-tour mg-bot40">
+  <div class="row">
+    <%= render partial: 'shared/search_forms/tour_search_filter'%>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+      <div class="list-tour" itemscope="" itemtype="http://schema.org/Place" id="searchResult">
+        <div class="des-tour">
+          <h1 itemprop="name">Danh sách tour du lịch khởi hành từ <%= @departure %></h1>
+          <div class="clear"></div>
+          <div class="des-content">
+            <div class="mg-bot10">
+              <div itemprop="description"></div>
+            </div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="row">
+            <!-- <script src="/Content/ThemeHe/js/RateIt/jquery.rateit.js"></script>
+            <link href="/Content/ThemeHe/js/RateIt/rateit.css" rel="stylesheet"> -->
+            <% @tours.each do |tour| %>
+              <div id="searchResult">
+                <div class="col-xs-12 mg-bot15">
+                  <div style="padding: 12px 10px;background-color:#f1f1f1;line-height:18px;">
+                    <span class="dep-place">
+                      <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;<%= tour.departure %>
+                    </span>
+                    <span>Có <%= @tours.where(departure: tour.departure).count %> tour khởi hành vào thời gian bạn chọn</span>
+                  </div>
+                </div>
+                <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
+                  <div class="frame-day-scroll" id="tagMax147">
+                    <div class="text-center">
+                      <div class="f-day">
+                        27
+                      </div>
+                      <div class="f-date">05/21</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-11 col-md-11 col-sm-12 col-xs-12">
+                  <div class="item mg-bot30">
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="tour-name">
+                          <%= link_to tour_path(tour.id), title: "#{tour.title}", action: 'show' do %>
+                            <h3> <%= tour.title %> </h3>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                        <div class="pos-relative">
+                          <div class="badge-promo tk">
+                            <div class="badge-promo-content">
+                              <div>
+                                <i class="fas fa-spinner"></i>&nbsp;&nbsp;Tiết kiệm</div>
+                            </div>
+                          </div>
+                          <%= link_to tour_path(tour.id), title: "#{tour.title}", action: 'show' do %>
+                            <% image_tag "tf_201006021817_622915.jpg", class: "img-responsive pic-lt", alt: "#{tour.title}" %>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                        <div class="frame-info pos-relative">
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12 mg-bot10">
+                              <div class="f-left group-listtour" style="width:100%">
+                                <div style="float:left;margin:5px 0px; padding-top:15px;padding-left:10px;" data-tourid="c5c0cbf7-1ffb-438f-bfec-28b7dd2a32f7" class="rateit" data-rateit-value="4.64" data-rateit-resetable="false">
+                                  <button id="rateit-reset-2" data-role="none" class="rateit-reset" aria-label="reset rating" aria-controls="rateit-range-2" style="display: none;"></button>
+                                  <div id="rateit-range-2" class="rateit-range" tabindex="0" role="slider" aria-label="rating" aria-owns="rateit-reset-2" aria-valuemin="0" aria-valuemax="5" aria-valuenow="4.64" aria-readonly="false" style="width: 80px; height: 16px;">
+                                    <div class="rateit-selected" style="height: 16px; width: 74.24px;"></div>
+                                    <div class="rateit-hover" style="height:16px"></div>
+                                  </div>
+                                </div>
+                                <div style="float: left; margin-top:5px; padding-top:15px;">
+                                  <span class="hreview-aggregate">
+                                    <span class="item">
+                                      <span class="fn">
+                                        <span class="rating">
+                                          <span class="average">
+                                            <strong>4.64</strong>
+                                          </span>
+                                          <strong>/<span class="best">5
+                                            </span>
+                                          </strong>trong
+                                          <span class="votes">
+                                            <strong>367</strong>
+                                          </span>
+                                          Đánh giá<span class="summary"></span></span>
+                                      </span>
+                                    </span>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="clear"></div>
+                            </div>
+                            <div class="col-md-7 col-sm-7 col-xs-12 mg-bot10">
+                              <div class="f-left l"><% image_tag "i-code.png", alt: "code" %></div>
+                              <div class="f-left r">Mã tour: <%= tour.id %></div>
+                              <div class="clear"></div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-12 mg-bot10">
+                              <div class="f-left l"><% image_tag "i-chair.png", alt: "chair" %></div>
+                              <div class="f-left r">
+                                Số chỗ còn nhận:
+                                <span class="font500"><%= tour.remain_slot %></span>
+                              </div>
+                              <div class="clear"></div>
+                            </div>
+                            <div class="col-md-7 col-sm-7 col-xs-12 mg-bot10">
+                              <div class="f-left l"><% image_tag "i-date.png", alt: "date" %></div>
+                              <div class="f-left r">Ngày đi:
+                                <span class="font500"><%= tour.start_date %> </span></div>
+                              <div class="clear"></div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-12 mg-bot10">
+                              <div class="f-left l"><% image_tag "i-clock.png", alt: "clock" %></div>
+                              <div class="f-left r">Giờ đi:
+                                <span class="font500"><%= tour.start_hour.strftime("%I:%M %p") %></span></div>
+                              <div class="clear"></div>
+                            </div>
+                            <div class="col-md-7 col-sm-7 col-xs-12 mg-bot10">
+                              <div class="f-left l"><% image_tag "i-price.png", alt: "price" %></div>
+                              <div class="f-left r">
+                                Giá:
+                                <span class="font500 price"><%= tour.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> đ</span>
+                              </div>
+                              <div class="clear"></div>
+                            </div>
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                              <div class="f-left l"><% image_tag "i-calendar.png", alt: "date" %></div>
+                              <div class="f-left r">Số ngày:
+                                <span class="font500"><%= tour.days %></span></div>
+                              <div class="clear"></div>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12 mg-bot10">
+                              <div class="f-left l"><% image_tag "i-dep.png" %></div>
+                              <div class="f-left r">Nơi khởi hành:
+                                <span class="font500"><%= tour.departure %></span></div>
+                              <div class="clear"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-1 col-md-1 hidden-sm hidden-xs"></div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <!-- <script src="/Content/ThemeHe/js/jquery.scrollTo.js"></script> -->
+        <script type="text/javascript">
+          $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+          })
+          $(document).ready(function () {
+            $.scrollTo(document.getElementById('searchResult'), 10, {offset: -10});
+            //var arrDiv = ['#tagMax192', '#tagMax193', '#tagMax194', '#tagMax195', '#tagMax196', '#tagMax199', '#tagMax200', '#tagMax201', '#tagMax202']; var arrTour = [1149, 1483, 2111, 2739, 2906];
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+            var arrDiv = [
+              '#tagMax147',
+              '#tagMax148',
+              '#tagMax149',
+              '#tagMax153',
+              '#tagMax154',
+              '#tagMax155',
+              '#tagMax160',
+              '#tagMax161',
+              '#tagMax162',
+              '#tagMax163',
+              '#tagMax165',
+              '#tagMax167',
+              '#tagMax168'
+            ];
+            var arrTour = [];
+            for (var i = 0; i < arrDiv.length; i++) {
+              arrTour.push($(arrDiv[i]).offset().top);
+            }
+
+            var distanceMax = 0;
+            $(window).scroll(function () {
+              //lay ra div gan TOP nhat
+              var id = getDivCurrent($(document).scrollTop());
+              resetDiv();
+              if (id != -1) {
+                $(arrDiv[id]).addClass('affixOld');
+              }
+              var scroll = $(document).scrollTop();
+              var sortHeaderPosition = $("#sortHeader").offset().top;
+              if (scroll > sortHeaderPosition) {
+                $('#divFixHeader').addClass('sort-tour-fixed');
+                $('#divFixHeader').show();
+              } else {
+                $('#divFixHeader').removeClass('sort-tour-fixed');
+                $('#divFixHeader').hide();
+              }
+            });
+
+            function getDivCurrent(scrTop) {
+              //Vị trí cuoi cùng của item
+              var endPosition = $("#divEndTour").offset().top - 200;
+
+              var result = -1;
+              //Duyet mang Array
+              for (var i = 0; i < arrTour.length; i++) {
+                if (scrTop >= arrTour[i] && scrTop < endPosition) {
+                  result = i;
+                }
+              }
+              return result;
+            }
+
+            function resetDiv() {
+              for (var i = 0; i <= arrDiv.length; i++) {
+                $(arrDiv[i]).removeClass('affixOld');
+              }
+            }
+
+            $('.group-listtour .rateit').bind('rated reset', function (e) {
+              var ri = $(this);
+
+              //if the use pressed reset, it will get value: 0 (to be compatible with the HTML range control), we could check if e.type == 'reset', and then set the value to  null .
+              var value = ri.rateit('value');
+              var tourid = ri.data('tourid'); // if the product id was in some hidden field: ri.closest('li').find('input[name="tourid"]').val()
+
+              //maybe we want to disable voting?
+              ri.rateit('readonly', true);
+
+              $.ajax({
+                url: '/Tour/UpdateRatingByTourId', //your server side script
+                data: {
+                  tourid: tourid,
+                  value: value
+                }, //our data
+                type: 'POST',
+                success: function (data) {
+                  alert('Cảm ơn quý khách đã bình chọn cho điểm đến này với điểm số ' + data);
+                },
+                error: function (jxhr, msg, err) {}
+              });
+            });
+          });
+        </script>
+        <%= paginate @tours %>
+      </div>
+    </div>
+  </div>
+</div>

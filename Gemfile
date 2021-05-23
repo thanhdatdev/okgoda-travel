@@ -5,6 +5,19 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
+# other gem
+gem 'bxslider-rails'
+gem 'jquery-rails'
+gem 'chosen-rails'
+gem 'jquery-ui-rails'
+gem 'pnotify-rails'
+gem 'js_cookie_rails'
+gem 'momentjs-rails'
+gem 'money-rails'
+gem 'stripe'
+gem 'kaminari'
+gem 'searchkick'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
 
@@ -69,15 +82,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
-# other gem
-gem 'bxslider-rails'
-gem 'jquery-rails'
-gem 'chosen-rails'
-gem 'pnotify-rails'
-gem 'js_cookie_rails'
-gem 'momentjs-rails'
-gem 'money-rails'
-gem 'stripe'
-
-gem 'searchkick'

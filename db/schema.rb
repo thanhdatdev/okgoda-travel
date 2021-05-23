@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
   create_table "tours", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title", default: "", null: false
     t.date "start_date", null: false
+    t.time "start_hour", null: false
     t.date "end_date", null: false
     t.integer "days", null: false
     t.integer "price_cents", default: 0, null: false

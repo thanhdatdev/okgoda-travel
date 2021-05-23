@@ -1,0 +1,52 @@
+.chosen-container-single {
+	width: 100% !important;
+	color: black;
+}
+
+.chosen-container-single .chosen-single {
+	height: 60px !important;
+	border: none !important;
+	box-shadow: none !important;
+	background-color: #f1f1f1 !important;
+}
+
+.chosen-container-single .chosen-single div b {
+	display: none;
+}
+
+.chosen-container-single .chosen-single span {
+	padding-left: 40px;
+	padding-top: 27px;
+	font-size: 15px;
+	color: #212121;
+}
+
+.chosen-container-single .chosen-search input[type="text"] {
+	height: 30px !important;
+	border: 1px solid #f1f1f1 !important;
+}
+
+.chosen-container-active.chosen-with-drop .chosen-single {
+	background-image: none !important;
+}
+
+.chosen-container .chosen-results li {
+	font-size: 15px !important;
+	height: 30px !important;
+	line-height: 22px !important;
+}
+
+.chosen-container .chosen-results li.highlighted {
+	background-image: none !important;
+	font-size: 15px !important;
+	height: 30px !important;
+	line-height: 22px !important;
+}
+
+.noidia .chosen-container .chosen-results li.highlighted {
+	background: linear-gradient(to right, #006ecc, #008aff) !important;
+}
+
+.outbound .chosen-container .chosen-results li.highlighted {
+	background: linear-gradient(to right, #ed2318, #f2352c) !important;
+}
