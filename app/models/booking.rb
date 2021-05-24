@@ -1,4 +1,5 @@
 class Booking < ApplicationRecord
+  extend FriendlyId
   enum status: { pending: 0, failed: 1, paid: 2, paypal_executed: 3}
 
   belongs_to :user, optional: true

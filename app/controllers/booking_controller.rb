@@ -42,7 +42,7 @@ class BookingController < ApplicationController
   end
 
   def inbound_members
-    tour = Tour.find(params[:tour_id])
+    tour = Tour.friendly.find(params[:tour_id])
 
     # validate remain_slot
     # Tạo ra 1 service để validate

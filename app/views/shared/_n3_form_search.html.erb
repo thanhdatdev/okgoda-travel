@@ -537,7 +537,7 @@
 
     var $ = jQuery.noConflict();
     $(".dltn").click(function () {
-        LoadDauKhoiHanh('departureID', 's_depart');
+        LoadDauKhoiHanh('departure', 's_depart');
         $.scrollTo(document.getElementById('frmsDL'), 800, { offset: -10 }); //frmsDLTN , { offset: 20 } { offset: document.getElementById('frmsDLTN').offsetTop }
         //console.log('dltn');
     });
@@ -612,12 +612,13 @@
         // }
         // Tương tác với server
         $.ajax({
-            url: '/search/load_noi_khoi_hanh',
+            url: '/search/load_departure',
             data: { LanguageID: '2' },
             success: function (res) {
                 //Reset option Destination
                 $("#" + id).empty();
                 result = res.data;
+                $("#" + id).append($("<option></option>").val('0').html('Nơi khởi hành'));
 
                 for (n = 0; n < result.length; n++) {
                   $("#" + id).append($("<option></option>").val(result[n]).html(result[n]));
@@ -636,15 +637,16 @@
     function LoadDiemDen(type, id) {
         // Tương tác với server
         $.ajax({
-            url: '/SubControl/LoadDestination',
+            url: '/search/load_destination',
             data: { type: type },
-            success: function (result) {
+            success: function (res) {
                 //Reset option Destination
                 $("#" + id).empty();
+                result = res.data;
                 $("#" + id).append($("<option></option>").val('0').html('Bạn muốn đi du lịch ở đâu?'));
 
                 for (n = 0; n < result.length; n++) {
-                    $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+                    $("#" + id).append($("<option></option>").val(result[n]).html(result[n]));
                 }
                 $("#" + id).trigger("chosen:updated");
             }
@@ -730,4 +732,37 @@
             }
         });
     };
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function (event) {
+        LoadDiemDen(1, 'destination');
+        LoadDiemDen(2, 'GroupIdOB');
+        //LoadDiemDenMegre('GroupIdTC');
+        LoadLoaiCombo('LoaiCombo');
+        LoadTinhThanhByLoaiCombo('CBTinhThanh');
+
+        //setTimeout(function () {
+        //    $('.chosen-select').chosen(config['.chosen-select']);
+        //}, 3000);
+    })
+
+    $("#LoaiCombo").change(function () {
+        LoadTinhThanhByLoaiCombo('CBTinhThanh');
+    });
+
+    $("#CBTinhThanh").on("change", function () {
+        $("#CBTinhThanhtext").val($("#CBTinhThanh option:selected").text());
+    });
+
+    function checkSearch(id) {
+        departureID1 = $('#' + id).val();
+        if (departureID1 <= 0) {
+          alert('Bạn cần chọn nơi khởi hành');
+          return false;
+        }
+        else {
+          return true;
+        }
+    }
 </script>
