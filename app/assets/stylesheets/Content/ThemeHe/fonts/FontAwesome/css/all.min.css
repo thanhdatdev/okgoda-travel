@@ -9437,7 +9437,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: block;
-    src: url("fa-brands-400.eot"));
+    src: url("fa-brands-400.eot");
     src: url("fa-brands-400.eot?#iefix") format("embedded-opentype"),
     url("fa-brands-400.woff2") format("woff2"),
     url("fa-brands-400.woff") format("woff"),
@@ -9455,7 +9455,7 @@
     font-style: normal;
     font-weight: 900;
     font-display: block;
-    src: url("fa-duotone-900.eot"));
+    src: url("fa-duotone-900.eot");
     src: url("fa-duotone-900.eot?#iefix") format("embedded-opentype"),
     url("fa-duotone-900.woff2") format("woff2"),
     url("fa-duotone-900.woff") format("woff"),
@@ -16913,7 +16913,7 @@
     font-style: normal;
     font-weight: 300;
     font-display: block;
-    src: url("fa-light-300.eot"));
+    src: url("fa-light-300.eot");
     src: url("fa-light-300.eot?#iefix") format("embedded-opentype"),
     url("fa-light-300.woff2") format("woff2"),
     url("fa-light-300.woff") format("woff"),
@@ -16930,7 +16930,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: block;
-    src: url("fa-regular-400.eot"));
+    src: url("fa-regular-400.eot");
     src: url("fa-regular-400.eot?#iefix") format("embedded-opentype"),
     url("fa-regular-400.woff2") format("woff2"),
     url("fa-regular-400.woff") format("woff"),
@@ -16951,7 +16951,7 @@
     font-style: normal;
     font-weight: 900;
     font-display: block;
-    src: url("fa-solid-900.eot"));
+    src: url("fa-solid-900.eot");
     src: url("fa-solid-900.eot?#iefix") format("embedded-opentype"),
     url("fa-solid-900.woff2") format("woff2"),
     url("fa-solid-900.woff") format("woff"),

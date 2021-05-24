@@ -8907,7 +8907,7 @@ th {
 
 @font-face {
 	font-family: 'Glyphicons Halflings';
-	src: url("glyphicons-halflings-regular.eot"));
+	src: url("glyphicons-halflings-regular.eot");
 	src: url("glyphicons-halflings-regular.eot?#iefix") format('embedded-opentype'),
 	 url("glyphicons-halflings-regular.woff2") format('woff2'),
 	 url("glyphicons-halflings-regular.woff") format('woff'),
@@ -20148,7 +20148,7 @@ button.close {
 	font-family: Font Awesome\ 5 Brands;
 	font-style: normal;
 	font-weight: 400;
-	src: url("fa-brands-400.eot"));
+	src: url("fa-brands-400.eot");
 	src: url("fa-brands-400.eot?#iefix") format("embedded-opentype"),
 	url("fa-brands-400.woff2") format("woff2"),
 	url("fa-brands-400.woff") format("woff"),
@@ -20164,7 +20164,7 @@ button.close {
 	font-family: Font Awesome\ 5 Free;
 	font-style: normal;
 	font-weight: 400;
-	src: url("fa-regular-400.eot"));
+	src: url("fa-regular-400.eot");
 	src: url("fa-regular-400.eot?#iefix") format("embedded-opentype"),
 	url("fa-regular-400.woff2") format("woff2"),
 	url("fa-regular-400.woff") format("woff"),
@@ -20180,7 +20180,7 @@ button.close {
 	font-family: Font Awesome\ 5 Free;
 	font-style: normal;
 	font-weight: 900;
-	src: url("fa-solid-900.eot"));
+	src: url("fa-solid-900.eot");
 	src: url("fa-solid-900.eot?#iefix") format("embedded-opentype"),
 	url("fa-solid-900.woff2") format("woff2"),
 	url("fa-solid-900.woff") format("woff"),
