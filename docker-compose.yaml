@@ -19,10 +19,10 @@ services:
     volumes:
       - 'redis:/data'
 
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
-    ports:
-      - "9200"
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+  #   ports:
+  #     - "9200"
 
   web:
     tty: true
@@ -42,7 +42,7 @@ services:
     depends_on:
       #- redis
       - postgres
-      - elasticsearch
+      # - elasticsearch
 
 volumes:
   redis:
