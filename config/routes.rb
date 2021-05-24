@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   get 'search/tour', to: 'search#tour_search'
   get 'search/booking', to: 'search#booking_search'
-  get 'search/load_noi_khoi_hanh', to: 'search#load_noi_khoi_hanh'
+  get 'search/load_departure', to: 'search#load_departure'
+  get 'search/load_destination', to: 'search#load_destination'
 
   devise_for :users, controllers: {
         registrations: 'users/registration'

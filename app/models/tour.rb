@@ -1,7 +1,7 @@
 class Tour < ApplicationRecord
   extend FriendlyId
 
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: %i(slugged finders)
   mount_uploader :photo, PhotoUploader
   belongs_to :tour_type
   has_many   :bookings
@@ -36,4 +36,8 @@ class Tour < ApplicationRecord
       }
     }
   }
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 end
