@@ -47,7 +47,7 @@
 		-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
 		-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 		transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-		background: url(image_path('i-arrow-sel.png') no-repeat 90% #f1f1f1!important;
+		background: url(image_path('i-arrow-sel.png')) no-repeat 90% #f1f1f1!important;
 		-webkit-appearance: none;
 		width: 100%
 	}
