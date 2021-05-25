@@ -59,28 +59,28 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
     super(resource)
   end
-
-  private
-
-  def load_city
-    render json: {
-      render_to_string(
-        partial: 'users/registrations/load_city',
-        locals: {
-
-        }
-      )
-    }
-  end
-
-  def load_province
-    render json: {
-      render_to_string(
-        partial: 'users/registrations/load_province',
-        locals: {
-          
-        }
-      )
-    }
-  end
+  #
+  # private
+  #
+  # def load_city
+  #   render json: {
+  #     render_to_string(
+  #       partial: 'users/registrations/load_city',
+  #       locals: {
+  #
+  #       }
+  #     )
+  #   }
+  # end
+  #
+  # def load_province
+  #   render json: {
+  #     render_to_string(
+  #       partial: 'users/registrations/load_province',
+  #       locals: {
+  #
+  #       }
+  #     )
+  #   }
+  # end
 end

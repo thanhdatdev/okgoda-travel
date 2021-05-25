@@ -1,49 +1,49 @@
-# version: '2'
-# services:
-#   postgres:
-#     image: postgres:9.6.11
-#     environment:
-#       - POSTGRES_USER=root
-#       - POSTGRES_PASSWORD=123456
-#       - POSTGRES_DB=okgoda-travel_development
-#     volumes:
-#       - /var/lib/postgresql/data
-#     ports:
-#       - "5432"
-#
-#   redis:
-#     image: redis:5.0.3
-#     ports:
-#       - "6379"
-#     command: redis-server
-#     volumes:
-#       - 'redis:/data'
-#
-#   # elasticsearch:
-#   #   image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
-#   #   ports:
-#   #     - "9200"
-#
-#   web:
-#     tty: true
-#     stdin_open: true
-#     build:
-#       context: .
-#     command: |
-#       ./wait-for-it.sh postgres:5432 -- bash -c "bundle exec rake db:migrate && bundle exec puma -p 80"
-#     environment:
-#       - RACK_ENV=development
-#       - DATABASE_URL=postgres://root:123456@postgres:5432/okgoda-travel_development
-#       - ELASTICSEARCH_URL=http://elasticsearch:9200
-#     volumes:
-#       - ./:/app
-#     ports:
-#       - "9292:80"
-#     depends_on:
-#       #- redis
-#       - postgres
-#       # - elasticsearch
-#
-# volumes:
-#   redis:
-#   postgres:
+version: '2'
+services:
+  postgres:
+    image: postgres:9.6.11
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=okgoda-travel_development
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - "5432"
+
+  redis:
+    image: redis:5.0.3
+    ports:
+      - "6379"
+    command: redis-server
+    volumes:
+      - 'redis:/data'
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.0
+    ports:
+      - "9200"
+
+  web:
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+    command: |
+      ./wait-for-it.sh postgres:5432 -- bash -c "bundle exec rake db:migrate && bundle exec puma -p 80"
+    environment:
+      - RACK_ENV=development
+      - DATABASE_URL=postgres://root:123456@postgres:5432/okgoda-travel_development
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    volumes:
+      - ./:/app
+    ports:
+      - "9292:80"
+    depends_on:
+      #- redis
+      - postgres
+      - elasticsearch
+
+volumes:
+  redis:
+  postgres:
