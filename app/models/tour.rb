@@ -27,15 +27,15 @@ class Tour < ApplicationRecord
   #     sum + (price_basic.count * l_prod.product.price)
   #   end
   # end
-  searchkick mappings: {
-    tour: {
-      properties: {
-      	id: {type: "uuid"},
-        title: {type: "string"},
-        start_date: {type: "string"}
-      }
-    }
-  }
+  # searchkick mappings: {
+  #   tour: {
+  #     properties: {
+  #     	id: {type: "uuid"},
+  #       title: {type: "string"},
+  #       start_date: {type: "string"}
+  #     }
+  #   }
+  # }
 
   def should_generate_new_friendly_id?
     title_changed? || super
