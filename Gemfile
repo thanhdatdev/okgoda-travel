@@ -16,7 +16,7 @@ gem 'momentjs-rails'
 gem 'money-rails'
 gem 'stripe'
 gem 'kaminari'
-gem 'searchkick'
+# gem 'searchkick'
 gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
