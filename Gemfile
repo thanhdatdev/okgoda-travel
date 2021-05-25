@@ -17,6 +17,7 @@ gem 'money-rails'
 gem 'stripe'
 gem 'kaminari'
 gem 'searchkick'
+gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
