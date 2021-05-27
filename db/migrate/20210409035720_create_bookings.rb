@@ -14,7 +14,10 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.integer    :baby_guests_number
       t.string     :customers_number,             null: false, dafault: ""
       t.string     :note,                                      default: ""
-      t.integer    :status
+      t.string     :paymentID,                    null: false
+      t.datetime   :expired_at
+      t.datetime   :purchased_at
+      t.string     :status
       t.datetime   :booking_date
       t.timestamps
     end

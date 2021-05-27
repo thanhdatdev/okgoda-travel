@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
     t.integer "baby_guests_number"
     t.string "customers_number", null: false
     t.string "note", default: ""
+    t.string "paymentID", null: false
+    t.datetime "expired_at"
+    t.datetime "purchased_at"
     t.integer "status"
     t.datetime "booking_date"
     t.datetime "created_at", null: false
@@ -125,9 +128,10 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
   end
 
   create_table "tour_programs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "description"
     t.date "tour_program_date", null: false
     t.string "title", null: false
-    t.string "description", null: false
+    t.string "description_by_date", null: false
     t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -154,6 +158,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
     t.string "destination", null: false
     t.bigint "tour_type_id", null: false
     t.string "notice", null: false
+    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
@@ -173,9 +178,6 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
     t.string "email", default: "", null: false
     t.date "issued_on_passport"
     t.date "expiration_date_passport"
-    t.string "country", null: false
-    t.string "province", null: false
-    t.string "district"
     t.string "address", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.boolean "admin", default: false

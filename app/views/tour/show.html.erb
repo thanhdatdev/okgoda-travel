@@ -4,25 +4,25 @@
       <h1 class="tour-name" itemprop="name">
         <a><%= @tour.title %></a>
       </h1>
-      <span itemprop="brand" style="display: none;">Vietravel</span>
+      <span itemprop="brand" style="display: none;">Okgoda Travel</span>
       <img itemprop="image" style="display: none;" src="https://media.travel.com.vn/destination/tf_210226045729_127096.jpg" alt="Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)">
-      <span itemprop="description" style="display: none;">Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)</span>
+      <span itemprop="description" style="display: none;"><%= @tour.title %></span>
       <span itemprop="sku" style="display: none;">NDSGN535-052-220421VU-V-F</span>
-      <span itemprop="review" style="display: none;">Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)</span>
+      <span itemprop="review" style="display: none;"><%= @tour.title %></span>
       <span itemprop="aggregateRating" itemscope="" itemtype="http://schema.org/AggregateRating" style="display: none;">
       <span itemprop="ratingValue">4.61</span>
       <span itemprop="bestRating">5</span>
       <span itemprop="ratingCount">372</span>
       </span>
       <span itemprop="offers" itemscope="" itemtype="http://schema.org/AggregateOffer" style="display: none;">
-      <span itemprop="lowPrice">2390000</span>
-      <span itemprop="highPrice">2390000</span>
-      <span itemprop="offerCount">9</span>
+      <span itemprop="lowPrice"><%= @tour.price %></span>
+      <span itemprop="highPrice"><%= @tour.price %></span>
+      <span itemprop="offerCount"><%= @tour.remain_slot %></span>
       <span itemprop="priceCurrency">VND</span>
       <span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
-      <a itemprop="url" href="/tourNDSGN535-052-220421VU-V-F/da-lat-may-bay-kim-ngan-hill-phim-truong-happy-hill-que-garden-tour-gia-soc.aspx">
-      Đà Lạt Máy Bay - Kim Ngân Hill - Phim Trường Happy Hill - Que Garden (Tour Giá Sốc)
-      </a>
+      <%= link_to tour_path(@tour.id), itemprop: "url" do %>
+        <%= @tour.title %>
+      <% end %>
       </span>
       </span>
       <div class="tour-code">

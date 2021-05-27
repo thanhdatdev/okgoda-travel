@@ -1,6 +1,4 @@
 class BookingMailer < ApplicationMailer
-  default from: 'zxzmakerzxz@gmail.com'
-  
   def welcome_email(booking)
     @booking = booking
     @url  = 'http://okgoda-travel.com/new-booking'

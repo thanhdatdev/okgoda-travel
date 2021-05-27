@@ -10,25 +10,29 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require scripts
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require jquery
-//= require customizes/addcsstoclass
-//= require scripts
-//= require customizes/bundlescripts
-//= require chosen-jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require js.cookie
+//= require customizes/cookies
+//= require customizes/bundlescripts
+//= require customizes/scripts
+//= require customizes/addcsstoclass
+//= require chosen-jquery
+//= require moment
+//= require bxslider
 //= require pnotify
 //= require pnotify/pnotify
 //= require pnotify/pnotify.buttons
-//= require js.cookie
-//= require moment
-//= require bxslider
-//= require customizes/scripts
-//= require customizes/cookies
 
 $(document).on('turbolinks:load', function() {
   $(".chosen-select").chosen();
 });
+
+setTimeout(function(){
+  $('.alert alert-info').fadeOut();
+}, 5000);
