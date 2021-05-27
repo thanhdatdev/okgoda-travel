@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'search/load_destination', to: 'search#load_destination'
 
   devise_for :users, controllers: {
-        registrations: 'users/registration'
+        registrations:  "users/registrations",
+        sessions: "users/sessions",
   }
 
   resources  :tour

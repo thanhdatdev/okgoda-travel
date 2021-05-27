@@ -5,7 +5,16 @@
            <button type="button" class="close" data-dismiss="modal">×</button>
            <h4 class="modal-title">ĐĂNG NHẬP</h4>
         </div>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: user_session_path(resource_name)) do |f| %>
+        <% if resource.errors.any? %>
+        <ul class="alert alert-danger">
+            <% for message_error in resource.errors.full_messages %>
+            <li>
+                <%= message_error %>
+            </li>
+            <% end %>
+        </ul>
+        <% end %>
         <div class="modal-body">
            <div class="row">
               <div class="col-md-12 mg-bot15">

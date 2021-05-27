@@ -1,8 +1,8 @@
 class CheckoutController < ApplicationController
   def create
-    booking = Booking.find(params[:id])
+    @booking = Booking.find(params[:id])
 
-    if booking.nil?
+    if @booking.nil?
       redirect_to root_path
       return
     end
@@ -11,8 +11,8 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: [{
-        name: booking.name_booking,
-        amount: booking.list_of_customers.find_by(params[:list_of_customers_id]).total_price,
+        name: @booking.name_booking,
+        amount: @booking.list_of_customers.find_by(params[:list_of_customers_id]).total_price,
         currency: 'vnd',
         quantity: 1
         }],
@@ -22,11 +22,13 @@ class CheckoutController < ApplicationController
   end
 
   def success
+    byebug
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    @booking.update_attributes(status: "approved", purchased_at: Time.current)
   end
 
   def cancel
-
+    redirect_to @booking
   end
 end

@@ -32,3 +32,7 @@
 $(document).on('turbolinks:load', function() {
   $(".chosen-select").chosen();
 });
+
+setTimeout(function(){
+  $('.alert alert-info').fadeOut();
+}, 5000);
