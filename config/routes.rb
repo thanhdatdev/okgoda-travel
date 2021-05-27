@@ -34,4 +34,9 @@ Rails.application.routes.draw do
 
   get "/tour-xuyen-viet" => "tour#index", as: "through_vietnam_tour"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  match '/404', via: :all, to: 'errors#render_404'
+  match '/403', via: :all, to: 'errors#render_403'
+  match '/500', via: :all, to: 'errors#render_500'
+  match '*unmatched', to: 'errors#render_canvas_404', via: :all
 end

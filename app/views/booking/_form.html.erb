@@ -148,7 +148,7 @@
    <div class="col-xs-12 mg-bot30">
       <div>
          <div class="f-left mg-bot10 wl">
-            <input type="checkbox" id="chkDieuKhoan">
+            <%= f.check_box id: "chkDieuKhoan" %>
          </div>
          <div class="f-left wr">
             Tôi đồng ý với các điều kiện trên
@@ -265,7 +265,7 @@
     //});
 
     function CheckDieuKhoan() {
-        $('#responseCaptchaInbound').val(grecaptcha.getResponse());
+        // $('#responseCaptchaInbound').val(grecaptcha.getResponse());
         //if ($('#chkDieuKhoan').is(':checked')) {
         if (document.getElementById("chkDieuKhoan").checked) {
 

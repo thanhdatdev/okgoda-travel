@@ -29,6 +29,6 @@ class CheckoutController < ApplicationController
   end
 
   def cancel
-    redirect_to @booking
+    redirect_to :back
   end
 end
