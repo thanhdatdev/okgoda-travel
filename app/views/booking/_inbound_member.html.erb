@@ -20,12 +20,13 @@
     //});
 
     function CheckDOBByPersonkind() {
-        var totalMember = parseInt('3');
+        var totalMember = parseInt('4');
         var end_date = new Date('2021', parseInt('5') - 1, '9', '15', '30', '0');
-
-        for (var i = 0; i < totalMember; i++) {
+        for (var i = 1; i < totalMember; i++) {
+            i = i.toString();
             var dateofbirth = $("#dateofbirth" + i).val();
             var personkind = $("#personkind" + i).val();//(0 : NguoiLon,1:TreNho, 2:EmBe, 3: TreEm)
+            var personkind_value = $("#personkind" + i).text();//(0 : NguoiLon,1:TreNho, 2:EmBe, 3: TreEm)
 
             var ldob = dateofbirth.split("/");
 
@@ -35,7 +36,7 @@
                 var dobNew = new Date(parseInt(ldob[2]) + 12 + "-" + ldob[1] + "-" + ldob[0]);//Them 12 nam so với chọn ngày sinh
 
                 if (dobNew > end_date) {
-                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh, ngày sinh của' + ' ' + personkind_value + ' ' + 'phải theo quy tắc bên trên')
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
@@ -51,7 +52,7 @@
                 var dobMax = new Date(parseInt(ldob[2]) + 12 + "-" + ldob[1] + "-" + ldob[0]);
 
                 if (dobMin > end_date || dobMax < end_date) {
-                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh, ngày sinh của' + ' ' + personkind_value + ' ' + 'phải theo quy tắc bên trên')
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
@@ -67,7 +68,7 @@
                 var dobMax = new Date(parseInt(ldob[2]) + 5 + "-" + ldob[1] + "-" + ldob[0]);
 
                 if (dobMin > end_date || dobMax < end_date) {
-                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh, ngày sinh của' + ' ' + personkind_value + ' ' + 'phải theo quy tắc bên trên')
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
@@ -82,7 +83,7 @@
                 var dobNew = new Date(parseInt(ldob[2]) + 2 + "-" + ldob[1] + "-" + ldob[0]);
 
                 if (dobNew < end_date) {
-                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh( so với ngày về của tour : ' + '09/05/21 15:30:00'.toString() + ')')
+                    alert('Ngày sinh & loại khách không tương ứng. Quý khách cần kiểm tra lại ngày sinh, ngày sinh của' + ' ' + personkind_value + ' ' + 'phải theo quy tắc bên trên')
                     $("#dateofbirth" + i).val("");
                     $("#dateofbirth" + i).focus();
 
