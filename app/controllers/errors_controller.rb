@@ -7,11 +7,11 @@ class ErrorsController < ApplicationController
     render template: 'errors/error_404', status: 404
   end
 
-  def render_500(exception)
+  def render_500
     render status: 500
   end
 
-  def render_403(_exception)
+  def render_403
     render status: 403
   end
 end
