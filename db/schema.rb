@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
     t.string "paymentID", null: false
     t.datetime "expired_at"
     t.datetime "purchased_at"
-    t.integer "status"
+    t.string "status"
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
