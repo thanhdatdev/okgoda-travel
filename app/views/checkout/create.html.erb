@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  var stripe = Stripe('<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>');
+  var stripe = Stripe('<%= ENV["STRIPE_SECRET_KEY"] %>');
 
   stripe.redirectToCheckout({
     // Make the id field from the Checkout Session creation API response
