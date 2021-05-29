@@ -92,7 +92,7 @@ Rails.application.configure do
   end
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'okgoda-travel-application.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'okgoda-travel-application.herokuapp.com/' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
 
@@ -104,7 +104,7 @@ Rails.application.configure do
     :user_name            => ENV["EMAIL_USER"],
     :password             => ENV["EMAIL_PASSWORD"],
     :authentication       => "plain",
-    :enable_starttls_auto => true
+    # :enable_starttls_auto => true
   }
 
   # Do not dump schema after migrations.
