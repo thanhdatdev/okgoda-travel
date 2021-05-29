@@ -1,5 +1,5 @@
 <script type="text/javascript">
-  var stripe = Stripe('<%= Rails.configuration.stripe[:serect_key] %>');
+  var stripe = Stripe('<%= Rails.configuration.stripe[:secrect_key] %>');
 
   stripe.redirectToCheckout({
     // Make the id field from the Checkout Session creation API response
