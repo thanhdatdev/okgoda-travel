@@ -241,7 +241,7 @@
                   <li> <%= button_to 'Đăng xuất', destroy_user_session_path, data: {target: "_blank"}, method: :delete %></li>
                 <% else %>
                   <li style="border-bottom: 1px dashed #ccc;">
-                    <%= link_to 'Đăng nhập', new_user_session_path, id: "btDangNhap", data: {toggle: "modal"}, data: {target: "#dangnhap"} %>
+                    <%= link_to 'Đăng nhập', new_user_session_path, id: "btDangNhap", data: {toggle: "modal", target: "#dangnhap"} %>
                   </li>
                   <li><%= link_to 'Đăng ký', new_user_registration_path, data: {target: "_blank"} %></li>
                 <% end %>
