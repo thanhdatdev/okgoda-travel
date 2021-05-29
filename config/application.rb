@@ -21,8 +21,7 @@ module OkgodaTravel
       g.orm :active_record, primary_key_type: :uuid
     end
 
-    config_file = Rails.application.config_for(:secrets)
-    config_file.each do |key, value|
+    Rails.application.config_for(:secrets).each do |key, value|
       ENV[key.to_s] = value
     end
 
