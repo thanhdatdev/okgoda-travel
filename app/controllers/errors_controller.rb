@@ -1,7 +1,7 @@
 class ErrorsController < ApplicationController
   unless Rails.application.config.consider_all_requests_local
     rescue_from ActionController::RoutingError, with: :render_canvas_404
-    rescue_from ActionController::UnknownController, with: :render_404
+    # rescue_from ActionController::UnknownController, with: :render_404
     rescue_from AbstractController::ActionNotFound, with: :render_404
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
     rescue_from ActiveResource::ForbiddenAccess, with: :render_403
