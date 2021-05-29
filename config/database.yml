@@ -83,5 +83,3 @@ test:
 production:
   <<: *default
   database: okgoda-travel_production
-  username: okgoda-travel
-  password: <%= ENV['OKGODA-TRAVEL_DATABASE_PASSWORD'] %>
