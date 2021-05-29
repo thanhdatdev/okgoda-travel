@@ -8,10 +8,10 @@ class ErrorsController < ApplicationController
   end
 
   def render_500
-    render status: 500
+    render 'errors/error_500', status: 500
   end
 
   def render_403
-    render status: 403
+    render 'errors/error_403', status: 403
   end
 end
