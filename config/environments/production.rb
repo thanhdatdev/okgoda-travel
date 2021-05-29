@@ -101,8 +101,8 @@ Rails.application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :domain               => "okgoda-travel-application.herokuapp.com",
-    :user_name            => "zxzmakerzxz@gmail.com",
-    :password             => "Dungyeuthai",
+    :user_name            => ENV["EMAIL_USER"],
+    :password             => ENV["EMAIL_PASSWORD"],
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
