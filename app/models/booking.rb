@@ -15,7 +15,7 @@ class Booking < ApplicationRecord
   validates :adult_guests_number, :child_guests_number, :young_children_guests_number,
             :baby_guests_number, :customers_number, numericality: true, length: { minimum: 1, maximum: 3 }
   validates :list_of_customers, presence: true
-  validates :address_booking, :note, format: {with: /[a-zA-Z]/}
+  validates :address_booking, format: {with: /[a-zA-Z]/}
 
   def expired?
     expired_at < Time.current
