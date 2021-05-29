@@ -21,6 +21,11 @@ module OkgodaTravel
       g.orm :active_record, primary_key_type: :uuid
     end
 
+    config_file = Rails.application.config_for(:secrets)
+    config_file.each do |key, value|
+      ENV[key.to_s] = value
+    end
+
     config.exceptions_app = self.routes
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
