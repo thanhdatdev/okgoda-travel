@@ -42,8 +42,8 @@ class Momo::ApplicationService
     @amount ||= booking.total_price.to_s
   end
 
-  def booking_id
-    @booking_id ||= booking.id
+  def order_id
+    @order_id ||= booking.momo_order_id
   end
 
   def request_id
@@ -55,6 +55,6 @@ class Momo::ApplicationService
   end
 
   def extra_data
-    @extra_data ||= ""
+    @extra_data ||= "merchantName=;merchantId=MOMO50VA20210531"
   end
 end

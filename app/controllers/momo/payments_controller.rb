@@ -12,7 +12,7 @@ class Momo::PaymentsController < ApplicationController
     if service.success
       redirect_to service.pay_url
     else
-      @booking.destroy
+      # @booking.destroy
 
       flash[:danger] = service.error_message
       redirect_to root_url
@@ -55,7 +55,7 @@ class Momo::PaymentsController < ApplicationController
       flash[:success] = "Payment success"
       redirect_to order_url(@booking)
     else
-      @booking.destroy
+      # @booking.destroy
 
       flash[:danger] = "Incorrect MoMo Response"
       redirect_to root_url

@@ -11,7 +11,7 @@ class Momo::BodyObjectService < Momo::ApplicationService
       requestType: request_type,
       notifyUrl: notify_url,
       returnUrl: return_url,
-      orderId: booking_id,
+      orderId: order_id,
       amount: amount,
       orderInfo: booking_info,
       requestId: request_id,

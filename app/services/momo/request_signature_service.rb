@@ -8,13 +8,13 @@ class Momo::RequestSignatureService < Momo::ApplicationService
 
   def raw_signature
     "partnerCode=" + partner_code +
-      "&accessKey=" + access_key +
-      "&requestId=" + request_id +
-      "&amount=" + amount +
-      "&orderId=" + booking_id +
-      "&orderInfo=" + booking_info +
-      "&returnUrl=" + return_url +
-      "&notifyUrl=" + notify_url +
-      "&extraData=" + extra_data
+    "&accessKey=" + access_key +
+    "&requestId=" + request_id +
+    "&amount=" + amount +
+    "&orderId=" + order_id +
+    "&orderInfo=" + booking_info +
+    "&returnUrl=" + return_url +
+    "&notifyUrl=" + notify_url +
+    "&extraData=" + extra_data
   end
 end

@@ -17,9 +17,7 @@ class Momo::SendRequestService < Momo::ApplicationService
   private
 
   def load_uri_and_http
-    # @uri = URI.parse payment_url
-    @uri = URI.parse(URI.encode(payment_url))
-
+    @uri = URI.parse payment_url
     @http = Net::HTTP.new @uri.host, @uri.port
     @http.use_ssl = true
     @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -32,6 +30,7 @@ class Momo::SendRequestService < Momo::ApplicationService
   end
 
   def send_request
+    byebug
     @response = @http.request @request
     @result = JSON.parse @response.body
   end
