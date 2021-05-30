@@ -26,7 +26,7 @@
       </span>
       </span>
       <div class="tour-code">
-        <i class="fas fa-barcode"></i>&nbsp;&nbsp;NDSGN535-052-220421VU-V-F
+        <i class="fas fa-barcode"></i>&nbsp;&nbsp;<%= @tour.id %>
       </div>
     </div>
     <div class="slideshow-pt col-lg-8 col-md-12 col-sm-12 col-xs-12 pos-relative">
@@ -203,4 +203,4 @@
     </div>
   </div>
 </div>
-<%= render partial: 'tour_programs' %>
+<%= render partial: 'tour_programs', locals: {tour: @tour} %>

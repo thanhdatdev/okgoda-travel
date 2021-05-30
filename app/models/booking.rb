@@ -1,5 +1,5 @@
 class Booking < ApplicationRecord
-  before_save  :set_status, :set_expired_at, :set_purchased_at
+  before_save  :set_status, :set_expired_at, :set_purchased_at, :set_session_id
 
   belongs_to :user, optional: true
   belongs_to :tour
@@ -32,5 +32,9 @@ class Booking < ApplicationRecord
 
   def set_purchased_at
     self.purchased_at = nil
+  end
+
+  def set_session_id
+    self.session_id = nil
   end
 end

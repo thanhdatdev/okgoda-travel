@@ -100,32 +100,32 @@
                               <%= f.date_field :expiration_date_passport, id: "deadline_date", class: "form-control", data: {val: true}, autocomplete: "off" %>
                            </div>
                         </div>
-                        <div class="row" style="margin-bottom:10px">
-                          <div class="col-md-2 col-sm-2 col-xs-12">
-                            <%= f.label :country do %>
-                              Quốc gia <span style="color:red">(*)</span>:
-                            <% end %>
-                          </div>
-                          <div class="col-md-4 col-sm-4 col-xs-12">
-                            <%= f.select :country, [],{}, id: "CountryId", class: "form-control valid", onchange: "LoadTinhThanh('');" %>
-                          </div>
-                        </div>
                         <!-- <div class="row" style="margin-bottom:10px">
                           <div class="col-md-2 col-sm-2 col-xs-12">
-                            <%# <%= f.label :province do %> %>
-                              Tỉnh/TP <span style="color:red">(*)</span>:
-                            <%# <% end %> %>
+                            <%% f.label :country do %>
+                              Quốc gia <span style="color:red">(*)</span>:
+                            <%% end %>
                           </div>
                           <div class="col-md-4 col-sm-4 col-xs-12">
-                            <%# <%= f.select :province, [],{},id: "ProvinceId", class: "form-control valid", onchange: "LoadQuanHuyen('');" %> %>
+                            <%% f.select :country, [],{}, id: "CountryId", class: "form-control valid", onchange: "LoadTinhThanh('');" %>
+                          </div>
+                        </div> -->
+                        <!-- <div class="row" style="margin-bottom:10px">
+                          <div class="col-md-2 col-sm-2 col-xs-12">
+                            <%% f.label :province do %>
+                              Tỉnh/TP <span style="color:red">(*)</span>:
+                            <%% end %>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-12">
+                            <%% f.select :province, [],{},id: "ProvinceId", class: "form-control valid", onchange: "LoadQuanHuyen('');" %>
                           </div>
                           <div class="col-md-2 col-sm-2 col-xs-12">
-                            <%# <%= f.label :district, "Quận/Huyện:" %> %>
+                            <%% f.label :district, "Quận/Huyện:" %>
                           </div>
                           <div class="col-md-4 col-sm-4 col-xs-12">
-                            <%# <%= f.select :district, [],{},id: "DistrictId", class: "form-control valid" %> %>
+                            <%% f.select :district, [],{},id: "DistrictId", class: "form-control valid" %>
                           </div> -->
-                        </div>
+                        <!-- </div> -->
                         <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12">
                              <%= f.label :address do %>
@@ -137,14 +137,14 @@
                               <div class="field-validation-valid text-danger" data-valmsg-for="Address" data-valmsg-replace="true"></div>
                            </div>
                         </div>
-                        <div class="row" style="margin-bottom:10px">
+                        <!-- <div class="row" style="margin-bottom:10px">
                            <div class="col-md-2 col-sm-2 col-xs-12">
                               <label>Mã giới thiệu:</label>
                            </div>
                            <div class="col-md-10 col-sm-10 col-xs-12">
                               <input class="form-control" id="ReferBy" name="ReferBy" type="text" value="">
                            </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                            <div class="col-md-2 col-sm-2 col-xs-12">
                              <%= f.label :password do %>

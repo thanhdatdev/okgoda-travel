@@ -653,85 +653,85 @@
         });
     };
 
-    function LoadDiemDenMegre(id) {
-        // Tương tác với server
-        $.ajax({
-            url: '/SubControl/LoadDestination',
-            data: { type: 1 },
-            success: function (result) {
-                //Reset option Destination
-                $("#" + id).empty();
-                $("#" + id).append($("<option></option>").val('0').html('Bạn muốn đi du lịch ở đâu?'));
-
-                for (n = 0; n < result.length; n++) {
-                    $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
-                }
-                $("#" + id).trigger("chosen:updated");
-
-                $.ajax({
-                    url: '/SubControl/LoadDestination',
-                    data: { type: 2 },
-                    success: function (result) {
-                        //Reset option Destination
-                        $("#" + id).append($("<option></option>").val('0').html('----------------------------------------------------------'));
-
-                        for (n = 0; n < result.length; n++) {
-                            $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
-                        }
-                        $("#" + id).trigger("chosen:updated");
-                    }
-                });
-            }
-        });
-    };
-
-    function LoadLoaiCombo(id) {
-        // Tương tác với server
-        $.ajax({
-            url: '/SubControl/LoadLoaiCombo',
-            data: null,
-            success: function (result) {
-                //Reset option Destination
-                $("#" + id).empty();
-                $("#" + id).append($("<option></option>").val('0').html('Vui lòng chọn loại combo thích hợp cho chuyến đi của bạn'));
-
-                for (n = 0; n < result.length; n++) {
-                    $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
-                }
-                $("#" + id).trigger("chosen:updated");
-            }
-        });
-    };
-
-    function LoadTinhThanhByLoaiCombo(id) {
-        var loaiComBoId = $('#LoaiCombo').val();
-        // Tương tác với server
-        $.ajax({
-            url: '/SubControl/LoadTinhThanhByCombo',
-            data: { loaiComBoId: loaiComBoId },
-            success: function (result) {
-                //Reset option Destination
-                $("#" + id).empty();
-                $("#" + id).append($("<option></option>").val('0').html('Vui lòng chọn địa điểm hay tên khách sạn '));
-                for (n = 0; n < result.length; n++) {
-                    $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
-                }
-                $("#" + id).trigger("chosen:updated");
-
-                $.ajax({
-                    url: '/SubControl/LoadTinhThanhByCombo_NameKS',
-                    success: function (result) {
-
-                        for (n = 0; n < result.length; n++) {
-                            $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
-                        }
-                        $("#" + id).trigger("chosen:updated");
-                    }
-                });
-
-            }
-        });
-    };
+    // function LoadDiemDenMegre(id) {
+    //     // Tương tác với server
+    //     $.ajax({
+    //         url: '/SubControl/LoadDestination',
+    //         data: { type: 1 },
+    //         success: function (result) {
+    //             //Reset option Destination
+    //             $("#" + id).empty();
+    //             $("#" + id).append($("<option></option>").val('0').html('Bạn muốn đi du lịch ở đâu?'));
+    //
+    //             for (n = 0; n < result.length; n++) {
+    //                 $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+    //             }
+    //             $("#" + id).trigger("chosen:updated");
+    //
+    //             $.ajax({
+    //                 url: '/SubControl/LoadDestination',
+    //                 data: { type: 2 },
+    //                 success: function (result) {
+    //                     //Reset option Destination
+    //                     $("#" + id).append($("<option></option>").val('0').html('----------------------------------------------------------'));
+    //
+    //                     for (n = 0; n < result.length; n++) {
+    //                         $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+    //                     }
+    //                     $("#" + id).trigger("chosen:updated");
+    //                 }
+    //             });
+    //         }
+    //     });
+    // };
+    //
+    // function LoadLoaiCombo(id) {
+    //     // Tương tác với server
+    //     $.ajax({
+    //         url: '/SubControl/LoadLoaiCombo',
+    //         data: null,
+    //         success: function (result) {
+    //             //Reset option Destination
+    //             $("#" + id).empty();
+    //             $("#" + id).append($("<option></option>").val('0').html('Vui lòng chọn loại combo thích hợp cho chuyến đi của bạn'));
+    //
+    //             for (n = 0; n < result.length; n++) {
+    //                 $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+    //             }
+    //             $("#" + id).trigger("chosen:updated");
+    //         }
+    //     });
+    // };
+    //
+    // function LoadTinhThanhByLoaiCombo(id) {
+    //     var loaiComBoId = $('#LoaiCombo').val();
+    //     // Tương tác với server
+    //     $.ajax({
+    //         url: '/SubControl/LoadTinhThanhByCombo',
+    //         data: { loaiComBoId: loaiComBoId },
+    //         success: function (result) {
+    //             //Reset option Destination
+    //             $("#" + id).empty();
+    //             $("#" + id).append($("<option></option>").val('0').html('Vui lòng chọn địa điểm hay tên khách sạn '));
+    //             for (n = 0; n < result.length; n++) {
+    //                 $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+    //             }
+    //             $("#" + id).trigger("chosen:updated");
+    //
+    //             $.ajax({
+    //                 url: '/SubControl/LoadTinhThanhByCombo_NameKS',
+    //                 success: function (result) {
+    //
+    //                     for (n = 0; n < result.length; n++) {
+    //                         $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+    //                     }
+    //                     $("#" + id).trigger("chosen:updated");
+    //                 }
+    //             });
+    //
+    //         }
+    //     });
+    // };
 </script>
 
 <script type="text/javascript">
@@ -739,21 +739,21 @@
         LoadDiemDen(1, 'destination');
         LoadDiemDen(2, 'GroupIdOB');
         //LoadDiemDenMegre('GroupIdTC');
-        LoadLoaiCombo('LoaiCombo');
-        LoadTinhThanhByLoaiCombo('CBTinhThanh');
+        // LoadLoaiCombo('LoaiCombo');
+        // LoadTinhThanhByLoaiCombo('CBTinhThanh');
 
         //setTimeout(function () {
         //    $('.chosen-select').chosen(config['.chosen-select']);
         //}, 3000);
     })
 
-    $("#LoaiCombo").change(function () {
-        LoadTinhThanhByLoaiCombo('CBTinhThanh');
-    });
-
-    $("#CBTinhThanh").on("change", function () {
-        $("#CBTinhThanhtext").val($("#CBTinhThanh option:selected").text());
-    });
+    // $("#LoaiCombo").change(function () {
+    //     LoadTinhThanhByLoaiCombo('CBTinhThanh');
+    // });
+    //
+    // $("#CBTinhThanh").on("change", function () {
+    //     $("#CBTinhThanhtext").val($("#CBTinhThanh option:selected").text());
+    // });
 
     function checkSearch(id) {
         departureID1 = $('#' + id).val();

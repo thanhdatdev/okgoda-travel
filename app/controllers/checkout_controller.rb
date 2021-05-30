@@ -22,10 +22,8 @@ class CheckoutController < ApplicationController
   end
 
   def success
-    byebug
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
-    @booking.update_attributes(status: "approved", purchased_at: Time.current)
   end
 
   def cancel

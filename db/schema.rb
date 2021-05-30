@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_194136) do
+ActiveRecord::Schema.define(version: 2021_05_29_225819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "session_id"
     t.index ["tour_id"], name: "index_bookings_on_tour_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end

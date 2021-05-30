@@ -1,16 +1,16 @@
-  <div class="container n3-tour-hour" id="box-lastminute">
-    <div class="row">
-      <div class="col-xs-12 mg-bot30">
-        <h2 class="title-l mg-bot10">
-          <a href="/du-lich-gio-chot.aspx">Danh sách tour</a>
-        </h2>
-        <div class="text-center title-descript">Danh sách tour với giá tốt</div>
-      </div>
-      <% @tours.each do |t| %>
+<div class="container n3-tour-hour" id="box-lastminute">
+  <div class="row">
+    <div class="col-xs-12 mg-bot30">
+      <h2 class="title-l mg-bot10">
+        <a href="/du-lich-gio-chot.aspx">Danh sách tour</a>
+      </h2>
+      <div class="text-center title-descript">Danh sách tour với giá tốt</div>
+    </div>
+    <% @tours.each do |t| %>
       <div id="idLastMinute" style="margin-bottom:30px;">
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mg-bot30">
           <div class="pos-relative">
-          <%= link_to tour_path(t.id), title: t.title do %>
+            <%= link_to tour_path(t.id), title: t.title do %>
             <img src="https://media.travel.com.vn/LastMinute/lm_210401093612_532755.jpg" class="img-responsive pic-tgc" alt="Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)">
           <% end %>
           <div class="frame-tgc1">
@@ -20,9 +20,11 @@
                   <%= image_tag "i-date-w.png", alt: "date" %>
                 </div>
                 <div class="f-left date">
-                  <span class="yellow">Ngày đi: <%= t.start_date.strftime("%d-%m-%Y") %></span>
+                  <span class="yellow">Ngày đi:
+                    <%= t.start_date.strftime("%d-%m-%Y") %></span>
                   -
-                  <span class="yellow">Số ngày: <%= t.days %></span></div>
+                  <span class="yellow">Số ngày:
+                    <%= t.days %></span></div>
                 <div class="clear"></div>
               </div>
             </div>
@@ -30,8 +32,8 @@
         </div>
         <div class="frame-tgc2">
           <%= link_to tour_path(t.id), title: "#{t.title}" do %>
-            <div class="dot-dot-ajax po-title-s cut-po-s"><%= t.title %></div>
-          <% end %>
+          <div class="dot-dot-ajax po-title-s cut-po-s"><%= t.title %></div>
+        <% end %>
         <div class="tgc-line"></div>
         <div class="mg-bot10">
           <%= image_tag "i-dep.png", class: "f-left" %>
@@ -47,28 +49,27 @@
         <div class="mg-bot10">
           <%= image_tag "i-chair.png", class: "f-left", alt: "chair" %>
           <div class="f-left tgc-info">
-              <span>Số chỗ còn nhận:&nbsp;&nbsp;
-                <span class="yellow"><%= t.remain_slot %></span>
-              </span>
+            <span>Số chỗ còn nhận:&nbsp;&nbsp;
+              <span class="yellow"><%= t.remain_slot %></span>
+            </span>
           </div>
           <div class="clear"></div>
         </div>
         <div class="mg-bot10">
           <%= image_tag "i-price.png", class: "f-left", alt: "price" %>
           <div class="f-left tgc-info">
-            <!-- <span class="price-o">
-              2,890,000<span>&nbsp;</span>đ
-            </span>&nbsp;&nbsp;&nbsp;&nbsp; -->
-            <span class="price-n"><%= t.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> đ</span>
+            <!-- <span class="price-o"> 2,890,000<span>&nbsp;</span>đ </span>&nbsp;&nbsp;&nbsp;&nbsp; -->
+            <span class="price-n"><%= t.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %>
+              đ</span>
           </div>
           <div class="clear"></div>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
-    <div class="col-xs-12 text-center">
-      <a href="/du-lich-gio-chot.aspx" class="btn btn-book1 btn-md">Xem thêm</a>
-    </div>
-  </div>
+<% end %>
+<div class="col-xs-12 text-center">
+  <%= link_to "Xem thêm", tour_index_path, id: "load-more-tours", remote: true, class:"btn btn-book1 btn-md" %>
+</div>
+</div>
 </div>
