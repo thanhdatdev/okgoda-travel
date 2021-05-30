@@ -12,7 +12,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: @booking.name_booking,
-        amount: @booking.list_of_customers.find_by(params[:list_of_customers_id]).total_price,
+        amount: @booking.total_price,
         currency: 'vnd',
         quantity: 1
         }],

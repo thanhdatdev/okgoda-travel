@@ -179,7 +179,6 @@
     //    $("#responseCaptchaInbound").val(response);
     //};
 
-    CaculatorPrice();
     function CheckMobile() {
         var mobilephone = $("#mobilephone").val();
         $("#mobile0").val(mobilephone);
@@ -266,7 +265,6 @@
 
             return false;
         }
-        CaculatorPrice();
         return true;
     }
     //});
@@ -310,49 +308,4 @@
             return false;
         }
     }
-
-    value = $('.chkListCustomer:checked').val();
-    LoadInfoCustomer(value);
-
-    $('.chkListCustomer').click('change', function () {
-        value = $('.chkListCustomer:checked').val();
-        LoadInfoCustomer(value);
-    });
-    function LoadInfoCustomer(value) {
-        if (value == 1) {
-            $("#DanhSachKhach").show();
-            $("#divTongTien").hide();
-            $("#ThongTinKhach").hide();
-            $('input[name="[0].fullname"]').prop('required', true);
-        }
-        else {
-            $("#DanhSachKhach").hide();
-            $("#divTongTien").show();
-            $("#ThongTinKhach").show();
-            $('input[name="[0].fullname"]').removeAttr('required');
-        }
-    }
-
-    function CaculatorPrice() {
-        var CurrencyName = 'đ';
-        var Rate = '1';
-
-        var adult = $('#adult').val();
-        var children11 = $('#children11').val();
-        var children = $('#children').val();
-        var small_children = $('#small_children').val();
-
-        var adult_price = parseFloat('2990000');//Nguoi lon
-        var child_price11 = parseFloat('2242500');//TreEm
-        var child_price = parseFloat('1000000');//TreNho
-        var child_price5 = parseFloat('220000');//EmBe
-        var phuthuphongdon_vn = parseFloat('1200000');//PhuThuPhongDon
-
-        if (adult == 1) {
-            adult_price = adult_price + phuthuphongdon_vn;
-        }
-        var totalPrice = (adult * adult_price) + (children11 * child_price11) + (children * child_price) + (small_children * child_price5);
-
-        $("#spanTotalPriceBK").text(formatnumber((totalPrice / Rate).toFixed(0)) + ' ' + CurrencyName);
-}
 </script>

@@ -3,15 +3,26 @@ class BookingController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def show
-    @list_of_customers = @booking.list_of_customers.find_by(params[:list_of_customers_id])
-    @price_booking = @list_of_customers.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
-    @total_price = @list_of_customers.total_price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    @list_of_customers = @booking.list_of_customers
+    @customer = @booking.list_of_customers.find_by(params[:list_of_customers_id])
+    @price_booking = @customer.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+    @total_price = @booking.total_price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+
+    @payment_gateway = nil
+    if @booking.paymentID == "1"
+      @payment_gateway = "Tiền mặt"
+    elsif @booking.paymentID == "2"
+      @payment_gateway = "Chuyển khoản"
+    elsif @booking.paymentID == "15"
+      @payment_gateway = "Thẻ tín dụng"
+    else
+      @payment_gateway = "Thanh toán bằng momo"
+    end
   end
 
   def new
     @booking = Booking.new
     @booking.list_of_customers.build
-    # @booking.payments.build
   end
 
   def create
@@ -114,7 +125,7 @@ class BookingController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:tour_id, :name_booking, :email_booking, :mobile_booking, :phone_booking, :address_booking, :adult_guests_number, :child_guests_number,
-                                    :young_children_guests_number, :baby_guests_number, :customers_number, :booking_date, :paymentID, :status, :expired_at, :purchased_at,
-                                    list_of_customers_attributes: %i[name_list_of_customers sex_list_of_customers birthday_list_of_customers ages single_room price_booking total_price booking_id _destroy])
+                                    :young_children_guests_number, :baby_guests_number, :customers_number, :note, :total_price, :booking_date, :paymentID, :status, :expired_at, :purchased_at,
+                                    list_of_customers_attributes: %i[name_list_of_customers sex_list_of_customers birthday_list_of_customers ages single_room price_booking booking_id _destroy])
   end
 end

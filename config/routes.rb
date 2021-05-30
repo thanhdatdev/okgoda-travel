@@ -21,6 +21,13 @@ Rails.application.routes.draw do
         get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
         get 'success', to: 'checkout#success', as: 'checkout_success'
       end
+      namespace :momo do
+        resources :payments, only: %i(create show) do
+          member do
+            post :update
+          end
+        end
+      end
     end
   end
   resources  :category do
@@ -39,4 +46,6 @@ Rails.application.routes.draw do
   match '/403', via: :all, to: 'errors#render_403'
   match '/500', via: :all, to: 'errors#render_500'
   match '*unmatched', to: 'errors#render_canvas_404', via: :all
+
+
 end

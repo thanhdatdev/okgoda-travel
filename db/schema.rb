@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_225819) do
+ActiveRecord::Schema.define(version: 2021_05_20_194136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -30,14 +30,20 @@ ActiveRecord::Schema.define(version: 2021_05_29_225819) do
     t.integer "baby_guests_number"
     t.string "customers_number", null: false
     t.string "note", default: ""
+    t.integer "total_price_cents", default: 0, null: false
     t.string "paymentID", null: false
     t.datetime "expired_at"
     t.datetime "purchased_at"
     t.string "status"
+    t.string "momo_order_id"
+    t.string "momo_request_id"
+    t.string "momo_trans_id"
+    t.string "momo_order_type"
+    t.string "momo_pay_type"
+    t.datetime "momo_response_time"
     t.datetime "booking_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "session_id"
     t.index ["tour_id"], name: "index_bookings_on_tour_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -99,7 +105,6 @@ ActiveRecord::Schema.define(version: 2021_05_29_225819) do
     t.boolean "single_room", default: true, null: false
     t.boolean "domestic_customers"
     t.integer "price_booking_cents", default: 0, null: false
-    t.integer "total_price_cents", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_list_of_customers_on_booking_id"

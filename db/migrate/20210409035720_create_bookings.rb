@@ -14,10 +14,21 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.integer    :baby_guests_number
       t.string     :customers_number,             null: false, dafault: ""
       t.string     :note,                                      default: ""
+      t.monetize   :total_price,   currency: { present: false }
       t.string     :paymentID,                    null: false
       t.datetime   :expired_at
       t.datetime   :purchased_at
       t.string     :status
+      # data sent to MoMo
+      # recheck data when receive MoMo respone
+      t.string     :momo_order_id
+      t.string     :momo_request_id
+
+      # update data when receive MoMo respone
+      t.string     :momo_trans_id
+      t.string     :momo_order_type
+      t.string     :momo_pay_type
+      t.datetime   :momo_response_time
       t.datetime   :booking_date
       t.timestamps
     end
