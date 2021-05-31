@@ -2,13 +2,6 @@
    <div class="col-xs-12 mg-bot30">
       <div class="title">THÔNG TIN LIÊN LẠC</div>
    </div>
-   <%if @booking.errors.any? %>
-        <%@booking.errors.messages.each do|msg| %>
-             <div class="alert alert-danger">
-               <%= msg %>
-             </div>
-        <%end%>
-   <% end %>
    <div class="col-xs-12 form-input mg-bot30">
       <div class="row">
          <div class="col-md-6 col-sm-12 col-xs-12">
@@ -164,7 +157,7 @@
       </div>
    </div>
    <div class="col-xs-12 mg-bot30 text-center">
-      <%= f.submit "Đặt tour", class: "btn btn-md btn-book" do %>
+      <%= f.submit "Đặt tour", class: "btn btn-md btn-book", onclick: "CheckDieuKhoan();" do %>
         <i class="fas fa-arrow-right"</i>
       <% end %>
    </div>
@@ -283,6 +276,7 @@
             //Kiem tra bat buoc khi booking phải là người lớn trên 18 tuổi
             for (var i = 0; i < guests; i++) {
                 //var personkind = $("#personkind" + i).val();
+                i = i.toString();
                 var personkind = document.getElementById("personkind" + i).value;
                 if (personkind == 0) {
                     //var ldob = $("#dateofbirth" + i).val().split("/");
@@ -303,6 +297,7 @@
                 return false;
             }
             else { return true; }
+            // return true;
         } else {
             alert('Quý khách cần chọn Điều khoản đăng ký online');
             return false;
