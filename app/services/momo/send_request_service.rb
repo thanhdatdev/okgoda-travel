@@ -30,7 +30,6 @@ class Momo::SendRequestService < Momo::ApplicationService
   end
 
   def send_request
-    byebug
     @response = @http.request @request
     @result = JSON.parse @response.body
   end
