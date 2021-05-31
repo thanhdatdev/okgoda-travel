@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
-  before_save   :set_status, :set_expired_at, :set_purchased_at, :convert_price
-  before_create :set_params
+  before_save   :convert_price
+  before_create :set_params, :set_status, :set_expired_at, :set_purchased_at
   belongs_to :user, optional: true
   belongs_to :tour
   has_many   :list_of_customers, inverse_of: :booking, dependent: :destroy, autosave: false

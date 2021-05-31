@@ -12,7 +12,7 @@ class Momo::ConfirmBookingService < Momo::ApplicationService
     return @success = false if access_key != params[:accessKey]
     return @success = false if request_id != params[:requestId]
     return @success = false if amount != params[:amount]
-    return @success = false if booking_id != params[:orderId]
+    return @success = false if order_id != params[:orderId]
     return @success = false if signature != params[:signature]
   end
 
