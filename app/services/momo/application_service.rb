@@ -55,6 +55,6 @@ class Momo::ApplicationService
   end
 
   def extra_data
-    @extra_data ||= "merchantName=;merchantId=MOMO50VA20210531"
+    @extra_data ||= ""
   end
 end
