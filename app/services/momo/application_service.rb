@@ -1,6 +1,6 @@
 class Momo::ApplicationService
   include Rails.application.routes.url_helpers
-  default_url_options[:host] = ENV["MOMO_HOST"]
+  default_url_options[:host] = Rails.env.production? ? "okgoda-travel-application.herokuapp.com" : "localhost:3000"
 
   def initialize booking
     @booking = booking
