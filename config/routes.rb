@@ -47,5 +47,5 @@ Rails.application.routes.draw do
   match '/500', via: :all, to: 'errors#render_500'
   match '*unmatched', to: 'errors#render_canvas_404', via: :all
 
-
+  resources  :hotel
 end

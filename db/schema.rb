@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_20_194136) do
+ActiveRecord::Schema.define(version: 2021_05_30_222547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -86,6 +86,33 @@ ActiveRecord::Schema.define(version: 2021_05_20_194136) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "hotels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "destination"
+    t.string "title"
+    t.integer "price_default_cents", default: 0, null: false
+    t.string "price_default_currency", default: "VND", null: false
+    t.string "address"
+    t.string "phone_number"
+    t.string "description"
+    t.string "infomation"
+    t.date "checkin_date"
+    t.date "checkout_date"
+    t.integer "room_price_cents", default: 0, null: false
+    t.string "room_price_currency", default: "VND", null: false
+    t.integer "bed_price_cents", default: 0, null: false
+    t.string "bed_price_currency", default: "VND", null: false
+    t.integer "children_price_cents", default: 0, null: false
+    t.string "children_price_currency", default: "VND", null: false
+    t.string "name_booking_hotel"
+    t.string "phone_booking_hotel"
+    t.string "email_booking_hotel"
+    t.string "note"
+    t.integer "total_price_cents", default: 0, null: false
+    t.string "total_price_currency", default: "VND", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "item_categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

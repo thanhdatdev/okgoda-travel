@@ -6,5 +6,6 @@ class HomeController < ApplicationController
     else
       render 'through_vietnam_tour'
     end
+    @hotels = Hotel.all
   end
 end
