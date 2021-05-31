@@ -18,7 +18,6 @@ class Momo::UpdateBookingService < Momo::ApplicationService
     {
       status: "approved",
       purchased_at: Time.now,
-      expired_at: nil,
       momo_order_type: params[:orderType],
       momo_pay_type: params[:payType],
       momo_trans_id: params[:transId],

@@ -140,11 +140,7 @@
           <div class="row bor-bot">
             <div class="col-lg-3 col-md-2 col-sm-2 col-xs-12 mg-bot">Ghi chú:</div>
             <div class="col-lg-9 col-md-10 col-sm-10 col-xs-12 font500 line-h">
-              <% if @booking.status == 'pending' %>
-                Booking từ okgoda-travel-application.herokuapp.com.vn. Thời hạn thanh toán <%= @booking.expired_at %>.
-              <% else %>
-                Booking từ okgoda-travel-application.herokuapp.com.vn
-              <% end %>
+              <%= @booking.note %>
             </div>
           </div>
       </div>
@@ -172,12 +168,12 @@
           <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 mg-bot">Tình trạng:</div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 font500 line-h">
               <span class="font500">
-                <% if @booking.expired_at != nil %>
-                  Booking đã tự hủy do quá thời hạn thanh toán
-                <% elsif @booking.status == 'pending' %>
-                  Chờ thanh toán
+                <% if @booking.status == 'pending' %>
+                    Chờ thanh toán
+                <% elsif @booking.status == 'approved' %>
+                    Đã thanh toán vào lúc <%= @booking.purchased_at.strftime("%H:%M:%S, %d-%m-%Y") %>
                 <% else %>
-                  Đã thanh toán vào lúc <%= @booking.purchased_at.strftime("%d-%m-%Y, %H:%M:%S") %>
+                    Booking đã tự hủy do quá thời hạn thanh toán
                 <% end %>
               </span>
             </div>
@@ -254,7 +250,7 @@
     <div class="col-xs-12 mg-bot30">
       <div class="frame-cong">
         <p class="mg-bot5">Chúc quý khách 1 chuyến du lịch thật vui vẻ và bổ ích</p>
-        <p>Quý khách vui lòng kiểm tra email để nhận phiếu xác nhận đặt dịch vụ thành công từ Vietravel</p>
+        <p>Quý khách vui lòng kiểm tra email để nhận phiếu xác nhận đặt dịch vụ thành công từ OkgodaTravel</p>
         <% if @booking.status == 'pending' %>
           <% if @booking.paymentID == "15"  %>
             <%= button_to checkout_create_booking_index_path, class:"btn btn-md btn-book in-booking", method: :post, params: {id: @booking.id} do %>

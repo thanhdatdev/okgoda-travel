@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
   before_save   :convert_price
-  before_create :set_params, :set_status, :set_expired_at, :set_purchased_at
+  before_create :set_params, :set_status, :set_expired_at, :set_purchased_at, :hide_booking
   belongs_to :user, optional: true
   belongs_to :tour
   has_many   :list_of_customers, inverse_of: :booking, dependent: :destroy, autosave: false
@@ -42,5 +42,11 @@ class Booking < ApplicationRecord
   def set_params
     self.momo_order_id = nil
     self.momo_request_id = nil
+  end
+
+  def hide_booking
+    if self.expired?
+      self.update_attributes status: 'hide'
+    end
   end
 end
