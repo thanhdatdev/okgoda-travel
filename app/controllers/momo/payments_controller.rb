@@ -52,8 +52,8 @@ class Momo::PaymentsController < ApplicationController
       update_service = Momo::UpdateBookingService.new @booking, params
       update_service.perform
 
-      flash[:success] = "Payment success"
-      redirect_to order_url(@booking)
+      redirect_to booking_url(@booking)
+      flash[:success] = "Bạn đã thanh toán thành công, vui lòng kiểm tra email!"
     else
       # @booking.destroy
 

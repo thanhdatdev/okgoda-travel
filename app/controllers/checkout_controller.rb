@@ -1,7 +1,7 @@
 class CheckoutController < ApplicationController
-  def create
-    @booking = Booking.find(params[:id])
+  before_action :load_booking
 
+  def create
     if @booking.nil?
       redirect_to root_path
       return
@@ -24,9 +24,24 @@ class CheckoutController < ApplicationController
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    @booking.update_attributes booking_params
+    redirect_to booking_url(@booking)
+    flash[:success] = "Bạn đã thanh toán thành công, vui lòng kiểm tra email!"
   end
 
   def cancel
-    redirect_to :back
+    redirect_to booking_url(@booking)
+    flash[:danger] = "Thanh toán không thành công"
+  end
+
+  def booking_params
+    {
+      status: "approved",
+      purchased_at: Time.now
+    }
+  end
+
+  def load_booking
+    @booking = Booking.find(params[:booking_id])
   end
 end

@@ -2,13 +2,6 @@
    <div class="col-xs-12 mg-bot30">
       <div class="title">THÔNG TIN LIÊN LẠC</div>
    </div>
-   <%if @booking.errors.any? %>
-        <%@booking.errors.messages.each do|msg| %>
-             <div class="alert alert-danger">
-               <%= msg %>
-             </div>
-        <%end%>
-   <% end %>
    <div class="col-xs-12 form-input mg-bot30">
       <div class="row">
          <div class="col-md-6 col-sm-12 col-xs-12">
@@ -164,7 +157,7 @@
       </div>
    </div>
    <div class="col-xs-12 mg-bot30 text-center">
-      <%= f.submit "Đặt tour", class: "btn btn-md btn-book" do %>
+      <%= f.submit "Đặt tour", class: "btn btn-md btn-book", onclick: "return CheckDieuKhoan();" do %>
         <i class="fas fa-arrow-right"</i>
       <% end %>
    </div>
@@ -274,35 +267,37 @@
         //if ($('#chkDieuKhoan').is(':checked')) {
         if (document.getElementById("chkDieuKhoan").checked) {
 
-            var end_date = new Date('2021', parseInt('5') - 1, '9', '15', '30', '0');
-            //var guests = $("#guests").val();
-            var guests = document.getElementById("guests").value;
-
-            var icheck = 0;//Kiểm tra số lượng khách trên 18 tuổi
-
-            //Kiem tra bat buoc khi booking phải là người lớn trên 18 tuổi
-            for (var i = 0; i < guests; i++) {
-                //var personkind = $("#personkind" + i).val();
-                var personkind = document.getElementById("personkind" + i).value;
-                if (personkind == 0) {
-                    //var ldob = $("#dateofbirth" + i).val().split("/");
-                    var ldob = document.getElementById("dateofbirth" + i).value.split("/");
-                    var dobNew = new Date(parseInt(ldob[2]) + 18 + "-" + ldob[1] + "-" + ldob[0]);//Them 18 nam so với chọn ngày sinh
-
-                    if (dobNew > end_date) {
-                        icheck = icheck + 1;//Khách chưa đủ 18 tuổi
-                    }
-                    else {
-                        icheck = icheck - 5;
-                    }
-                }
-            }
-
-            if (icheck > 0) {
-                alert('Booking phải có ít nhất 1 khách trên 18 tuổi');
-                return false;
-            }
-            else { return true; }
+            // var end_date = new Date('2021', parseInt('5') - 1, '9', '15', '30', '0');
+            // //var guests = $("#guests").val();
+            // var guests = document.getElementById("guests").value;
+            //
+            // var icheck = 0;//Kiểm tra số lượng khách trên 18 tuổi
+            //
+            // //Kiem tra bat buoc khi booking phải là người lớn trên 18 tuổi
+            // for (var i = 0; i < guests; i++) {
+            //     //var personkind = $("#personkind" + i).val();
+            //     i = i.toString();
+            //     var personkind = document.getElementById("personkind" + i).value;
+            //     if (personkind == 0) {
+            //         //var ldob = $("#dateofbirth" + i).val().split("/");
+            //         var ldob = document.getElementById("dateofbirth" + i).value.split("/");
+            //         var dobNew = new Date(parseInt(ldob[2]) + 18 + "-" + ldob[1] + "-" + ldob[0]);//Them 18 nam so với chọn ngày sinh
+            //
+            //         if (dobNew > end_date) {
+            //             icheck = icheck + 1;//Khách chưa đủ 18 tuổi
+            //         }
+            //         else {
+            //             icheck = icheck - 5;
+            //         }
+            //     }
+            // }
+            //
+            // if (icheck > 0) {
+            //     alert('Booking phải có ít nhất 1 khách trên 18 tuổi');
+            //     return false;
+            // }
+            // else { return true; }
+            return true;
         } else {
             alert('Quý khách cần chọn Điều khoản đăng ký online');
             return false;

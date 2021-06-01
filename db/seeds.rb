@@ -233,3 +233,25 @@ PriceBasic.create!(tour:Tour.find_by(title:'Đà Lạt – Que Garden – Đồi
 PriceBasic.create!(tour:Tour.find_by(title:'Đà Lạt – Que Garden – Đồi Chè Cầu Đất – Nông Trại Cún Puppy Farm'), title: "Trẻ nhỏ", customers_type: "children", price_default: "0", position: "3")
 PriceBasic.create!(tour:Tour.find_by(title:'Đà Lạt – Que Garden – Đồi Chè Cầu Đất – Nông Trại Cún Puppy Farm'), title: "Em bé", customers_type: "small_children", price_default: "0", position: "4")
 PriceBasic.create!(tour:Tour.find_by(title:'Đà Lạt – Que Garden – Đồi Chè Cầu Đất – Nông Trại Cún Puppy Farm'), title: "Phụ thu phòng đơn", customers_type: "single_room", price_default: "800000", position: "5")
+
+Category.create!(name_category: "Du lịch", position: '1')
+Category.create!(name_category: "Khách sạn", position: '2')
+Category.create!(name_category: "Vận chuyển", position: '3')
+Category.create!(name_category: "Tin tức", position: '4')
+Category.create!(name_category: "Khuyến mãi", position: '5')
+Category.create!(name_category: "VietravelPlus", position: '6')
+Category.create!(name_category: "Liên hệ", position: '7')
+
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Tour xuyên việt")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du lịch trong nước")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du lịch tự chọn")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du lịch an toàn")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Du lịch").id, name_item_category: "Du học")
+
+ItemCategory.create!(category_id: Category.find_by(name_category: "Vận chuyển").id, name_item_category: "Thuê xe")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Vận chuyển").id, name_item_category: "Vé máy bay")
+
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Tin tức")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Cẩm nang du lịch")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Kinh nghiệm du lịch")
+ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Thông tin visa")

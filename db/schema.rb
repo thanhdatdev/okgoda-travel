@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
   enable_extension "plpgsql"
 
   create_table "bookings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.bigint "user_id"
+    t.uuid "user_id"
     t.uuid "tour_id", null: false
     t.string "name_booking", default: "", null: false
     t.string "email_booking", default: "", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
 
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
-    t.bigint "tour_id"
+    t.uuid "tour_id"
     t.string "content"
     t.bigint "review_id"
     t.datetime "created_at", null: false

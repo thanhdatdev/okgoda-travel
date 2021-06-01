@@ -5,6 +5,8 @@ class Momo::UpdateBookingService < Momo::ApplicationService
   end
 
   def perform
+    @remain_slot = booking.tour.remain_slot.to_i - booking.customers_number.to_i
+    @booking.tour.update remain_slot: @remain_slot
     booking.update_attributes booking_params
   end
 
@@ -14,6 +16,8 @@ class Momo::UpdateBookingService < Momo::ApplicationService
 
   def booking_params
     {
+      status: "approved",
+      purchased_at: Time.now,
       momo_order_type: params[:orderType],
       momo_pay_type: params[:payType],
       momo_trans_id: params[:transId],

@@ -16,6 +16,20 @@ class SearchController < ApplicationController
   def booking_search
     if params[:bookingID].present?
       @booking = Booking.find_by(id: params[:bookingID])
+      @list_of_customers = @booking.list_of_customers
+      @customer = @booking.list_of_customers.find_by(params[:list_of_customers_id])
+      @price_booking = @customer.price_booking.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+      @total_price = @booking.total_price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse
+      @payment_gateway = nil
+      if @booking.paymentID == "1"
+        @payment_gateway = "Tiền mặt"
+      elsif @booking.paymentID == "2"
+        @payment_gateway = "Chuyển khoản"
+      elsif @booking.paymentID == "15"
+        @payment_gateway = "Thẻ tín dụng"
+      else
+        @payment_gateway = "Thanh toán bằng momo"
+      end
     else
       redirect_to root_path
     end
