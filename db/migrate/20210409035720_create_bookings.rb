@@ -1,7 +1,7 @@
 class CreateBookings < ActiveRecord::Migration[5.2]
   def change
     create_table :bookings, id: :uuid, default: "gen_random_uuid()" do |t|
-      t.belongs_to :user
+      t.belongs_to :user,  type: :uuid
       t.belongs_to :tour,                         null: false, foreign_key: true, type: :uuid
       t.string     :name_booking,                 null: false, default: ""
       t.string     :email_booking,                null: false, default: ""

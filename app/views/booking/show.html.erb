@@ -46,7 +46,7 @@
         <p class="mg-bot5">Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi</p>
         <% if @booking.status == 'pending' %>
           <% if @booking.paymentID == "15"  %>
-            <%= button_to checkout_create_booking_index_path, class:"btn btn-md btn-book in-booking", method: :post, params: {id: @booking.id} do %>
+            <%= button_to checkout_create_booking_index_path(@booking.id), class:"btn btn-md btn-book in-booking", method: :post do %>
               <i class="fa fa-money"></i>&nbsp;&nbsp;Thanh toán bằng thẻ tín dụng
             <% end %>
           <% elsif @booking.paymentID == "17" %>
@@ -253,7 +253,7 @@
         <p>Quý khách vui lòng kiểm tra email để nhận phiếu xác nhận đặt dịch vụ thành công từ OkgodaTravel</p>
         <% if @booking.status == 'pending' %>
           <% if @booking.paymentID == "15"  %>
-            <%= button_to checkout_create_booking_index_path, class:"btn btn-md btn-book in-booking", method: :post, params: {id: @booking.id} do %>
+            <%= button_to checkout_create_booking_index_path(@booking.id), class:"btn btn-md btn-book in-booking", method: :post do %>
               <i class="fa fa-money"></i>&nbsp;&nbsp;Thanh toán bằng thẻ tín dụng
             <% end %>
           <% elsif @booking.paymentID == "17" %>
