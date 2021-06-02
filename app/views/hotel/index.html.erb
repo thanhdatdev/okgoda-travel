@@ -1,0 +1,148 @@
+<div class="container mg-bot40">
+  <div class="row">
+    <div class="col-xs-12 mg-bot30">
+      <div class="title">
+        <h1>Danh sách khách sạn</h1>
+      </div>
+    </div>
+    <div class="col-xs-12">
+      <div class="row mg-bot30">
+        <div class="col-xs-12 sort-tour">
+
+          <div class="f-left title-sort" style="margin-right: 10px; padding-top: 8px;">
+            <span class="hidden-md hidden-sm">
+              <i class="fas fa-map-signs i-i"></i>&nbsp;&nbsp;&nbsp;</span>Điểm đến
+          </div>
+          <div class="f-left" style="margin-right: 30px;">
+            <select class="form-control Filter" id="provinceIdFilter" name="provinceId" style="width:132px;" data-url="provinceId">
+              <option value="00000000-0000-0000-0000-000000000000">-- Tất cả --</option>
+            </select>
+          </div>
+
+          <div class="f-left title-sort" style="padding-top: 8px;">
+            <span class="hidden-md hidden-sm">
+              <i class="fas fa-dollar-sign i-i"></i>&nbsp;&nbsp;&nbsp;</span>Giá
+          </div>
+          <div class="f-left" style="margin-right: 30px;">
+            <select class="form-control Filter" id="priceIDFilter" name="priceID" data-url="priceId">
+              <option selected="" value="0">--Tất cả--</option>
+              <option value="1">Dưới 1 Triệu</option>
+              <option value="2">
+                1- 2 Triệu</option>
+              <option value="4">
+                2-4 Triệu</option>
+              <option value="6">
+                4-6 Triệu</option>
+              <option value="8">Trên 6 Triệu</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <% @hotels.each do |hotel| %>
+          <<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 hotel">
+            <div class="pos-relative">
+              <a href="/Hotel/Booking?HotelId=235"><img src="https://media.travel.com.vn/Hotel/thb_hotel_210205102817_244619.jpg" alt="Khách sạn Fusion Resort Phú Quốc (lưu trú tối thiểu 02 đêm)" class="img-responsive pic-ud-s"></a>
+              <div class="frame-po">
+                <i class="fas fa-map-marker-alt"></i>
+                <%= hotel.destination %>
+              </div>
+              <div class="hotel-star">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="hotel-name">
+              <h2 class="cut-text">
+                <%= link_to new_booking_hotel_index_path(hotel.id) do %>
+                  <%= hotel.title %>
+                <% end %>
+              </h2>
+            </div>
+            <div class="hotel-price">Giá từ:
+              <span><%= hotel.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> ₫</span>
+              </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row"></div>
+</div>
+
+<!-- <script>
+  $(document).ready(function () {
+      $("#searchHotel").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $(".hotel div").filter(function () {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+      });
+
+      loadProvinces('provinceIdFilter', '80aaad72-03c8-449c-97ad-cfb26a1a215a');
+  });
+
+  function loadProvinces(id, valSelected) {
+      // Tương tác với server
+      $.ajax({
+          url: '/Hotel/LoadProvince',
+          data: {},
+          success: function (result) {
+              //Reset option Destination
+              $("#" + id).empty();
+
+              for (n = 0; n < result.length; n++) {
+                  if (result[n].Id == valSelected) {
+                      $("#" + id).append($("<option selected></option>").val(result[n].Id).html(result[n].Name));
+                  } else {
+                      $("#" + id).append($("<option></option>").val(result[n].Id).html(result[n].Name));
+                  }
+              }
+          }
+      });
+  };
+
+  $('.Filter').on('change', function (e) {
+      var parameterURL = $(this).attr('data-url');
+      var urlPath = changeURLParameter(parameterURL, $(this).val());
+      document.location.href = urlPath;
+  });
+
+  function changeURLParameter(parameter, value) {
+      var url = document.URL.replace("#sortHeader", "");
+      //prefer to use l.search if you have a location/link object
+      var urlparts = url.split('?');
+      if (urlparts.length >= 2) {
+
+          var prefix = encodeURIComponent(parameter) + '=';
+          var pars = urlparts[1].split(/[&;]/g);
+
+          for (var i = pars.length; i-- > 0;) {
+              if (pars[i].lastIndexOf(prefix, 0) !== -1) {
+                  pars.splice(i, 1);
+              }
+          }
+          if (pars.join('&') != '') {
+              url = urlparts[0] + '?' + pars.join('&');
+              if (value != '') {
+                  var child = prefix + value;
+                  url += "&" + child;
+              }
+          }
+          else {
+              url = urlparts[0];
+              if (value != '') {
+                  var child = prefix + value;
+                  url += "?" + child;
+              }
+          }
+
+          return url + "#sortHeader";
+      } else {
+          return url + "?" + parameter + "=" + value + "#sortHeader";
+      }
+  }
+</script> -->

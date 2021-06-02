@@ -85,7 +85,11 @@
         </div>
         <div class="f-right user-info">
           <div class="obj pos-relative">
-            <%= image_tag "user-s.png", alt: "Tài khoản", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
+            <% if current_user.present? %>
+              <%= image_tag(current_user.avatar.avatar.url, class: "img-responsive pic-ud-s") if t.avatar?%>
+            <% else %>
+              <%= image_tag "user-s.png", alt: "Tài khoản", class: "dropdown-toggle", data: {toggle: "dropdown"} %>
+            <% end %>
             <ul class="dropdown-menu">
               <% if user_signed_in? %>
                 <li>
@@ -104,7 +108,7 @@
         <div class="f-right h-line">
           <%= image_tag "h-line.png", alt: "line" %>
         </div>
-        <div class="f-right cart-info">
+        <!-- <div class="f-right cart-info">
           <div class="obj pos-relative cart-info-bag">
             <a id="shopping-cart-bag" href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= image_tag "i-cart.png", alt: "line" %>
@@ -136,14 +140,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="f-right hidden-xs">
           <%= image_tag "h-line.png", alt: "line" %>
         </div>
         <div class="f-right h-line hidden-xs">
           <%= image_tag "h-line.png", alt: "line" %>
         </div>
-        <div class="f-right cart-info  hidden-xs">
+        <!-- <div class="f-right cart-info  hidden-xs">
           <div class="obj pos-relative">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= image_tag "i-viewed.png", alt: "line" %>
@@ -160,84 +164,10 @@
                     <img src="https://media.travel.com.vn/destination/tf_210319052641_209018.jpg" alt="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)" class="img-responsive pic-cart-h">
                   </a>
                 </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                  <a
-                    href="/tourNDSGN876-018-080421VU-H/bay-cung-vietravel-airlines-phu-quoc-ngam-hoang-hon-tai-sunset-sanato-bai-sao-khach-san-3-sao.aspx"
-                    class="itemcart-name shortened"
-                    title="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)">
-                    Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi
-                    <span class="moreellipses"></span><span class="morecontent"><span style="display: none;">Sao (Khách Sạn 3 Sao)
-                      </span>
-                      <a href="#" class="morelink">...</a></span></a>
-                </div>
-              </div>
-              <div class="row item">
-                <div class="col-md-3 col-sm-3 col-xs-3">
-                  <a href="/tourNDSGN577-017-240721XE-D/bao-loc-madagui-tuyet-tac-ho-ta-dung-nghi-duong-doi-dep-tea-resort-4sao.aspx" title="Bảo Lộc - Madagui - Tuyệt Tác Hồ Tà Đùng - Nghỉ dưỡng Doi Dep Tea Resort 4*">
-                    <img src="https://media.travel.com.vn/destination/tf_201201104759_151833.jpg" alt="Bảo Lộc - Madagui - Tuyệt Tác Hồ Tà Đùng - Nghỉ dưỡng Doi Dep Tea Resort 4*" class="img-responsive pic-cart-h">
-                  </a>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                  <a href="/tourNDSGN577-017-240721XE-D/bao-loc-madagui-tuyet-tac-ho-ta-dung-nghi-duong-doi-dep-tea-resort-4sao.aspx" class="itemcart-name shortened" title="Bảo Lộc - Madagui - Tuyệt Tác Hồ Tà Đùng - Nghỉ dưỡng Doi Dep Tea Resort 4*">
-                    Bảo Lộc - Madagui - Tuyệt Tác Hồ Tà Đùng - Nghỉ dưỡng Doi Dep Tea Resort 4*
-                  </a>
-                </div>
-              </div>
-              <div class="row item">
-                <div class="col-md-3 col-sm-3 col-xs-3">
-                  <a href="/tourNDSGN876-021-090421VU-H/bay-cung-vietravel-airlines-phu-quoc-ngam-hoang-hon-tai-sunset-sanato-bai-sao-khach-san-3-sao.aspx" title="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)">
-                    <img src="https://media.travel.com.vn/destination/tf_210319052641_209018.jpg" alt="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)" class="img-responsive pic-cart-h">
-                  </a>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                  <a
-                    href="/tourNDSGN876-021-090421VU-H/bay-cung-vietravel-airlines-phu-quoc-ngam-hoang-hon-tai-sunset-sanato-bai-sao-khach-san-3-sao.aspx"
-                    class="itemcart-name shortened"
-                    title="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)">
-                    Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi
-                    <span class="moreellipses"></span><span class="morecontent"><span style="display: none;">Sao (Khách Sạn 3 Sao)
-                      </span>
-                      <a href="#" class="morelink">...</a></span></a>
-                </div>
-              </div>
-              <div class="row item">
-                <div class="col-md-3 col-sm-3 col-xs-3">
-                  <a href="/tourNDSGN876-011-100421VU-H/bay-cung-vietravel-airlines-phu-quoc-ngam-hoang-hon-tai-sunset-sanato-bai-sao-khach-san-3-sao.aspx" title="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)">
-                    <img src="https://media.travel.com.vn/destination/tf_210319052641_209018.jpg" alt="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)" class="img-responsive pic-cart-h">
-                  </a>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                  <a
-                    href="/tourNDSGN876-011-100421VU-H/bay-cung-vietravel-airlines-phu-quoc-ngam-hoang-hon-tai-sunset-sanato-bai-sao-khach-san-3-sao.aspx"
-                    class="itemcart-name shortened"
-                    title="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)">
-                    Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi
-                    <span class="moreellipses"></span><span class="morecontent"><span style="display: none;">Sao (Khách Sạn 3 Sao)
-                      </span>
-                      <a href="#" class="morelink">...</a></span></a>
-                </div>
-              </div>
-              <div class="row item">
-                <div class="col-md-3 col-sm-3 col-xs-3">
-                  <a href="/tourNDSGN876-033-190521VU-H/bay-cung-vietravel-airlines-phu-quoc-ngam-hoang-hon-tai-sunset-sanato-bai-sao-khach-san-3-sao.aspx" title="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)">
-                    <img src="https://media.travel.com.vn/destination/tf_210319052641_209018.jpg" alt="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)" class="img-responsive pic-cart-h">
-                  </a>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-9">
-                  <a
-                    href="/tourNDSGN876-033-190521VU-H/bay-cung-vietravel-airlines-phu-quoc-ngam-hoang-hon-tai-sunset-sanato-bai-sao-khach-san-3-sao.aspx"
-                    class="itemcart-name shortened"
-                    title="Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi Sao (Khách Sạn 3 Sao)">
-                    Bay cùng Vietravel Airlines: Phú Quốc - Ngắm Hoàng Hôn Tại Sunset Sanato - Bãi
-                    <span class="moreellipses"></span><span class="morecontent"><span style="display: none;">Sao (Khách Sạn 3 Sao)
-                      </span>
-                      <a href="#" class="morelink">...</a></span></a>
-                </div>
               </div>
             </div>
           </div>
-        </div>
-
+        </div> -->
         <div class="f-right hidden-xs">
           <%= image_tag "h-line.png", alt: "line" %>
         </div>
@@ -268,7 +198,7 @@
         </div>
         <div class="col-md-8 hidden-sm col-xs-12">
           <%= render template: 'category/index' %>
-          <div class="search-mini-s pos-relative hidden-lg hidden-md hidden-sm">
+          <!-- <div class="search-mini-s pos-relative hidden-lg hidden-md hidden-sm">
             <form action="/Tour/SearchToursByDestinationChild" method="post"><input name="__RequestVerificationToken" type="hidden" value="nJ7ftpkaFeuIEdmLklUZpUZ8FXyOvm8vyRpqooTag7dXv1aKe9yd680bK0qMeIafedOegFk0Js4VqHg1Nu74UxGYagSlUe_Oev3Fo3sPrKw1">
               <input type="text" class="txt-search form-control input-md " name="search" placeholder="Tour du lịch, Điểm đến...">
               <div class="btn-f">
@@ -277,7 +207,7 @@
                 </button>
               </div>
             </form>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

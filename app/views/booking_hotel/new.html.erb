@@ -1,0 +1,2961 @@
+<%= form_with model: @booking_hotel, url: booking_hotel_index_path, local: true, enctype: "multipart/form-data", id: "frmBooking" do |f| %>
+  <div class="container hotel-detail mg-bot40">
+    <div class="row">
+      <div class="col-xs-12 mg-bot30">
+        <div class="title">
+          <h1>
+            <%= @hotel.title %>
+            <span class="hotel-star">
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star" aria-hidden="true"></i>
+            </span>
+          </h1>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-bot10">
+        <span>
+          <i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= @hotel.address %></span>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-bot10">
+        <span>
+          <i class="fas fa-phone-square"></i>&nbsp;&nbsp;&nbsp;&nbsp;035.920.8878</span>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-bot10">&nbsp;</div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 tabmenu">
+        <ul class="nav nav-tabs nav-pills nav-stacked">
+          <li class="active">
+            <a data-toggle="tab" href="#khachsan">
+              <h3>Khách sạn</h3>
+              <div class="sTotal price">
+                <span id="totalRoomAmountId">0</span>
+                VND</div>
+              <input data-val="true" id="totalRoomAmountValue" name="totalRoomAmountValue" type="hidden" value="">
+            </a>
+          </li>
+        </ul>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 total">
+          <div class="price">
+            <strong>Tổng tiền:
+            </strong>
+            <span id="totalAmountId">0</span>
+            VND</div>
+        </div>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 mg-bot30">
+        <div class="tab-content">
+          <div id="khachsan" class="tab-pane fade in active">
+            <div>
+              <h2>Thông tin <%= @hotel.title %></h2>
+            </div>
+            <div class="hotel-item">
+              <div class="row mg-bot30 img-thumb">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  <img src="https://media.travel.com.vn/Hotel/d_hotel_210205102817_244619.jpg" alt="Hình khách sạn Fusion Resort Phú Quốc (lưu trú tối thiểu 02 đêm)">
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-left">
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div id="hotelDesc" class="full-desc" style="height:166px; overflow:hidden;">
+                        <title></title>
+                        <p><%= @hotel.infomation %></p>
+                      <div class="more" id="viewMoreHotelDescId" onclick="ViewMoreHotelDesc();">Xem thêm &gt;</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mg-bot30">
+                <div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <input data-val="true" data-val-required="The HotelId field is required." id="HotelId" name="HotelId" type="hidden" value="235">
+                    <div class="price-from">
+                      Giá chỉ từ:
+                      <span><%= @hotel.price %></span>
+                      VNĐ
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 checkinout">
+                    <div>
+                      <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>Ngày nhận phòng (<span class="star">*</span>)</label>
+                          <div>
+                            <input autocomplete="off" type="text" class="form-control input-sm  hasDatepicker" name="CheckInDate" id="CheckInDate" required="required" width="300" value="">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="form-group">
+                          <label>ngày trả phòng (<span class="star">*</span>)</label>
+                          <div>
+                            <input autocomplete="off" type="text" class="form-control input-sm  hasDatepicker" name="CheckOutDate" id="CheckOutDate" required="required" width="300" value="" onchange="GetRoomAvailable();ViewRoomQuotation();">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hotel-label bor-bot">
+                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                    Thông tin
+                  </div>
+                  <div class="col-lg-1 col-md-1 col-sm-3 col-xs-4 text-center">
+                    Số lượng
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-center">
+                    Đơn giá<br>bình quân (VNĐ)
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-5 col-xs-4 text-center">
+                    Thành tiền (VNĐ)
+                  </div>
+                </div>
+                <div id="bookingDetailId">
+                  <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/thb_hotel_200610103355_649178.jpg" alt="Hình phòng 1-bedroom Garden Pool Villa">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      <h3>1-bedroom Garden Pool Villa</h3>
+                      <input data-val="true" data-val-required="The RoomId field is required." id="BookingRoom_0_RoomId" name="BookingRoom[0].RoomId" type="hidden" value="210">
+                      <div id="roomDesc_0" style="height:100px; overflow:hidden;">
+                        <title></title>
+                        <div>
+                          <strong style="color: rgb(255, 0, 0); text-align: justify;">Giá chưa bao gồm phụ thu Lễ, Tết (nếu có). Vui lòng liên hệ nhân viên để được tư vấn chi tiết</strong>
+                        </div>
+                        <div>
+                          &nbsp;</div>
+                        <div>
+                          Kích thước: 184 m²</div>
+                      </div>
+                      <div class="more" id="viewMoreRoomDescId_0" onclick="ViewMoreRoomDesc(0);">Xem thêm &gt;</div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                      <div class="row bor-bot">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-bot10">Giá phòng</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 mg-bot10 amount">
+                          <div>
+                            <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingRoom_0_PriceRoom" name="BookingRoom[0].PriceRoom" type="hidden" value="3590000">
+                            <input
+                              class="form-control text-box single-line"
+                              data-val="true"
+                              data-val-number="The field Quantity must be a number."
+                              id="BookingRoom_0_QuantityRoomRequire"
+                              name="BookingRoom[0].QuantityRoomRequire"
+                              type="number"
+                              value="0"
+                              min="0"
+                              max="50"
+                              onchange="SumAmount('0');">
+                          </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 mg-bot10 price">
+                          <div>
+                            <span>3,590,000</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 mg-bot10 price-total">
+                          <input data-val="true" id="BookingRoom_0_AmountRoomValue" name="BookingRoom_0.AmountRoomValue" type="hidden" value="0">
+                          <input data-val="true" data-val-number="The field amount must be a number." id="BookingRoom_0_AmountRoom" name="BookingRoom[0].AmountRoom" type="text" readonly="readonly" value="0">
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 hotel-note" style="display:none">
+                          <input data-val="true" data-val-required="The PriceWeekend field is required." id="BookingRoom_0_PriceWeekend" name="BookingRoom[0].PriceWeekend" type="hidden">
+                          Giá cuối tuần/ ngày lễ:
+                          <span></span>
+                          VND
+                        </div>
+
+                      </div>
+
+                      <div class="row bor-bot" style="display:block;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-bot10">Giá phụ thu thêm giường:</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 amount">
+                          <div>
+                            <input data-val="true" data-val-required="The PriceExtraBed field is required." id="BookingRoom_0_PriceExtraBed" name="BookingRoom[0].PriceExtraBed" type="hidden" value="1650000">
+                            <input
+                              class="form-control text-box single-line"
+                              data-val="true"
+                              data-val-number="The field QuantityExtraBedRequire must be a number."
+                              id="BookingRoom_0_QuantityExtraBedRequire"
+                              name="BookingRoom[0].QuantityExtraBedRequire"
+                              type="number"
+                              value="0"
+                              min="0"
+                              max="50"
+                              onchange="SumAmount('0');">
+                          </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 price">
+                          <div>
+                            <span>1,650,000</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 price-total">
+                          <input data-val="true" id="BookingRoom_0_AmountExtraBedValue" name="BookingRoom_0.AmountExtraBedValue" type="hidden" value="0">
+                          <input data-val="true" data-val-number="The field AmountExtraBed must be a number." id="BookingRoom_0_AmountExtraBed" name="BookingRoom[0].AmountExtraBed" type="text" readonly="readonly" value="0">
+                        </div>
+                      </div>
+
+                      <div class="row" style="display:block;">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-bot10">Giá phụ thu trẻ em:</div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 amount">
+                          <div>
+                            <input data-val="true" data-val-required="The PriceChild field is required." id="BookingRoom_0_PriceChild" name="BookingRoom[0].PriceChild" type="hidden" value="390000">
+                            <input
+                              class="form-control text-box single-line"
+                              data-val="true"
+                              data-val-number="The field QuantityChildRequire must be a number."
+                              id="BookingRoom_0_QuantityChildRequire"
+                              name="BookingRoom[0].QuantityChildRequire"
+                              type="number"
+                              value="0"
+                              min="0"
+                              max="50"
+                              onchange="SumAmount('0');">
+                          </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 price">
+                          <div>
+                            <span>390,000</span>
+                          </div>
+                        </div>
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-4 price-total">
+                          <input data-val="true" id="BookingRoom_0_AmountChildValue" name="BookingRoom_0.AmountChildValue" type="hidden" value="0">
+                          <input data-val="true" data-val-number="The field QuantityChildRequire must be a number." id="BookingRoom_0_AmountChild" name="BookingRoom[0].AmountChild" type="text" readonly="readonly" value="0">
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <input data-val="true" id="tolHotelRoom" name="tolHotelRoom" type="hidden" value="1">
+
+                </div>
+
+                <div onclick="ViewRoomQuotation();" style="cursor:pointer;">
+                  <i class="fa fa-book fa-lg"></i>
+                  Bảng giá phòng theo ngày
+                </div>
+                <div id="quotationListId"></div>
+
+              </div>
+            </div>
+          </div>
+
+          <div id="Service-1" class="panel-group tab-pane fade hotelservice">
+            <h2>Vận chuyển</h2>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-1" data-target="#ServiceContent-88">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Xe đón/ tiễn sân bay Phú Quốc (01 lượt)</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-88">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <p>
+                      Giá áp dụng khách sạn khu vực trung tâm và khu Mường Thanh, áp dụng đến 30.06.2020.P<span style="text-align: justify;">hụ thu là&nbsp;</span><span style="text-align: justify;">P</span></p>
+                    <p>
+                      &nbsp;</p>
+                    <p>
+                      &nbsp;</p>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510095133_067547.png" alt="Xe 4 chỗ đón/ tiễn sân bay Phú Quốc - (01 lượt)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 4 chỗ đón/ tiễn sân bay Phú Quốc - (01 lượt)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_0" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_0_ServiceDetailId" name="BookingDetail[0].ServiceDetailId" type="hidden" value="378">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_0_Price" name="BookingDetail[0].Price" type="hidden" value="160000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_0_Quantity"
+                          name="BookingDetail[0].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>160,000</span>
+                        / lượt
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_0" name="Amount[0]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510094317_099176.jpg" alt="Xe 7 chỗ đón/ tiễn sân bay Phú Quốc - (01 lượt)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 7 chỗ đón/ tiễn sân bay Phú Quốc - (01 lượt)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_1" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_1_ServiceDetailId" name="BookingDetail[1].ServiceDetailId" type="hidden" value="381">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_1_Price" name="BookingDetail[1].Price" type="hidden" value="210000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_1_Quantity"
+                          name="BookingDetail[1].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>210,000</span>
+                        / lượt
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_1" name="Amount[1]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510095140_683037.png" alt="Xe 16 chỗ đón/ tiễn sân bay Phú Quốc - (01 lượt)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 16 chỗ đón/ tiễn sân bay Phú Quốc - (01 lượt)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_2" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_2_ServiceDetailId" name="BookingDetail[2].ServiceDetailId" type="hidden" value="384">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_2_Price" name="BookingDetail[2].Price" type="hidden" value="320000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_2_Quantity"
+                          name="BookingDetail[2].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>320,000</span>
+                        / lượt
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_2" name="Amount[2]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-1" data-target="#ServiceContent-91">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Xe tham quan nội thành Phú Quốc - Thời gian nửa ngày (04 Giờ)</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-91">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <p>
+                      Giá áp dụng khách sạn khu vực trung tâm và khu Mường Thanh, áp dụng đến 30.06.2020.</p>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510095234_698734.png" alt="Xe 4 chỗ tham quan nội thành Phú Quốc - Thời gian nửa ngày (04 giờ)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 4 chỗ tham quan nội thành Phú Quốc - Thời gian nửa ngày (04 giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_3" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_3_ServiceDetailId" name="BookingDetail[3].ServiceDetailId" type="hidden" value="394">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_3_Price" name="BookingDetail[3].Price" type="hidden" value="530000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_3_Quantity"
+                          name="BookingDetail[3].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>530,000</span>
+                        / 4 Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_3" name="Amount[3]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510094401_007354.jpg" alt="Xe 7 chỗ tham quan nội thành Phú Quốc - Thời gian nửa ngày (04 giờ)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 7 chỗ tham quan nội thành Phú Quốc - Thời gian nửa ngày (04 giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_4" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_4_ServiceDetailId" name="BookingDetail[4].ServiceDetailId" type="hidden" value="395">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_4_Price" name="BookingDetail[4].Price" type="hidden" value="630000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_4_Quantity"
+                          name="BookingDetail[4].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>630,000</span>
+                        / 4 Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_4" name="Amount[4]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510095240_678112.png" alt="Xe 16 chỗ tham quan nội thành Phú Quốc - Thời gian nửa ngày (04 giờ)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 16 chỗ tham quan nội thành Phú Quốc - Thời gian nửa ngày (04 giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_5" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_5_ServiceDetailId" name="BookingDetail[5].ServiceDetailId" type="hidden" value="397">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_5_Price" name="BookingDetail[5].Price" type="hidden" value="740000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_5_Quantity"
+                          name="BookingDetail[5].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>740,000</span>
+                        / 4 Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_5" name="Amount[5]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Giờ phát sinh xe Phú Quốc (VND/giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_6" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_6_ServiceDetailId" name="BookingDetail[6].ServiceDetailId" type="hidden" value="797">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_6_Price" name="BookingDetail[6].Price" type="hidden" value="60000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_6_Quantity"
+                          name="BookingDetail[6].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>60,000</span>
+                        / Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_6" name="Amount[6]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-1" data-target="#ServiceContent-97">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Xe tham quan Nội thành Phú Quốc (Đông Nam hoặc Bắc Đảo) - Thời gian một ngày (08 giờ)</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-97">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <p>
+                      Giá áp dụng khách sạn khu vực trung tâm và khu Mường Thanh, áp dụng đến 30.06.2020.</p>
+                    <div>
+                      &nbsp;</div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510095614_426312.png" alt="Xe 4 chỗ tham  quan Nội thành Phú Quốc (Đông Nam hoặc Bắc Đảo) - Thời gian một ngày (08 giờ)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 4 chỗ tham quan Nội thành Phú Quốc (Đông Nam hoặc Bắc Đảo) - Thời gian một ngày (08 giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_7" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_7_ServiceDetailId" name="BookingDetail[7].ServiceDetailId" type="hidden" value="404">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_7_Price" name="BookingDetail[7].Price" type="hidden" value="630000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_7_Quantity"
+                          name="BookingDetail[7].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>630,000</span>
+                        / 8 Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_7" name="Amount[7]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510094431_745948.jpg" alt="Xe 7 chỗ tham quan Nội thành Phú Quốc (Đông Nam hoặc Bắc Đảo) - Thời gian một ngày (08 giờ)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 7 chỗ tham quan Nội thành Phú Quốc (Đông Nam hoặc Bắc Đảo) - Thời gian một ngày (08 giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_8" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_8_ServiceDetailId" name="BookingDetail[8].ServiceDetailId" type="hidden" value="406">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_8_Price" name="BookingDetail[8].Price" type="hidden" value="690000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_8_Quantity"
+                          name="BookingDetail[8].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>690,000</span>
+                        / 8 Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_8" name="Amount[8]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 img-thumb">
+                      <img src="https://media.travel.com.vn/Hotel/hotel_200510095619_419142.png" alt="Xe 16 chỗ tham quan Nội thành Phú Quốc (Đông Nam hoặc Bắc Đảo) - Thời gian một ngày (08 giờ)">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 desc">
+                      Xe 16 chỗ tham quan Nội thành Phú Quốc (Đông Nam hoặc Bắc Đảo) - Thời gian một ngày (08 giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_9" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_9_ServiceDetailId" name="BookingDetail[9].ServiceDetailId" type="hidden" value="408">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_9_Price" name="BookingDetail[9].Price" type="hidden" value="740000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_9_Quantity"
+                          name="BookingDetail[9].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>740,000</span>
+                        / 8 Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_9" name="Amount[9]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Giờ phát sinh xe Phú Quốc (VND/giờ)
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_10" type="hidden" value="1">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_10_ServiceDetailId" name="BookingDetail[10].ServiceDetailId" type="hidden" value="798">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_10_Price" name="BookingDetail[10].Price" type="hidden" value="60000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_10_Quantity"
+                          name="BookingDetail[10].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>60,000</span>
+                        / Giờ
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_10" name="Amount[10]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="Service-2" class="panel-group tab-pane fade hotelservice">
+            <h2>Nhà hàng
+            </h2>
+            <div class="text-info italic" style="color:red;">(*) Thực đơn món ăn có thể thay đổi tùy theo tình hình thực tế nhưng vẫn đảm bảo số lượng và chất lượng tương đương.</div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-2" data-target="#ServiceContent-62">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Nhà hàng Hạnh Nhung - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-62">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <div>
+                      Nhà hàng Hạnh Nhung Phú Quốc có không gian mát mẻ. Đặc biệt nhà hàng còn có view nhìn ngay ra biển làng chài. Với thiết kế bình dân, mộc mạc không sang chảnh như nhiều nhà hàng khác. Tuy nhiên chất lượng về các món ăn sẽ khiến du khách không thất
+                      vọng.</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Địa chỉ: làng chài Hàm Ninh, Huyện Phú Quốc</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      <strong>Hoạt động: 08:00 - 22:00&nbsp;</strong>
+                    </div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      <div>
+                        <strong>Thực đơn nhóm 2 khách:</strong>
+                      </div>
+                      <div>
+                        1.Súp hải sản</div>
+                      <div>
+                        2.Cơm chiên ghẹ / Mì xào hải sản</div>
+                      <div>
+                        3.Tráng miệng &amp; Trà đá</div>
+                      <div>
+                        &nbsp;</div>
+                      <div>
+                        <strong>Thực đơn nhóm 4 khách:</strong>
+                      </div>
+                      <div>
+                        1. Ghẹ sữa chiên bột (1con/khách, loại 12 con/kg)</div>
+                      <div>
+                        2. Tôm hấp (2 con/khách, loại 30 con/kg)</div>
+                      <div>
+                        3. Mì xào giòn hải sản</div>
+                      <div>
+                        4. Lẩu thái / lẩu thập cẩm/ lẩu chua cá biển/ canh rong biển nấu hải sản</div>
+                      <div>
+                        5. Cơm trắng &amp; Tráng miệng &amp; Trà đá</div>
+                      <div>
+                        &nbsp;</div>
+                      <div>
+                        <strong>Thực đơn nhóm 6 khách:</strong>
+                      </div>
+                      <div>
+                        1. Gỏi cá trích</div>
+                      <div>
+                        2. Sò nướng mỡ hành</div>
+                      <div>
+                        3. Mực hấp hành gừng (350 g)</div>
+                      <div>
+                        4. Lẩu thái / lẩu thập cẩm/ lẩu chua cá biển/ canh rong biển nấu hải sản</div>
+                      <div>
+                        5. Cơm trắng &amp; Tráng miệng &amp; Trà đá</div>
+                      <div>
+                        &nbsp;</div>
+                      <div>
+                        <strong>Thực đơn nhóm 8 khách:</strong>
+                      </div>
+                      <div>
+                        1. Sò nướng mỡ hành</div>
+                      <div>
+                        2. Giò heo muối chiên giòn</div>
+                      <div>
+                        3. Gỏi cá trích</div>
+                      <div>
+                        4. Mực chiên nước mắm</div>
+                      <div>
+                        5. Lẩu thái / lẩu thập cẩm/ lẩu chua cá biển/ canh rong biển nấu hải sản</div>
+                      <div>
+                        6. Cơm trắng &amp; Tráng miệng &amp; Trà đá</div>
+                    </div>
+                    <div>
+                      &nbsp;</div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_11" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_11_ServiceDetailId" name="BookingDetail[11].ServiceDetailId" type="hidden" value="227">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_11_Price" name="BookingDetail[11].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_11_Quantity"
+                          name="BookingDetail[11].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_11" name="Amount[11]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_12" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_12_ServiceDetailId" name="BookingDetail[12].ServiceDetailId" type="hidden" value="230">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_12_Price" name="BookingDetail[12].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_12_Quantity"
+                          name="BookingDetail[12].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_12" name="Amount[12]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_13" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_13_ServiceDetailId" name="BookingDetail[13].ServiceDetailId" type="hidden" value="231">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_13_Price" name="BookingDetail[13].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_13_Quantity"
+                          name="BookingDetail[13].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_13" name="Amount[13]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_14" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_14_ServiceDetailId" name="BookingDetail[14].ServiceDetailId" type="hidden" value="234">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_14_Price" name="BookingDetail[14].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_14_Quantity"
+                          name="BookingDetail[14].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_14" name="Amount[14]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_15" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_15_ServiceDetailId" name="BookingDetail[15].ServiceDetailId" type="hidden" value="237">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_15_Price" name="BookingDetail[15].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_15_Quantity"
+                          name="BookingDetail[15].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_15" name="Amount[15]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_16" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_16_ServiceDetailId" name="BookingDetail[16].ServiceDetailId" type="hidden" value="239">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_16_Price" name="BookingDetail[16].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_16_Quantity"
+                          name="BookingDetail[16].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_16" name="Amount[16]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_17" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_17_ServiceDetailId" name="BookingDetail[17].ServiceDetailId" type="hidden" value="240">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_17_Price" name="BookingDetail[17].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_17_Quantity"
+                          name="BookingDetail[17].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_17" name="Amount[17]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_18" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_18_ServiceDetailId" name="BookingDetail[18].ServiceDetailId" type="hidden" value="241">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_18_Price" name="BookingDetail[18].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_18_Quantity"
+                          name="BookingDetail[18].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_18" name="Amount[18]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-2" data-target="#ServiceContent-66">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Nhà hàng Hạnh Nhung Luxury - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-66">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <div>
+                      Nhà Hàng Hạnh Nhung Luxury nằm trên đường 30 tháng 4. Hạnh Nhung Luxury chỉ cách chợ đêm Phú Quốc khoảng 400m. Địa điểm này rất hợp với du khách gia đình, nhóm bạn, công ty. Không gian được thiết kế mới lạ và rất lịch sự.&nbsp;</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Địa chỉ: Số 82 , đường 30/4 , Thị trấn Dương Đông, Huyện Phú Quốc</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      <strong>Giờ hoạt động: 08:00 - 22:00</strong>
+                    </div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      <strong>Thực đơn nhóm 02 khách:</strong>
+                    </div>
+                    <div>
+                      <div>
+                        &nbsp;1.Súp hải sản</div>
+                      <div>
+                        &nbsp;2.Cơm chiên ghẹ / Mì xào hải sản</div>
+                      <div>
+                        &nbsp;3.Tráng miệng &amp; Trà đá</div>
+                      <div>
+                        &nbsp;</div>
+                      <div>
+                        <strong>Thực đơn nhóm 04 khách:</strong>
+                      </div>
+                      <div>
+                        <div>
+                          &nbsp;1. Ghẹ sữa chiên bột (1con/khách, loại 12 con/kg)</div>
+                        <div>
+                          &nbsp;2. Tôm hấp (2 con/khách, loại 30 con/kg)</div>
+                        <div>
+                          &nbsp;3. Mì xào giòn hải sản</div>
+                        <div>
+                          &nbsp;4. Lẩu thái / lẩu thập cẩm/ lẩu chua cá biển/ canh rong biển nấu hải sản</div>
+                        <div>
+                          &nbsp;5. Cơm trắng &amp; Tráng miệng &amp; Trà đá</div>
+                        <div>
+                          &nbsp;</div>
+                        <div>
+                          <strong>Thực đơn nhóm 06 khách:</strong>
+                        </div>
+                        <div>
+                          <div>
+                            &nbsp;1. Gỏi cá trích</div>
+                          <div>
+                            &nbsp;2. Sò nướng mỡ hành</div>
+                          <div>
+                            &nbsp;3. Mực hấp hành gừng (350 g)</div>
+                          <div>
+                            &nbsp;4. Lẩu thái / lẩu thập cẩm/ lẩu chua cá biển/ canh rong biển nấu hải sản</div>
+                          <div>
+                            &nbsp;5. Cơm trắng &amp; Tráng miệng &amp; Trà đá</div>
+                          <div>
+                            &nbsp;</div>
+                          <div>
+                            <strong>Thực đơn nhóm 08 khách:</strong>
+                          </div>
+                          <div>
+                            <div>
+                              &nbsp;1. Sò nướng mỡ hành</div>
+                            <div>
+                              &nbsp;2. Giò heo muối chiên giòn</div>
+                            <div>
+                              &nbsp;3. Gỏi cá trích</div>
+                            <div>
+                              &nbsp;4. Mực chiên nước mắm</div>
+                            <div>
+                              &nbsp;5. Lẩu thái / lẩu thập cẩm/ lẩu chua cá biển/ canh rong biển nấu hải sản</div>
+                            <div>
+                              &nbsp;6. Cơm trắng &amp; Tráng miệng &amp; Trà đá.</div>
+                          </div>
+                          <div>
+                            &nbsp;</div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_19" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_19_ServiceDetailId" name="BookingDetail[19].ServiceDetailId" type="hidden" value="301">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_19_Price" name="BookingDetail[19].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_19_Quantity"
+                          name="BookingDetail[19].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_19" name="Amount[19]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_20" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_20_ServiceDetailId" name="BookingDetail[20].ServiceDetailId" type="hidden" value="303">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_20_Price" name="BookingDetail[20].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_20_Quantity"
+                          name="BookingDetail[20].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_20" name="Amount[20]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_21" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_21_ServiceDetailId" name="BookingDetail[21].ServiceDetailId" type="hidden" value="304">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_21_Price" name="BookingDetail[21].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_21_Quantity"
+                          name="BookingDetail[21].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_21" name="Amount[21]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_22" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_22_ServiceDetailId" name="BookingDetail[22].ServiceDetailId" type="hidden" value="305">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_22_Price" name="BookingDetail[22].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_22_Quantity"
+                          name="BookingDetail[22].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Giá trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_22" name="Amount[22]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_23" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_23_ServiceDetailId" name="BookingDetail[23].ServiceDetailId" type="hidden" value="306">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_23_Price" name="BookingDetail[23].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_23_Quantity"
+                          name="BookingDetail[23].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_23" name="Amount[23]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_24" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_24_ServiceDetailId" name="BookingDetail[24].ServiceDetailId" type="hidden" value="308">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_24_Price" name="BookingDetail[24].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_24_Quantity"
+                          name="BookingDetail[24].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_24" name="Amount[24]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_25" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_25_ServiceDetailId" name="BookingDetail[25].ServiceDetailId" type="hidden" value="309">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_25_Price" name="BookingDetail[25].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_25_Quantity"
+                          name="BookingDetail[25].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_25" name="Amount[25]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_26" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_26_ServiceDetailId" name="BookingDetail[26].ServiceDetailId" type="hidden" value="311">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_26_Price" name="BookingDetail[26].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_26_Quantity"
+                          name="BookingDetail[26].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_26" name="Amount[26]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-2" data-target="#ServiceContent-69">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Nhà hàng Ngự Uyển - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-69">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <div>
+                      Nhà hàng được thực khách gần xa biết đến như một điểm hẹn ẩm thực để thưởng thức những món ăn tuyệt vời. Thực đơn nhà hàng phong phú có hơn 200 món do chính tay đầu bếp giàu kinh nghiệm lựa chọn, thực khách chắc chắn sẽ hài lòng khi lựa
+                      chọn Nhà hàng Ngự Uyển.&nbsp;</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Địa chỉ: 336 Nguyễn Trung Trực, khu phố 5, Thị Trấn Dương Đông, Huyện Phú Quốc</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      <strong>Giờ hoạt động: 10:00 - 22:00</strong>
+                    </div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      <strong>Thực đơn nhóm 2 - 8 khách:</strong>
+                    </div>
+                    <div>
+                      <div>
+                        &nbsp;1. Cải thìa xào dầu hào</div>
+                      <div>
+                        &nbsp;2. Trứng chiên thịt bằm</div>
+                      <div>
+                        &nbsp;3. Tôm rim thịt</div>
+                      <div>
+                        &nbsp;4. Cá ba thú kho cà</div>
+                      <div>
+                        &nbsp;5. Canh khổ qua nhồi thịt</div>
+                      <div>
+                        &nbsp;6. Cơm trắng</div>
+                      <div>
+                        &nbsp;7. Trái cây</div>
+                      <div>
+                        &nbsp;</div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_27" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_27_ServiceDetailId" name="BookingDetail[27].ServiceDetailId" type="hidden" value="277">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_27_Price" name="BookingDetail[27].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_27_Quantity"
+                          name="BookingDetail[27].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_27" name="Amount[27]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_28" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_28_ServiceDetailId" name="BookingDetail[28].ServiceDetailId" type="hidden" value="279">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_28_Price" name="BookingDetail[28].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_28_Quantity"
+                          name="BookingDetail[28].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_28" name="Amount[28]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_29" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_29_ServiceDetailId" name="BookingDetail[29].ServiceDetailId" type="hidden" value="282">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_29_Price" name="BookingDetail[29].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_29_Quantity"
+                          name="BookingDetail[29].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_29" name="Amount[29]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_30" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_30_ServiceDetailId" name="BookingDetail[30].ServiceDetailId" type="hidden" value="283">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_30_Price" name="BookingDetail[30].Price" type="hidden" value="200000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_30_Quantity"
+                          name="BookingDetail[30].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>200,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_30" name="Amount[30]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_31" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_31_ServiceDetailId" name="BookingDetail[31].ServiceDetailId" type="hidden" value="285">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_31_Price" name="BookingDetail[31].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_31_Quantity"
+                          name="BookingDetail[31].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_31" name="Amount[31]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_32" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_32_ServiceDetailId" name="BookingDetail[32].ServiceDetailId" type="hidden" value="286">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_32_Price" name="BookingDetail[32].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_32_Quantity"
+                          name="BookingDetail[32].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_32" name="Amount[32]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_33" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_33_ServiceDetailId" name="BookingDetail[33].ServiceDetailId" type="hidden" value="289">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_33_Price" name="BookingDetail[33].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_33_Quantity"
+                          name="BookingDetail[33].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_33" name="Amount[33]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_34" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_34_ServiceDetailId" name="BookingDetail[34].ServiceDetailId" type="hidden" value="292">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_34_Price" name="BookingDetail[34].Price" type="hidden" value="180000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_34_Quantity"
+                          name="BookingDetail[34].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>180,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_34" name="Amount[34]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-2" data-target="#ServiceContent-73">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Nhà hàng Cơm Bắc - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-73">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <div>
+                      Menu của Nhà hàng khá đa dạng, các đầu bếp của quán cũng luôn tìm tòi để hướng tới cách chế biến công phu, ngon và đẹp mắt, khiến người thưởng thức luôn tìm thấy những cảm giác thú vị trong món ăn.&nbsp;</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Địa chỉ: Tổ 9, ấp Suối Đá, xã Dương Tơ, Huyện Phú Quốc</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Giờ hoạt động: 10:00 - 22:00</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</div>
+                    <div>
+                      &nbsp;</div>
+                    <div style="text-align: justify;">
+                      <strong>Thực đơn nhóm 2 - 8 khách:</strong>
+                    </div>
+                    <div>
+                      <div style="text-align: justify;">
+                        &nbsp;1. Mực xào</div>
+                      <div style="text-align: justify;">
+                        &nbsp;2. Canh cải thịt Bằm</div>
+                      <div style="text-align: justify;">
+                        &nbsp;3. Trứng chiên</div>
+                      <div style="text-align: justify;">
+                        &nbsp;4. Cơm trắng.</div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_35" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_35_ServiceDetailId" name="BookingDetail[35].ServiceDetailId" type="hidden" value="315">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_35_Price" name="BookingDetail[35].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_35_Quantity"
+                          name="BookingDetail[35].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_35" name="Amount[35]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_36" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_36_ServiceDetailId" name="BookingDetail[36].ServiceDetailId" type="hidden" value="317">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_36_Price" name="BookingDetail[36].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_36_Quantity"
+                          name="BookingDetail[36].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_36" name="Amount[36]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_37" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_37_ServiceDetailId" name="BookingDetail[37].ServiceDetailId" type="hidden" value="319">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_37_Price" name="BookingDetail[37].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_37_Quantity"
+                          name="BookingDetail[37].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_37" name="Amount[37]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_38" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_38_ServiceDetailId" name="BookingDetail[38].ServiceDetailId" type="hidden" value="321">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_38_Price" name="BookingDetail[38].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_38_Quantity"
+                          name="BookingDetail[38].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_38" name="Amount[38]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_39" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_39_ServiceDetailId" name="BookingDetail[39].ServiceDetailId" type="hidden" value="324">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_39_Price" name="BookingDetail[39].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_39_Quantity"
+                          name="BookingDetail[39].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_39" name="Amount[39]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_40" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_40_ServiceDetailId" name="BookingDetail[40].ServiceDetailId" type="hidden" value="329">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_40_Price" name="BookingDetail[40].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_40_Quantity"
+                          name="BookingDetail[40].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_40" name="Amount[40]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_41" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_41_ServiceDetailId" name="BookingDetail[41].ServiceDetailId" type="hidden" value="331">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_41_Price" name="BookingDetail[41].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_41_Quantity"
+                          name="BookingDetail[41].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_41" name="Amount[41]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_42" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_42_ServiceDetailId" name="BookingDetail[42].ServiceDetailId" type="hidden" value="332">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_42_Price" name="BookingDetail[42].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_42_Quantity"
+                          name="BookingDetail[42].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_42" name="Amount[42]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-2" data-target="#ServiceContent-77">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Nhà hàng - KS Green Deluxe - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-77">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <div>
+                      Nhà hàng nằm trong khách sạn nên có không gian rất sang trọng, sạch sẽ và thực đơn phong phú. Vị trí của nhà hàng nằm gần các điểm tham quan vì vậy khá thuận tiện cho du khách trên cung đường tham quan.</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Địa chỉ: S8-9-10, Khu Tổ Hợp Du lịch Sonasea Villas &amp; Resorts, Tổ 5, Ấp Đường Bào, Xã Dương Tơ, Huyện Phú Quốc</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Giờ hoạt động: 10:00 - 22:00</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</div>
+                    <div>
+                      &nbsp;</div>
+                    <div>
+                      <strong>Thực đơn nhóm 2 - 8 khách:</strong>
+                    </div>
+                    <div>
+                      <div>
+                        &nbsp;1/ Gỏi gà trộn bắp cải</div>
+                      <div>
+                        &nbsp;2/ Bò xào cải thìa</div>
+                      <div>
+                        &nbsp;3/ Tôm rim thịt</div>
+                      <div>
+                        &nbsp;4/ Canh cải thit bằm&nbsp;</div>
+                      <div>
+                        &nbsp;5/ Tráng miệng trái cây</div>
+                      <div>
+                        &nbsp;6/ Cơm trắng&nbsp;</div>
+                      <div>
+                        &nbsp;7/ Miễn phí trà đá.</div>
+                    </div>
+                    <div>
+                      <p>
+                        &nbsp;</p>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="row hotel-label bor-bot">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 text-center">
+                      Thông tin
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 text-center">
+                      Số lượng
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 text-right">
+                      Đơn giá (VNĐ)
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 text-right">
+                      Thành tiền (VNĐ)
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_43" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_43_ServiceDetailId" name="BookingDetail[43].ServiceDetailId" type="hidden" value="334">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_43_Price" name="BookingDetail[43].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_43_Quantity"
+                          name="BookingDetail[43].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_43" name="Amount[43]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 2 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_44" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_44_ServiceDetailId" name="BookingDetail[44].ServiceDetailId" type="hidden" value="335">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_44_Price" name="BookingDetail[44].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_44_Quantity"
+                          name="BookingDetail[44].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_44" name="Amount[44]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_45" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_45_ServiceDetailId" name="BookingDetail[45].ServiceDetailId" type="hidden" value="336">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_45_Price" name="BookingDetail[45].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_45_Quantity"
+                          name="BookingDetail[45].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_45" name="Amount[45]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 4 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_46" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_46_ServiceDetailId" name="BookingDetail[46].ServiceDetailId" type="hidden" value="338">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_46_Price" name="BookingDetail[46].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_46_Quantity"
+                          name="BookingDetail[46].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_46" name="Amount[46]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_47" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_47_ServiceDetailId" name="BookingDetail[47].ServiceDetailId" type="hidden" value="340">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_47_Price" name="BookingDetail[47].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_47_Quantity"
+                          name="BookingDetail[47].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_47" name="Amount[47]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 6 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_48" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_48_ServiceDetailId" name="BookingDetail[48].ServiceDetailId" type="hidden" value="341">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_48_Price" name="BookingDetail[48].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_48_Quantity"
+                          name="BookingDetail[48].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_48" name="Amount[48]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_49" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_49_ServiceDetailId" name="BookingDetail[49].ServiceDetailId" type="hidden" value="342">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_49_Price" name="BookingDetail[49].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_49_Quantity"
+                          name="BookingDetail[49].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Người lớn
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_49" name="Amount[49]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                  <div class="row bor-bot detail-item">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 desc">
+                      Nhóm 8 khách
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 amount">
+                      <div>
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="ServiceTypeId_50" type="hidden" value="2">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_50_ServiceDetailId" name="BookingDetail[50].ServiceDetailId" type="hidden" value="343">
+                        <input data-val="true" data-val-required="The ServiceDetailId field is required." id="BookingDetail_50_Price" name="BookingDetail[50].Price" type="hidden" value="170000">
+                        <input
+                          class="form-control text-box single-line"
+                          data-val="true"
+                          data-val-number="The field Quantity must be a number."
+                          id="BookingDetail_50_Quantity"
+                          name="BookingDetail[50].Quantity"
+                          type="number"
+                          value="0"
+                          min="0"
+                          max="50"
+                          onchange="SumAmount('-1');">
+                      </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 price">
+                      <div>
+                        <span>170,000</span>
+                        / Trẻ em
+                      </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-5 col-xs-5 price-total">
+                      <input data-val="true" data-val-number="The field Quantity must be a number." id="Amount_50" name="Amount[50]" type="text" readonly="readonly" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="Service-3" class="panel-group tab-pane fade hotelservice">
+            <h2>Tham quan</h2>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-3" data-target="#ServiceContent-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Cáp treo và công viên nước Hòn Thơm - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <div style="text-align: justify;">
+                      Thuộc hệ thống Sun World - thương hiệu vui chơi giải trí của Tập đoàn Sun Group, Tổ hợp Sun World Hon Thom Nature Park đem đến trải nghiệm về một thế giới giải trí sôi động và ngập tràn hứng khởi với hệ thống cáp treo Hòn Thơm - cáp treo ba dây vượt
+                      biển dài nhất thế giới với chiều dài 7.899,9m.</div>
+                    <div style="text-align: justify;">
+                      &nbsp;</div>
+                    <div style="text-align: justify;">
+                      Công viên nước Hòn Thơm là công viên nước lớn nhất Đông Nam Á - Aquatopia Water Park với 21 trò chơi sẽ mang đến trải nghiệm thú vị, phù hợp với mọi lứa tuổi, nhiều thế hệ thành viên trong gia đình. Mỗi trò chơi hứa hẹn sẽ mang đến cho du khách và
+                      gia đình những cảm xúc khó quên: Cạm Bẫy Quái vật, Hẻm núi Ngọc trai, Giao Long Tuần Dương…</div>
+                    <div style="text-align: justify;">
+                      &nbsp;</div>
+                    <div style="text-align: justify;">
+                      Địa chỉ:&nbsp;Bãi Đất Đỏ, thị trấn An Thới, huyện Phú Quốc, tỉnh Kiên Giang</div>
+                    <div style="text-align: justify;">
+                      Giờ hoạt động: 08:30 - 17:00</div>
+                    <div style="text-align: justify;">
+                      &nbsp;</div>
+                    <div style="text-align: justify;">
+                      <div>
+                        <div>
+                          <strong>Lưu ý: Giá Vé cho khách Kiên Giang chỉ được áp dụng khi khách có chứng minh nhân dân hoặc thẻ căn cước công dân hoặc các giấy tờ khác xác nhận khach thường trú tại tỉnh Kiên Giang</strong>
+                        </div>
+                        <div>
+                          &nbsp;</div>
+                        <div>
+                          <strong>Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</strong>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc"></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-3" data-target="#ServiceContent-16">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Vé tham quan Vinwonder - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-16">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <p>
+                      <strong>Vinwonders Phú Quốc</strong>
+                      là thương hiệu vui chơi giải trí của tập đoàn Vinpearl.&nbsp;Vinwonders Phú Quốc có rất nhiều trò chơi phù hợp với cả người lớn và trẻ nhỏ . Được mở rộng từ Vinpearl Land Phú Quốc, VinWonders sở hữu diện tích lên tới 467.000 m2 - Lớn gấp 2,3 lần công
+                      viên chủ đề Universal Singapore và bằng ⅓ diện tích công viên Disneyland Hong Kong.</p>
+                    <p>
+                      Ở công viên giải trí này đầy đủ các trò chơi trong nhà và ngoài trời như: đĩa bay, đĩa quay siêu tốc, cối xay gió, rạp chiếu phim 5D, sân khấu nhạc nước… ; Khu công viên nước với các trò chơi hấp dẫn: boomerang khổng lồ, đường trượt siêu lòng chảo,
+                      bể tạo sóng… Khu thủy cung với hàng trăm loài sinh vật biển kỳ thú cho đến những loài cá nước ngọt to lớn có nguồn gốc từ lưu vực sông Amazon</p>
+                    <p>
+                      Địa chỉ:&nbsp;Khu Bãi Dài, Xã Gành Dầu, Huyện Phú Quốc, Tỉnh Kiên Giang<br>
+                      Giờ hoạt động: 10:00 - 18:30</p>
+                    <p>
+                      <strong>Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</strong>
+                    </p>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc"></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-3" data-target="#ServiceContent-25">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Vinpearl Safari Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-25">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <p style="text-align: justify;">
+                      <strong>Vinpearl Safari Phú Quốc</strong>
+                      là Vườn Thú Bán Hoang Dã đầu tiên tại Việt Nam với quy mô 180 ha và hơn 130 loài động vật quý hiếm. Không chỉ là không gian mở ra để cho du khách ngắm nhìn và tham quan mà nơi đây còn là nơi để phục vụ cho các hoạt động nghiên cứu khoa học, dã ngoại,
+                      khám phá nghỉ ngơi và thư giãn trong một môi trường rừng núi hoang sơ rất tự nhiên và hoang dã,</p>
+                    <p style="text-align: justify;">
+                      Vườn Thú được chia làm 10 khu tham quan chính với nhiều chủng loại động vật hoang dã đặc chưng trên khắp thế giới, đến đây du khách có thể thưởng thức các chương trình biểu diễn, chụp ảnh với động vật; trải nghiệm vườn thú mở trong rừng tự nhiên, gần
+                      gũi và thân thiện với con người.</p>
+                    <p style="text-align: justify;">
+                      Địa chỉ:&nbsp;Khu Bãi Dài, Xã Gành Dầu, Huyện Phú Quốc, Tỉnh Kiên Giang</p>
+                    <p style="text-align: justify;">
+                      Giờ hoạt động: 09:00 -14:00</p>
+                    <p style="text-align: justify;">
+                      <strong>Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</strong>
+                    </p>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc"></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-3" data-target="#ServiceContent-31">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Vé tham quan Sunset Sanato - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-31">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <p style="text-align: justify;">
+                      <strong>Sunset Sanato</strong>&nbsp;là một trong những điểm check-in hot nhất Phú Quốc hiện nay.</p>
+                    <p style="text-align: justify;">
+                      Không chỉ là điểm ngắm hoàng hôn trên biển tuyệt đẹp, đến đây Quý khách còn có thể cho ra đời những bức hình lung linh với những góc ảnh
+                      <strong>check-in cực chất</strong>
+                      với
+                      <strong>cổng trời -&nbsp;The Gate Keepe</strong>r hay&nbsp;<strong>Căn nhà gỗ trên cây</strong>...</p>
+                    <p style="text-align: justify;">
+                      Địa chỉ:&nbsp;Tổ 3, ấp Đường Bào, xã Dương Tơ, huyện Phú Quốc, Kiên Giang, Việt Nam</p>
+                    <p style="text-align: justify;">
+                      Giờ hoạt động: 09:00 - 21:00</p>
+                    <p style="text-align: justify;">
+                      Trẻ em cao từ 1m3 trở lên: áp dụng giá Vé dành cho người lớn.</p>
+                    <p style="text-align: justify;">
+                      <strong>Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</strong>
+                    </p>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc"></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="row collapsed" data-toggle="collapse" data-parent="#Service-3" data-target="#ServiceContent-45">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3>Đi bộ dưới đáy biển - Phú Quốc</h3>
+                </div>
+              </div>
+              <div class="row panel-collapse collapse" id="ServiceContent-45">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc">
+                  <div class="full-desc">
+
+                    <title></title>
+
+                    <div style="text-align: justify;">
+                      Công viên bảo tồn san hô đầu tiên Việt Nam sẽ đưa du khách khám phá nhiều điều bí ẩn thú vị về đại dương qua tour
+                      <strong>Đi bộ dưới biển
+                      </strong>hay còn gọi là
+                      <strong>Seawalker.</strong>
+                      Du khách không cần biết bơi cũng có thể tham gia trải nghiệm này, khi tham gia du khách có thể thoải mái khám phá cuộc sống dưới đáy biển mà vẫn có thể thở giống như trên mặt đất. Chiêm ngưỡng vẻ đẹp của hơn 200 loài san hô và chơi đùa cùng nhiều
+                      loài cá sặc sỡ nhiều màu sắc ở cự ly gần sẽ là một cảm giác hoàn toàn mới lạ đối với du khách</div>
+                    <div style="text-align: justify;">
+                      &nbsp;</div>
+                    <div style="text-align: justify;">
+                      Vì lý do an toàn nên lứa tuổi tham gia từ 6 tuổi đến 70 tuổi. Mỗi đợt phục vụ khoảng 20 khách, trong thời gian 15 phút.</div>
+                    <p style="text-align: justify;">
+                      Địa chỉ:</p>
+                    <p style="text-align: justify;">
+                      Công viên san hô ở hòn Mây Rút Ngoài, TT An Thới, Phú Quốc.</p>
+                    <p style="text-align: justify;">
+                      Công viên san hô ở Hòn Rỏi, Cảng An Thới, TT An Thới, Phú Quốc.</p>
+                    <p style="text-align: justify;">
+                      Giờ hoạt động: 09:00 - 16:00</p>
+                    <p style="text-align: justify;">
+                      <strong>Cần thêm thông tin Quý khách vui lòng liên hệ theo số hotline: 1900.1839</strong>
+                    </p>
+
+                  </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 desc"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mg-bot10">
+        <div class="frmbook">
+          <div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <h2>Thông tin liên hệ</h2>
+            </div>
+          </div>
+          <div>
+            <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+              <div class="form-group">
+                <label>Họ tên (<span class="star">*</span>)</label>
+                <div>
+                  <input type="text" required="required" class="form-control " name="FullName" id="FullName" value="">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+              <div class="form-group">
+                <label>Di động (<span class="star">*</span>)</label>
+                <div>
+                  <input autocomplete="off" type="text" required="required" class="form-control" name="Phone" id="Phone" value="">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 text-left">
+              <div class="form-group">
+                <label>Email (<span class="star">*</span>)</label>
+                <div>
+                  <input autocomplete="off" type="text" required="required" class="form-control" name="Email" id="Email" value="">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-left">
+              <div class="form-group">
+                <label>Ghi chú</label>
+                <div>
+                  <textarea class="form-control" name="Note" id="Note" cols="20" rows="4"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-sm-12 text-center">
+              <button type="button" id="btnSaveBooking" class="btn btn-md btn-book">Đặt ngay&nbsp;&nbsp;<i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+<% end %>
+<script>
+  function GetRoomAvailable() {
+    var $bookingDetailId = $("#bookingDetailId");
+    $bookingDetailId.html("");
+
+    $.ajax({
+      url: '/Hotel/_GetRoomAvailable',
+      timeout: 20000,
+      data: {
+        hotelId: $("#HotelId").val(),
+        checkInDate: $("#CheckInDate").val(),
+        checkOutDate: $("#CheckOutDate").val()
+      },
+      beforeSend: function () {
+        $(".divLoading").addClass("loading");
+      },
+      success: function (result) {
+        $bookingDetailId.html(result);
+        $(".divLoading").removeClass("loading");
+      },
+      error: function (message) {
+        $(".divLoading").removeClass("loading");
+      }
+    });
+
+    ViewRoomQuotation();
+  }
+
+  function SumAmount(idxHotelRoom) {
+    //alert($(quantity).val());
+
+    var tolRoomAmount = 0;
+    var tolAmount = 0;
+
+    if ($("#CheckInDate").val() == '' || $("#CheckOutDate").val() == '') {
+      ShowNoti("Ngày nhận/trả phòng", "Vui lòng chọn ngày nhận phòng và ngày trả phòng", "error");
+      return;
+    }
+
+    if ($("#CheckInDate").val() > $("#CheckOutDate").val()) {
+      ShowNoti("Ngày nhận/trả phòng", "Ngày trả phòng phải sau ngày nhận phòng", "error");
+      return;
+    }
+
+    if (idxHotelRoom >= 0) {
+      $.ajax({
+        url: '/Hotel/_GetRoomAvailableByRoomId',
+        timeout: 20000,
+        data: {
+          roomId: $("#BookingRoom_" + idxHotelRoom + "_RoomId").val(),
+          checkInDate: $("#CheckInDate").val(),
+          checkOutDate: $("#CheckOutDate").val(),
+          quantityRoomRequire: $("#BookingRoom_" + idxHotelRoom + "_QuantityRoomRequire").val(),
+          quantityExtraBedRequire: $("#BookingRoom_" + idxHotelRoom + "_QuantityExtraBedRequire").val(),
+          quantityChildRequire: $("#BookingRoom_" + idxHotelRoom + "_QuantityChildRequire").val()
+        },
+        //contentType: false, processData: false,
+        beforeSend: function () {
+          $(".divLoading").addClass("loading");
+        },
+        success: function (result) {
+          $(".divLoading").removeClass("loading");
+
+          if (result.status >= 1) {
+
+            roomAmount = result.RoomAvailable.AmountRoom;
+            roomAmountExtraBed = result.RoomAvailable.AmountExtraBed;
+            roomAmountChild = result.RoomAvailable.AmountChild;
+
+            //Amount Right
+            document.getElementById("BookingRoom_" + idxHotelRoom + "_AmountRoomValue").value = roomAmount;
+            document.getElementById("BookingRoom_" + idxHotelRoom + "_AmountRoom").value = formatnumber(roomAmount.toString());
+
+            document.getElementById("BookingRoom_" + idxHotelRoom + "_AmountExtraBedValue").value = roomAmountExtraBed;
+            document.getElementById("BookingRoom_" + idxHotelRoom + "_AmountExtraBed").value = formatnumber(roomAmountExtraBed.toString());
+
+            document.getElementById("BookingRoom_" + idxHotelRoom + "_AmountChildValue").value = roomAmountChild;
+            document.getElementById("BookingRoom_" + idxHotelRoom + "_AmountChild").value = formatnumber(roomAmountChild.toString());
+
+            //Amount Left
+            tolHotelRoom = Number($("#tolHotelRoom").val());
+            if (tolHotelRoom > 0) {
+              tolRoomAmount = 0;
+              tolAmount = 0;
+              for (i = 0; i < tolHotelRoom; i++) {
+                tolRoomAmount += Number($("#BookingRoom_" + i + "_AmountRoomValue").val()) + Number($("#BookingRoom_" + i + "_AmountExtraBedValue").val()) + Number($("#BookingRoom_" + i + "_AmountChildValue").val());
+              }
+              tolAmount += tolRoomAmount;
+              document.getElementById("totalRoomAmountValue").value = tolRoomAmount;
+              document.getElementById("totalRoomAmountId").innerHTML = formatnumber(tolRoomAmount.toString());
+              document.getElementById("totalAmountId").innerHTML = formatnumber(tolAmount.toString());
+            }
+
+            //ViewQuotationList();
+          } else {
+            //ShowNoti(result.title, result.text, "error");
+            alert('Không lấy được tiền phòng');
+          }
+        },
+        error: function (message) {
+          $(".divLoading").removeClass("loading");
+        }
+      });
+      //./Room amount
+
+    }
+
+    //Include Services Amount Right
+    for (i = 0; i < 51; i++) {
+      //tolAmount
+      var amount = Number($("#BookingDetail_" + i + "_Quantity").val()) * Number($("#BookingDetail_" + i + "_Price").val());
+      document.getElementById("Amount_" + i).value = amount.toString();
+    }
+    for (i = 0; i < 51; i++) {
+      var amount_i = document.getElementById("Amount_" + i).value;
+      if (amount_i > 0) {
+        document.getElementById("Amount_" + i).value = formatnumber(amount_i.toString());
+      }
+    }
+
+    //Amount Left
+    tolAmount = Number($("#totalRoomAmountValue").val());
+    for (j = 0; j <= 3; j++) { //VuLNS 03Jun20
+      var serviceTypeAmount = 0;
+      for (i = 0; i < 51; i++) {
+        //ServiceTypeId_
+        if ($("#ServiceTypeId_" + i).val() == $("#serviceTypeAmountIdValue_" + j).val()) {
+          serviceTypeAmount += Number($("#BookingDetail_" + i + "_Quantity").val()) * Number($("#BookingDetail_" + i + "_Price").val());
+        }
+
+      }
+
+      //Service type amount left
+      if (serviceTypeAmount != null && serviceTypeAmount >= 0) {
+        tolAmount += serviceTypeAmount;
+
+        document.getElementById("serviceTypeAmountId_" + $("#serviceTypeAmountIdValue_" + j).val()).innerHTML = formatnumber(serviceTypeAmount.toString());
+        document.getElementById("totalAmountId").innerHTML = formatnumber(tolAmount.toString());
+
+      }
+    }
+
+  }
+
+  function ViewQuotationList() {
+    var $quotationListId = $("#quotationListId");
+    $quotationListId.html("");
+
+    form = $("#frmBooking");
+    form.removeData('validator');
+    form.removeData('unobtrusiveValidation');
+    $.validator.unobtrusive.parse("#frmBooking");
+
+    //if (form.valid()) {
+    var formdata = new FormData(); //FormData object
+
+    formdata.append("checkInDate", $("#CheckInDate").val());
+    formdata.append("checkOutDate", $("#CheckOutDate").val());
+    //Room
+    var idxHotelRoom = Number($("#tolHotelRoom").val());
+    if (idxHotelRoom > 0) {
+      for (var i = 0; i < idxHotelRoom; i++) {
+        if ($("#BookingRoom_" + i + "_QuantityRoomRequire").val() > 0) {
+          formdata.append("BookingRoom[" + i + "].RoomId", $("#BookingRoom_" + i + "_RoomId").val());
+          formdata.append("BookingRoom[" + i + "].QuantityRoomRequire", $("#BookingRoom_" + i + "_QuantityRoomRequire").val());
+          formdata.append("BookingRoom[" + i + "].QuantityExtraBedRequire", $("#BookingRoom_" + i + "_QuantityExtraBedRequire").val());
+          formdata.append("BookingRoom[" + i + "].QuantityChildRequire", $("#BookingRoom_" + i + "_QuantityChildRequire").val());
+        }
+      }
+    }
+
+    $.ajax({
+      url: '/Hotel/_GetQuotation',
+      type: "POST",
+      timeout: 20000,
+      data: formdata,
+      contentType: false,
+      processData: false,
+      beforeSend: function () {
+        $(".divLoading").addClass("loading");
+      },
+      success: function (result) {
+        $quotationListId.html(result);
+        $(".divLoading").removeClass("loading");
+      },
+      error: function (message) {
+        $(".divLoading").removeClass("loading");
+      }
+    });
+  }
+
+  function ViewRoomQuotation() {
+    var $quotationListId = $("#quotationListId");
+    $quotationListId.html("");
+    if ($("#HotelId").val() != '' && $("#CheckInDate").val() != '' && $("#CheckOutDate").val() != '') {
+      $.ajax({
+        url: '/Hotel/_GetRoomQuotation',
+        timeout: 20000,
+        data: {
+          hotelId: $("#HotelId").val(),
+          checkInDate: $("#CheckInDate").val(),
+          checkOutDate: $("#CheckOutDate").val()
+        },
+        beforeSend: function () {
+          $(".divLoading").addClass("loading");
+        },
+        success: function (result) {
+          $quotationListId.html(result);
+          $(".divLoading").removeClass("loading");
+        },
+        error: function (message) {
+          $(".divLoading").removeClass("loading");
+        }
+      });
+    }
+  }
+
+  function ViewMoreHotelDesc() {
+    //alert(document.getElementById("viewMoreHotelDescId").innerHTML);
+    if (document.getElementById("viewMoreHotelDescId").innerHTML == 'Xem thêm &gt;') {
+      document.getElementById("hotelDesc").style.height = 'auto';
+      document.getElementById("viewMoreHotelDescId").innerHTML = '&lt; Thu gọn';
+    } else {
+      document.getElementById("hotelDesc").style.height = '100px';
+      document.getElementById("viewMoreHotelDescId").innerHTML = 'Xem thêm &gt;';
+    }
+  }
+
+  //function ViewMoreRoomDesc()
+  function ViewMoreRoomDesc(id) {
+    //alert(document.getElementById("viewMoreRoomDescId").innerHTML);
+    if (document.getElementById("viewMoreRoomDescId_" + id).innerHTML == 'Xem thêm &gt;') {
+      document.getElementById("roomDesc_" + id).style.height = 'auto';
+      document.getElementById("viewMoreRoomDescId_" + id).innerHTML = '&lt; Thu gọn';
+    } else {
+      document.getElementById("roomDesc_" + id).style.height = '100px';
+      document.getElementById("viewMoreRoomDescId_" + id).innerHTML = 'Xem thêm &gt;';
+    }
+  }
+
+  function formatnumber(what) {
+    if (what != null) {
+      var value = what;
+      value = value.replace(',', '');
+      value = value.replace(',', '');
+      value = value.replace(',', '');
+      var temp = '';
+      var test = value.length;
+      var count = 0;
+      for (i = test - 1; i >= 0; i--) {
+        count++
+        temp = value.charAt(i) + temp;
+        if (count % 3 == 0 && i > 0) {
+          temp = ',' + temp;
+        }
+      }
+      return temp;
+    }
+    return "";
+  }
+</script>

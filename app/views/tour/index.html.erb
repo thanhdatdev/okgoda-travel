@@ -11,8 +11,8 @@
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mg-bot30">
           <div class="pos-relative">
             <%= link_to tour_path(t.id), title: t.title do %>
-            <img src="https://media.travel.com.vn/LastMinute/lm_210401093612_532755.jpg" class="img-responsive pic-tgc" alt="Miền Tây - Bạc Liêu - Nhà Thờ Cha Diệp - Đất Mũi Cà Mau - Cần Thơ  (Khách sạn 5*)">
-          <% end %>
+              <%= image_tag(t.photo.thumb.url, class: "img-responsive pic-ud-s") if t.photo?%>
+            <% end %>
           <div class="frame-tgc1">
             <div class="row">
               <div class="col-lg-9 col-md-8 col-sm-8 col-xs-8">

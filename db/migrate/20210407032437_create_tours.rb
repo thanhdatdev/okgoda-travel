@@ -1,6 +1,7 @@
 class CreateTours < ActiveRecord::Migration[5.2]
   def change
     create_table :tours, id: :uuid, default: "gen_random_uuid()" do |t|
+      t.belongs_to  :tour_type,     null: false, foreign_key: true, type: :uuid
       t.string      :title,         null: false, default: ""
       t.date        :start_date,    null: false
       t.time        :start_hour,    null: false
@@ -11,7 +12,6 @@ class CreateTours < ActiveRecord::Migration[5.2]
       t.integer     :remain_slot,   null: false
       t.string      :departure,     null: false
       t.string      :destination,   null: false
-      t.references  :tour_type,     null: false
       t.string      :notice,        null: false
       t.string      :status
 
