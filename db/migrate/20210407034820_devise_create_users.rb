@@ -4,6 +4,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :users, id: :uuid, default: 'gen_random_uuid()' do |t|
       ## Database authenticatable
+      t.string  :avatar
       t.string  :name,                     null: false, default: ""
       t.boolean :sex,                      null: false, default: true
       t.date    :birthday,                 null: false

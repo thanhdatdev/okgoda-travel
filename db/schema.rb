@@ -10,11 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_30_222547) do
+ActiveRecord::Schema.define(version: 2021_06_01_204746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "booking_hotels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "hotel_id"
+    t.date "checkin_date"
+    t.date "checkout_date"
+    t.integer "room_price_cents", default: 0, null: false
+    t.string "room_price_currency", default: "VND", null: false
+    t.integer "bed_price_cents", default: 0, null: false
+    t.string "bed_price_currency", default: "VND", null: false
+    t.integer "children_price_cents", default: 0, null: false
+    t.string "children_price_currency", default: "VND", null: false
+    t.string "name_booking_hotel"
+    t.string "phone_booking_hotel"
+    t.string "email_booking_hotel"
+    t.string "note"
+    t.integer "total_price_cents", default: 0, null: false
+    t.string "total_price_currency", default: "VND", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hotel_id"], name: "index_booking_hotels_on_hotel_id"
+  end
 
   create_table "bookings", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "user_id"
@@ -89,28 +111,15 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
   end
 
   create_table "hotels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "photo"
     t.string "destination"
     t.string "title"
-    t.integer "price_default_cents", default: 0, null: false
-    t.string "price_default_currency", default: "VND", null: false
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "VND", null: false
     t.string "address"
     t.string "phone_number"
     t.string "description"
     t.string "infomation"
-    t.date "checkin_date"
-    t.date "checkout_date"
-    t.integer "room_price_cents", default: 0, null: false
-    t.string "room_price_currency", default: "VND", null: false
-    t.integer "bed_price_cents", default: 0, null: false
-    t.string "bed_price_currency", default: "VND", null: false
-    t.integer "children_price_cents", default: 0, null: false
-    t.string "children_price_currency", default: "VND", null: false
-    t.string "name_booking_hotel"
-    t.string "phone_booking_hotel"
-    t.string "email_booking_hotel"
-    t.string "note"
-    t.integer "total_price_cents", default: 0, null: false
-    t.string "total_price_currency", default: "VND", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -179,6 +188,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
   end
 
   create_table "tours", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "tour_type_id", null: false
     t.string "title", default: "", null: false
     t.date "start_date", null: false
     t.time "start_hour", null: false
@@ -189,7 +199,6 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
     t.integer "remain_slot", null: false
     t.string "departure", null: false
     t.string "destination", null: false
-    t.bigint "tour_type_id", null: false
     t.string "notice", null: false
     t.string "status"
     t.datetime "created_at", null: false
@@ -201,6 +210,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "avatar"
     t.string "name", default: "", null: false
     t.boolean "sex", default: true, null: false
     t.date "birthday", null: false
@@ -223,6 +233,7 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "booking_hotels", "hotels"
   add_foreign_key "bookings", "tours"
   add_foreign_key "comments", "users"
   add_foreign_key "item_categories", "categories"
@@ -230,4 +241,5 @@ ActiveRecord::Schema.define(version: 2021_05_30_222547) do
   add_foreign_key "price_basics", "tours"
   add_foreign_key "reviews", "users"
   add_foreign_key "tour_programs", "tours"
+  add_foreign_key "tours", "tour_types"
 end

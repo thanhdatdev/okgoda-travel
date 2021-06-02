@@ -40,7 +40,7 @@
       </div>
       <div class="row">
         <% @hotels.each do |hotel| %>
-          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 hotel">
+          <<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 hotel">
             <div class="pos-relative">
               <a href="/Hotel/Booking?HotelId=235"><img src="https://media.travel.com.vn/Hotel/thb_hotel_210205102817_244619.jpg" alt="Khách sạn Fusion Resort Phú Quốc (lưu trú tối thiểu 02 đêm)" class="img-responsive pic-ud-s"></a>
               <div class="frame-po">
@@ -57,14 +57,14 @@
             </div>
             <div class="hotel-name">
               <h2 class="cut-text">
-                <%= link_to hotel_path(hotel.id) do %>
+                <%= link_to new_booking_hotel_index_path(hotel.id) do %>
                   <%= hotel.title %>
                 <% end %>
               </h2>
             </div>
             <div class="hotel-price">Giá từ:
-              <span><%= hotel.price_default %></span>
-              ₫</div>
+              <span><%= hotel.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse %> ₫</span>
+              </div>
           </div>
         <% end %>
       </div>
@@ -73,7 +73,7 @@
   <div class="row"></div>
 </div>
 
-<script>
+<!-- <script>
   $(document).ready(function () {
       $("#searchHotel").on("keyup", function () {
           var value = $(this).val().toLowerCase();
@@ -145,4 +145,4 @@
           return url + "?" + parameter + "=" + value + "#sortHeader";
       }
   }
-</script>
+</script> -->

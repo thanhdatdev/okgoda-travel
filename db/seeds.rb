@@ -255,3 +255,6 @@ ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").i
 ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Cẩm nang du lịch")
 ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Kinh nghiệm du lịch")
 ItemCategory.create!(category_id: Category.find_by(name_category: "Tin tức").id, name_item_category: "Thông tin visa")
+
+Hotel.create!(photo: "", destination: "Phú Quốc", title: "Phú Quốc đẹp lắm", price: "2545000", address: "102/1 Nguyễn Văn Bảo - Phú Quốc", phone_number: "0359208878", description: "Còn chờ gì nữa mà ko đi Phú Quốc", infomation: 'Phú Quốc lạ lắm à ngen')
+Hotel.create!(photo: "", destination: "Hạ Long", title: "Hạ Long đẹp lắm", price: "2545000", address: "102/1 Nguyễn Văn Bảo - Hạ Long", phone_number: "0359208878", description: "Còn chờ gì nữa mà ko đi Hạ Long", infomation: 'Hạ Long lạ lắm à ngen')

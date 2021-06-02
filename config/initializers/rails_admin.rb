@@ -40,4 +40,8 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model Tour do
+    field :photo, :multiple_carrierwave
+  end
 end
