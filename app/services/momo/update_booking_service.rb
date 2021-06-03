@@ -17,7 +17,7 @@ class Momo::UpdateBookingService < Momo::ApplicationService
   def booking_params
     {
       status: "approved",
-      purchased_at: Time.zone.parse(params[:responseTime],
+      purchased_at: Time.zone.parse(params[:responseTime]),
       momo_order_type: params[:orderType],
       momo_pay_type: params[:payType],
       momo_trans_id: params[:transId],
