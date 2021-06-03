@@ -7,15 +7,10 @@ class Booking < ApplicationRecord
   accepts_nested_attributes_for :list_of_customers, allow_destroy: true
   monetize   :total_price_cents, as: :total_price, numericality: { greater_than_or_equal_to: 0 }
 
-  validates :name_booking, presence: true, length: { minimum: 3 }
-  validates :email_booking, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :mobile_booking, presence: { message: 'bad operation!' },
-                             numericality: true,
-                             length: { minimum: 10, maximum: 15 }
-  validates :phone_booking, numericality: true, length: { minimum: 10, maximum: 15 }
-  validates :adult_guests_number, :child_guests_number, :young_children_guests_number,
-            :baby_guests_number, :customers_number, numericality: true, length: { minimum: 1, maximum: 3 }
-  validates :list_of_customers, presence: true
+  validates :name_booking, format: { :with =>  /\A[^0-9`!@#\$%\^&*+_=]+\z/ }, presence: { message: 'Tên không hợp lệ!!!' }
+  validates :email_booking, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP , message: 'Email không hợp lệ!!!'}
+  validates :mobile_booking, presence: { message: 'Đi động không hợp lệ!!!' }, numericality: true,length: { minimum: 10, maximum: 15 }
+  validates :phone_booking, numericality: { message: 'Điện thoại không hợp lệ!!!'}, length: { minimum: 10, maximum: 15 }
   validates :address_booking, format: {with: /[a-zA-Z]/}
 
   def expired?
